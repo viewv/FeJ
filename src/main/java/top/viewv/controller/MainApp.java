@@ -22,7 +22,7 @@ public class MainApp extends Application{
 //        Scene scene = new Scene(root,1920,1080);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getClassLoader().getResource("style/light.css")).toExternalForm());
 
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+//        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("FeJ");
         primaryStage.setScene(scene);
         primaryStage.show();
