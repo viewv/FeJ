@@ -18,11 +18,8 @@ public class MainApp extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("data/Main.fxml")));
-        Scene scene = new Scene(root, 1366, 768);
-//        Scene scene = new Scene(root,1920,1080);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getClassLoader().getResource("style/light.css")).toExternalForm());
+        Scene scene = new Scene(root);
 
-//        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("FeJ");
         primaryStage.setScene(scene);
         primaryStage.show();
