@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="loginpanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="938.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="LoginPane" fx:id="loginpanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="938.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.MainController">
    <children>
       <HBox alignment="CENTER" layoutX="82.0" layoutY="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
@@ -30,7 +30,7 @@
             </Text>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" stylesheets="@buttonSignUp.css" text="SignUp">
+                  <Button id="signup" fx:id="btnsignup" mnemonicParsing="false" stylesheets="@buttonSignUp.css" text="SignUp">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
@@ -38,7 +38,7 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" stylesheets="@buttonLogin.css" text="Login">
+                  <Button id="login" fx:id="btnlogin" mnemonicParsing="false" stylesheets="@buttonLogin.css" text="Login">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
@@ -58,8 +58,8 @@
                      <children>
                         <HBox alignment="CENTER" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                            <children>
-                              <FontAwesomeIcon fill="#fbfafa" iconName="USER" size="1.4em"/>
-                              <TextField prefHeight="35.0" promptText=" User ID" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                              <FontAwesomeIcon fill="#fbfafa" iconName="USER" size="1.4em" />
+                              <TextField id="userInput" prefHeight="35.0" promptText=" User ID" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -72,7 +72,7 @@
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                            <children>
                               <FontAwesomeIcon fill="#fbfafa" iconName="KEY" size="1.4em" />
-                              <TextField prefHeight="35.0" promptText="Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                              <TextField id="passwordInput" prefHeight="35.0" promptText="Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -82,7 +82,7 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </HBox>
-                        <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text=" Enter">
+                        <Button id="enterButtin" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text=" Enter">
                            <VBox.margin>
                               <Insets top="30.0" />
                            </VBox.margin>
