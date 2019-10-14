@@ -38,9 +38,9 @@
                </padding></HBox>
          </children>
       </HBox>
-      <StackPane fx:id="InputPane" layoutX="344.0" layoutY="214.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane fx:id="InputPane" layoutX="344.0" layoutY="19.0" prefHeight="609.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Group fx:id="GroupSignup">
+            <Group fx:id="GroupSignup" visible="false">
                <children>
                   <AnchorPane>
                      <children>
@@ -113,7 +113,7 @@
                   </AnchorPane>
                </children>
             </Group>
-            <Group fx:id="GroupLogin" visible="false" StackPane.alignment="CENTER">
+            <Group fx:id="GroupLogin" StackPane.alignment="CENTER">
                <children>
                   <AnchorPane>
                      <children>
@@ -167,6 +167,14 @@
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
+<!--                              <Button fx:id="testBtn" layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#testSwitch" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text="TestBtn">-->
+<!--                                 <graphic>-->
+<!--                                    <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />-->
+<!--                                 </graphic>-->
+<!--                                 <font>-->
+<!--                                    <Font size="14.0" />-->
+<!--                                 </font>-->
+<!--                              </Button>-->
                            </children>
                         </VBox>
                      </children>
@@ -181,18 +189,18 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="FeJ 2019">
                      <font>
-                        <Font size="11.0" />
+                        <Font size="10.0" />
                      </font></Text>
-                  <Text layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="Build: 1.0.2">
+                  <Text layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="Build: 1.0.3">
                      <font>
-                        <Font size="11.0" />
+                        <Font size="10.0" />
                      </font></Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="zxnnet@gmail.com">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <font>
-                        <Font size="11.0" />
+                        <Font size="10.0" />
                      </font></Text>
                </children>
             </VBox>
