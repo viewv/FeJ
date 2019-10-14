@@ -14,13 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane id="LoginPane" fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="938.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.MainController">
    <children>
-      <HBox alignment="CENTER" layoutX="82.0" layoutY="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="938.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-font-size: 2.4em; -fx-fill: white;" text="FeJ System" wrappingWidth="247.22900390625">
                <effect>
@@ -29,74 +25,152 @@
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
             </Text>
-            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
-               <children>
-                  <Button id="signup" fx:id="btnsignup" mnemonicParsing="false" stylesheets="@buttonSignUp.css" text="SignUp">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-                  <Button id="login" fx:id="btnlogin" mnemonicParsing="false" stylesheets="@buttonLogin.css" text="Login">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="436.0">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding></HBox>
          </children>
       </HBox>
       <StackPane fx:id="InputPane" layoutX="344.0" layoutY="214.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Group StackPane.alignment="CENTER">
+            <Group fx:id="GroupSignup">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="250.0">
+                  <AnchorPane>
                      <children>
-                        <HBox alignment="CENTER" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                        <VBox prefHeight="234.0" prefWidth="250.0">
                            <children>
-                              <FontAwesomeIcon fill="#fbfafa" iconName="USER" size="1.4em" />
-                              <TextField id="userInput" fx:id="userInput" prefHeight="35.0" promptText=" User ID" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TextField>
+                              <HBox alignment="CENTER" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <children>
+                                    <FontAwesomeIcon fill="#fbfafa" iconName="USER" size="1.3em" />
+                                    <TextField id="userInput" fx:id="userInput1" promptText=" User" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <children>
+                                    <FontAwesomeIcon fill="#fbfafa" iconName="KEY" size="1.4em" />
+                                    <PasswordField id="passwordInput" fx:id="passwordInput1" promptText="Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </PasswordField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <children>
+                                    <FontAwesomeIcon fill="#fbfafa" iconName="KEY" size="1.4em" />
+                                    <PasswordField id="passwordInput" fx:id="passwordInput11" promptText="Repeat Your Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </PasswordField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Button fx:id="regButton" mnemonicParsing="false" onMouseClicked="#RegInput" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text="Signup">
+                                 <VBox.margin>
+                                    <Insets top="30.0" />
+                                 </VBox.margin>
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnLogin" layoutX="10.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#LoginTab" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text="Login">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Button>
                            </children>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
-                           <children>
-                              <FontAwesomeIcon fill="#fbfafa" iconName="KEY" size="1.4em" />
-                              <PasswordField id="passwordInput" fx:id="passwordInput" prefHeight="35.0" promptText="Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </PasswordField>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <Button fx:id="enterButton" mnemonicParsing="false" onMouseClicked="#GetInput"  prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text=" Enter">
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                           <graphic>
-                              <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />
-                           </graphic>
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Button>
+                        </VBox>
                      </children>
-                  </VBox>
+                  </AnchorPane>
+               </children>
+            </Group>
+            <Group fx:id="GroupLogin" visible="false" StackPane.alignment="CENTER">
+               <children>
+                  <AnchorPane>
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="250.0">
+                           <children>
+                              <HBox alignment="CENTER" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <children>
+                                    <FontAwesomeIcon fill="#fbfafa" iconName="USER" size="1.4em" />
+                                    <TextField id="userInput" fx:id="userInput" prefHeight="35.0" promptText=" User ID" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <children>
+                                    <FontAwesomeIcon fill="#fbfafa" iconName="KEY" size="1.4em" />
+                                    <PasswordField id="passwordInput" fx:id="passwordInput" prefHeight="35.0" promptText="Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </PasswordField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Button fx:id="enterButton" mnemonicParsing="false" onMouseClicked="#GetInput" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text=" Enter">
+                                 <VBox.margin>
+                                    <Insets top="30.0" />
+                                 </VBox.margin>
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnSignup" layoutX="10.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#SignupTab" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text="  Signup">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
                </children>
             </Group>
          </children>
@@ -105,9 +179,21 @@
          <children>
             <VBox alignment="CENTER_RIGHT">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="FeJ 2019" />
-                  <Text layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="Build: 1.0.2" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="zxnnet@gmail.com" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="FeJ 2019">
+                     <font>
+                        <Font size="11.0" />
+                     </font></Text>
+                  <Text layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="Build: 1.0.2">
+                     <font>
+                        <Font size="11.0" />
+                     </font></Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="zxnnet@gmail.com">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="11.0" />
+                     </font></Text>
                </children>
             </VBox>
          </children>
