@@ -102,7 +102,9 @@ public class MainController implements Initializable {
 
     public void testSwitch(MouseEvent mouseEvent) throws IOException {
         Stage stage=new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/NewLogin.fxml")));
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Home.fxml")));
+
         stage.setTitle("第二个窗口");
         stage.setScene(new Scene(root));
         stage.show();

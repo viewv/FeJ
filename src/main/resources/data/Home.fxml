@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="991.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.HomeController">
+   <children>
+      <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <StackPane alignment="CENTER_LEFT">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="615.0" prefWidth="194.0" style="-fx-background-color: #ebe8f9;">
+                     <children>
+                        <Circle fx:id="AvatorCircle" fill="#ffffff00" radius="40.0" stroke="#558dcd" strokeType="INSIDE" strokeWidth="2.0">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Circle>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" prefHeight="44.0" prefWidth="252.0" style="-fx-background-color: #ebe8f9;" text="Overview">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="148.0" prefHeight="44.0" prefWidth="242.0" style="-fx-background-color: #ebe8f9;" text="Orders">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/box.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="192.0" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #ebe8f9;" text="Customer">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/person.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="236.0" prefHeight="44.0" prefWidth="235.0" style="-fx-background-color: #ebe8f9;" text="Menu">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/menu.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="280.0" prefHeight="44.0" prefWidth="242.0" style="-fx-background-color: #ebe8f9;" text="Package">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/inbox.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="324.0" prefHeight="44.0" prefWidth="246.0" style="-fx-background-color: #ebe8f9;" text="Setting">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/setting.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="368.0" onMouseClicked="#Signout" prefHeight="44.0" prefWidth="266.0" style="-fx-background-color: #ebe8f9;" text="Sign Out">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/exit.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="100.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+            <AnchorPane id="OverviewPane" prefHeight="615.0" prefWidth="800.0">
+               <children>
+                  <Label layoutX="55.0" layoutY="40.0" text="FeJ System">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

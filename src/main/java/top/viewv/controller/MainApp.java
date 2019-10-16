@@ -21,7 +21,7 @@ public class MainApp extends Application{
 
             Scene scene = new Scene(root);
 
-            String css = MainApp.class.getClassLoader().getResource("data/main.css").toExternalForm();
+            String css = Objects.requireNonNull(MainApp.class.getClassLoader().getResource("data/main.css")).toExternalForm();
             scene.getStylesheets().add(css);
 
             primaryStage.setTitle("FeJ");
