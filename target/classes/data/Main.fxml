@@ -14,11 +14,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="LoginPane" fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="938.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.MainController">
+<AnchorPane id="LoginPane" fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="938.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.MainController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="938.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-font-size: 2.4em; -fx-fill: white;" text="FeJ System" wrappingWidth="247.22900390625">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-font-size: 2.4em; -fx-fill: black;" text="FeJ System" wrappingWidth="247.22900390625">
                <effect>
                   <DropShadow />
                </effect>
@@ -40,7 +40,7 @@
       </HBox>
       <StackPane fx:id="InputPane" layoutX="344.0" layoutY="19.0" prefHeight="609.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Group fx:id="GroupSignup" visible="false">
+            <Group fx:id="GroupSignup">
                <children>
                   <AnchorPane>
                      <children>
@@ -113,41 +113,41 @@
                   </AnchorPane>
                </children>
             </Group>
-            <Group fx:id="GroupLogin" StackPane.alignment="CENTER">
+            <Group fx:id="GroupLogin" visible="false" StackPane.alignment="CENTER">
                <children>
-                  <AnchorPane>
+                  <AnchorPane style="-fx-border-radius: 50;">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="250.0">
+                        <VBox prefHeight="311.0" prefWidth="311.0" style="-fx-background-color: #2f2f2fa3 #2f2f2fa3;">
                            <children>
                               <HBox alignment="CENTER" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                                  <children>
-                                    <FontAwesomeIcon fill="#fbfafa" iconName="USER" size="1.4em" />
-                                    <TextField id="userInput" fx:id="userInput" prefHeight="35.0" promptText=" User ID" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                    <FontAwesomeIcon fill="WHITE" iconName="USER"  size="1.4em" />
+                                    <TextField id="userInput" fx:id="userInput" prefHeight="35.0" promptText="User ID" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
-                                          <Insets />
+                                          <Insets left="10.0" right="10.0" />
                                        </HBox.margin>
                                     </TextField>
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="20.0" />
+                                    <Insets left="10.0" right="10.0" top="35.0" />
                                  </VBox.margin>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                                  <children>
                                     <FontAwesomeIcon fill="#fbfafa" iconName="KEY" size="1.4em" />
-                                    <PasswordField id="passwordInput" fx:id="passwordInput" prefHeight="35.0" promptText="Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                    <PasswordField id="passwordInput" fx:id="passwordInput" prefHeight="35.0" promptText="  Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
                                     </PasswordField>
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="20.0" />
+                                    <Insets left="10.0" right="10.0" top="20.0" />
                                  </VBox.margin>
                               </HBox>
                               <Button fx:id="enterButton" mnemonicParsing="false" onMouseClicked="#GetInput" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text=" Enter">
                                  <VBox.margin>
-                                    <Insets top="30.0" />
+                                    <Insets left="30.0" top="40.0" />
                                  </VBox.margin>
                                  <graphic>
                                     <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />
@@ -164,18 +164,21 @@
                                     <Font size="14.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets top="20.0" />
+                                    <Insets left="30.0" top="30.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="testBtn" layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#testSwitch" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text="TestBtn">
-                                 <graphic>
-                                    <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />
-                                 </graphic>
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Button>
+      <!--                              <Button fx:id="testBtn" layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#testSwitch" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text="TestBtn">-->
+      <!--                                 <graphic>-->
+      <!--                                    <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />-->
+      <!--                                 </graphic>-->
+      <!--                                 <font>-->
+      <!--                                    <Font size="14.0" />-->
+      <!--                                 </font>-->
+      <!--                              </Button>-->
                            </children>
+                           <padding>
+                              <Insets bottom="20.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </AnchorPane>

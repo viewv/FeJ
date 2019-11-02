@@ -121,7 +121,7 @@
                            <children>
                               <HBox alignment="CENTER" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                                  <children>
-                                    <FontAwesomeIcon fill="WHITE" iconName="USER" selectionFill="BLACK" size="1.4em" />
+                                    <FontAwesomeIcon fill="WHITE" iconName="USER"  size="1.4em" />
                                     <TextField id="userInput" fx:id="userInput" prefHeight="35.0" promptText="User ID" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
