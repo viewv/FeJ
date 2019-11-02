@@ -17,13 +17,10 @@ public class Login {
             preparedStatement.setString(2,password);
             ResultSet resultSet = preparedStatement.executeQuery();
             String result = "";
-
             while (resultSet.next()){
                 result = resultSet.getString(1);
             }
-
             conn.close();
-
             return  result;
         } catch (Exception e) {
             e.printStackTrace();

@@ -49,7 +49,7 @@
                               <HBox alignment="CENTER" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                                  <children>
                                     <FontAwesomeIcon fill="#fbfafa" iconName="USER" size="1.3em" />
-                                    <TextField id="userInput" fx:id="userInput1" promptText=" User" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                    <TextField id="userInput" fx:id="signupUserInput" promptText=" User" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
@@ -62,7 +62,7 @@
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                                  <children>
                                     <FontAwesomeIcon fill="#fbfafa" iconName="KEY" size="1.4em" />
-                                    <PasswordField id="passwordInput" fx:id="passwordInput1" promptText="Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                    <PasswordField id="passwordInput" fx:id="signupPassword0" promptText="Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
@@ -75,7 +75,7 @@
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                                  <children>
                                     <FontAwesomeIcon fill="#fbfafa" iconName="KEY" size="1.4em" />
-                                    <PasswordField id="passwordInput" fx:id="passwordInput11" promptText="Repeat Your Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                    <PasswordField id="passwordInput" fx:id="signupPassword1" promptText="Repeat Your Password" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
@@ -97,9 +97,6 @@
                                  </font>
                               </Button>
                               <Button fx:id="btnLogin" layoutX="10.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#LoginTab" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text="Login">
-                                 <graphic>
-                                    <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />
-                                 </graphic>
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -121,7 +118,7 @@
                            <children>
                               <HBox alignment="CENTER" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                                  <children>
-                                    <FontAwesomeIcon fill="WHITE" iconName="USER"  size="1.4em" />
+                                    <FontAwesomeIcon fill="WHITE" iconName="USER" size="1.4em" />
                                     <TextField id="userInput" fx:id="userInput" prefHeight="35.0" promptText="User ID" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
@@ -167,14 +164,14 @@
                                     <Insets left="30.0" top="30.0" />
                                  </VBox.margin>
                               </Button>
-      <!--                              <Button fx:id="testBtn" layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#testSwitch" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text="TestBtn">-->
-      <!--                                 <graphic>-->
-      <!--                                    <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />-->
-      <!--                                 </graphic>-->
-      <!--                                 <font>-->
-      <!--                                    <Font size="14.0" />-->
-      <!--                                 </font>-->
-      <!--                              </Button>-->
+<!--                                    <Button fx:id="testBtn" layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#testSwitch" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text="TestBtn">-->
+<!--                                       <graphic>-->
+<!--                                          <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />-->
+<!--                                       </graphic>-->
+<!--                                       <font>-->
+<!--                                          <Font size="14.0" />-->
+<!--                                       </font>-->
+<!--                                    </Button>-->
                            </children>
                            <padding>
                               <Insets bottom="20.0" />
@@ -182,6 +179,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
+                  <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />
                </children>
             </Group>
          </children>
