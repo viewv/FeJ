@@ -20,7 +20,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import sun.rmi.runtime.Log;
 import top.viewv.database.Login;
 import top.viewv.database.Signup;
 import top.viewv.view.StageManager;

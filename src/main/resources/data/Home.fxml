@@ -22,10 +22,10 @@
                      <children>
                         <Circle fx:id="AvatorCircle" fill="#ffffff00" radius="40.0" stroke="#558dcd" strokeType="INSIDE" strokeWidth="2.0">
                            <VBox.margin>
-                              <Insets bottom="20.0" />
+                              <Insets bottom="40.0" top="30.0" />
                            </VBox.margin>
                         </Circle>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" prefHeight="44.0" prefWidth="252.0" style="-fx-background-color: #ebe8f9;" text="Overview">
+                        <JFXButton fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="20.0" onMouseClicked="#onClinckedbtnOverview" prefHeight="44.0" prefWidth="252.0" style="-fx-background-color: #ebe8f9;" text="  概览">
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -46,7 +46,7 @@
                               <Insets left="30.0" />
                            </padding>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="148.0" prefHeight="44.0" prefWidth="242.0" style="-fx-background-color: #ebe8f9;" text="Orders">
+                        <JFXButton fx:id="btnSale" alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="148.0" onMouseClicked="#onClickedbtnSale" prefHeight="44.0" prefWidth="242.0" style="-fx-background-color: #ebe8f9;" text="  销售">
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -61,7 +61,7 @@
                               <Insets left="30.0" />
                            </padding>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="192.0" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #ebe8f9;" text="Customer">
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="192.0" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #ebe8f9;" text="  财务">
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -76,7 +76,7 @@
                               <Insets left="30.0" />
                            </padding>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="236.0" prefHeight="44.0" prefWidth="235.0" style="-fx-background-color: #ebe8f9;" text="Menu">
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="236.0" prefHeight="44.0" prefWidth="235.0" style="-fx-background-color: #ebe8f9;" text="  计划">
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -91,7 +91,7 @@
                               <Insets left="30.0" />
                            </padding>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="280.0" prefHeight="44.0" prefWidth="242.0" style="-fx-background-color: #ebe8f9;" text="Package">
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="280.0" prefHeight="44.0" prefWidth="242.0" style="-fx-background-color: #ebe8f9;" text="  车间">
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -106,7 +106,7 @@
                               <Insets left="30.0" />
                            </padding>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="324.0" prefHeight="44.0" prefWidth="246.0" style="-fx-background-color: #ebe8f9;" text="Setting">
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="324.0" prefHeight="44.0" prefWidth="246.0" style="-fx-background-color: #ebe8f9;" text="  仓库">
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -121,7 +121,22 @@
                               <Insets left="30.0" />
                            </padding>
                         </JFXButton>
-                        <JFXButton fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="368.0" onMouseClicked="#Signout" prefHeight="44.0" prefWidth="266.0" style="-fx-background-color: #ebe8f9;" text="Sign Out">
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="384.0" prefHeight="44.0" prefWidth="246.0" style="-fx-background-color: #ebe8f9;" text="  管理">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/setting.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="10.0" layoutY="368.0" onMouseClicked="#Signout" prefHeight="44.0" prefWidth="266.0" style="-fx-background-color: #ebe8f9;" text="  退出">
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -143,13 +158,26 @@
                   </VBox>
                </children>
             </StackPane>
-            <AnchorPane id="OverviewPane" prefHeight="615.0" prefWidth="800.0">
+            <AnchorPane id="OverviewPane" fx:id="Conetnt" prefHeight="615.0" prefWidth="800.0">
                <children>
-                  <Label layoutX="55.0" layoutY="40.0" text="FeJ System">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane fx:id="overviewPane" prefHeight="615.0" prefWidth="799.0" visible="false">
+                     <children>
+                        <Label text="FeJ System test 1" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="salePane" layoutY="5.0" prefHeight="609.0" prefWidth="799.0">
+                     <children>
+                        <Label text="FeJ System test2" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>

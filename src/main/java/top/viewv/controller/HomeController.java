@@ -1,5 +1,6 @@
 package top.viewv.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -22,14 +24,22 @@ import java.util.ResourceBundle;
 
 public class HomeController  implements Initializable {
 
+    public AnchorPane Conetnt;
+    public AnchorPane overviewPane;
+    public AnchorPane salePane;
+    public JFXButton btnSale;
+    public JFXButton btnOverview;
     @FXML
     Button btnSignout;
     @FXML
     Circle AvatorCircle;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AvatorCircle.setStroke(Color.SEAGREEN);
+        salePane.setVisible(false);
+        overviewPane.setVisible(true);
 
         try {
             String filename = Objects.requireNonNull(this.getClass().getClassLoader().getResource("data/icons/avatar.png")).getPath();
@@ -64,5 +74,15 @@ public class HomeController  implements Initializable {
         //关闭本窗口
         Stage index = (Stage) btnSignout.getScene().getWindow();
         index.close();
+    }
+
+    public void onClickedbtnSale(MouseEvent mouseEvent) {
+        overviewPane.setVisible(false);
+        salePane.setVisible(true);
+    }
+
+    public void onClinckedbtnOverview(MouseEvent mouseEvent) {
+        salePane.setVisible(false);
+        overviewPane.setVisible(true);
     }
 }
