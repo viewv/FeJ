@@ -192,7 +192,7 @@
                      <font>
                         <Font size="10.0" />
                      </font></Text>
-                  <Text layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="Build: 1.0.4">
+                  <Text layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="Build: 1.0.5">
                      <font>
                         <Font size="10.0" />
                      </font></Text>

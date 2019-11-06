@@ -24,22 +24,111 @@ import java.util.ResourceBundle;
 
 public class HomeController  implements Initializable {
 
-    public AnchorPane Conetnt;
-    public AnchorPane overviewPane;
-    public AnchorPane salePane;
+    @FXML
     public JFXButton btnSale;
+    @FXML
     public JFXButton btnOverview;
+    @FXML
+    public AnchorPane Content;
+    @FXML
+    public AnchorPane overviewPane; //0
+    @FXML
+    public AnchorPane salePane;//1
+    @FXML
+    public AnchorPane finPane;//2
+    @FXML
+    public AnchorPane planPane;//3
+    @FXML
+    public AnchorPane linePane;//4
+    @FXML
+    public AnchorPane warehousePane;//5
+    @FXML
+    public AnchorPane managePane;//6
+    public JFXButton btnFin;
+    public JFXButton btnPaln;
+    public JFXButton btnProduce;
+    public JFXButton btnWarehouse;
+    public JFXButton btnManage;
     @FXML
     Button btnSignout;
     @FXML
     Circle AvatorCircle;
 
+    public void switchPane(int state){
+        switch (state){
+            case 1:
+                overviewPane.setVisible(false);
+                finPane.setVisible(false);
+                planPane.setVisible(false);
+                linePane.setVisible(false);
+                warehousePane.setVisible(false);
+                managePane.setVisible(false);
+                salePane.setVisible(true);
+                break;
+
+            case 2:
+                overviewPane.setVisible(false);
+                planPane.setVisible(false);
+                linePane.setVisible(false);
+                warehousePane.setVisible(false);
+                managePane.setVisible(false);
+                salePane.setVisible(false);
+                finPane.setVisible(true);
+                break;
+            case 3:
+                overviewPane.setVisible(false);
+                linePane.setVisible(false);
+                warehousePane.setVisible(false);
+                managePane.setVisible(false);
+                salePane.setVisible(false);
+                finPane.setVisible(false);
+                planPane.setVisible(true);
+                break;
+            case 4:
+                overviewPane.setVisible(false);
+                warehousePane.setVisible(false);
+                managePane.setVisible(false);
+                salePane.setVisible(false);
+                finPane.setVisible(false);
+                planPane.setVisible(false);
+                linePane.setVisible(true);
+                break;
+            case 5:
+                overviewPane.setVisible(false);
+                managePane.setVisible(false);
+                salePane.setVisible(false);
+                finPane.setVisible(false);
+                planPane.setVisible(false);
+                linePane.setVisible(false);
+                warehousePane.setVisible(true);
+                break;
+            case 6:
+                overviewPane.setVisible(false);
+                salePane.setVisible(false);
+                finPane.setVisible(false);
+                planPane.setVisible(false);
+                linePane.setVisible(false);
+                warehousePane.setVisible(false);
+                managePane.setVisible(true);
+                break;
+
+            default:
+                salePane.setVisible(false);
+                finPane.setVisible(false);
+                planPane.setVisible(false);
+                linePane.setVisible(false);
+                warehousePane.setVisible(false);
+                managePane.setVisible(false);
+                overviewPane.setVisible(true);
+                break;
+        }
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AvatorCircle.setStroke(Color.SEAGREEN);
-        salePane.setVisible(false);
-        overviewPane.setVisible(true);
+        switchPane(0);
 
         try {
             String filename = Objects.requireNonNull(this.getClass().getClassLoader().getResource("data/icons/avatar.png")).getPath();
@@ -76,13 +165,31 @@ public class HomeController  implements Initializable {
         index.close();
     }
 
-    public void onClickedbtnSale(MouseEvent mouseEvent) {
-        overviewPane.setVisible(false);
-        salePane.setVisible(true);
+    public void onClinckedbtnOverview(MouseEvent mouseEvent) {
+        switchPane(0);
     }
 
-    public void onClinckedbtnOverview(MouseEvent mouseEvent) {
-        salePane.setVisible(false);
-        overviewPane.setVisible(true);
+    public void onClickedbtnSale(MouseEvent mouseEvent) {
+        switchPane(1);
+    }
+
+    public void onClickedbtnFin(MouseEvent mouseEvent) {
+        switchPane(2);
+    }
+
+    public void onClickedbtnPaln(MouseEvent mouseEvent) {
+        switchPane(3);
+    }
+
+    public void onClickedbtnProduce(MouseEvent mouseEvent) {
+        switchPane(4);
+    }
+
+    public void onClickedbtnWarehouse(MouseEvent mouseEvent) {
+        switchPane(5);
+    }
+
+    public void onClickedbtnManage(MouseEvent mouseEvent) {
+        switchPane(6);
     }
 }
