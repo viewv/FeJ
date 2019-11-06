@@ -82,15 +82,15 @@
   
   <target name="compile.module.fej" depends="compile.module.fej.production,compile.module.fej.tests" description="Compile module FeJ"/>
   
-  <target name="compile.module.fej.production" depends="register.custom.compilers" description="Compile module FeJ; production classes">
+  <target name="compile.module.fej.production" description="Compile module FeJ; production classes">
     <mkdir dir="${fej.output.dir}"/>
-    <javac2 destdir="${fej.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.fej}/javac">
+    <javac destdir="${fej.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.fej}/javac">
       <compilerarg line="${compiler.args.fej}"/>
       <bootclasspath refid="fej.module.bootclasspath"/>
       <classpath refid="fej.module.production.classpath"/>
       <src refid="fej.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.fej"/>
-    </javac2>
+    </javac>
     
     <copy todir="${fej.output.dir}">
       <fileset dir="${module.fej.basedir}/../src/main/java">
@@ -104,7 +104,7 @@
     </copy>
   </target>
   
-  <target name="compile.module.fej.tests" depends="register.custom.compilers,compile.module.fej.production" description="compile module FeJ; test classes" unless="skip.tests"/>
+  <target name="compile.module.fej.tests" depends="compile.module.fej.production" description="compile module FeJ; test classes" unless="skip.tests"/>
   
   <target name="clean.module.fej" description="cleanup module">
     <delete dir="${fej.output.dir}"/>
