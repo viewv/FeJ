@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 
 public class TableTest extends Application{
-    private final TableView table = new TableView();
+    private final SqlTable table = new SqlTable("account");
     public static void main(String[] args) {
         launch(args);
     }
@@ -24,16 +24,15 @@ public class TableTest extends Application{
         stage.setWidth(300);
         stage.setHeight(500);
 
-        final Label label = new Label("Address Book");
+        final Label label = new Label("Account");
         label.setFont(new Font("Arial", 20));
 
         table.setEditable(true);
-
-        TableColumn firstNameCol = new TableColumn("First Name");
-        TableColumn lastNameCol = new TableColumn("Last Name");
-        TableColumn emailCol = new TableColumn("Email");
-
-        table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
+//        TableColumn firstNameCol = new TableColumn("First Name");
+//        TableColumn lastNameCol = new TableColumn("Last Name");
+//        TableColumn emailCol = new TableColumn("Email");
+//
+//        table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
 
         final VBox vbox = new VBox();
         vbox.setSpacing(5);
