@@ -146,9 +146,9 @@ public class MainController implements Initializable {
     public void Switch() throws IOException {
         Stage stage=new Stage();
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Home.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/newhome.fxml")));
 
-        stage.setTitle("第二个窗口");
+        stage.setTitle("Home Page");
         stage.setScene(new Scene(root));
         stage.show();
         //将第二个窗口保存到map中
@@ -159,23 +159,6 @@ public class MainController implements Initializable {
         Stage index = (Stage) loginPane.getScene().getWindow();
         index.close();
     }
-
-//    public void testSwitch() throws IOException {
-//        Stage stage=new Stage();
-//
-//        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Home.fxml")));
-//
-//        stage.setTitle("第二个窗口");
-//        stage.setScene(new Scene(root));
-//        stage.show();
-//        //将第二个窗口保存到map中
-//        StageManager.STAGE.put("second", stage);
-//        //将本窗口保存到map中
-//        StageManager.CONTROLLER.put("index", this);
-//        //关闭本窗口
-//        Stage index = (Stage) testBtn.getScene().getWindow();
-//        index.close();
-//    }
 
     public String getTranDataToIndex() {
         return tranDataToIndex;
