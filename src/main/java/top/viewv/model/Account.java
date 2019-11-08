@@ -5,6 +5,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public class Account {
+
+    private int account_id;
+    private int password;
+    private String icon;
+    private String time;
+
     public boolean login(String account_id,String passsword){
         String sha_password = Hashing.sha256().hashString(passsword, StandardCharsets.UTF_8).toString();
         // TODO search
