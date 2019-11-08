@@ -1,14 +1,13 @@
-package top.viewv.database;
+package top.viewv.test;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-//import javafx.scene.control.TableColumn;
-//import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import top.viewv.database.SqlTable;
 
 
 public class TableTest extends Application{
@@ -28,12 +27,6 @@ public class TableTest extends Application{
         label.setFont(new Font("Arial", 20));
 
         table.setEditable(true);
-//        TableColumn firstNameCol = new TableColumn("First Name");
-//        TableColumn lastNameCol = new TableColumn("Last Name");
-//        TableColumn emailCol = new TableColumn("Email");
-//
-//        table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
-
         final VBox vbox = new VBox();
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(10, 0, 0, 10));

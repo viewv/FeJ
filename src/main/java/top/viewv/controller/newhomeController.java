@@ -51,7 +51,7 @@ public class newhomeController implements Initializable {
 
         Node [] nodes = new  Node[15];
 
-        for(int i = 0; i<10; i++)
+        for(int i = 0; i<5; i++)
         {
             try {
                 nodes[i] = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Item.fxml")));
@@ -59,7 +59,12 @@ public class newhomeController implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+        }
+        try {
+            nodes[6] = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Table.fxml")));
+            pnl_scroll.getChildren().add(nodes[6]);
+        }catch (IOException ex) {
+            Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
