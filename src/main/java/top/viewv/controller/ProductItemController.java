@@ -13,7 +13,7 @@ public class ProductItemController implements Initializable  {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("FeJ Open");
+        System.out.println("Items Open");
     }
 
     public void setLabPrice(String message) {

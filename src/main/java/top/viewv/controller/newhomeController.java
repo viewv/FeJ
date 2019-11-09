@@ -16,7 +16,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 import top.viewv.Api.Gravatar;
@@ -25,6 +24,8 @@ import top.viewv.Api.Gravatar;
  *
  * @author oXCToo
  */
+// !Thank you very much! oXCToo!
+
 public class newhomeController implements Initializable {
 
     public ImageView userIcon;
@@ -32,13 +33,16 @@ public class newhomeController implements Initializable {
     private VBox pnl_scroll;
 
     @FXML
-    private void handleButtonAction(MouseEvent event) {
+    private void handleButtonAction() {
         refreshNodes();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refreshNodes();
+        setUserIcon();
+    }
+    private void setUserIcon(){
         userIcon.setImage(Gravatar.imageFromMail("zxn@zxnnet.top"));
     }
 

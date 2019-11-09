@@ -1,10 +1,5 @@
 package top.viewv.Api;
 
-//Old way
-//import com.timgroup.jgravatar.Gravatar;
-//import com.timgroup.jgravatar.GravatarDefaultImage;
-//import com.timgroup.jgravatar.GravatarRating;
-
 // Hash creation
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
