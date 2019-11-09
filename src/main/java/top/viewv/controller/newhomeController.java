@@ -18,7 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
-import top.viewv.Api.Gravatar;
+import top.viewv.api.Gravatar;
 
 /**
  *

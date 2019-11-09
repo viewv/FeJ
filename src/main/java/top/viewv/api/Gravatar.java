@@ -1,4 +1,4 @@
-package top.viewv.Api;
+package top.viewv.api;
 
 // Hash creation
 import java.security.MessageDigest;
