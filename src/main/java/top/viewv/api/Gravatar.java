@@ -14,7 +14,7 @@ import java.net.URL;
 import java.net.MalformedURLException;
 
 public class Gravatar {
-    public static String hash(String input) {
+    private static String hash(String input) {
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             md5.update(StandardCharsets.UTF_8.encode(input));

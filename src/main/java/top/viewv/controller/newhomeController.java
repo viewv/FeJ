@@ -43,7 +43,7 @@ public class newhomeController implements Initializable {
         setUserIcon();
     }
     private void setUserIcon(){
-        userIcon.setImage(Gravatar.imageFromMail("zxn@zxnnet.top"));
+        userIcon.setImage(Gravatar.imageFromMail("zxnnet@gmail.com"));
     }
 
     private void refreshNodes()
