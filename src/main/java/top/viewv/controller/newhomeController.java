@@ -64,7 +64,7 @@ public class newhomeController implements Initializable {
                 node = loader.load();
                 //调用下面的函数可以得到控制器
                 ProductItemController productItemController = loader.getController();
-                productItemController.setLabPrice("170");
+                productItemController.setLabPrice("70");
                 //node = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/ProductItem.fxml")));
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);

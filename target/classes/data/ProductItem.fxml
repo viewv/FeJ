@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
@@ -98,7 +99,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labPrice" layoutX="614.0" layoutY="34.0" text="16" textFill="#aeacac">
+                <Label fx:id="labPrice" alignment="CENTER_RIGHT" layoutX="582.0" layoutY="34.0" prefHeight="44.0" prefWidth="70.0" text="16" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
@@ -118,11 +119,12 @@
                 </Label>
                 <Label layoutX="774.0" layoutY="41.0" text="AUG" textFill="#3a1c9d" />
                 <Label layoutX="774.0" layoutY="59.0" text="2018" textFill="#aeacac" />
-                <Label fx:id="labProductId" layoutX="123.0" layoutY="51.0" text="Ref: 20178" textFill="#b2b0b0">
+                <Label fx:id="labProductId" layoutX="123.0" layoutY="51.0" text="ID: 20178" textFill="#b2b0b0">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
+            <JFXButton buttonType="RAISED" layoutX="731.0" layoutY="228.0" prefHeight="33.0" prefWidth="70.0" style="-fx-background-color: #473E98;" text="配方" textFill="WHITE" />
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
