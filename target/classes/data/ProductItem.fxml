@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
@@ -20,7 +22,7 @@
                     </image>
                 </ImageView>
                 <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
-                <Label fx:id="labProductName" layoutX="123.0" layoutY="18.0" text="Name" textFill="#3a1c9d">
+                <Label fx:id="labProductName" layoutX="123.0" layoutY="18.0" text="Produc Name" textFill="#3a1c9d">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -65,7 +67,7 @@
                         <Font size="13.0" />
                     </font>
                 </Label>
-                <Label layoutX="576.0" layoutY="113.0" text="OPERATIONS" textFill="#aeacac">
+                <Label layoutX="576.0" layoutY="113.0" text="OPERATORS" textFill="#aeacac">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -94,7 +96,7 @@
                         </Label>
                     </children>
                 </Pane>
-                <Label layoutX="614.0" layoutY="12.0" text="Price" textFill="#3a1c9d">
+                <Label layoutX="619.0" layoutY="13.0" text="Price" textFill="#3a1c9d">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -124,7 +126,9 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-            <JFXButton buttonType="RAISED" layoutX="731.0" layoutY="228.0" prefHeight="33.0" prefWidth="70.0" style="-fx-background-color: #473E98;" text="配方" textFill="WHITE" />
+            <JFXButton fx:id="btnShowRecipe" buttonType="RAISED" layoutX="731.0" layoutY="228.0" onMouseClicked="#onClickedshoqRecipe" prefHeight="33.0" prefWidth="70.0" style="-fx-background-color: #473E98;" text="配方" textFill="WHITE" />
+            <JFXCheckBox layoutX="648.0" layoutY="236.0" prefHeight="18.0" prefWidth="58.0" text="Buy" />
+            <JFXTextField layoutX="569.0" layoutY="231.0" prefHeight="19.0" prefWidth="58.0" />
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

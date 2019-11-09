@@ -2,14 +2,18 @@ package top.viewv.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 public class ProductItemController implements Initializable  {
 
     public Label labProductName;
     public Label labPrice;
     public Label labProductId;
+    public JFXButton btnShowRecipe;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -19,5 +23,9 @@ public class ProductItemController implements Initializable  {
     public void setLabPrice(String message) {
         //Display the message
         labPrice.setText(message);
+    }
+
+    public void onClickedshoqRecipe(MouseEvent mouseEvent) {
+        System.out.println("Show Recipe");
     }
 }
