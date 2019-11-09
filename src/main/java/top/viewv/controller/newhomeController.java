@@ -11,11 +11,9 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -40,8 +38,6 @@ public class newhomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-
         refreshNodes();
     }
 
@@ -50,21 +46,26 @@ public class newhomeController implements Initializable {
         pnl_scroll.getChildren().clear();
 
         Node [] nodes = new  Node[15];
+        Node node;
 
         for(int i = 0; i<5; i++)
         {
             try {
-                nodes[i] = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Item.fxml")));
+                FXMLLoader loader = new
+                        FXMLLoader(Objects.requireNonNull(
+                                Thread.currentThread().
+                                        getContextClassLoader().
+                                        getResource("data/ProductItem.fxml")));
+                node = loader.load();
+                //调用下面的函数可以得到控制器
+                ProductItemController productItemController = loader.getController();
+                productItemController.setLabPrice("170");
+                //node = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/ProductItem.fxml")));
+                nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (IOException ex) {
                 Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        try {
-            nodes[6] = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Table.fxml")));
-            pnl_scroll.getChildren().add(nodes[6]);
-        }catch (IOException ex) {
-            Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
