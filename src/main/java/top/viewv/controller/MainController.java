@@ -1,21 +1,17 @@
 package top.viewv.controller;
 
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXSnackbar;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -23,6 +19,11 @@ import javafx.stage.Stage;
 import top.viewv.database.Login;
 import top.viewv.database.Signup;
 import top.viewv.view.StageManager;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
 
 public class MainController implements Initializable {
@@ -62,7 +63,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    public void GetInput(MouseEvent mouseEvent) throws IOException {
+    public void GetInput() throws IOException {
         String user_id = userInput.getText().trim();
         String password = passwordInput.getText().trim();
         Login login = new Login();
@@ -100,7 +101,7 @@ public class MainController implements Initializable {
     }
 
 
-    public void RegInput(MouseEvent mouseEvent) {
+    public void RegInput() {
         String acc_id = signupUserInput.getText().trim();
         String password0 = signupPassword0.getText().trim();
         String password1 = signupPassword1.getText().trim();
@@ -166,5 +167,15 @@ public class MainController implements Initializable {
 
     public void setTranDataToIndex(String tranDataToIndex) {
         this.tranDataToIndex = tranDataToIndex;
+    }
+
+    public void enterPress(KeyEvent keyEvent) throws IOException {
+        if(keyEvent.getCode() == KeyCode.ENTER){
+            if (GroupLogin.isVisible()){
+                GetInput();
+            }else {
+                RegInput();
+            }
+        }
     }
 }

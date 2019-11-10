@@ -14,6 +14,7 @@ public class ProductItemController implements Initializable  {
     public Label labPrice;
     public Label labProductId;
     public JFXButton btnShowRecipe;
+    public Label labProductRtime;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -36,5 +37,9 @@ public class ProductItemController implements Initializable  {
 
     public void onClickedshoqRecipe(MouseEvent mouseEvent) {
         System.out.println("Show Recipe");
+    }
+
+    public void setLabProductRtime(int message){
+        labProductRtime.setText(String.valueOf(message));
     }
 }

@@ -81,6 +81,7 @@ public class newhomeController implements Initializable {
                 productItemController.setLabPrice(pt.Ptable[i].product_price);
                 productItemController.setLabProductName(pt.Ptable[i].product_name);
                 productItemController.setLabProductId(pt.Ptable[i].product_id);
+                productItemController.setLabProductRtime(pt.Ptable[i].product_period);
                 //node = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/ProductItem.fxml")));
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);

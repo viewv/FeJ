@@ -10,6 +10,7 @@ public class TestProductTable {
         for (int i = 0; i < pt.Plength; ++i){
             System.out.println(pt.Ptable[i].product_name);
             System.out.println(pt.Ptable[i].product_price);
+            System.out.println(pt.Ptable[i].product_period);
         }
     }
 }
