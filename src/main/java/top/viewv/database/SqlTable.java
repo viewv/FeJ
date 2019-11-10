@@ -29,7 +29,6 @@ public class SqlTable extends TableView {
 
             TableColumn[] TableColumns = new TableColumn[cnt];
             String TableValue[] = new String[cnt+1];
-            String GetTableValueSql = "select * from " + TableName;
             for (int i = 0; i < cnt; ++i){
                 TableColumns[i] = new TableColumn(ColumnName[i]);
                 this.getColumns().add(TableColumns[i]);
