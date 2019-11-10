@@ -101,7 +101,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labPrice" alignment="CENTER_RIGHT" layoutX="582.0" layoutY="34.0" prefHeight="44.0" prefWidth="70.0" text="16" textFill="#aeacac">
+                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="484.0" layoutY="34.0" prefHeight="44.0" prefWidth="168.0" text="16" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>

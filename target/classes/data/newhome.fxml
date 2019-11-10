@@ -58,7 +58,7 @@
                     <graphic>
                         <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/projects.png" />
+                                <Image url="@newIcon/sum.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -66,7 +66,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Reliability" textFill="#5b5858">
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="订单" textFill="#5b5858">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -76,7 +76,7 @@
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/reliabilty.png" />
+                                <Image url="@newIcon/order.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -84,7 +84,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Projections" textFill="#5b5858">
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="库存" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -102,14 +102,6 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-                <Label prefHeight="30.0" prefWidth="252.0" text="ENTERPRISE" textFill="#171717">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <padding>
-                        <Insets left="40.0" />
-                    </padding>
-                </Label>
                 <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Sponsorships" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
@@ -173,6 +165,24 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
+            <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="388.0" onMouseClicked="#onClickedbtnExit" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="退出" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@newIcon/exit.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
             </children>
         </VBox>
         <Pane layoutX="87.0" layoutY="44.0" prefHeight="114.0" prefWidth="118.0" style="-fx-background-color: #fff;">

@@ -20,9 +20,18 @@ public class ProductItemController implements Initializable  {
         System.out.println("Items Open");
     }
 
-    public void setLabPrice(String message) {
+    public void setLabPrice(float message) {
         //Display the message
-        labPrice.setText(message);
+        labPrice.setText(String.valueOf(message));
+    }
+
+    public void setLabProductName(String message) {
+        //Display the message
+        labProductName.setText(message);
+    }
+
+    public void setLabProductId(int message){
+        labProductId.setText("ID:"+ message);
     }
 
     public void onClickedshoqRecipe(MouseEvent mouseEvent) {
