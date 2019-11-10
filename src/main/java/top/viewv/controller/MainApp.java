@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class MainApp extends Application{
+public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -27,8 +27,7 @@ public class MainApp extends Application{
             primaryStage.setTitle("FeJ");
             primaryStage.setScene(scene);
             primaryStage.show();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -3,133 +3,143 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.ProductItemController">
+<?import javafx.scene.text.*?>
+<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="top.viewv.controller.ProductItemController">
     <children>
         <Pane layoutX="29.0" layoutY="22.0" prefHeight="338.0" prefWidth="896.0" style="-fx-background-color: #fff;">
             <children>
-                <ImageView fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true"
+                           preserveRatio="true">
                     <image>
-                        <Image url="@images/icons8_500px_64px.png" />
+                        <Image url="@images/icons8_500px_64px.png"/>
                     </image>
                 </ImageView>
-                <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
+                <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0"/>
                 <Label fx:id="labProductName" layoutX="123.0" layoutY="18.0" text="Produc Name" textFill="#3a1c9d">
                     <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="18.0"/>
                     </font>
                 </Label>
                 <Label layoutX="51.0" layoutY="113.0" text="CLIENT" textFill="#aeacac">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Label>
                 <Label layoutX="51.0" layoutY="186.0" text="LOCATION" textFill="#aeacac">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Label>
                 <Label layoutX="279.0" layoutY="113.0" text="CLIENT PAYS" textFill="#aeacac">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Label>
                 <Label layoutX="279.0" layoutY="186.0" text="COMMISSION" textFill="#aeacac">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Label>
                 <Label layoutX="58.0" layoutY="139.0" text="Brad Pitt" textFill="#4d4c4c">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </Label>
                 <Label layoutX="287.0" layoutY="139.0" text="\$1000" textFill="#4d4c4c">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </Label>
                 <Label layoutX="287.0" layoutY="211.0" text="Between $190 and $270" textFill="#4d4c4c">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </Label>
                 <Label layoutX="58.0" layoutY="211.0" text="London" textFill="#4d4c4c">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </Label>
                 <Label layoutX="576.0" layoutY="113.0" text="OPERATORS" textFill="#aeacac">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="576.0" layoutY="139.0" prefHeight="19.0" prefWidth="44.0" style="-fx-background-color: #aeacac;" text="Toggle" textFill="#fffefe">
+                <Label layoutX="576.0" layoutY="139.0" prefHeight="19.0" prefWidth="44.0"
+                       style="-fx-background-color: #aeacac;" text="Toggle" textFill="#fffefe">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </Label>
-                <Label layoutX="623.0" layoutY="139.0" style="-fx-background-color: #aeacac;" text="Monty" textFill="#fffefe">
+                <Label layoutX="623.0" layoutY="139.0" style="-fx-background-color: #aeacac;" text="Monty"
+                       textFill="#fffefe">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </Label>
-                <Label layoutX="576.0" layoutY="165.0" prefHeight="19.0" prefWidth="58.0" style="-fx-background-color: #aeacac;" text="Software" textFill="#fffefe">
+                <Label layoutX="576.0" layoutY="165.0" prefHeight="19.0" prefWidth="58.0"
+                       style="-fx-background-color: #aeacac;" text="Software" textFill="#fffefe">
                     <font>
-                        <Font size="13.0" />
+                        <Font size="13.0"/>
                     </font>
                 </Label>
                 <Pane layoutY="269.0" prefHeight="70.0" prefWidth="896.0" style="-fx-background-color: #F0F0F0;">
                     <children>
-                        <Label layoutX="61.0" layoutY="26.0" text="Drapo returns you $3000 and $1000 for all the deals" textFill="#504df2">
+                        <Label layoutX="61.0" layoutY="26.0" text="Drapo returns you $3000 and $1000 for all the deals"
+                               textFill="#504df2">
                             <font>
-                                <Font size="13.0" />
+                                <Font size="13.0"/>
                             </font>
                         </Label>
                     </children>
                 </Pane>
                 <Label layoutX="619.0" layoutY="13.0" text="价格" textFill="#3a1c9d">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Label>
-                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="484.0" layoutY="34.0" prefHeight="44.0" prefWidth="168.0" text="16" textFill="#aeacac">
+                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="484.0" layoutY="34.0" prefHeight="44.0"
+                       prefWidth="168.0" text="16" textFill="#aeacac">
                     <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font name="System Bold" size="36.0"/>
                     </font>
                 </Label>
-                <Label layoutX="665.0" layoutY="59.0" text="元" textFill="#3a1c9d" />
-                <Separator layoutX="692.0" layoutY="13.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
+                <Label layoutX="665.0" layoutY="59.0" text="元" textFill="#3a1c9d"/>
+                <Separator layoutX="692.0" layoutY="13.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0"/>
                 <Label layoutX="725.0" layoutY="13.0" text="保质期" textFill="#3a1c9d">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Label>
-                <Label fx:id="labProductRtime" alignment="CENTER_RIGHT" layoutX="699.0" layoutY="33.0" prefHeight="44.0" prefWidth="67.0" text="30" textFill="#aeacac">
+                <Label fx:id="labProductRtime" alignment="CENTER_RIGHT" layoutX="699.0" layoutY="33.0" prefHeight="44.0"
+                       prefWidth="67.0" text="30" textFill="#aeacac">
                     <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font name="System Bold" size="36.0"/>
                     </font>
                 </Label>
-                <Label layoutX="773.0" layoutY="59.0" text="天" textFill="#3a1c9d" />
+                <Label layoutX="773.0" layoutY="59.0" text="天" textFill="#3a1c9d"/>
                 <Label fx:id="labProductId" layoutX="123.0" layoutY="51.0" text="ID: 20178" textFill="#b2b0b0">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Label>
-            <JFXButton fx:id="btnShowRecipe" buttonType="RAISED" layoutX="731.0" layoutY="228.0" onMouseClicked="#onClickedshoqRecipe" prefHeight="33.0" prefWidth="70.0" style="-fx-background-color: #473E98;" text="配方" textFill="WHITE" />
-            <JFXCheckBox layoutX="648.0" layoutY="236.0" prefHeight="18.0" prefWidth="58.0" text="购买" />
-            <JFXTextField alignment="CENTER_RIGHT" layoutX="569.0" layoutY="231.0" prefHeight="19.0" prefWidth="58.0" />
+                <JFXButton fx:id="btnShowRecipe" buttonType="RAISED" layoutX="731.0" layoutY="228.0"
+                           onMouseClicked="#onClickedshoqRecipe" prefHeight="33.0" prefWidth="70.0"
+                           style="-fx-background-color: #473E98;" text="配方" textFill="WHITE"/>
+                <JFXCheckBox layoutX="648.0" layoutY="236.0" prefHeight="18.0" prefWidth="58.0" text="购买"/>
+                <JFXTextField alignment="CENTER_RIGHT" layoutX="569.0" layoutY="231.0" prefHeight="19.0"
+                              prefWidth="58.0"/>
             </children>
             <effect>
-                <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
+                <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0"/>
             </effect>
         </Pane>
     </children>

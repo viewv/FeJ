@@ -5,13 +5,6 @@ package top.viewv.controller;
  * and open the template in the editor.
  */
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,14 +15,19 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-
 import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.view.StageManager;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
- *
  * @author oXCToo
  */
 // !Thank you very much! oXCToo!
@@ -51,12 +49,12 @@ public class newhomeController implements Initializable {
         refreshNodes();
         setUserIcon();
     }
-    private void setUserIcon(){
+
+    private void setUserIcon() {
         userIcon.setImage(Gravatar.imageFromMail("zxnnet@gmail.com"));
     }
 
-    private void refreshNodes()
-    {
+    private void refreshNodes() {
         pnl_scroll.getChildren().clear();
         ProductTable pt = new ProductTable();
         pt.GetLength();
@@ -64,17 +62,16 @@ public class newhomeController implements Initializable {
 
         int length = pt.Plength;
 
-        Node [] nodes = new  Node[length];
+        Node[] nodes = new Node[length];
         Node node;
 
-        for(int i = 0; i<length; i++)
-        {
+        for (int i = 0; i < length; i++) {
             try {
                 FXMLLoader loader = new
                         FXMLLoader(Objects.requireNonNull(
-                                Thread.currentThread().
-                                        getContextClassLoader().
-                                        getResource("data/ProductItem.fxml")));
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/ProductItem.fxml")));
                 node = loader.load();
                 //调用下面的函数可以得到控制器
                 ProductItemController productItemController = loader.getController();
@@ -93,12 +90,12 @@ public class newhomeController implements Initializable {
     }
 
     public void onClickedbtnExit(MouseEvent mouseEvent) throws IOException {
-        MainController secondControl=(MainController) StageManager.CONTROLLER.get("index");
+        MainController secondControl = (MainController) StageManager.CONTROLLER.get("index");
         secondControl.setTranDataToIndex("第三个窗口的数据");
         //如果本窗口还使用该控制器先不remove这个控制器;
         //StageManager.CONTROLLER.remove("secondControl");
 
-        Stage stage=new Stage();
+        Stage stage = new Stage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Main.fxml")));
         stage.setTitle("Index");
         stage.setScene(new Scene(root));

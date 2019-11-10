@@ -71,11 +71,10 @@ public class MainController implements Initializable {
         //TODO Rember to remove it when finish!
         String superuser = "zxnnet@gmail.com";
 
-        if (user_id.equals(superuser)){
+        if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
             Switch();
-        }
-        else {
+        } else {
             String result = login.LoginFun(user_id, password);
             String icon;
             if (result != null) {
@@ -106,24 +105,23 @@ public class MainController implements Initializable {
         String password0 = signupPassword0.getText().trim();
         String password1 = signupPassword1.getText().trim();
         Signup signup = new Signup();
-        String result = signup.SignupFun(acc_id,"2313",password0,password1,"zxnnet@gmail.com");
+        String result = signup.SignupFun(acc_id, "2313", password0, password1, "zxnnet@gmail.com");
         System.out.println(result);
         if (result != null) {
             if (result.equals("Account Exists")) {
                 System.out.println(result);
             } else if (result.equals("Wrong Account Length")) {
                 System.out.println(result);
-            } else if(result.equals("Wrong Password Length")){
+            } else if (result.equals("Wrong Password Length")) {
                 System.out.println(result);
-            } else if(result.equals("Password Don't Match")){
+            } else if (result.equals("Password Don't Match")) {
                 System.out.println(result);
-            }
-            else {
-               if (result.equals("Staff Account Created Successfully")
-                   || result.equals("Client Account Created Successfully")){
+            } else {
+                if (result.equals("Staff Account Created Successfully")
+                        || result.equals("Client Account Created Successfully")) {
                     result += "\nPlease Login!";
                     LoginTab();
-               }
+                }
             }
         } else {
             result = "Wrong!";
@@ -145,7 +143,7 @@ public class MainController implements Initializable {
     }
 
     public void Switch() throws IOException {
-        Stage stage=new Stage();
+        Stage stage = new Stage();
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/newhome.fxml")));
 
@@ -170,10 +168,10 @@ public class MainController implements Initializable {
     }
 
     public void enterPress(KeyEvent keyEvent) throws IOException {
-        if(keyEvent.getCode() == KeyCode.ENTER){
-            if (GroupLogin.isVisible()){
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (GroupLogin.isVisible()) {
                 GetInput();
-            }else {
+            } else {
                 RegInput();
             }
         }

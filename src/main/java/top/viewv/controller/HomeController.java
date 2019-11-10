@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -16,13 +17,12 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import top.viewv.view.StageManager;
 
-import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class HomeController  implements Initializable {
+public class HomeController implements Initializable {
 
     @FXML
     public JFXButton btnSale;
@@ -54,8 +54,8 @@ public class HomeController  implements Initializable {
     @FXML
     Circle AvatorCircle;
 
-    public void switchPane(int state){
-        switch (state){
+    public void switchPane(int state) {
+        switch (state) {
             case 1:
                 overviewPane.setVisible(false);
                 finPane.setVisible(false);
@@ -132,25 +132,25 @@ public class HomeController  implements Initializable {
         try {
             String filename = Objects.requireNonNull(this.getClass().getClassLoader().getResource("data/icons/avatar.png")).getPath();
             System.out.println(filename);
-            Image im = new Image("file:"+ filename,false);
+            Image im = new Image("file:" + filename, false);
             AvatorCircle.setFill(new ImagePattern(im));
         } catch (Exception e) {
             String filename = Objects.requireNonNull(this.getClass().getClassLoader().getResource("data/icons/person.png")).getPath();
-            Image im = new Image("file:"+ filename,false);
+            Image im = new Image("file:" + filename, false);
             AvatorCircle.setFill(new ImagePattern(im));
-            AvatorCircle.setEffect(new DropShadow(+25d,0d,2d,Color.DARKSEAGREEN));
+            AvatorCircle.setEffect(new DropShadow(+25d, 0d, 2d, Color.DARKSEAGREEN));
             e.printStackTrace();
         }
     }
 
     public void Signout(MouseEvent mouseEvent) throws IOException {
 
-        MainController secondControl=(MainController) StageManager.CONTROLLER.get("index");
+        MainController secondControl = (MainController) StageManager.CONTROLLER.get("index");
         secondControl.setTranDataToIndex("第三个窗口的数据");
         //如果本窗口还使用该控制器先不remove这个控制器;
         //StageManager.CONTROLLER.remove("secondControl");
 
-        Stage stage=new Stage();
+        Stage stage = new Stage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Main.fxml")));
         stage.setTitle("Index");
         stage.setScene(new Scene(root));

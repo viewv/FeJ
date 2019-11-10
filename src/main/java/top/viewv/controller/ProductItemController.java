@@ -1,14 +1,14 @@
 package top.viewv.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-public class ProductItemController implements Initializable  {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ProductItemController implements Initializable {
 
     public Label labProductName;
     public Label labPrice;
@@ -31,15 +31,15 @@ public class ProductItemController implements Initializable  {
         labProductName.setText(message);
     }
 
-    public void setLabProductId(int message){
-        labProductId.setText("ID:"+ message);
+    public void setLabProductId(int message) {
+        labProductId.setText("ID:" + message);
     }
 
     public void onClickedshoqRecipe(MouseEvent mouseEvent) {
         System.out.println("Show Recipe");
     }
 
-    public void setLabProductRtime(int message){
+    public void setLabProductRtime(int message) {
         labProductRtime.setText(String.valueOf(message));
     }
 }
