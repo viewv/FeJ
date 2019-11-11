@@ -5,11 +5,13 @@ public class Product {
     public String product_name;
     public int product_period;
     public float product_price;
+    public String description;
 
-    public Product(int id,String name,int period,float price){
+    public Product(int id,String name,int period,float price,String description){
         this.product_id = id;
         this.product_name = name;
         this.product_period = period;
         this.product_price = price;
+        this.description = description;
     }
 }

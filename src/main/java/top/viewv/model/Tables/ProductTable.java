@@ -42,7 +42,8 @@ public class ProductTable {
                 String name = rs.getString(2);
                 int period = rs.getInt(3);
                 float price = rs.getFloat(4);
-                this.Ptable[cnt] = new Product(id,name,period,price);
+                String description = rs.getString(5);
+                this.Ptable[cnt] = new Product(id,name,period,price,description);
                 cnt++;
             }
             conn.close();
