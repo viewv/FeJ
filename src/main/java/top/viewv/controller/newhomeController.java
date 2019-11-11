@@ -18,6 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.model.Tables.ProductTable;
+import top.viewv.model.Tables.RecipeTable;
 import top.viewv.view.StageManager;
 
 import java.io.IOException;
@@ -56,9 +57,13 @@ public class newhomeController implements Initializable {
 
     private void refreshNodes() {
         pnl_scroll.getChildren().clear();
+
         ProductTable pt = new ProductTable();
         pt.GetLength();
         pt.GetContent();
+
+        RecipeTable rt = new RecipeTable();
+
 
         int length = pt.Plength;
 
@@ -74,12 +79,16 @@ public class newhomeController implements Initializable {
                                 getResource("data/ProductItem.fxml")));
                 node = loader.load();
                 //调用下面的函数可以得到控制器
+                //商品部分
                 ProductItemController productItemController = loader.getController();
                 productItemController.setLabPrice(pt.Ptable[i].product_price);
                 productItemController.setLabProductName(pt.Ptable[i].product_name);
                 productItemController.setLabProductId(pt.Ptable[i].product_id);
                 productItemController.setLabProductRtime(pt.Ptable[i].product_period);
                 //node = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/ProductItem.fxml")));
+                //配方介绍部分
+                rt.GetAll(pt.Ptable[i].product_id);
+                productItemController.setLabDescrption(rt.Itable[i].Description);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //pnl_scroll.getChildren().removeAll();
