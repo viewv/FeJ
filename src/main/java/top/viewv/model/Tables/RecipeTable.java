@@ -27,7 +27,7 @@ public class RecipeTable {
             this.Itable = new SpecificRecipe[this.Rlength];
 
             int cnt = 0;
-            sql = "select recipe.ingredient_id,ingredient.ingredient_name,amount from recipe,ingredient where recipe.ingredient_id = ingredient.ingredient_id and product_id = "
+            sql = "select recipe.ingredient_id,ingredient.ingredient_name,amount,description from recipe,ingredient where recipe.ingredient_id = ingredient.ingredient_id and product_id = "
             + ProductId;
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
@@ -35,7 +35,8 @@ public class RecipeTable {
                 int id = rs.getInt(1);
                 String name = rs.getString(2);
                 int amount = rs.getInt(3);
-                this.Itable[cnt] = new SpecificRecipe(id,name,amount);
+                String description = rs.getString(4);
+                this.Itable[cnt] = new SpecificRecipe(id,name,amount,description);
                 cnt++;
             }
 
