@@ -1,7 +1,7 @@
 package top.viewv.model;
 
 public class Recipe {
-    private int product_id;
-    private int ingredient_id;
-    protected int amount;
+    public int product_id;
+    public int ingredient_id;
+    public int amount;
 }
