@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
@@ -18,7 +19,7 @@
             <children>
                 <ImageView fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/icons8_500px_64px.png" />
+                        <Image url="@icons/sale.png" />
                     </image>
                 </ImageView>
                 <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
@@ -27,73 +28,24 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="51.0" layoutY="113.0" text="CLIENT" textFill="#aeacac">
+                <Label layoutX="279.0" layoutY="113.0" textFill="#aeacac">
                     <font>
                         <Font size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="51.0" layoutY="186.0" text="LOCATION" textFill="#aeacac">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="279.0" layoutY="113.0" text="CLIENT PAYS" textFill="#aeacac">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="279.0" layoutY="186.0" text="COMMISSION" textFill="#aeacac">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="58.0" layoutY="139.0" text="Brad Pitt" textFill="#4d4c4c">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                </Label>
-                <Label layoutX="287.0" layoutY="139.0" text="\$1000" textFill="#4d4c4c">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                </Label>
-                <Label layoutX="287.0" layoutY="211.0" text="Between $190 and $270" textFill="#4d4c4c">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                </Label>
-                <Label layoutX="58.0" layoutY="211.0" text="London" textFill="#4d4c4c">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                </Label>
-                <Label layoutX="576.0" layoutY="113.0" text="OPERATORS" textFill="#aeacac">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="576.0" layoutY="139.0" prefHeight="19.0" prefWidth="44.0" style="-fx-background-color: #aeacac;" text="Toggle" textFill="#fffefe">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                </Label>
-                <Label layoutX="623.0" layoutY="139.0" style="-fx-background-color: #aeacac;" text="Monty" textFill="#fffefe">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                </Label>
-                <Label layoutX="576.0" layoutY="165.0" prefHeight="19.0" prefWidth="58.0" style="-fx-background-color: #aeacac;" text="Software" textFill="#fffefe">
-                    <font>
-                        <Font size="13.0" />
                     </font>
                 </Label>
                 <Pane layoutY="269.0" prefHeight="70.0" prefWidth="896.0" style="-fx-background-color: #F0F0F0;">
                     <children>
-                        <Label layoutX="61.0" layoutY="26.0" text="Drapo returns you $3000 and $1000 for all the deals" textFill="#504df2">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
+                  <Group layoutX="614.0" layoutY="29.0">
+                     <children>
+                            <JFXTextField alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="64.0" />
+                        <Label alignment="BOTTOM_RIGHT" layoutX="64.0" layoutY="2.0" prefHeight="23.0" prefWidth="34.0" text="件数" textFill="#3a1c9d">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
                         </Label>
+                     </children>
+                  </Group>
+                  <JFXCheckBox layoutX="733.0" layoutY="35.0" text="购买" />
                     </children>
                 </Pane>
                 <Label layoutX="619.0" layoutY="13.0" text="价格" textFill="#3a1c9d">
@@ -124,9 +76,23 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <JFXButton fx:id="btnShowRecipe" buttonType="RAISED" layoutX="731.0" layoutY="228.0" onMouseClicked="#onClickedshoqRecipe" prefHeight="33.0" prefWidth="70.0" style="-fx-background-color: #473E98;" text="配方" textFill="WHITE" />
-                <JFXCheckBox layoutX="648.0" layoutY="236.0" prefHeight="18.0" prefWidth="58.0" text="购买" />
-                <JFXTextField alignment="CENTER_RIGHT" layoutX="569.0" layoutY="231.0" prefHeight="19.0" prefWidth="58.0" />
+            <Label fx:id="labDescrption" alignment="TOP_LEFT" layoutX="41.0" layoutY="125.0" prefHeight="136.0" prefWidth="376.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="440.0" layoutY="103.0" prefHeight="18.0" prefWidth="34.0" text="配方" textFill="#3a1c9d">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="103.0" prefHeight="18.0" prefWidth="34.0" text="介绍" textFill="#3a1c9d">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Separator layoutX="423.0" layoutY="103.0" orientation="VERTICAL" prefHeight="161.0" prefWidth="6.0" />
+            <JFXTreeTableView fx:id="recipeTable" layoutX="441.0" layoutY="125.0" prefHeight="136.0" prefWidth="361.0" />
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

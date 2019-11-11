@@ -102,7 +102,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Sponsorships" textFill="#5b5858">
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="车间" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -117,7 +117,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Mes Prices" textFill="#5b5858">
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="员工" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -132,7 +132,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="My Team" textFill="#5b5858">
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="用户" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -147,7 +147,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="My Agencies" textFill="#5b5858">
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="管理" textFill="#5b5858">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -197,7 +197,7 @@
                 <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
             </effect>
         </Pane>
-        <ScrollPane layoutX="251.0" layoutY="182.0" prefHeight="478.0" prefWidth="1011.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="182.0">
+        <ScrollPane layoutX="251.0" layoutY="182.0" prefHeight="443.0" prefWidth="1011.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="182.0">
             <content>
                 <VBox fx:id="pnl_scroll" prefHeight="450.0" prefWidth="1023.0" spacing="20.0" style="-fx-background-color: #fff;" />
             </content>
@@ -230,5 +230,10 @@
                 </Label>
             </children>
         </HBox>
+      <AnchorPane layoutX="-2.0" layoutY="699.0" prefHeight="44.0" prefWidth="1271.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="1178.0" layoutY="9.0" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #473E98  #473E98;" text="购买" textFill="WHITE" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
