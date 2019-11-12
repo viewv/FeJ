@@ -1,8 +1,6 @@
 package top.viewv.model.Tables;
 
 import top.viewv.database.Connect;
-import top.viewv.model.Ingredient;
-import top.viewv.model.Recipe;
 import top.viewv.model.SpecificRecipe;
 
 import java.sql.Connection;

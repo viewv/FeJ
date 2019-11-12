@@ -88,7 +88,7 @@ public class newhomeController implements Initializable {
                 //node = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/ProductItem.fxml")));
                 //配方介绍部分
                 rt.GetAll(pt.Ptable[i].product_id);
-                productItemController.setLabDescrption(rt.Itable[i].Description);
+                productItemController.setLabDescrption(pt.Ptable[i].description);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //pnl_scroll.getChildren().removeAll();

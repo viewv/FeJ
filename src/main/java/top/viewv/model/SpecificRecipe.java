@@ -1,6 +1,8 @@
 package top.viewv.model;
 
-public class SpecificRecipe {
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class SpecificRecipe extends RecursiveTreeObject<SpecificRecipe> {
     public int IngredientId;
     public String IngredientName;
     public  int Amount;
