@@ -7,10 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class Login {
-    public String LoginFun(String user_id,String password){
+    public String LoginFun(String user_id,String password,Connection conn){
         try {
-            Connect connect = new Connect();
-            Connection conn = connect.getConnection();
             String sql = "select checklogin(?,?)"; //sql function
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,user_id);

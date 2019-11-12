@@ -11,10 +11,8 @@ public class ProductTable {
     public Product[] Ptable;
     public int Plength;
 
-    public void GetLength(){
+    public void GetLength(Connection conn){
         try{
-            Connect connect = new Connect();
-            Connection conn = connect.getConnection();
             String sql = "select count(product_id) from product";
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -28,11 +26,9 @@ public class ProductTable {
         }
     }
 
-    public void GetContent(){
+    public void GetContent(Connection conn){
         try{
             this.Ptable = new Product[this.Plength];
-            Connect connect = new Connect();
-            Connection conn = connect.getConnection();
             String sql = "select * from product";
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();

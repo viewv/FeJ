@@ -4,10 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class Signup {
-    public String SignupFun(String account_id,String user_id,String password,String rep_password,String avatar){
+    public String SignupFun(String account_id,String user_id,String password,String rep_password,String avatar,Connection conn){
         try {
-            Connect connect = new Connect();
-            Connection conn = connect.getConnection();
             String sql = "select checkregister(?,?,?,?,?)"; //sql function
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,account_id);

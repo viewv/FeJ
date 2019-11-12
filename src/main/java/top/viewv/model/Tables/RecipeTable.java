@@ -12,11 +12,9 @@ public class RecipeTable {
     public int ProductId;
     public int Rlength;
 
-    public void GetAll(int ProductId){
+    public void GetAll(int ProductId,Connection conn){
         try{
             this.ProductId = ProductId;
-            Connect connect = new Connect();
-            Connection conn = connect.getConnection();
             String sql = "select count(ingredient_id) from recipe where product_id = " + ProductId;
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -36,9 +34,6 @@ public class RecipeTable {
                 this.Itable[cnt] = new SpecificRecipe(id,name,amount);
                 cnt++;
             }
-
-            conn.close();
-
         }
         catch(Exception e){
             e.printStackTrace();
