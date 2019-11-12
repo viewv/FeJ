@@ -23,6 +23,7 @@ import top.viewv.view.StageManager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -39,6 +40,13 @@ public class newhomeController implements Initializable {
     public JFXButton btnExit;
     @FXML
     private VBox pnl_scroll;
+
+
+
+    Connection conn;
+    public void setConnect( Connection con){
+        conn = con;
+    }
 
     @FXML
     private void handleButtonAction() {
@@ -59,8 +67,8 @@ public class newhomeController implements Initializable {
         pnl_scroll.getChildren().clear();
 
         ProductTable pt = new ProductTable();
-        pt.GetLength();
-        pt.GetContent();
+        pt.GetLength(conn);
+        pt.GetContent(conn);
 
         RecipeTable rt = new RecipeTable();
 
@@ -87,7 +95,7 @@ public class newhomeController implements Initializable {
                 productItemController.setLabProductRtime(pt.Ptable[i].product_period);
                 //node = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/ProductItem.fxml")));
                 //配方介绍部分
-                rt.GetAll(pt.Ptable[i].product_id);
+                rt.GetAll(pt.Ptable[i].product_id,conn);
                 productItemController.setLabDescrption(pt.Ptable[i].description);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);

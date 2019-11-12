@@ -11,7 +11,7 @@ public class TestConnection {
         String password = "123456";
         String rep_password = "123456";
         String avatar = "~/Pictures/index.png";
-        System.out.println(signup.SignupFun(account_id,user_id,password,rep_password,avatar));
+        //System.out.println(signup.SignupFun(account_id,user_id,password,rep_password,avatar));
     }
 }
 

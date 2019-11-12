@@ -22,6 +22,7 @@ import top.viewv.view.StageManager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -52,6 +53,12 @@ public class MainController implements Initializable {
     @FXML
     Button testBtn;
 
+    Connection conn;
+
+    public void setConnect( Connection con){
+        conn = con;
+    }
+
     private String tranDataToIndex;
 
     @Override
@@ -75,7 +82,7 @@ public class MainController implements Initializable {
             System.out.println("Hello Super Man!");
             Switch();
         } else {
-            String result = login.LoginFun(user_id, password);
+            String result = login.LoginFun(user_id, password,conn);
             String icon;
             if (result != null) {
                 if (result.equals("account_error")) {
@@ -105,7 +112,7 @@ public class MainController implements Initializable {
         String password0 = signupPassword0.getText().trim();
         String password1 = signupPassword1.getText().trim();
         Signup signup = new Signup();
-        String result = signup.SignupFun(acc_id, "2313", password0, password1, "zxnnet@gmail.com");
+        String result = signup.SignupFun(acc_id, "2313", password0, password1, "zxnnet@gmail.com",conn);
         System.out.println(result);
         if (result != null) {
             if (result.equals("Account Exists")) {
@@ -145,7 +152,16 @@ public class MainController implements Initializable {
     public void Switch() throws IOException {
         Stage stage = new Stage();
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/newhome.fxml")));
+        FXMLLoader loader = new
+                FXMLLoader(Objects.requireNonNull(
+                Thread.currentThread().
+                        getContextClassLoader().
+                        getResource("data/newhome.fxml")));
+        newhomeController homeController = loader.getController();
+        homeController.setConnect(conn);
+        Parent root = loader.load();
+
+        //Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/newhome.fxml")));
 
         stage.setTitle("Home Page");
         stage.setScene(new Scene(root));
