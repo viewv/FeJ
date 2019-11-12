@@ -18,7 +18,6 @@ public class Login {
             while (resultSet.next()){
                 result = resultSet.getString(1);
             }
-            conn.close();
             return  result;
         } catch (Exception e) {
             e.printStackTrace();

@@ -22,14 +22,10 @@ public class MainApp extends Application {
             FXMLLoader loader = new
                     FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
                                 .getResource("data/Main.fxml"));
+            System.out.println("Loader Success");
+            //MainController mainController =  loader.getController();
 
-            //Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("data/Main.fxml")));
-            MainController mainController = loader.getController();
-            Connect connect = new Connect();
-            Connection conn = connect.getConnection();
-            mainController.setConnect(conn);
             Parent root = loader.load();
-
             Scene scene = new Scene(root);
 
             String css = Objects.requireNonNull(MainApp.class.getClassLoader().getResource("data/main.css")).toExternalForm();
@@ -38,6 +34,8 @@ public class MainApp extends Application {
             primaryStage.setTitle("FeJ");
             primaryStage.setScene(scene);
             primaryStage.show();
+//            Connection conn = new Connect().getConnection();
+//            mainController.setConnection(conn);
         } catch (Exception e) {
             e.printStackTrace();
         }

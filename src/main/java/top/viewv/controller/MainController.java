@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import top.viewv.database.Connect;
 import top.viewv.database.Login;
 import top.viewv.database.Signup;
 import top.viewv.view.StageManager;
@@ -23,6 +24,7 @@ import top.viewv.view.StageManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -50,16 +52,17 @@ public class MainController implements Initializable {
     Group GroupLogin;
     @FXML
     Button regButton;
-    @FXML
-    Button testBtn;
+//    @FXML
+//    Button testBtn;
 
-    Connection conn;
-
-    public void setConnect( Connection con){
-        conn = con;
-    }
+    Connection conn = new Connect().getConnection();
 
     private String tranDataToIndex;
+
+//    public void setConnection(Connection connection){
+//        System.out.println("Start set Connection");
+//        conn = connection;
+//    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -67,10 +70,11 @@ public class MainController implements Initializable {
 
         GroupLogin.setVisible(true);
         GroupSignup.setVisible(false);
+
     }
 
     @FXML
-    public void GetInput() throws IOException {
+    public void GetInput() throws IOException, SQLException {
         String user_id = userInput.getText().trim();
         String password = passwordInput.getText().trim();
         Login login = new Login();
@@ -149,18 +153,15 @@ public class MainController implements Initializable {
         GroupSignup.setVisible(true);
     }
 
-    public void Switch() throws IOException {
+    public void Switch() throws IOException, SQLException {
         Stage stage = new Stage();
-
+        System.out.println("Start Login");
+        conn.close();
         FXMLLoader loader = new
-                FXMLLoader(Objects.requireNonNull(
-                Thread.currentThread().
-                        getContextClassLoader().
-                        getResource("data/newhome.fxml")));
-        newhomeController homeController = loader.getController();
-        homeController.setConnect(conn);
+                FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                        .getResource("data/newhome.fxml"));
+        //newhomeController homeController = loader.getController();
         Parent root = loader.load();
-
         //Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/newhome.fxml")));
 
         stage.setTitle("Home Page");
@@ -183,10 +184,9 @@ public class MainController implements Initializable {
         this.tranDataToIndex = tranDataToIndex;
     }
 
-    public void enterPress(KeyEvent keyEvent) throws IOException {
+    public void enterPress(KeyEvent keyEvent) throws IOException, SQLException {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             if (GroupLogin.isVisible()) {
-                GetInput();
             } else {
                 RegInput();
             }

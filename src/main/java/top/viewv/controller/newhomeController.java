@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
+import top.viewv.database.Connect;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.model.Tables.RecipeTable;
 import top.viewv.view.StageManager;
@@ -42,11 +43,7 @@ public class newhomeController implements Initializable {
     private VBox pnl_scroll;
 
 
-
-    Connection conn;
-    public void setConnect( Connection con){
-        conn = con;
-    }
+    Connection conn = new Connect().getConnection();
 
     @FXML
     private void handleButtonAction() {
@@ -71,7 +68,6 @@ public class newhomeController implements Initializable {
         pt.GetContent(conn);
 
         RecipeTable rt = new RecipeTable();
-
 
         int length = pt.Plength;
 

@@ -18,8 +18,6 @@ public class ProductTable {
             ResultSet rs = st.executeQuery();
             rs.next();
             this.Plength = rs.getInt(1);
-            conn.close();
-
         }
         catch(Exception e){
             e.printStackTrace();
@@ -32,19 +30,22 @@ public class ProductTable {
             String sql = "select * from product";
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
+
             int cnt = 0;
             while(rs.next()){
                 int id = rs.getInt(1);
                 String name = rs.getString(2);
+                System.out.println(name);
                 int period = rs.getInt(3);
                 float price = rs.getFloat(4);
                 String description = rs.getString(5);
                 this.Ptable[cnt] = new Product(id,name,period,price,description);
                 cnt++;
             }
-            conn.close();
+            //conn.close();
         }
         catch(Exception e){
+            System.out.println("Product Table Wrong");
             e.printStackTrace();
         }
     }
