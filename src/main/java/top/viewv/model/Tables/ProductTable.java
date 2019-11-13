@@ -1,6 +1,4 @@
 package top.viewv.model.Tables;
-
-import top.viewv.database.Connect;
 import top.viewv.model.Product;
 
 import java.sql.Connection;

@@ -13,7 +13,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
@@ -42,17 +41,61 @@ public class newhomeController implements Initializable {
     @FXML
     private VBox pnl_scroll;
 
+    Connection conn = null;
 
-    Connection conn = new Connect().getConnection();
+    class ThreadType extends Thread{
+        public void run(){
+            conn = new Connect().getConnection();
+            pnl_scroll.getChildren().clear();
 
-    @FXML
-    private void handleButtonAction() {
-        refreshNodes();
+            ProductTable pt = new ProductTable();
+            pt.GetLength(conn);
+            pt.GetContent(conn);
+
+            RecipeTable rt = new RecipeTable();
+
+            int length = pt.Plength;
+
+            Node[] nodes = new Node[length];
+            Node node;
+
+            for (int i = 0; i < length; i++) {
+                try {
+                    FXMLLoader loader = new
+                            FXMLLoader(Objects.requireNonNull(
+                            Thread.currentThread().
+                                    getContextClassLoader().
+                                    getResource("data/ProductItem.fxml")));
+                    node = loader.load();
+                    //调用下面的函数可以得到控制器
+                    //商品部分
+                    ProductItemController productItemController = loader.getController();
+                    productItemController.setLabPrice(pt.Ptable[i].product_price);
+                    productItemController.setLabProductName(pt.Ptable[i].product_name);
+                    productItemController.setLabProductId(pt.Ptable[i].product_id);
+                    productItemController.setLabProductRtime(pt.Ptable[i].product_period);
+                    //配方介绍部分
+                    rt.GetAll(pt.Ptable[i].product_id,conn);
+                    productItemController.setLabDescrption(pt.Ptable[i].description);
+                    nodes[i] = node;
+                    pnl_scroll.getChildren().add(nodes[i]);
+                    //删除所有节点，有点残忍，还是隐藏比较好
+                    //pnl_scroll.getChildren().removeAll();
+                } catch (IOException ex) {
+                    Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
+
+    private ThreadType tt = new ThreadType();
+
+//    Connection conn = new Connect().getConnection();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        refreshNodes();
+        //tt.start();
+        //refreshNodes();
         setUserIcon();
     }
 
@@ -60,49 +103,7 @@ public class newhomeController implements Initializable {
         userIcon.setImage(Gravatar.imageFromMail("zxnnet@gmail.com"));
     }
 
-    private void refreshNodes() {
-        pnl_scroll.getChildren().clear();
-
-        ProductTable pt = new ProductTable();
-        pt.GetLength(conn);
-        pt.GetContent(conn);
-
-        RecipeTable rt = new RecipeTable();
-
-        int length = pt.Plength;
-
-        Node[] nodes = new Node[length];
-        Node node;
-
-        for (int i = 0; i < length; i++) {
-            try {
-                FXMLLoader loader = new
-                        FXMLLoader(Objects.requireNonNull(
-                        Thread.currentThread().
-                                getContextClassLoader().
-                                getResource("data/ProductItem.fxml")));
-                node = loader.load();
-                //调用下面的函数可以得到控制器
-                //商品部分
-                ProductItemController productItemController = loader.getController();
-                productItemController.setLabPrice(pt.Ptable[i].product_price);
-                productItemController.setLabProductName(pt.Ptable[i].product_name);
-                productItemController.setLabProductId(pt.Ptable[i].product_id);
-                productItemController.setLabProductRtime(pt.Ptable[i].product_period);
-                //node = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/ProductItem.fxml")));
-                //配方介绍部分
-                rt.GetAll(pt.Ptable[i].product_id,conn);
-                productItemController.setLabDescrption(pt.Ptable[i].description);
-                nodes[i] = node;
-                pnl_scroll.getChildren().add(nodes[i]);
-                //pnl_scroll.getChildren().removeAll();
-            } catch (IOException ex) {
-                Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-
-    public void onClickedbtnExit(MouseEvent mouseEvent) throws IOException {
+    public void onClickedbtnExit() throws IOException {
         MainController secondControl = (MainController) StageManager.CONTROLLER.get("index");
         secondControl.setTranDataToIndex("第三个窗口的数据");
         //如果本窗口还使用该控制器先不remove这个控制器;

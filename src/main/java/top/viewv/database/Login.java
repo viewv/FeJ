@@ -1,7 +1,5 @@
 package top.viewv.database;
 
-import top.viewv.database.Connect;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

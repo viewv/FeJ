@@ -5,9 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import top.viewv.database.Connect;
-
-import java.sql.Connection;
 import java.util.Objects;
 
 public class MainApp extends Application {

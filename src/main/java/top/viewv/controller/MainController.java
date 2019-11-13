@@ -55,14 +55,20 @@ public class MainController implements Initializable {
 //    @FXML
 //    Button testBtn;
 
-    Connection conn = new Connect().getConnection();
+//    Connection conn = new Connect().getConnection();
+    Connection conn = null;
 
     private String tranDataToIndex;
 
-//    public void setConnection(Connection connection){
-//        System.out.println("Start set Connection");
-//        conn = connection;
-//    }
+
+    class ThreadType extends Thread{
+        public void run(){
+            conn = new Connect().getConnection();
+        }
+    }
+
+    ThreadType tt = new ThreadType();
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,6 +77,7 @@ public class MainController implements Initializable {
         GroupLogin.setVisible(true);
         GroupSignup.setVisible(false);
 
+        tt.start();
     }
 
     @FXML
