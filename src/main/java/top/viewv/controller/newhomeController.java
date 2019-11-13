@@ -150,20 +150,4 @@ public class newhomeController implements Initializable {
         order_lists = Serialize.dSer("order.ser");
         testLab.setText(String.valueOf(order_lists.size()));
     }
-
-//    public static void ser(Object object,String filename) throws Exception {
-//        FileOutputStream fos = new FileOutputStream(filename);
-//        ObjectOutputStream oos = new ObjectOutputStream(fos);
-//        oos.writeObject(object);
-//        oos.flush();
-//        oos.close();
-//    }
-//
-//
-//    public static ArrayList dSer(String filename) throws Exception {
-//        FileInputStream fis = new FileInputStream(filename);
-//        ObjectInputStream ois = new ObjectInputStream(fis);
-//        ArrayList array = (ArrayList) ois.readObject();
-//        return array;
-//    }
 }

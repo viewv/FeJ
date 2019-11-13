@@ -16,25 +16,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import org.msgpack.MessagePack;
-import org.msgpack.template.Templates;
 import top.viewv.database.Connect;
 import top.viewv.database.Login;
 import top.viewv.database.Signup;
 import top.viewv.view.StageManager;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Field;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 
 
 public class MainController implements Initializable {
@@ -63,20 +54,10 @@ public class MainController implements Initializable {
 //    @FXML
 //    Button testBtn;
 
-//    Connection conn = new Connect().getConnection();
+    //    Connection conn = new Connect().getConnection();
     Connection conn = null;
-
-    private String tranDataToIndex;
-
-
-    class ThreadType extends Thread{
-        public void run(){
-            conn = new Connect().getConnection();
-        }
-    }
-
     ThreadType tt = new ThreadType();
-
+    private String tranDataToIndex;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -89,7 +70,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    public void GetInput() throws IOException, SQLException, IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+    public void GetInput() throws IOException, IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
         String user_id = userInput.getText().trim();
         String password = passwordInput.getText().trim();
         Login login = new Login();
@@ -101,7 +82,7 @@ public class MainController implements Initializable {
             System.out.println("Hello Super Man!");
             Switch();
         } else {
-            String result = login.LoginFun(user_id, password,conn);
+            String result = login.LoginFun(user_id, password, conn);
             String icon;
             if (result != null) {
                 if (result.equals("account_error")) {
@@ -125,13 +106,12 @@ public class MainController implements Initializable {
         }
     }
 
-
     public void RegInput() {
         String acc_id = signupUserInput.getText().trim();
         String password0 = signupPassword0.getText().trim();
         String password1 = signupPassword1.getText().trim();
         Signup signup = new Signup();
-        String result = signup.SignupFun(acc_id, "2313", password0, password1, "zxnnet@gmail.com",conn);
+        String result = signup.SignupFun(acc_id, "2313", password0, password1, "zxnnet@gmail.com", conn);
         System.out.println(result);
         if (result != null) {
             if (result.equals("Account Exists")) {
@@ -168,24 +148,15 @@ public class MainController implements Initializable {
         GroupSignup.setVisible(true);
     }
 
-    public void Switch() throws IOException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
+    public void Switch() throws IOException {
         Stage stage = new Stage();
         System.out.println("Start Login");
 
         FXMLLoader loader = new
                 FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
-                        .getResource("data/newhome.fxml"));
+                .getResource("data/newhome.fxml"));
 
         Parent root = loader.load();
-        //newhomeController homeController = loader.getController();
-//        Class<?> homecontrol =Class.forName("top.viewv.controller.newhomeController");
-//        Field privateField = homecontrol.getDeclaredField("conn");
-//        if (privateField != null) {
-//            //获取私有变量的访问权
-//            privateField.setAccessible(true);
-//            //修改
-//            privateField.set(homecontrol, conn);
-//        }
         stage.setTitle("Home Page");
         stage.setScene(new Scene(root));
         stage.show();
@@ -202,12 +173,19 @@ public class MainController implements Initializable {
         this.tranDataToIndex = tranDataToIndex;
     }
 
-    public void enterPress(KeyEvent keyEvent) {
+    public void enterPress(KeyEvent keyEvent) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException, IOException {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             if (GroupLogin.isVisible()) {
+                GetInput();
             } else {
                 RegInput();
             }
+        }
+    }
+
+    class ThreadType extends Thread {
+        public void run() {
+            conn = new Connect().getConnection();
         }
     }
 }

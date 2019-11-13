@@ -40,7 +40,6 @@ public class ProductTable {
                 this.Ptable[cnt] = new Product(id,name,period,price,description);
                 cnt++;
             }
-            //conn.close();
         }
         catch(Exception e){
             System.out.println("Product Table Wrong");
