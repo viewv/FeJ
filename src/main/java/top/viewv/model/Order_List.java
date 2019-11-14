@@ -3,22 +3,12 @@ package top.viewv.model;
 import java.io.Serializable;
 
 public class Order_List implements Serializable {
-    private int product_id;
     private int amount;
     private int due_day;
 
-    public Order_List(int product_id, int amount, int due_day) {
-        this.product_id = product_id;
+    public Order_List(int amount, int due_day) {
         this.amount = amount;
         this.due_day = due_day;
-    }
-
-    public int getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
     }
 
     public int getAmount() {
@@ -39,7 +29,6 @@ public class Order_List implements Serializable {
     @Override
     public String toString() {
         return "Order{" +
-                "id='" + product_id + '\'' +
                 ", amount=" + amount +
                 ", due_day=" + due_day +
                 '}';

@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Serialize {
     public static void ser(Object object,String filename) throws Exception {
@@ -16,10 +16,10 @@ public class Serialize {
     }
 
 
-    public static ArrayList dSer(String filename) throws Exception {
+    public static HashMap dSer(String filename) throws Exception {
         FileInputStream fis = new FileInputStream(filename);
         ObjectInputStream ois = new ObjectInputStream(fis);
-        ArrayList array = (ArrayList) ois.readObject();
-        return array;
+        HashMap hashMap = (HashMap) ois.readObject();
+        return hashMap;
     }
 }

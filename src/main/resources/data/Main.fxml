@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
@@ -164,14 +165,6 @@
                                     <Insets left="30.0" top="30.0" />
                                  </VBox.margin>
                               </Button>
-<!--                                    <Button fx:id="testBtn" layoutX="10.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#testSwitch" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: #2f2f2fa3; -fx-background-radius: 100; -fx-text-fill: white; -fx-font-weight: bold;" text="TestBtn">-->
-<!--                                       <graphic>-->
-<!--                                          <FontAwesomeIcon fill="WHITE" iconName="ANGLE_RIGHT" size="1.5em" />-->
-<!--                                       </graphic>-->
-<!--                                       <font>-->
-<!--                                          <Font size="14.0" />-->
-<!--                                       </font>-->
-<!--                                    </Button>-->
                            </children>
                            <padding>
                               <Insets bottom="20.0" />
@@ -188,21 +181,30 @@
          <children>
             <VBox alignment="CENTER_RIGHT">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="FeJ 2019">
+                  <Group fx:id="groupBuildInfo">
+                     <children>
+                        <Text layoutX="12.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="FeJ 2019">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Text>
+                        <Text layoutY="18.5" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="Build: 1.0.6">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Group>
+                  <Text fx:id="labLoadiInd" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="zxnnet@gmail.com">
                      <font>
                         <Font size="10.0" />
-                     </font></Text>
-                  <Text layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="Build: 1.0.5">
-                     <font>
-                        <Font size="10.0" />
-                     </font></Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="zxnnet@gmail.com">
+                     </font>
+                  </Text>
+                  <JFXProgressBar fx:id="pbarLoad" prefHeight="13.0" prefWidth="133.0">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="3.0" />
                      </VBox.margin>
-                     <font>
-                        <Font size="10.0" />
-                     </font></Text>
+                  </JFXProgressBar>
                </children>
             </VBox>
          </children>

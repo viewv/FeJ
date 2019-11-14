@@ -1,6 +1,8 @@
 package top.viewv.controller;
 
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXSnackbar;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,12 +17,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import top.viewv.database.Connect;
 import top.viewv.database.Login;
 import top.viewv.database.Signup;
 import top.viewv.view.StageManager;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -28,11 +32,14 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class MainController implements Initializable {
+public class MainController implements Initializable  {
 
     public TextField signupUserInput;
     public PasswordField signupPassword0;
     public PasswordField signupPassword1;
+    public JFXProgressBar pbarLoad;
+    public Text labLoadiInd;
+    public Group groupBuildInfo;
     @FXML
     Button enterButton;
     @FXML
@@ -51,13 +58,9 @@ public class MainController implements Initializable {
     Group GroupLogin;
     @FXML
     Button regButton;
-//    @FXML
-//    Button testBtn;
 
-    //    Connection conn = new Connect().getConnection();
-    Connection conn = null;
-    ThreadType tt = new ThreadType();
-    private String tranDataToIndex;
+    private Connection conn = null;
+    private ThreadType tt = new ThreadType();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -65,7 +68,7 @@ public class MainController implements Initializable {
 
         GroupLogin.setVisible(true);
         GroupSignup.setVisible(false);
-
+        pbarLoad.setVisible(false);
         tt.start();
     }
 
@@ -149,8 +152,11 @@ public class MainController implements Initializable {
     }
 
     public void Switch() throws IOException {
+
         Stage stage = new Stage();
         System.out.println("Start Login");
+        labLoadiInd.setText("Loading...");
+        pbarLoad.setVisible(true);
 
         FXMLLoader loader = new
                 FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
@@ -160,17 +166,20 @@ public class MainController implements Initializable {
         stage.setTitle("Home Page");
         stage.setScene(new Scene(root));
         stage.show();
+        newhomeController homeControl = loader.getController();
+        homeControl.refreshNodes();
+        homeControl.setUserIcon();
         //将第二个窗口保存到map中
         StageManager.STAGE.put("second", stage);
         //将本窗口保存到map中
         StageManager.CONTROLLER.put("index", this);
+
         //关闭本窗口
         Stage index = (Stage) loginPane.getScene().getWindow();
         index.close();
     }
 
     public void setTranDataToIndex(String tranDataToIndex) {
-        this.tranDataToIndex = tranDataToIndex;
     }
 
     public void enterPress(KeyEvent keyEvent) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException, IOException {

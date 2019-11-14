@@ -45,18 +45,7 @@
                         <JFXTextField fx:id="tfxNumberInput" alignment="BOTTOM_RIGHT" layoutX="3.0" prefHeight="14.0" prefWidth="64.0" text="1" />
                      </children>
                   </Group>
-                  <Group layoutX="339.0">
-                     <children>
-                        <Label alignment="BOTTOM_RIGHT" layoutX="243.0" layoutY="30.0" prefHeight="23.0" prefWidth="34.0" text="天数" textFill="#3a1c9d">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                            <JFXTextField fx:id="txfDateinput" alignment="BOTTOM_RIGHT" layoutX="179.0" layoutY="27.0" prefHeight="14.0" prefWidth="64.0" text="1" />
-                     </children>
-                  </Group>
                   <JFXButton fx:id="btnAddToShop" buttonType="RAISED" layoutX="728.0" layoutY="26.0" onMouseClicked="#onClickedbtnAddToShop" prefHeight="29.0" prefWidth="70.0" style="-fx-background-color: #3a1c9d#3a1c9d;" text="加入订单" textFill="WHITE" />
-                  <Label fx:id="testLab" layoutX="85.0" layoutY="32.0" text="Label" />
                     </children>
                 </Pane>
                 <Label layoutX="619.0" layoutY="13.0" text="价格" textFill="#3a1c9d">

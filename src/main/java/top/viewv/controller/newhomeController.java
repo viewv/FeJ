@@ -28,9 +28,7 @@ import top.viewv.view.StageManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,25 +44,20 @@ public class newhomeController implements Initializable {
     public JFXButton btnShopList;
     public JFXButton btnCheckAll;
     public Label testLab;
-    ArrayList<Order_List> order_lists = new ArrayList<>();
-    Connection conn = new Connect().getConnection();
+    //ArrayList<Order_List> order_lists = new ArrayList<>();
+    private HashMap order_lists = new HashMap();
+
+    Connection conn;
+    //Connection conn = null;
     @FXML
     private VBox pnl_scroll;
-
-    public void addOrderList(Order_List order_list) {
-        order_lists.add(order_list);
-    }
-
-    public int getOrderListLength(ArrayList order_lists) {
-        return order_lists.size();
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //tt.start();
         //btnCheckAll.setVisible(false);
-        refreshNodes();
-        setUserIcon();
+        //refreshNodes();
+//        setUserIcon();
         try {
             Serialize.ser(order_lists, "order.ser");
         } catch (Exception e) {
@@ -73,6 +66,8 @@ public class newhomeController implements Initializable {
     }
 
     public void refreshNodes() {
+        System.out.println("Start Refresh Node");
+        conn = new Connect().getConnection();
         pnl_scroll.getChildren().clear();
 
         ProductTable pt = new ProductTable();
@@ -114,7 +109,7 @@ public class newhomeController implements Initializable {
         }
     }
 
-    private void setUserIcon() {
+    public void setUserIcon() {
         userIcon.setImage(Gravatar.imageFromMail("zxnnet@gmail.com"));
     }
 
@@ -149,5 +144,6 @@ public class newhomeController implements Initializable {
         System.out.println("Test ArrList Lenfth");
         order_lists = Serialize.dSer("order.ser");
         testLab.setText(String.valueOf(order_lists.size()));
+
     }
 }
