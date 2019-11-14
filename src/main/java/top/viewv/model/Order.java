@@ -1,12 +1,125 @@
 package top.viewv.model;
 
+import javax.swing.text.html.HTMLDocument;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Date;
+import java.util.*;
+
+
 public class Order {
-    private int order_id;
-    private int client_id;
-    private int staff_id;
-    private String order_time;
-    private String due_time;
-    private String deposit;
-    private String retainage;
-    private String situation;
+    public int order_id;
+    public String client_id;
+    public String staff_id;
+    public java.sql.Date order_time;
+    public java.sql.Date due_time;
+    public float deposit;
+    public float retainage;
+    public int situation;
+    public HashMap<Integer,Integer> Ingres;
+
+    public void GetId(Connection conn){
+        try{
+            String sql = "select count(order_id) from `order`";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            this.order_id = rs.getInt(1);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void GetMoney(Connection conn){
+        try{
+            String sql = null;
+            double sum = 0.00;
+            Iterator iter = Ingres.entrySet().iterator();
+            while(iter.hasNext()){
+                Map.Entry entry = (Map.Entry)iter.next();
+                int x = Integer.parseInt(entry.getKey().toString());
+                int y = Integer.parseInt(entry.getValue().toString());
+
+                sql = "select product_price from product where product_id = " + x;
+                PreparedStatement st = conn.prepareStatement(sql);
+                ResultSet rs = st.executeQuery();
+                rs.next();
+                sum += rs.getDouble(1);
+
+                sql = "insert into order_product(amount,product_id,order_id) values(" + y + "," + x + "," + this.order_id + ")" ;
+                st.execute(sql);
+            }
+
+            int credit;
+            sql = "select credit from client where client_id = " + this.client_id;
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            credit = rs.getInt(1);
+            //to do credit
+
+            this.deposit = (float)(0.3 * sum);
+            this.retainage = (float)(0.7 * sum);
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void PlaceOrder(Connection conn, HashMap mess,int days,String client_id){
+        try{
+            this.situation = 0;
+            this.client_id = client_id;
+            this.Ingres = mess;
+            this.order_time = new java.sql.Date(System.currentTimeMillis());
+            Calendar calendar =new GregorianCalendar();
+            calendar.setTime(this.order_time);
+            calendar.add(calendar.DATE, +days);
+            java.util.Date utilDate = calendar.getTime();
+            System.out.println(utilDate);
+            this.due_time = new java.sql.Date(utilDate.getTime());
+
+            String sql = "";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    //用户下达订单
+
+
+    public void AcceptOrder(Connection conn,String staff_id){
+        try {
+            this.situation = 2;
+            this.staff_id = staff_id;
+            String sql = "update `order` set staff_id = "
+                    +staff_id
+                    +"where order_id = "
+                    +this.order_id;
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.execute(sql);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void ReadById(Connection conn,int id){
+        try{
+            String sql = "select * from `order` where order_id = " + id;
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    //处理职员接受订单
 }
