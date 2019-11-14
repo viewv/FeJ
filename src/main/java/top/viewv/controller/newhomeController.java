@@ -43,13 +43,15 @@ public class newhomeController implements Initializable {
     public JFXButton btnShopList;
     public JFXButton btnCheckAll;
     public Label testLab;
+    public JFXButton btnShowAllproduct;
     //ArrayList<Order_List> order_lists = new ArrayList<>();
     private HashMap<Integer,Integer> order_lists = new HashMap<Integer, Integer>();
 
-    Connection conn;
-    //Connection conn = null;
+    Connection conn =  new Connect().getConnection();
     @FXML
     private VBox pnl_scroll;
+
+    ProductTable pt = new ProductTable();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -57,9 +59,12 @@ public class newhomeController implements Initializable {
         //btnCheckAll.setVisible(false);
         //refreshNodes();
 //        setUserIcon();
-        testLab.setVisible(false);
+        //testLab.setVisible(false);
+        btnCheckAll.setVisible(false);
         try {
             Serialize.ser(order_lists, "order.ser");
+            pt.GetLength(conn);
+            pt.GetContent(conn);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,12 +72,7 @@ public class newhomeController implements Initializable {
 
     public void refreshNodes() {
         System.out.println("Start Refresh Node");
-        conn = new Connect().getConnection();
         pnl_scroll.getChildren().clear();
-
-        ProductTable pt = new ProductTable();
-        pt.GetLength(conn);
-        pt.GetContent(conn);
 
         RecipeTable rt = new RecipeTable();
 
@@ -133,7 +133,40 @@ public class newhomeController implements Initializable {
         index.close();
     }
 
-    public void onClickedbtnShopList(MouseEvent mouseEvent) {
+    public void onClickedbtnShopList(MouseEvent mouseEvent) throws Exception {
+        pnl_scroll.getChildren().clear();
+        //btnCheckAll.setVisible(true);
+        order_lists = Serialize.dSer("order.ser");
+        int length = order_lists.size();
+        Node[] nodes = new Node[length];
+        Node node;
+        int i = 0;
+        for(Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
+            Integer key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println(key);
+            System.out.println(value);
+            System.out.println("-----");
+            try {
+                FXMLLoader loader = new
+                        FXMLLoader(Objects.requireNonNull(
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/ProductItem.fxml")));
+                node = loader.load();
+                ProductItemController productItemController = loader.getController();
+                productItemController.setLabPrice(key);
+                productItemController.setLabProductRtime(value);
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+                //删除所有节点，有点残忍，还是隐藏比较好
+                //pnl_scroll.getChildren().removeAll();
+                i++;
+            } catch (IOException ex) {
+                Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
 
     public void onClickedbtnCheckAll(MouseEvent mouseEvent) {
@@ -153,5 +186,9 @@ public class newhomeController implements Initializable {
             System.out.println("-----");
         }
 
+    }
+
+    public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) {
+        refreshNodes();
     }
 }
