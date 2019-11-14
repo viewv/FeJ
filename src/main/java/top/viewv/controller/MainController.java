@@ -2,7 +2,6 @@ package top.viewv.controller;
 
 import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXSnackbar;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -154,7 +153,7 @@ public class MainController implements Initializable  {
 
         Stage stage = new Stage();
         System.out.println("Start Login");
-        
+
         labLoadiInd.setText("Loading...");
         pbarLoad.setVisible(true);
 
@@ -162,11 +161,13 @@ public class MainController implements Initializable  {
                 FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
                 .getResource("data/newhome.fxml"));
 
+
         Parent root = loader.load();
         stage.setTitle("Home Page");
         stage.setScene(new Scene(root));
         stage.show();
         newhomeController homeControl = loader.getController();
+        homeControl.setLabUserName("ViewvLab");
         homeControl.refreshNodes();
         homeControl.setUserIcon();
         //将第二个窗口保存到map中
