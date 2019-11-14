@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.api.Serialize;
 import top.viewv.database.Connect;
-import top.viewv.model.Order_List;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.model.Tables.RecipeTable;
 import top.viewv.view.StageManager;
@@ -45,7 +44,7 @@ public class newhomeController implements Initializable {
     public JFXButton btnCheckAll;
     public Label testLab;
     //ArrayList<Order_List> order_lists = new ArrayList<>();
-    private HashMap order_lists = new HashMap();
+    private HashMap<Integer,Integer> order_lists = new HashMap<Integer, Integer>();
 
     Connection conn;
     //Connection conn = null;
@@ -58,6 +57,7 @@ public class newhomeController implements Initializable {
         //btnCheckAll.setVisible(false);
         //refreshNodes();
 //        setUserIcon();
+        testLab.setVisible(false);
         try {
             Serialize.ser(order_lists, "order.ser");
         } catch (Exception e) {
@@ -144,6 +144,14 @@ public class newhomeController implements Initializable {
         System.out.println("Test ArrList Lenfth");
         order_lists = Serialize.dSer("order.ser");
         testLab.setText(String.valueOf(order_lists.size()));
+
+        for(Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
+            Integer key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println(key);
+            System.out.println(value);
+            System.out.println("-----");
+        }
 
     }
 }

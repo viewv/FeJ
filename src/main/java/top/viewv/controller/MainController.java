@@ -24,7 +24,6 @@ import top.viewv.database.Login;
 import top.viewv.database.Signup;
 import top.viewv.view.StageManager;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -101,7 +100,7 @@ public class MainController implements Initializable  {
                     Switch();
                 }
             } else {
-                result = "Wrong!";
+                result = "Wrong! Check Your SQL Connection!";
             }
 
             JFXSnackbar snackbar = new JFXSnackbar(BottomPane);
@@ -155,6 +154,7 @@ public class MainController implements Initializable  {
 
         Stage stage = new Stage();
         System.out.println("Start Login");
+        
         labLoadiInd.setText("Loading...");
         pbarLoad.setVisible(true);
 
