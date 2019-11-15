@@ -61,7 +61,7 @@
                </font>
             </Label>
             <JFXProgressBar fx:id="pbarOrder" layoutX="373.0" layoutY="64.0" prefHeight="11.0" prefWidth="151.0" progress="0.34" />
-            <Label fx:id="labOrderStatus" layoutX="373.0" layoutY="36.0" text="生产中" textFill="#aeacac">
+            <Label fx:id="labOrderStatus" layoutX="373.0" layoutY="36.0" prefHeight="19.0" prefWidth="151.0" text="生产中" textFill="#aeacac">
                <font>
                   <Font size="15.0" />
                </font>

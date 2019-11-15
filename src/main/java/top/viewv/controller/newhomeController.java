@@ -245,7 +245,7 @@ public class newhomeController implements Initializable {
                 OrderItemController orderItemController = loader.getController();
                 orderItemController.setLabOrderStatus(value.getSituation());
                 orderItemController.setLabPrice(value.getDeposit());
-                orderItemController.setLabOrdertId(value.getOrder_id());
+                orderItemController.setLabOrdertId(key);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
