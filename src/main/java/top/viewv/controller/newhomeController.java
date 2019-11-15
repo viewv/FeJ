@@ -23,6 +23,8 @@ import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.api.Serialize;
 import top.viewv.database.Connect;
+import top.viewv.model.Order;
+import top.viewv.model.Order_Info;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.model.Tables.RecipeTable;
 import top.viewv.view.StageManager;
@@ -30,7 +32,10 @@ import top.viewv.view.StageManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -51,13 +56,13 @@ public class newhomeController implements Initializable {
     public Label labUserName;
     public JFXButton btnOrderInfo;
     public JFXProgressBar pbarBusy;
-    private HashMap<Integer,Integer> order_lists = new HashMap<Integer, Integer>();
-
-    Connection conn =  new Connect().getConnection();
-    @FXML
-    private VBox pnl_scroll;
+    Connection conn = new Connect().getConnection();
 
     ProductTable pt = new ProductTable();
+    private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
+    private HashMap<Integer,Order_Info> all_Orders = new HashMap<Integer,Order_Info>();
+    @FXML
+    private VBox pnl_scroll;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,7 +78,7 @@ public class newhomeController implements Initializable {
         }
     }
 
-    public void setLabUserName(String userName){
+    public void setLabUserName(String userName) {
         labUserName.setText(userName);
     }
 
@@ -155,7 +160,7 @@ public class newhomeController implements Initializable {
         Node[] nodes = new Node[length];
         Node node;
         int i = 0;
-        for(Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
             Integer key = entry.getKey();
             Integer value = entry.getValue();
             System.out.println(key);
@@ -184,13 +189,72 @@ public class newhomeController implements Initializable {
 
     public void onClickedbtnCheckAll(MouseEvent mouseEvent) throws Exception {
         System.out.println("Sending Order");
+        Order order = new Order();
         order_lists = Serialize.dSer("order.ser");
         //TODO Order send
         order_lists.clear();
-        Serialize.ser(order_lists,"order.ser");
+        Serialize.ser(order_lists, "order.ser");
         refeshShopList();
+
+        //TODO add a True Client ID
+        order.PlaceOrder(conn,order_lists,10,"111");
+        order.GetId(conn);
+        order.GetMoney(conn);
+        Order_Info order_info = new Order_Info();
+        order_info.setClient_id(order.client_id);
+        order_info.setOrder_id(order.order_id);
+        order_info.setSituation(order.situation);
+        order_info.setOrder_time(order.order_time);
+        order_info.setDue_time(order.due_time);
+        order_info.setDeposit(order.deposit);
+        order_info.setRetainage(order.retainage);
+
+        all_Orders.put(order.order_id,order_info);
+        Serialize.ser(all_Orders,"all_order.ser");
+
         JFXSnackbar snackbar = new JFXSnackbar(BasePane);
         snackbar.show("Send Order Successfully", 1000);
+
+    }
+    public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) {
+        refreshNodes();
+    }
+
+    public void onClinckbtnOrderInfo(MouseEvent mouseEvent) throws Exception {
+
+        pnl_scroll.getChildren().clear();
+        all_Orders = Serialize.dSer("all_order.ser");
+
+        int length = all_Orders.size();
+        Node[] nodes = new Node[length];
+        Node node;
+        int i = 0;
+        for (Map.Entry<Integer, Order_Info> entry : all_Orders.entrySet()) {
+            Integer key = entry.getKey();
+            Order_Info value = entry.getValue();
+            System.out.println(key);
+            System.out.println(value);
+            System.out.println("-----");
+            try {
+                FXMLLoader loader = new
+                        FXMLLoader(Objects.requireNonNull(
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/OrderItem.fxml")));
+                node = loader.load();
+                OrderItemController orderItemController = loader.getController();
+                orderItemController.setLabOrderStatus(value.getSituation());
+                orderItemController.setLabPrice(value.getDeposit());
+                orderItemController.setLabOrdertId(value.getOrder_id());
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+                //删除所有节点，有点残忍，还是隐藏比较好
+                //pnl_scroll.getChildren().removeAll();
+                i++;
+            } catch (IOException ex) {
+                Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     public void onclickedTestArray(MouseEvent mouseEvent) throws Exception {
@@ -198,7 +262,7 @@ public class newhomeController implements Initializable {
         order_lists = Serialize.dSer("order.ser");
         testLab.setText(String.valueOf(order_lists.size()));
 
-        for(Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
             Integer key = entry.getKey();
             Integer value = entry.getValue();
             System.out.println(key);
@@ -207,29 +271,4 @@ public class newhomeController implements Initializable {
         }
     }
 
-    public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) {
-        refreshNodes();
-    }
-
-    public void onClinckbtnOrderInfo(MouseEvent mouseEvent) {
-        pnl_scroll.getChildren().clear();
-        Node[] nodes = new Node[5];
-        Node node;
-        for(int i = 0;i<5;i++) {
-            try {
-                FXMLLoader loader = new
-                        FXMLLoader(Objects.requireNonNull(
-                        Thread.currentThread().
-                                getContextClassLoader().
-                                getResource("data/OrderItem.fxml")));
-                node = loader.load();
-                nodes[i] = node;
-                pnl_scroll.getChildren().add(nodes[i]);
-                //删除所有节点，有点残忍，还是隐藏比较好
-                //pnl_scroll.getChildren().removeAll();
-            } catch (IOException ex) {
-                Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
 }

@@ -1,5 +1,7 @@
 package top.viewv.api;
 
+import top.viewv.model.Order_Info;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -22,4 +24,11 @@ public class Serialize {
         HashMap hashMap = (HashMap) ois.readObject();
         return hashMap;
     }
+
+//    public static Order_Info oInfodSer(String filename) throws Exception{
+//        FileInputStream fis = new FileInputStream(filename);
+//        ObjectInputStream ois = new ObjectInputStream(fis);
+//        Order_Info order_info = (Order_Info) ois.readObject();
+//        return order_info;
+//    }
 }
