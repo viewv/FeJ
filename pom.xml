@@ -6,7 +6,8 @@
 
     <groupId>top.viewv.java</groupId>
     <artifactId>Food_Enterprise_Manage_System_Java_Project</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
+
     <build>
         <plugins>
             <plugin>
@@ -26,6 +27,7 @@
                     <mainClass>your.package.with.Launcher</mainClass>
                 </configuration>
             </plugin>
+
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
@@ -121,6 +123,7 @@
             <artifactId>jgravatar</artifactId>
             <version>1.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
