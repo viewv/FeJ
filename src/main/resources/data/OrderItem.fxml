@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="866.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.OrderItemController">
+    <children>
+        <Pane layoutX="29.0" layoutY="22.0" prefHeight="241.0" prefWidth="806.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+            <children>
+                <ImageView fitHeight="64.0" fitWidth="67.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@icons/order.png" />
+                    </image>
+                </ImageView>
+                <Separator layoutX="22.0" layoutY="87.0" prefHeight="0.0" prefWidth="763.0" />
+                <Label layoutX="123.0" layoutY="18.0" text="订单ID" textFill="#3a1c9d">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="619.0" layoutY="13.0" text="总金额" textFill="#3a1c9d">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="540.0" layoutY="34.0" prefHeight="44.0" prefWidth="112.0" text="16" textFill="#aeacac">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <Label layoutX="665.0" layoutY="59.0" text="元" textFill="#3a1c9d" />
+                <Separator layoutX="692.0" layoutY="13.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
+                <Label layoutX="724.0" layoutY="13.0" text="预计交付" textFill="#3a1c9d">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labOrderRtime" alignment="CENTER_RIGHT" layoutX="699.0" layoutY="33.0" prefHeight="44.0" prefWidth="67.0" text="30" textFill="#aeacac">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <Label layoutX="773.0" layoutY="59.0" text="天" textFill="#3a1c9d" />
+                <Label fx:id="labOrdertId" layoutX="123.0" layoutY="51.0" text="ID: 20178" textFill="#b2b0b0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            <Label layoutX="373.0" layoutY="13.0" text="订单状态" textFill="#3a1c9d">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <JFXProgressBar fx:id="pbarOrder" layoutX="373.0" layoutY="64.0" prefHeight="11.0" prefWidth="151.0" progress="0.34" />
+            <Label fx:id="labOrderStatus" layoutX="373.0" layoutY="36.0" text="生产中" textFill="#aeacac">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tableOrderShopList" layoutX="22.0" layoutY="97.0" prefHeight="174.0" prefWidth="763.0" style="-fx-background-color: #fff;" />
+            </children>
+            <effect>
+                <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
+            </effect>
+        </Pane>
+    </children>
+</AnchorPane>

@@ -6,6 +6,8 @@ package top.viewv.controller;
  */
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXProgressBar;
+import com.jfoenix.controls.JFXSnackbar;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
@@ -44,7 +47,10 @@ public class newhomeController implements Initializable {
     public JFXButton btnCheckAll;
     public Label testLab;
     public JFXButton btnShowAllproduct;
-    //ArrayList<Order_List> order_lists = new ArrayList<>();
+    public AnchorPane BasePane;
+    public Label labUserName;
+    public JFXButton btnOrderInfo;
+    public JFXProgressBar pbarBusy;
     private HashMap<Integer,Integer> order_lists = new HashMap<Integer, Integer>();
 
     Connection conn =  new Connect().getConnection();
@@ -55,12 +61,9 @@ public class newhomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //tt.start();
-        //btnCheckAll.setVisible(false);
-        //refreshNodes();
-//        setUserIcon();
-        //testLab.setVisible(false);
         btnCheckAll.setVisible(false);
+        pbarBusy.setVisible(false);
+        testLab.setVisible(false);
         try {
             Serialize.ser(order_lists, "order.ser");
             pt.GetLength(conn);
@@ -70,8 +73,13 @@ public class newhomeController implements Initializable {
         }
     }
 
+    public void setLabUserName(String userName){
+        labUserName.setText(userName);
+    }
+
     public void refreshNodes() {
         System.out.println("Start Refresh Node");
+        pbarBusy.setVisible(true);
         pnl_scroll.getChildren().clear();
 
         RecipeTable rt = new RecipeTable();
@@ -107,6 +115,7 @@ public class newhomeController implements Initializable {
                 Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        pbarBusy.setVisible(false);
     }
 
     public void setUserIcon() {
@@ -134,8 +143,13 @@ public class newhomeController implements Initializable {
     }
 
     public void onClickedbtnShopList(MouseEvent mouseEvent) throws Exception {
+        btnCheckAll.setVisible(true);
+        refeshShopList();
+
+    }
+
+    public void refeshShopList() throws Exception {
         pnl_scroll.getChildren().clear();
-        //btnCheckAll.setVisible(true);
         order_lists = Serialize.dSer("order.ser");
         int length = order_lists.size();
         Node[] nodes = new Node[length];
@@ -166,11 +180,17 @@ public class newhomeController implements Initializable {
                 Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
     }
 
-    public void onClickedbtnCheckAll(MouseEvent mouseEvent) {
-
+    public void onClickedbtnCheckAll(MouseEvent mouseEvent) throws Exception {
+        System.out.println("Sending Order");
+        order_lists = Serialize.dSer("order.ser");
+        //TODO Order send
+        order_lists.clear();
+        Serialize.ser(order_lists,"order.ser");
+        refeshShopList();
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("Send Order Successfully", 1000);
     }
 
     public void onclickedTestArray(MouseEvent mouseEvent) throws Exception {
@@ -185,10 +205,31 @@ public class newhomeController implements Initializable {
             System.out.println(value);
             System.out.println("-----");
         }
-
     }
 
     public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) {
         refreshNodes();
+    }
+
+    public void onClinckbtnOrderInfo(MouseEvent mouseEvent) {
+        pnl_scroll.getChildren().clear();
+        Node[] nodes = new Node[5];
+        Node node;
+        for(int i = 0;i<5;i++) {
+            try {
+                FXMLLoader loader = new
+                        FXMLLoader(Objects.requireNonNull(
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/OrderItem.fxml")));
+                node = loader.load();
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+                //删除所有节点，有点残忍，还是隐藏比较好
+                //pnl_scroll.getChildren().removeAll();
+            } catch (IOException ex) {
+                Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

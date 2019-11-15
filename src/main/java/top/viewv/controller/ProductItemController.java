@@ -6,12 +6,9 @@ import com.jfoenix.controls.JFXTreeTableView;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import top.viewv.api.Serialize;
-import top.viewv.model.Order_List;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ProductItemController implements Initializable {
