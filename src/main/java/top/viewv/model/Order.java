@@ -208,6 +208,7 @@ public class Order {
             String sql = "select * from `order` where order_id = " + id;
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
+            rs.next();
             this.order_id = rs.getInt(1);
             this.client_id = rs.getString(2);
             this.staff_id = rs.getString(3);
@@ -268,6 +269,7 @@ public class Order {
             int cnt = 0;
             while(rs.next()){
                 O[cnt] = rs.getInt(1);
+                cnt ++;
             }
             return O;
         }

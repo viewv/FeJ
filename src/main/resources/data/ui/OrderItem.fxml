@@ -52,7 +52,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labOrderStatus" alignment="TOP_LEFT" layoutY="23.0" prefHeight="64.0" prefWidth="170.0" text="生产中" textFill="#aeacac">
+                  <Label fx:id="labOrderStatus" alignment="TOP_LEFT" layoutY="23.0" prefHeight="64.0" prefWidth="153.0" text="生产中" textFill="#aeacac">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -62,7 +62,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                      <Label fx:id="labOrderStimeD" alignment="CENTER_RIGHT" layoutX="289.0" layoutY="19.0" prefHeight="27.0" prefWidth="30.0" text="27" textFill="#aeacac">
+                      <Label fx:id="labOrderStime" alignment="CENTER_RIGHT" layoutX="206.0" layoutY="19.0" prefHeight="27.0" prefWidth="111.0" text="27" textFill="#aeacac">
                           <font>
                               <Font name="System Bold" size="16.0" />
                           </font>
@@ -72,28 +72,8 @@
                               <Font size="14.0" />
                           </font>
                       </Label>
-                  <Label fx:id="labOrderPtimeD" alignment="CENTER_RIGHT" layoutX="289.0" layoutY="60.0" prefHeight="27.0" prefWidth="30.0" text="30" textFill="#aeacac">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
                   <JFXProgressBar fx:id="pbarOrder" layoutY="94.0" prefHeight="17.0" prefWidth="318.0" progress="0.34" />
-                  <Label fx:id="labOrderStimeM" alignment="CENTER_RIGHT" layoutX="256.0" layoutY="19.0" prefHeight="27.0" prefWidth="36.0" text="05." textFill="#aeacac">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labOrderStimeY" alignment="CENTER_RIGHT" layoutX="201.0" layoutY="19.0" prefHeight="27.0" prefWidth="60.0" text="2019." textFill="#aeacac">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labOrderPtimeY" alignment="CENTER_RIGHT" layoutX="201.0" layoutY="59.0" prefHeight="27.0" prefWidth="60.0" text="2019." textFill="#aeacac">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labOrderPtimeM" alignment="CENTER_RIGHT" layoutX="256.0" layoutY="60.0" prefHeight="27.0" prefWidth="36.0" text="05." textFill="#aeacac">
+                  <Label fx:id="labOrderPtime" alignment="CENTER_RIGHT" layoutX="206.0" layoutY="60.0" prefHeight="27.0" prefWidth="111.0" text="27" textFill="#aeacac">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

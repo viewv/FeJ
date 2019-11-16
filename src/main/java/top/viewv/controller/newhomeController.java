@@ -225,20 +225,19 @@ public class newhomeController implements Initializable {
     public void onClinckbtnOrderInfo(MouseEvent mouseEvent) throws Exception {
         btnCheckAll.setVisible(false);
 
-        pnl_scroll.getChildren().clear();
-        all_Orders = Serialize.dSer("all_order.ser");
-
-        int length = all_Orders.size();
-        System.out.println("All Order"+length);
+        Order order = new Order();
+        int [] allOrderId = order.Orders(conn,userId.getText());
+        int length = allOrderId.length;
         Node[] nodes = new Node[length];
         Node node;
-        int i = 0;
-        for (Map.Entry<Integer, Order_Info> entry : all_Orders.entrySet()) {
-            Integer key = entry.getKey();
-            Order_Info value = entry.getValue();
-            System.out.println(key);
-            System.out.println(value);
-            System.out.println("-----");
+
+        pnl_scroll.getChildren().clear();
+//        all_Orders = Serialize.dSer("all_order.ser");
+
+        for (int i = 0;i < length;i++){
+            int orderid = allOrderId[i];
+            System.out.println("Order ID"+orderid);
+            order.InitOrderById(conn,orderid);
             try {
                 FXMLLoader loader = new
                         FXMLLoader(Objects.requireNonNull(
@@ -248,18 +247,46 @@ public class newhomeController implements Initializable {
                 node = loader.load();
                 OrderItemController orderItemController = loader.getController();
                 //调用生成table
-                orderItemController.setLabOrderStatus(value.getSituation());
-                orderItemController.setLabPrice(value.getDeposit());
-                orderItemController.setLabOrdertId(key);
+                orderItemController.setLabOrderStatus(order.situation);
+                orderItemController.setLabPrice(order.deposit + order.retainage);
+                orderItemController.setLabOrdertId(orderid);
+                orderItemController.setOrderStime(order.order_time);
+                orderItemController.setOrderPtime(order.due_time);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
-                //删除所有节点，有点残忍，还是隐藏比较好
-                //pnl_scroll.getChildren().removeAll();
-                i++;
             } catch (IOException ex) {
                 Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+//        int i = 0;
+//        for (Map.Entry<Integer, Order_Info> entry : all_Orders.entrySet()) {
+//            Integer key = entry.getKey();
+//            Order_Info value = entry.getValue();
+//            System.out.println(key);
+//            System.out.println(value);
+//            System.out.println("-----");
+//            try {
+//                FXMLLoader loader = new
+//                        FXMLLoader(Objects.requireNonNull(
+//                        Thread.currentThread().
+//                                getContextClassLoader().
+//                                getResource("data/ui/OrderItem.fxml")));
+//                node = loader.load();
+//                OrderItemController orderItemController = loader.getController();
+//                //调用生成table
+//                orderItemController.setLabOrderStatus(value.getSituation());
+//                orderItemController.setLabPrice(value.getDeposit());
+//                orderItemController.setLabOrdertId(key);
+//                nodes[i] = node;
+//                pnl_scroll.getChildren().add(nodes[i]);
+//                //删除所有节点，有点残忍，还是隐藏比较好
+//                //pnl_scroll.getChildren().removeAll();
+//                i++;
+//            } catch (IOException ex) {
+//                Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
     }
 
     public void onclickedTestArray(MouseEvent mouseEvent) throws Exception {

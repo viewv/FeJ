@@ -9,12 +9,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class OrderItemController implements Initializable {
     public JFXProgressBar pbarOrder;
     public Label labOrdertId;
-    public Label labOrderRtime;
     public Label labPrice;
     public Label labOrderStatus;
     public TableView tableOrderShopList;
@@ -23,11 +23,21 @@ public class OrderItemController implements Initializable {
     public TableColumn colProductName;
     public TableColumn colProductAmount;
     public TableColumn colProductPrice;
+    public Label labOrderPtime;
+    public Label labOrderStime;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pbarOrder.setVisible(false);
         System.out.println("Order Open");
+    }
+
+    public void setOrderStime(Date date){
+        labOrderStime.setText(date.toString());
+    }
+
+    public void setOrderPtime(Date date){
+        labOrderPtime.setText(date.toString());
     }
 
     public void setTableOrderShopList(){
