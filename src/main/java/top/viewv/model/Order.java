@@ -122,19 +122,52 @@ public class Order {
         catch (Exception e){
             e.printStackTrace();
         }
-
+        //处理职员接受订单
     }
 
-    public void ReadById(Connection conn,int id){
-        try{
+    public void InitOrderById(Connection conn,int id) {
+        try {
             String sql = "select * from `order` where order_id = " + id;
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
+            this.order_id = rs.getInt(1);
+            this.client_id = rs.getString(2);
+            this.staff_id = rs.getString(3);
+            this.order_time = rs.getDate(4);
+            this.due_time = rs.getDate(5);
+            this.deposit = rs.getFloat(6);
+            this.retainage = rs.getFloat(7);
+            this.situation = rs.getInt(8);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //从数据库获取订单信息
 
+       public Order_Product[] InitProductById(Connection conn, int id){
+        try{
+            String sql = "select count(product_id) from order_product where order_id = " + id;
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            int length = rs.getInt(1);
+            Order_Product[] OP = new Order_Product[length];
+
+            sql = "select product.product_id,product_name,amount,product_price " +
+                    "from order_product,product where order_product.product_id = product.product_id" +
+                    " and order_id = " + id;
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            int cnt = 0;
+            while(rs.next()){
+                OP[cnt] = new Order_Product(rs.getInt(1),rs.getString(2), rs.getInt(3),rs.getInt(4));
+                cnt++;
+            }
+            return OP;
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        return null;
     }
-    //处理职员接受订单
 }
