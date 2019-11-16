@@ -129,8 +129,8 @@ public class newhomeController implements Initializable {
         pbarBusy.setVisible(false);
     }
 
-    public void setUserIcon() {
-        userIcon.setImage(Gravatar.imageFromMail("zxnnet@gmail.com"));
+    public void setUserIcon(String email) {
+        userIcon.setImage(Gravatar.imageFromMail(email));
     }
 
     public void onClickedbtnExit() throws IOException {

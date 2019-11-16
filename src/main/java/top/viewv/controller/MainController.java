@@ -171,7 +171,7 @@ public class MainController implements Initializable  {
         newhomeController homeControl = loader.getController();
         homeControl.setLabUserName("ViewvLab");
         homeControl.refreshNodes();
-        homeControl.setUserIcon();
+        homeControl.setUserIcon("qianrui1999@qq.com");
         homeControl.setlabUserId(user_id);
         //将第二个窗口保存到map中
         StageManager.STAGE.put("second", stage);
