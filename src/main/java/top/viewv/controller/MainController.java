@@ -60,6 +60,8 @@ public class MainController implements Initializable  {
     private Connection conn = null;
     private ThreadType tt = new ThreadType();
 
+    String user_id;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("FeJ Open");
@@ -72,7 +74,7 @@ public class MainController implements Initializable  {
 
     @FXML
     public void GetInput() throws IOException, IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
-        String user_id = userInput.getText().trim();
+        user_id = userInput.getText().trim();
         String password = passwordInput.getText().trim();
         Login login = new Login();
 
@@ -170,6 +172,7 @@ public class MainController implements Initializable  {
         homeControl.setLabUserName("ViewvLab");
         homeControl.refreshNodes();
         homeControl.setUserIcon();
+        homeControl.setlabUserId(user_id);
         //将第二个窗口保存到map中
         StageManager.STAGE.put("second", stage);
         //将本窗口保存到map中

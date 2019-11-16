@@ -32,10 +32,9 @@ public class Order {
 
 
     //用户下达订单
-    public void PlaceOrder(Connection conn, HashMap mess,int days,String client_id){
+    public void PlaceOrder(Connection conn, HashMap mess,int days,String account_id){
         try{
             this.situation = 0;
-            this.client_id = client_id;
             this.Ingres = mess;
             this.order_time = new java.sql.Date(System.currentTimeMillis());
             Calendar calendar =new GregorianCalendar();
@@ -49,20 +48,24 @@ public class Order {
             String sql;
             PreparedStatement st;
             ResultSet rs;
+            sql = "select client_id from client where account_id = " +  account_id;
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            rs.next();
+            this.client_id = rs.getString(1);
             sql = "select count(order_id) from `order`";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             rs.next();
             this.order_id = rs.getInt(1) + 1;
-            sql = "insert into order(client_id,order_time,due_time,situation) values(" +
-            this.client_id + "," +
-            this.order_time + "," +
-            this.due_time + "," +
+
+            sql = "insert into `order`(order_id,client_id,order_time,due_time,situation) values(" +
+            this.order_id + "," +
+            this.client_id + ",'" +
+            this.order_time + " 00:00:00','" +
+            this.due_time + " 00:00:00'," +
             this.situation + ")";
             st.execute(sql);
-
-
-
 
 
             double sum = 0.00;
@@ -76,7 +79,7 @@ public class Order {
                 st = conn.prepareStatement(sql);
                 rs = st.executeQuery();
                 rs.next();
-                sum += rs.getDouble(1);
+                sum += (rs.getFloat(1) * (float)y);
 
                 sql = "insert into order_product(amount,product_id,order_id) values(" + y + "," + x + "," + this.order_id + ")" ;
                 st.execute(sql);
@@ -92,10 +95,10 @@ public class Order {
 
             this.deposit = (float)(0.3 * sum);
             this.retainage = (float)(0.7 * sum);
-            sql = "update order set deposit = " + this.deposit + "where order_id = " +
+            sql = "update `order` set deposit = " + this.deposit + "where order_id = " +
                     this.order_id;
             st.execute(sql);
-            sql = "update order set retainage = " + this.retainage + "where order_id = " +
+            sql = "update `order` set retainage = " + this.retainage + "where order_id = " +
                     this.order_id;
             st.execute(sql);
         }

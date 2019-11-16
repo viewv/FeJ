@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableView?>
@@ -12,62 +13,70 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="866.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.OrderItemController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="950.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.OrderItemController">
     <children>
-        <Pane layoutX="29.0" layoutY="22.0" prefHeight="241.0" prefWidth="806.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+        <Pane layoutX="29.0" layoutY="22.0" prefHeight="293.0" prefWidth="891.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="20.0">
             <children>
                 <ImageView fitHeight="64.0" fitWidth="67.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@icons/order.png" />
                     </image>
                 </ImageView>
-                <Separator layoutX="22.0" layoutY="87.0" prefHeight="0.0" prefWidth="763.0" />
-                <Label layoutX="123.0" layoutY="18.0" text="订单ID" textFill="#3a1c9d">
+                <Separator layoutX="22.0" layoutY="87.0" prefHeight="0.0" prefWidth="845.0" />
+                <Label layoutX="125.0" layoutY="12.0" text="订单ID" textFill="#3a1c9d">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="619.0" layoutY="13.0" text="总金额" textFill="#3a1c9d">
+                <Label layoutX="639.0" layoutY="14.0" text="总金额" textFill="#3a1c9d">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="540.0" layoutY="34.0" prefHeight="44.0" prefWidth="112.0" text="16" textFill="#aeacac">
+                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="483.0" layoutY="33.0" prefHeight="44.0" prefWidth="198.0" text="16" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
                 </Label>
-                <Label layoutX="665.0" layoutY="59.0" text="元" textFill="#3a1c9d" />
-                <Separator layoutX="692.0" layoutY="13.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
-                <Label layoutX="724.0" layoutY="13.0" text="预计交付" textFill="#3a1c9d">
+                <Label layoutX="689.0" layoutY="61.0" text="元" textFill="#3a1c9d" />
+                <Separator layoutX="725.0" layoutY="14.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
+                <Label layoutX="773.0" layoutY="14.0" text="预计交付" textFill="#3a1c9d">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labOrderRtime" alignment="CENTER_RIGHT" layoutX="699.0" layoutY="33.0" prefHeight="44.0" prefWidth="67.0" text="30" textFill="#aeacac">
+                <Label fx:id="labOrderRtime" alignment="CENTER_RIGHT" layoutX="753.0" layoutY="33.0" prefHeight="44.0" prefWidth="67.0" text="30" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
                 </Label>
-                <Label layoutX="773.0" layoutY="59.0" text="天" textFill="#3a1c9d" />
+                <Label layoutX="829.0" layoutY="66.0" text="天" textFill="#3a1c9d" />
                 <Label fx:id="labOrdertId" layoutX="123.0" layoutY="51.0" text="ID: 20178" textFill="#b2b0b0">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-            <Label layoutX="373.0" layoutY="13.0" text="订单状态" textFill="#3a1c9d">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <JFXProgressBar fx:id="pbarOrder" layoutX="373.0" layoutY="64.0" prefHeight="11.0" prefWidth="151.0" progress="0.34" />
-            <Label fx:id="labOrderStatus" layoutX="373.0" layoutY="36.0" prefHeight="19.0" prefWidth="151.0" text="生产中" textFill="#aeacac">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <TableView fx:id="tableOrderShopList" layoutX="22.0" layoutY="97.0" prefHeight="151.0" prefWidth="763.0" style="-fx-background-color: #fff;" />
-            <JFXButton fx:id="btnReturnOrder" buttonType="RAISED" layoutX="726.0" layoutY="258.0" onMouseClicked="#onClickedbtnReturn" prefHeight="27.0" prefWidth="52.0" style="-fx-background-color: #cc0000#cc0000;" text="退货" textFill="WHITE" />
+            <Group layoutX="295.0" layoutY="10.0">
+               <children>
+                  <Label text="订单状态" textFill="#3a1c9d">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <JFXProgressBar fx:id="pbarOrder" layoutY="51.0" prefHeight="11.0" prefWidth="151.0" progress="0.34" />
+                  <Label fx:id="labOrderStatus" layoutY="23.0" prefHeight="19.0" prefWidth="151.0" text="生产中" textFill="#aeacac">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+            <TableView fx:id="tableOrderShopList" layoutX="22.0" layoutY="97.0" prefHeight="145.0" prefWidth="845.0" style="-fx-background-color: #fff;" />
+            <AnchorPane layoutX="-1.0" layoutY="250.0" prefHeight="44.0" prefWidth="892.0" style="-fx-background-color: #F0F0F0 #F0F0F0;">
+               <children>
+                  <JFXButton fx:id="btnReturnOrder" buttonType="RAISED" layoutX="801.0" layoutY="9.0" onMouseClicked="#onClickedbtnReturn" prefHeight="27.0" prefWidth="52.0" style="-fx-background-color: #cc0000#cc0000;" text="退货" textFill="WHITE" />
+               </children>
+            </AnchorPane>
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

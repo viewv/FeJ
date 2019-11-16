@@ -21,7 +21,7 @@ public class OrderItemController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        pbarOrder.setProgress(0.7);
+        pbarOrder.setVisible(false);
         System.out.println("Order Open");
     }
 
@@ -34,22 +34,29 @@ public class OrderItemController implements Initializable {
     }
 
     public void setLabOrderStatus(int status){
+        pbarOrder.setVisible(true);
         if (status == 0){
             labOrderStatus.setText("已下单，等待处理");
+            pbarOrder.setProgress(0.6);
         }else if(status == 1){
             labOrderStatus.setText("无法确认订单");
+            pbarOrder.setProgress(0);
+            pbarOrder.setVisible(false);
         }else if (status == 2){
+            pbarOrder.setProgress(0.8);
             labOrderStatus.setText("订单开始处理");
         }else if (status == 3){
-            labOrderStatus.setText("订单配送");
+            pbarOrder.setProgress(1);
+            labOrderStatus.setText("已完成");
         }else if (status == 4){
+            pbarOrder.setProgress(0.5);
             labOrderStatus.setText("开始处理退货");
         }else if (status == 5){
+            pbarOrder.setProgress(1);
             labOrderStatus.setText("确认退货");
         }
     }
 
     public void onClickedbtnReturn(MouseEvent mouseEvent) {
-
     }
 }

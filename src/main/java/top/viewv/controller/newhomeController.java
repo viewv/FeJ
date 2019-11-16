@@ -56,6 +56,7 @@ public class newhomeController implements Initializable {
     public Label labUserName;
     public JFXButton btnOrderInfo;
     public JFXProgressBar pbarBusy;
+    public Label userId;
     Connection conn = new Connect().getConnection();
 
     ProductTable pt = new ProductTable();
@@ -78,11 +79,16 @@ public class newhomeController implements Initializable {
         }
     }
 
+    public void setlabUserId(String userid){
+        userId.setText(userid);
+    }
+
     public void setLabUserName(String userName) {
         labUserName.setText(userName);
     }
 
     public void refreshNodes() {
+        btnCheckAll.setVisible(false);
         System.out.println("Start Refresh Node");
         pbarBusy.setVisible(true);
         pnl_scroll.getChildren().clear();
@@ -150,7 +156,6 @@ public class newhomeController implements Initializable {
     public void onClickedbtnShopList(MouseEvent mouseEvent) throws Exception {
         btnCheckAll.setVisible(true);
         refeshShopList();
-
     }
 
     public void refeshShopList() throws Exception {
@@ -192,14 +197,11 @@ public class newhomeController implements Initializable {
         Order order = new Order();
         order_lists = Serialize.dSer("order.ser");
         //TODO Order send
-        order_lists.clear();
-        Serialize.ser(order_lists, "order.ser");
-        refeshShopList();
+        //order_lists.clear();
+        // refeshShopList();
 
         //TODO add a True Client ID
-        order.PlaceOrder(conn,order_lists,10,"111");
-        order.GetId(conn);
-        order.GetMoney(conn);
+        order.PlaceOrder(conn,order_lists,10,userId.getText());
         Order_Info order_info = new Order_Info();
         order_info.setClient_id(order.client_id);
         order_info.setOrder_id(order.order_id);
@@ -214,6 +216,8 @@ public class newhomeController implements Initializable {
 
         JFXSnackbar snackbar = new JFXSnackbar(BasePane);
         snackbar.show("Send Order Successfully", 1000);
+        order_lists.clear();
+        Serialize.ser(order_lists, "order.ser");
 
     }
     public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) {
@@ -221,11 +225,13 @@ public class newhomeController implements Initializable {
     }
 
     public void onClinckbtnOrderInfo(MouseEvent mouseEvent) throws Exception {
+        btnCheckAll.setVisible(false);
 
         pnl_scroll.getChildren().clear();
         all_Orders = Serialize.dSer("all_order.ser");
 
         int length = all_Orders.size();
+        System.out.println("All Order"+length);
         Node[] nodes = new Node[length];
         Node node;
         int i = 0;
