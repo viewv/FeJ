@@ -34,7 +34,7 @@ public class IndexController implements Initializable {
 
     public void open(ActionEvent event) throws Exception {
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("data/Main.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("data/ui/Main.fxml")));
         //Parent root = FXMLLoader.load(Thread.currentThread().getContextClassLoader().getResource("data/Index.fxml"));
         stage.setTitle("第二个窗口");
         stage.setScene(new Scene(root));

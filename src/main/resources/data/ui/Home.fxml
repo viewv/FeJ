@@ -28,7 +28,7 @@
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/overview.png" />
+                                    <Image url="@../icons/overview.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -49,7 +49,7 @@
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/sale.png" />
+                                    <Image url="@../icons/sale.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -64,7 +64,7 @@
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/finance.png" />
+                                    <Image url="@../icons/finance.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -79,7 +79,7 @@
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/order.png" />
+                                    <Image url="@../icons/order.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -94,7 +94,7 @@
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/line.png" />
+                                    <Image url="@../icons/line.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -109,7 +109,7 @@
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/flow.png" />
+                                    <Image url="@../icons/flow.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -124,7 +124,7 @@
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/manage.png" />
+                                    <Image url="@../icons/manage.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -139,7 +139,7 @@
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/signout.png" />
+                                    <Image url="@../icons/signout.png" />
                                  </image>
                               </ImageView>
                            </graphic>

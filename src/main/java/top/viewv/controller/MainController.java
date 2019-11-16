@@ -161,7 +161,7 @@ public class MainController implements Initializable  {
 
         FXMLLoader loader = new
                 FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
-                .getResource("data/newhome.fxml"));
+                .getResource("data/ui/newhome.fxml"));
 
 
         Parent root = loader.load();

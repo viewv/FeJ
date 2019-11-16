@@ -17,7 +17,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="BasePane" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="674.0" prefWidth="1221.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.newhomeController">
     <children>
-        <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@../style/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label fx:id="labUserName" layoutX="224.0" layoutY="47.0" text="User Name" textFill="WHITE">
                     <font>
@@ -59,7 +59,7 @@
                     <graphic>
                         <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@newIcon/sum.png" />
+                                <Image url="@../newIcon/sum.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -77,7 +77,7 @@
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@newIcon/order.png" />
+                                <Image url="@../newIcon/order.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -92,7 +92,7 @@
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@newIcon/order.png" />
+                        <Image url="@../newIcon/order.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -107,7 +107,7 @@
                     <graphic>
                         <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/icons8_Workflow_64px.png" />
+                                <Image url="@../images/icons8_Workflow_64px.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -122,7 +122,7 @@
                     <graphic>
                         <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/icons8_US_Dollar_64px.png" />
+                                <Image url="@../images/icons8_US_Dollar_64px.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -137,7 +137,7 @@
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/agencies.png" />
+                                <Image url="@../images/agencies.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -152,7 +152,7 @@
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/icons8_Share_64px.png" />
+                                <Image url="@../images/icons8_Share_64px.png" />
                             </image>
                             <viewport>
                                 <Rectangle2D />
@@ -170,7 +170,7 @@
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@newIcon/exit.png" />
+                        <Image url="@../newIcon/exit.png" />
                      </image>
                      <viewport>
                         <Rectangle2D />
@@ -187,7 +187,7 @@
             <children>
                 <ImageView fx:id="userIcon" fitHeight="120.0" fitWidth="120.0" layoutX="-1.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@icons/user.png" />
+                        <Image url="@../icons/user.png" />
                     </image>
                 </ImageView>
             </children>

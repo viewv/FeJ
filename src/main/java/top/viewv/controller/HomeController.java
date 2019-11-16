@@ -151,7 +151,7 @@ public class HomeController implements Initializable {
         //StageManager.CONTROLLER.remove("secondControl");
 
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Main.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/ui/Main.fxml")));
         stage.setTitle("Index");
         stage.setScene(new Scene(root));
         stage.show();

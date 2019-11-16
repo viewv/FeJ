@@ -106,7 +106,7 @@ public class newhomeController implements Initializable {
                         FXMLLoader(Objects.requireNonNull(
                         Thread.currentThread().
                                 getContextClassLoader().
-                                getResource("data/ProductItem.fxml")));
+                                getResource("data/ui/ProductItem.fxml")));
                 node = loader.load();
                 //调用下面的函数可以得到控制器
                 //商品部分
@@ -140,7 +140,7 @@ public class newhomeController implements Initializable {
         //StageManager.CONTROLLER.remove("secondControl");
 
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/Main.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/ui/Main.fxml")));
         stage.setTitle("Index");
         stage.setScene(new Scene(root));
         stage.show();
@@ -176,7 +176,7 @@ public class newhomeController implements Initializable {
                         FXMLLoader(Objects.requireNonNull(
                         Thread.currentThread().
                                 getContextClassLoader().
-                                getResource("data/ProductItem.fxml")));
+                                getResource("data/ui/ProductItem.fxml")));
                 node = loader.load();
                 ProductItemController productItemController = loader.getController();
                 productItemController.setLabPrice(key);
@@ -246,9 +246,10 @@ public class newhomeController implements Initializable {
                         FXMLLoader(Objects.requireNonNull(
                         Thread.currentThread().
                                 getContextClassLoader().
-                                getResource("data/OrderItem.fxml")));
+                                getResource("data/ui/OrderItem.fxml")));
                 node = loader.load();
                 OrderItemController orderItemController = loader.getController();
+                //调用生成table
                 orderItemController.setLabOrderStatus(value.getSituation());
                 orderItemController.setLabPrice(value.getDeposit());
                 orderItemController.setLabOrdertId(key);
