@@ -118,6 +118,12 @@ public class Order {
                     +this.order_id;
             PreparedStatement st = conn.prepareStatement(sql);
             st.execute(sql);
+            sql = "update `order` set situation = 2"
+                    +staff_id
+                    +"where order_id = "
+                    +this.order_id;
+            st = conn.prepareStatement(sql);
+            st.execute(sql);
         }
         catch (Exception e){
             e.printStackTrace();
