@@ -20,7 +20,6 @@ public class MainApp extends Application {
                     FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
                                 .getResource("data/ui/Main.fxml"));
             System.out.println("Loader Success");
-            //MainController mainController =  loader.getController();
 
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -31,8 +30,6 @@ public class MainApp extends Application {
             primaryStage.setTitle("FeJ");
             primaryStage.setScene(scene);
             primaryStage.show();
-//            Connection conn = new Connect().getConnection();
-//            mainController.setConnection(conn);
         } catch (Exception e) {
             e.printStackTrace();
         }

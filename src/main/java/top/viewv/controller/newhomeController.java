@@ -103,10 +103,8 @@ public class newhomeController implements Initializable {
         for (int i = 0; i < length; i++) {
             try {
                 FXMLLoader loader = new
-                        FXMLLoader(Objects.requireNonNull(
-                        Thread.currentThread().
-                                getContextClassLoader().
-                                getResource("data/ui/ProductItem.fxml")));
+                        FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                        .getResource("data/ui/ProductItem.fxml"));
                 node = loader.load();
                 //调用下面的函数可以得到控制器
                 //商品部分

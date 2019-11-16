@@ -24,67 +24,100 @@
                     </image>
                 </ImageView>
                 <Separator layoutX="22.0" layoutY="87.0" prefHeight="0.0" prefWidth="845.0" />
-                <Label layoutX="125.0" layoutY="12.0" text="订单ID" textFill="#3a1c9d">
+                <Label layoutX="123.0" layoutY="13.0" text="订单编号" textFill="#3a1c9d">
                     <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <Label layoutX="639.0" layoutY="14.0" text="总金额" textFill="#3a1c9d">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Label>
-                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="483.0" layoutY="33.0" prefHeight="44.0" prefWidth="198.0" text="16" textFill="#aeacac">
-                    <font>
-                        <Font name="System Bold" size="36.0" />
-                    </font>
-                </Label>
-                <Label layoutX="689.0" layoutY="61.0" text="元" textFill="#3a1c9d" />
-                <Separator layoutX="725.0" layoutY="14.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
-                <Label layoutX="773.0" layoutY="14.0" text="预计交付" textFill="#3a1c9d">
+                <Label layoutX="780.0" layoutY="15.0" text="总金额" textFill="#3a1c9d">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labOrderRtime" alignment="CENTER_RIGHT" layoutX="753.0" layoutY="33.0" prefHeight="44.0" prefWidth="67.0" text="30" textFill="#aeacac">
+                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="322.0" layoutY="38.0" prefHeight="44.0" prefWidth="500.0" text="16" textFill="#aeacac">
                     <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font name="System Bold" size="34.0" />
                     </font>
                 </Label>
-                <Label layoutX="829.0" layoutY="66.0" text="天" textFill="#3a1c9d" />
-                <Label fx:id="labOrdertId" layoutX="123.0" layoutY="51.0" text="ID: 20178" textFill="#b2b0b0">
+                <Label layoutX="823.0" layoutY="61.0" text="元" textFill="#3a1c9d" />
+                <Label fx:id="labOrdertId" layoutX="141.0" layoutY="51.0" text="20178" textFill="#b2b0b0">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-            <Group layoutX="551.0" layoutY="97.0">
+            <Group layoutX="519.0" layoutY="96.0">
                <children>
                   <Label text="订单状态" textFill="#3a1c9d">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXProgressBar fx:id="pbarOrder" layoutY="51.0" prefHeight="11.0" prefWidth="151.0" progress="0.34" />
-                  <Label fx:id="labOrderStatus" layoutY="23.0" prefHeight="19.0" prefWidth="151.0" text="生产中" textFill="#aeacac">
+                  <Label fx:id="labOrderStatus" alignment="TOP_LEFT" layoutY="23.0" prefHeight="64.0" prefWidth="170.0" text="生产中" textFill="#aeacac">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
+                  <Label layoutX="261.0" layoutY="1.0" text="下单时间" textFill="#3a1c9d">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                      <Label fx:id="labOrderStimeD" alignment="CENTER_RIGHT" layoutX="289.0" layoutY="19.0" prefHeight="27.0" prefWidth="30.0" text="27" textFill="#aeacac">
+                          <font>
+                              <Font name="System Bold" size="16.0" />
+                          </font>
+                      </Label>
+                      <Label layoutX="261.0" layoutY="42.0" text="预计交付" textFill="#3a1c9d">
+                          <font>
+                              <Font size="14.0" />
+                          </font>
+                      </Label>
+                  <Label fx:id="labOrderPtimeD" alignment="CENTER_RIGHT" layoutX="289.0" layoutY="60.0" prefHeight="27.0" prefWidth="30.0" text="30" textFill="#aeacac">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXProgressBar fx:id="pbarOrder" layoutY="94.0" prefHeight="17.0" prefWidth="318.0" progress="0.34" />
+                  <Label fx:id="labOrderStimeM" alignment="CENTER_RIGHT" layoutX="256.0" layoutY="19.0" prefHeight="27.0" prefWidth="36.0" text="05." textFill="#aeacac">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labOrderStimeY" alignment="CENTER_RIGHT" layoutX="201.0" layoutY="19.0" prefHeight="27.0" prefWidth="60.0" text="2019." textFill="#aeacac">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labOrderPtimeY" alignment="CENTER_RIGHT" layoutX="201.0" layoutY="59.0" prefHeight="27.0" prefWidth="60.0" text="2019." textFill="#aeacac">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labOrderPtimeM" alignment="CENTER_RIGHT" layoutX="256.0" layoutY="60.0" prefHeight="27.0" prefWidth="36.0" text="05." textFill="#aeacac">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </Group>
-            <TableView fx:id="tableOrderShopList" layoutX="43.0" layoutY="97.0" prefHeight="145.0" prefWidth="412.0" style="-fx-background-color: #fff;">
+            <TableView fx:id="tableOrderShopList" layoutX="22.0" layoutY="97.0" prefHeight="145.0" prefWidth="452.0" style="-fx-background-color: #fff;">
                <columns>
-                  <TableColumn prefWidth="93.0" text="Column X" />
-                  <TableColumn minWidth="-1.0" prefWidth="116.0" text="Column X" />
-                  <TableColumn prefWidth="123.0" text="Column X" />
-                  <TableColumn prefWidth="79.0" text="Column X" />
+                  <TableColumn fx:id="colProductId" editable="false" prefWidth="93.0" text="商品编号" />
+                  <TableColumn fx:id="colProductName" editable="false" minWidth="-1.0" prefWidth="116.0" text="商品名称" />
+                  <TableColumn fx:id="colProductAmount" editable="false" prefWidth="123.0" text="数量" />
+                  <TableColumn fx:id="colProductPrice" editable="false" prefWidth="119.0" text="单价" />
                </columns></TableView>
             <AnchorPane layoutX="-1.0" layoutY="250.0" prefHeight="44.0" prefWidth="892.0" style="-fx-background-color: #F0F0F0 #F0F0F0;">
                <children>
                   <JFXButton fx:id="btnReturnOrder" buttonType="RAISED" layoutX="801.0" layoutY="9.0" onMouseClicked="#onClickedbtnReturn" prefHeight="27.0" prefWidth="52.0" style="-fx-background-color: #cc0000#cc0000;" text="退货" textFill="WHITE" />
                </children>
             </AnchorPane>
-            <Separator layoutX="467.0" layoutY="96.0" orientation="VERTICAL" prefHeight="153.0" prefWidth="6.0" />
+            <Separator layoutX="489.0" layoutY="97.0" orientation="VERTICAL" prefHeight="145.0" prefWidth="6.0" />
+            <Label fx:id="labOrdertId1" layoutX="125.0" layoutY="51.0" text="ID:" textFill="#b2b0b0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXProgressBar;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
@@ -18,11 +19,19 @@ public class OrderItemController implements Initializable {
     public Label labOrderStatus;
     public TableView tableOrderShopList;
     public JFXButton btnReturnOrder;
+    public TableColumn colProductId;
+    public TableColumn colProductName;
+    public TableColumn colProductAmount;
+    public TableColumn colProductPrice;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pbarOrder.setVisible(false);
         System.out.println("Order Open");
+    }
+
+    public void setTableOrderShopList(){
+
     }
 
     public void setLabOrdertId(int id){
