@@ -108,20 +108,20 @@ public class Order {
     }
 
 
-    public void AcceptOrder(Connection conn,String staff_id){
+    public void AcceptOrder(Connection conn,String staff_id,int OrderId){
         try {
             this.situation = 2;
             this.staff_id = staff_id;
             String sql = "update `order` set staff_id = "
                     +staff_id
                     +"where order_id = "
-                    +this.order_id;
+                    +OrderId;
             PreparedStatement st = conn.prepareStatement(sql);
             st.execute(sql);
             sql = "update `order` set situation = 2"
                     +staff_id
                     +"where order_id = "
-                    +this.order_id;
+                    +OrderId;
             st = conn.prepareStatement(sql);
             st.execute(sql);
         }
@@ -129,6 +129,78 @@ public class Order {
             e.printStackTrace();
         }
         //处理职员接受订单
+    }
+
+    public void DenyOrder(Connection conn,int OrderId){
+        try{
+            String sql = "update `order` set situation = 1 "
+                    +"where order_id = "
+                    +OrderId;
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.execute(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void DeliverOrder(Connection conn,int OrderId){
+        try{
+            String sql = "";
+            PreparedStatement st = conn.prepareStatement(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void AskReturn(Connection conn,int OrderId){
+        try{
+            String sql = "update `order` set situation = 4 "
+                    +"where order_id = "
+                    +OrderId;
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.execute(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void AcceptReturn(Connection conn,int OrderId){
+        try{
+            String sql = "update `order` set situation = 5 "
+                    +"where order_id = "
+                    +OrderId;
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.execute(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void DenyReturn(Connection conn,int OrderId){
+        try{
+            String sql = "update `order` set situation = 3 "
+                    +"where order_id = "
+                    +OrderId;
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.execute(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void ProcessReturn(Connection conn,int OrderId){
+        try{
+            String sql = "";
+            PreparedStatement st = conn.prepareStatement(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void InitOrderById(Connection conn,int id) {
@@ -170,6 +242,34 @@ public class Order {
                 cnt++;
             }
             return OP;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int[] Orders(Connection conn,String account_id){
+        try{
+            String sql = "select count(order_id) from `order` where client_id = " +
+                    "(select client_id from client where account_id = " +
+                    account_id + ")";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            int length = rs.getInt(1);
+            int[] O = new int[length];
+
+            sql = "select order_id from `order` where client_id = " +
+                    "(select client_id from client where account_id = " +
+                    account_id + ")";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            int cnt = 0;
+            while(rs.next()){
+                O[cnt] = rs.getInt(1);
+            }
+            return O;
         }
         catch(Exception e){
             e.printStackTrace();
