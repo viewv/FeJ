@@ -32,10 +32,7 @@ import top.viewv.view.StageManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,7 +41,7 @@ import java.util.logging.Logger;
  */
 // !Thank you very much! oXCToo!
 
-public class newhomeController implements Initializable {
+public class NewHomeController implements Initializable {
 
     public ImageView userIcon;
     public JFXButton btnExit;
@@ -61,6 +58,8 @@ public class newhomeController implements Initializable {
 
     ProductTable pt = new ProductTable();
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
+    //private HashMap<Integer, ArrayList<Integer>> shop_bag = new HashMap<Integer, ArrayList<Integer>>();
+    private HashMap<Integer,String> productdict = new HashMap<Integer,String>();
     private HashMap<Integer,Order_Info> all_Orders = new HashMap<Integer,Order_Info>();
     @FXML
     private VBox pnl_scroll;
@@ -72,6 +71,7 @@ public class newhomeController implements Initializable {
         testLab.setVisible(false);
         try {
             Serialize.ser(order_lists, "order.ser");
+            Serialize.ser(productdict,"product.ser");
             pt.GetLength(conn);
             pt.GetContent(conn);
         } catch (Exception e) {
@@ -87,11 +87,13 @@ public class newhomeController implements Initializable {
         labUserName.setText(userName);
     }
 
-    public void refreshNodes() {
+    public void refreshNodes() throws Exception {
         btnCheckAll.setVisible(false);
         System.out.println("Start Refresh Node");
         pbarBusy.setVisible(true);
         pnl_scroll.getChildren().clear();
+
+        HashMap<Integer,String> productdict = Serialize.dSer("product.ser");
 
         RecipeTable rt = new RecipeTable();
 
@@ -120,11 +122,15 @@ public class newhomeController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
                 //pnl_scroll.getChildren().removeAll();
+                if (!productdict.containsKey(pt.Ptable[i].product_id)){
+                    productdict.put(pt.Ptable[i].product_id,pt.Ptable[i].product_name);
+                }
             } catch (IOException ex) {
-                Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         pbarBusy.setVisible(false);
+        Serialize.ser(productdict,"product.ser");
     }
 
     public void setUserIcon(String email) {
@@ -185,7 +191,7 @@ public class newhomeController implements Initializable {
                 //pnl_scroll.getChildren().removeAll();
                 i++;
             } catch (IOException ex) {
-                Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -218,7 +224,7 @@ public class newhomeController implements Initializable {
         Serialize.ser(order_lists, "order.ser");
 
     }
-    public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) {
+    public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) throws Exception {
         refreshNodes();
     }
 
@@ -255,7 +261,7 @@ public class newhomeController implements Initializable {
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (IOException ex) {
-                Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -284,7 +290,7 @@ public class newhomeController implements Initializable {
 //                //pnl_scroll.getChildren().removeAll();
 //                i++;
 //            } catch (IOException ex) {
-//                Logger.getLogger(newhomeController.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
 //            }
 //        }
     }

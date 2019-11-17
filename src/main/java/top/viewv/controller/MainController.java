@@ -23,7 +23,6 @@ import top.viewv.database.Login;
 import top.viewv.database.Signup;
 import top.viewv.view.StageManager;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.Objects;
@@ -73,7 +72,7 @@ public class MainController implements Initializable  {
     }
 
     @FXML
-    public void GetInput() throws IOException, IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+    public void GetInput() throws Exception {
         user_id = userInput.getText().trim();
         String password = passwordInput.getText().trim();
         Login login = new Login();
@@ -151,7 +150,7 @@ public class MainController implements Initializable  {
         GroupSignup.setVisible(true);
     }
 
-    public void Switch() throws IOException {
+    public void Switch() throws Exception {
 
         Stage stage = new Stage();
         System.out.println("Start Login");
@@ -161,14 +160,14 @@ public class MainController implements Initializable  {
 
         FXMLLoader loader = new
                 FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
-                .getResource("data/ui/newhome.fxml"));
+                .getResource("data/ui/NewHome.fxml"));
 
 
         Parent root = loader.load();
         stage.setTitle("Home Page");
         stage.setScene(new Scene(root));
         stage.show();
-        newhomeController homeControl = loader.getController();
+        NewHomeController homeControl = loader.getController();
         homeControl.setLabUserName("ViewvLab");
         homeControl.refreshNodes();
         homeControl.setUserIcon("qianrui1999@qq.com");
@@ -186,7 +185,7 @@ public class MainController implements Initializable  {
     public void setTranDataToIndex(String tranDataToIndex) {
     }
 
-    public void enterPress(KeyEvent keyEvent) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException, IOException {
+    public void enterPress(KeyEvent keyEvent) throws Exception {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             if (GroupLogin.isVisible()) {
                 GetInput();

@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class OrderItemController implements Initializable {
@@ -49,7 +50,8 @@ public class OrderItemController implements Initializable {
     }
 
     public void setLabPrice(float price){
-        labPrice.setText(String.valueOf(price));
+        DecimalFormat df = new DecimalFormat("0.00");
+        labPrice.setText(String.valueOf(df.format(price)));
     }
 
     public void setLabOrderStatus(int status){

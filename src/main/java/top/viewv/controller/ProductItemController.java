@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import top.viewv.api.Serialize;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
