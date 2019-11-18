@@ -79,11 +79,11 @@ public class MainController implements Initializable  {
         Login login = new Login();
 
         //TODO Rember to remove it when finish!
-        String superuser = "zxnnet@gmail.com";
-
+        String superuser = "!@#";
+        //TODO Rember to remove it when finish!
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            Switch();
+            PlanSwitch();
         } else {
             String result = login.LoginFun(user_id, password, conn);
             String icon;
@@ -96,8 +96,6 @@ public class MainController implements Initializable  {
                 } else {
                     icon = result;
                     System.out.println(icon);
-                    //TODO make icon as a web url that can be download as a file
-                    // fun()
                     Switch();
                 }
             } else {
@@ -178,6 +176,37 @@ public class MainController implements Initializable  {
         //将本窗口保存到map中
         StageManager.CONTROLLER.put("index", this);
 
+        //关闭本窗口
+        Stage index = (Stage) loginPane.getScene().getWindow();
+        index.close();
+    }
+
+    public void PlanSwitch() throws Exception {
+
+        Stage stage = new Stage();
+        System.out.println("Start Login");
+
+        labLoadiInd.setText("Loading...");
+        pbarLoad.setVisible(true);
+
+        FXMLLoader loader = new
+                FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                .getResource("data/ui/PlanHome.fxml"));
+
+
+        Parent root = loader.load();
+        stage.setTitle("Plan Home Page");
+        stage.setScene(new Scene(root));
+        stage.show();
+        PlanHomeController homeControl = loader.getController();
+        homeControl.setLabUserName("ViewvLab");
+        homeControl.setUserIcon("qianrui1999@qq.com");
+        homeControl.setlabUserId(user_id);
+        homeControl.refreshNodes();
+        //将第二个窗口保存到map中
+        StageManager.STAGE.put("second", stage);
+        //将本窗口保存到map中
+        StageManager.CONTROLLER.put("index", this);
         //关闭本窗口
         Stage index = (Stage) loginPane.getScene().getWindow();
         index.close();

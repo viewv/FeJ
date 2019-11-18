@@ -7,15 +7,11 @@ import javafx.scene.input.MouseEvent;
 import java.text.DecimalFormat;
 
 public class ShopListItemController {
-    public JFXButton btnDelShopItem;
     public Label labSinglePrice;
     public Label labAmount;
     public Label labProductId;
     public Label labAllPrice;
     public Label labProductName;
-
-    public void onClickedbtnDelShopItem(MouseEvent mouseEvent) {
-    }
 
     public void setLabSinglePrice(float price){
         labSinglePrice.setText(String.valueOf(price));
