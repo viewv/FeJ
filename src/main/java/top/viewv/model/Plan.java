@@ -102,5 +102,29 @@ public class Plan {
         }
         return null;
     }
+
+    public Plan_content[] GetPlist(Connection conn){
+        try{
+            String sql = "select count(*) from plan_content";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            int row = rs.getInt(1);
+
+            Plan_content[] Plist = new Plan_content[row];
+            sql = "select plan_id,workshop_id,product_id,amount from plan_content";
+            rs = st.executeQuery();
+            int cnt = 0;
+            while(rs.next()){
+                Plist[cnt] = new Plan_content(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4));
+                cnt++;
+            }
+            return Plist;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
