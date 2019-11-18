@@ -79,7 +79,7 @@ public class MainController implements Initializable  {
         Login login = new Login();
 
         //TODO Rember to remove it when finish!
-        String superuser = "!@#";
+        String superuser = "124";
         //TODO Rember to remove it when finish!
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");

@@ -46,7 +46,7 @@
                      </children>
                   </Group>
                   <JFXButton fx:id="btnAddToShop" buttonType="RAISED" layoutX="727.0" layoutY="15.0" onMouseClicked="#onClickedbtnAddToShop" prefHeight="29.0" prefWidth="70.0" style="-fx-background-color: #ff6f00#ff6f00;" text="加入计划" textFill="WHITE" />
-                  <JFXTextField alignment="BOTTOM_RIGHT" layoutX="604.0" layoutY="16.0" prefHeight="27.0" prefWidth="70.0" text="1" />
+                  <JFXTextField fx:id="tfxLineNum" alignment="BOTTOM_RIGHT" layoutX="604.0" layoutY="16.0" prefHeight="27.0" prefWidth="70.0" text="1" />
                   <Label alignment="BOTTOM_RIGHT" layoutX="674.0" layoutY="18.0" prefHeight="23.0" prefWidth="34.0" text="车间" textFill="#ff6f00">
                      <font>
                         <Font size="15.0" />

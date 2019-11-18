@@ -34,19 +34,19 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labSinglePrice" alignment="TOP_RIGHT" layoutX="343.0" layoutY="34.0" prefHeight="44.0" prefWidth="276.0" text="0" textFill="#aeacac">
+                <Label fx:id="labSinglePrice" alignment="TOP_RIGHT" layoutX="343.0" layoutY="34.0" prefHeight="44.0" prefWidth="276.0" text="16" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
                 </Label>
                 <Label layoutX="625.0" layoutY="59.0" text="元" textFill="#3a1c9d" />
-                <Separator layoutX="661.0" layoutY="13.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
+                <Separator layoutX="651.0" layoutY="13.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
                 <Label layoutX="738.0" layoutY="13.0" text="件数" textFill="#3a1c9d">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labAmount" alignment="CENTER_RIGHT" layoutX="667.0" layoutY="34.0" prefHeight="44.0" prefWidth="103.0" text="0" textFill="#aeacac">
+                <Label fx:id="labAmount" alignment="CENTER_RIGHT" layoutX="669.0" layoutY="34.0" prefHeight="44.0" prefWidth="103.0" text="30" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
@@ -57,17 +57,16 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-            <Label layoutX="737.0" layoutY="104.0" text="总价" textFill="#3a1c9d">
+            <Label layoutX="61.0" layoutY="104.0" text="总价" textFill="#3a1c9d">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="labAllPrice" alignment="CENTER_RIGHT" layoutX="309.0" layoutY="123.0" prefHeight="44.0" prefWidth="461.0" text="0" textFill="#aeacac">
+            <Label fx:id="labAllPrice" alignment="TOP_LEFT" layoutX="61.0" layoutY="123.0" prefHeight="44.0" prefWidth="436.0" text="16" textFill="#aeacac">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="781.0" layoutY="145.0" text="元" textFill="#3a1c9d" />
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

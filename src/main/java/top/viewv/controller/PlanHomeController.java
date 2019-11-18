@@ -7,6 +7,7 @@ package top.viewv.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXSnackbar;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,7 +23,8 @@ import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.api.Serialize;
 import top.viewv.database.Connect;
-import top.viewv.model.Order;
+import top.viewv.model.Plan;
+import top.viewv.model.PlanInfo;
 import top.viewv.model.Product;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.model.Tables.RecipeTable;
@@ -31,10 +33,10 @@ import top.viewv.view.StageManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -56,8 +58,7 @@ public class PlanHomeController implements Initializable {
     public JFXButton btnClean;
     Connection conn = new Connect().getConnection();
 
-    private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
-    private Product product = new Product(0, "0", 0, (float) 0.1, "0");
+    private ArrayList<PlanInfo> planInfos = new ArrayList<PlanInfo>();
     @FXML
     private VBox pnl_scroll;
 
@@ -75,8 +76,7 @@ public class PlanHomeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             setCorlVis(false);
-            Serialize.ser(order_lists, "order.ser");
-
+            Serialize.ser(planInfos, "plan.ser");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,6 +93,7 @@ public class PlanHomeController implements Initializable {
     public void refreshNodes() throws Exception {
         System.out.println("Start Refresh Node");
         pnl_scroll.getChildren().clear();
+        setCorlVis(false);
 
         ProductTable pt = new ProductTable();
         pt.GetLength(conn);
@@ -162,40 +163,32 @@ public class PlanHomeController implements Initializable {
 
     public void refeshShopList() throws Exception {
         pnl_scroll.getChildren().clear();
-        order_lists = Serialize.dSer("order.ser");
-        int length = order_lists.size();
+        planInfos = Serialize.planInfodser("plan.ser");
+        int length = planInfos.size();
+
+        PlanInfo planInfo;
 
         Node[] nodes = new Node[length];
         Node node;
-        int i = 0;
-        for (Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
-            Integer key = entry.getKey();
-            Integer value = entry.getValue();
-            System.out.println(key);
-            System.out.println(value);
-            System.out.println("-----");
+        int i ;
+        for (i = 0;i < length;i++){
+            planInfo = planInfos.get(i);
             try {
                 FXMLLoader loader = new
                         FXMLLoader(Objects.requireNonNull(
                         Thread.currentThread().
                                 getContextClassLoader().
-                                getResource("data/ui/ShopListItem.fxml")));
+                                getResource("data/ui/PlanListItem.fxml")));
                 node = loader.load();
-                ShopListItemController shopListItemController = loader.getController();
-                shopListItemController.setLabProductId(key);
-                shopListItemController.setLabAmount(value);
-                product.GetProduct(conn, key);
-                //shopListItemController.setLabProductName(productdict.get(key));
-                shopListItemController.setLabProductName(product.product_name);
-                shopListItemController.setLabSinglePrice(product.product_price);
-                shopListItemController.setLabAllPrice();
+                PlanListItemController itemController = loader.getController();
+                itemController.setLabAmount(planInfo.getAmount());
+                itemController.setLabProductId(planInfo.getProduct_id());
+                itemController.setLabProductName(planInfo.getProduct_name());
+                itemController.setLabLine(planInfo.getLine_id());
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
-                //删除所有节点，有点残忍，还是隐藏比较好
-                //pnl_scroll.getChildren().removeAll();
-                i++;
-            } catch (IOException ex) {
-                Logger.getLogger(PlanHomeController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -205,9 +198,41 @@ public class PlanHomeController implements Initializable {
         refreshNodes();
     }
 
-    public void onClickedbtnCheckAll(MouseEvent mouseEvent) {
+    public void onClickedbtnCheckAll(MouseEvent mouseEvent)  {
+        try {
+            Plan plan = new Plan();
+            planInfos = Serialize.planInfodser("plan.ser");
+            PlanInfo planInfo;
+            int length = planInfos.size();
+            int[][] mess = new int[length][3];
+            for(int i = 0;i<length;i++){
+                planInfo = planInfos.get(i);
+                mess[i][0] = planInfo.getProduct_id();
+                mess[i][1] = planInfo.getAmount();
+                mess[i][2] = planInfo.getLine_id();
+            }
+            LocalDate start = jdpStartTime.getValue();
+            LocalDate due = jdpDueTime.getValue();
+            Date startdate = Date.valueOf(start);
+            Date duedate = Date.valueOf(due);
+            plan.SetPlan(mess,startdate,duedate,userId.getText(),conn);
+
+            JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+            snackbar.show("Send Order Successfully", 1000);
+            planInfos.clear();
+            Serialize.ser(planInfos,"plan.ser");
+            refeshShopList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+            snackbar.show("Send Order Failed", 1000);
+        }
     }
 
-    public void onClickedbtnClean(MouseEvent mouseEvent) {
+    public void onClickedbtnClean(MouseEvent mouseEvent) throws Exception {
+        planInfos = Serialize.planInfodser("plan.ser");
+        planInfos.clear();
+        Serialize.ser(planInfos,"plan.ser");
+        refeshShopList();
     }
 }

@@ -2,16 +2,18 @@ package top.viewv.model;
 
 import java.io.Serializable;
 
-public class plan_info implements Serializable {
+public class PlanInfo implements Serializable {
     private int product_id;
     private int amount;
     private int line_id;
+    private String product_name;
 
 
-    public plan_info(int product_id, int amount, int line_id) {
+    public PlanInfo(int product_id, int amount, int line_id, String product_name) {
         this.product_id = product_id;
         this.amount = amount;
         this.line_id = line_id;
+        this.product_name = product_name;
     }
 
 
@@ -37,5 +39,13 @@ public class plan_info implements Serializable {
 
     public void setLine_id(int line_id) {
         this.line_id = line_id;
+    }
+
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
     }
 }

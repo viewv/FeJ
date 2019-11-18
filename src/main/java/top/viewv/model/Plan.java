@@ -15,7 +15,7 @@ public class Plan {
     public int[][] Pro;
 
 
-    public void SetPlan(int[][] mess, java.sql.Date start_time, java.sql.Date end_time, int Aid, Connection conn){
+    public void SetPlan(int[][] mess, java.sql.Date start_time, java.sql.Date end_time, String Aid, Connection conn){
         try{
             this.Pro = mess;
             this.start_time = start_time;
@@ -24,12 +24,12 @@ public class Plan {
             String sql;
             PreparedStatement st;
             ResultSet rs;
-            sql = "select client_id from client where account_id = " +  Aid;
+            sql = "select staff_id from staff where account_id = " +  Aid;
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             rs.next();
             this.planner_id = rs.getString(1);
-            sql = "select count(order_id) from `order`";
+            sql = "select count(plan_id) from plan";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             rs.next();
@@ -37,9 +37,9 @@ public class Plan {
 
 
             sql = "insert into plan values(" +
-                    plan_id + "," +
+                    plan_id + ",'" +
                     start_time + " 00:00:00','" +
-                    end_time + " 00:00:00','" +
+                    end_time + " 00:00:00'," +
                     planner_id + ")";
             st.execute(sql);
 

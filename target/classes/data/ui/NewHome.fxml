@@ -235,13 +235,18 @@
             <Label fx:id="testLab" layoutX="293.0" layoutY="14.0" onMouseClicked="#onclickedTestArray" text="Label" />
             <JFXProgressBar fx:id="pbarBusy" layoutX="353.0" layoutY="14.0" prefHeight="17.0" />
             <JFXButton fx:id="btnCleanShopList" buttonType="RAISED" layoutX="1068.0" layoutY="9.0" onMouseClicked="#onClickedbtnCleanShopList" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #cc0000;" text="清空" textFill="WHITE" />
-            <JFXTextField fx:id="areAmount" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="982.0" layoutY="9.0" prefHeight="27.0" prefWidth="61.0" promptText="天数" />
-            <Label layoutX="690.0" layoutY="14.0" text="总金额" textFill="#3a1c9d">
+            <JFXTextField fx:id="areAmount" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="982.0" layoutY="9.0" prefHeight="27.0" prefWidth="61.0" promptText="天数" text="0" />
+            <Label layoutX="695.0" layoutY="13.0" text="总金额" textFill="#3a1c9d">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="743.0" layoutY="14.0" prefHeight="18.0" prefWidth="227.0" text="0">
+            <Label alignment="CENTER_RIGHT" layoutX="737.0" layoutY="14.0" prefHeight="18.0" prefWidth="189.0" text="0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="954.0" layoutY="14.0" text="天数" textFill="#3a1c9d">
                <font>
                   <Font size="14.0" />
                </font>
