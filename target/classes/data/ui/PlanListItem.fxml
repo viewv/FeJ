@@ -19,7 +19,7 @@
                     </image>
                 </ImageView>
                 <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
-                <Label fx:id="labProductName" layoutX="123.0" layoutY="18.0" text="Produc Name" textFill="#ff6f00">
+                <Label fx:id="labProductName" layoutX="123.0" layoutY="18.0" text="Produc Name" textFill="#3a1c9d">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -29,7 +29,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="738.0" layoutY="104.0" text="件数" textFill="#ff6f00">
+                <Label layoutX="738.0" layoutY="104.0" text="件数" textFill="#3a1c9d">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -39,7 +39,7 @@
                         <Font name="System Bold" size="36.0" />
                     </font>
                 </Label>
-                <Label layoutX="738.0" layoutY="13.0" text="车间" textFill="#ff6f00">
+                <Label layoutX="738.0" layoutY="13.0" text="车间" textFill="#3a1c9d">
                     <font>
                         <Font size="14.0" />
                     </font>
