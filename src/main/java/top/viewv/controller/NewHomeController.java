@@ -25,6 +25,7 @@ import top.viewv.api.Serialize;
 import top.viewv.database.Connect;
 import top.viewv.model.Order;
 import top.viewv.model.Order_Info;
+import top.viewv.model.Product;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.model.Tables.RecipeTable;
 import top.viewv.view.StageManager;
@@ -59,8 +60,9 @@ public class NewHomeController implements Initializable {
     ProductTable pt = new ProductTable();
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
     //private HashMap<Integer, ArrayList<Integer>> shop_bag = new HashMap<Integer, ArrayList<Integer>>();
-    private HashMap<Integer,String> productdict = new HashMap<Integer,String>();
+    //private HashMap<Integer,String> productdict = new HashMap<Integer,String>();
     private HashMap<Integer,Order_Info> all_Orders = new HashMap<Integer,Order_Info>();
+    private Product product = new Product(0,"0",0, (float) 0.1,"0");
     @FXML
     private VBox pnl_scroll;
 
@@ -71,9 +73,7 @@ public class NewHomeController implements Initializable {
         testLab.setVisible(false);
         try {
             Serialize.ser(order_lists, "order.ser");
-            Serialize.ser(productdict,"product.ser");
-            pt.GetLength(conn);
-            pt.GetContent(conn);
+            //Serialize.ser(productdict,"product.ser");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -92,6 +92,10 @@ public class NewHomeController implements Initializable {
         System.out.println("Start Refresh Node");
         pbarBusy.setVisible(true);
         pnl_scroll.getChildren().clear();
+
+        ProductTable pt = new ProductTable();
+        pt.GetLength(conn);
+        pt.GetContent(conn);
 
         HashMap<Integer,String> productdict = Serialize.dSer("product.ser");
 
@@ -166,6 +170,8 @@ public class NewHomeController implements Initializable {
         pnl_scroll.getChildren().clear();
         order_lists = Serialize.dSer("order.ser");
         int length = order_lists.size();
+        //我觉得吧，这里还是要实时从数据库调出来数据，根据产品id
+        //HashMap<Integer,String> productdict = Serialize.dSer("product.ser");
         Node[] nodes = new Node[length];
         Node node;
         int i = 0;
@@ -180,11 +186,16 @@ public class NewHomeController implements Initializable {
                         FXMLLoader(Objects.requireNonNull(
                         Thread.currentThread().
                                 getContextClassLoader().
-                                getResource("data/ui/ProductItem.fxml")));
+                                getResource("data/ui/ShopListItem.fxml")));
                 node = loader.load();
-                ProductItemController productItemController = loader.getController();
-                productItemController.setLabPrice(key);
-                productItemController.setLabProductRtime(value);
+                ShopListItemController shopListItemController = loader.getController();
+                shopListItemController.setLabProductId(key);
+                shopListItemController.setLabAmount(value);
+                product.GetProduct(conn,key);
+                //shopListItemController.setLabProductName(productdict.get(key));
+                shopListItemController.setLabProductName(product.product_name);
+                shopListItemController.setLabSinglePrice(product.product_price);
+                shopListItemController.setLabAllPrice();
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
@@ -264,35 +275,6 @@ public class NewHomeController implements Initializable {
                 Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
-//        int i = 0;
-//        for (Map.Entry<Integer, Order_Info> entry : all_Orders.entrySet()) {
-//            Integer key = entry.getKey();
-//            Order_Info value = entry.getValue();
-//            System.out.println(key);
-//            System.out.println(value);
-//            System.out.println("-----");
-//            try {
-//                FXMLLoader loader = new
-//                        FXMLLoader(Objects.requireNonNull(
-//                        Thread.currentThread().
-//                                getContextClassLoader().
-//                                getResource("data/ui/OrderItem.fxml")));
-//                node = loader.load();
-//                OrderItemController orderItemController = loader.getController();
-//                //调用生成table
-//                orderItemController.setLabOrderStatus(value.getSituation());
-//                orderItemController.setLabPrice(value.getDeposit());
-//                orderItemController.setLabOrdertId(key);
-//                nodes[i] = node;
-//                pnl_scroll.getChildren().add(nodes[i]);
-//                //删除所有节点，有点残忍，还是隐藏比较好
-//                //pnl_scroll.getChildren().removeAll();
-//                i++;
-//            } catch (IOException ex) {
-//                Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
     }
 
     public void onclickedTestArray(MouseEvent mouseEvent) throws Exception {

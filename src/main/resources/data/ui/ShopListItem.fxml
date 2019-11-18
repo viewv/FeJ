@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
@@ -13,9 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="950.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.ShopListItemController">
+<AnchorPane id="AnchorPane" prefHeight="226.0" prefWidth="950.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.ShopListItemController">
     <children>
-        <Pane layoutX="29.0" layoutY="22.0" prefHeight="340.0" prefWidth="895.0" style="-fx-background-color: #fff;">
+        <Pane layoutX="28.0" layoutY="22.0" prefHeight="260.0" prefWidth="895.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
             <children>
                 <ImageView fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -33,66 +30,45 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Pane layoutY="269.0" prefHeight="70.0" prefWidth="896.0" style="-fx-background-color: #F0F0F0;">
-                    <children>
-                  <Group layoutX="613.0" layoutY="27.0">
-                     <children>
-                        <Label alignment="BOTTOM_RIGHT" layoutX="67.0" layoutY="2.0" prefHeight="23.0" prefWidth="34.0" text="件数" textFill="#3a1c9d">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <JFXTextField fx:id="tfxNumberInput" alignment="BOTTOM_RIGHT" layoutX="3.0" prefHeight="14.0" prefWidth="64.0" text="1" />
-                     </children>
-                  </Group>
-                  <JFXButton fx:id="btnAddToShop" buttonType="RAISED" layoutX="728.0" layoutY="26.0" onMouseClicked="#onClickedbtnAddToShop" prefHeight="29.0" prefWidth="70.0" style="-fx-background-color: #3a1c9d#3a1c9d;" text="加入订单" textFill="WHITE" />
-                    </children>
-                </Pane>
-                <Label layoutX="619.0" layoutY="13.0" text="价格" textFill="#3a1c9d">
+            <JFXButton fx:id="btnDelShopItem" buttonType="RAISED" layoutX="721.0" layoutY="138.0" onMouseClicked="#onClickedbtnDelShopItem" prefHeight="29.0" prefWidth="70.0" style="-fx-background-color: #cc0000;" text="移除商品" textFill="WHITE" />
+                <Label layoutX="591.0" layoutY="9.0" text="单价" textFill="#3a1c9d">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="484.0" layoutY="34.0" prefHeight="44.0" prefWidth="168.0" text="16" textFill="#aeacac">
+                <Label fx:id="labSinglePrice" alignment="TOP_RIGHT" layoutX="343.0" layoutY="34.0" prefHeight="44.0" prefWidth="276.0" text="16" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
                 </Label>
-                <Label layoutX="665.0" layoutY="59.0" text="元" textFill="#3a1c9d" />
-                <Separator layoutX="692.0" layoutY="13.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
-                <Label layoutX="725.0" layoutY="13.0" text="保质期" textFill="#3a1c9d">
+                <Label layoutX="625.0" layoutY="59.0" text="元" textFill="#3a1c9d" />
+                <Separator layoutX="651.0" layoutY="13.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
+                <Label layoutX="738.0" layoutY="13.0" text="件数" textFill="#3a1c9d">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labProductRtime" alignment="CENTER_RIGHT" layoutX="699.0" layoutY="33.0" prefHeight="44.0" prefWidth="67.0" text="30" textFill="#aeacac">
+                <Label fx:id="labAmount" alignment="CENTER_RIGHT" layoutX="669.0" layoutY="34.0" prefHeight="44.0" prefWidth="103.0" text="30" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
                 </Label>
-                <Label layoutX="773.0" layoutY="59.0" text="天" textFill="#3a1c9d" />
+                <Label layoutX="781.0" layoutY="59.0" text="件" textFill="#3a1c9d" />
                 <Label fx:id="labProductId" layoutX="123.0" layoutY="51.0" text="ID: 20178" textFill="#b2b0b0">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-            <Label fx:id="labDescrption" alignment="TOP_LEFT" layoutX="41.0" layoutY="125.0" prefHeight="136.0" prefWidth="376.0">
+            <Label layoutX="61.0" layoutY="104.0" text="总价" textFill="#3a1c9d">
                <font>
-                  <Font size="18.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="440.0" layoutY="103.0" prefHeight="18.0" prefWidth="34.0" text="配方" textFill="#3a1c9d">
+            <Label fx:id="labAllPrice" alignment="TOP_LEFT" layoutX="61.0" layoutY="123.0" prefHeight="44.0" prefWidth="336.0" text="16" textFill="#aeacac">
                <font>
-                  <Font size="16.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="41.0" layoutY="103.0" prefHeight="18.0" prefWidth="34.0" text="介绍" textFill="#3a1c9d">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Separator layoutX="423.0" layoutY="103.0" orientation="VERTICAL" prefHeight="161.0" prefWidth="6.0" />
-            <JFXTreeTableView fx:id="recipeTable" layoutX="441.0" layoutY="125.0" prefHeight="136.0" prefWidth="361.0" />
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
