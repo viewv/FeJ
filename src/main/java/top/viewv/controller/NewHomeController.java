@@ -66,6 +66,9 @@ public class NewHomeController implements Initializable {
     @FXML
     private VBox pnl_scroll;
 
+    public NewHomeController() throws IOException, ClassNotFoundException {
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btnCheckAll.setVisible(false);

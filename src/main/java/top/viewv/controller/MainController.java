@@ -23,6 +23,7 @@ import top.viewv.database.Login;
 import top.viewv.database.Signup;
 import top.viewv.view.StageManager;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.Objects;
@@ -197,7 +198,13 @@ public class MainController implements Initializable  {
 
     class ThreadType extends Thread {
         public void run() {
-            conn = new Connect().getConnection();
+            try {
+                conn = new Connect().getConnection();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

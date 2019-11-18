@@ -1,27 +1,27 @@
 package top.viewv.database;
 
+import top.viewv.api.Serialize;
+
+import java.io.IOException;
 import java.sql.*;
 
 public class Connect {
 
     Connection conn = null;
 
-    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://rm-wz9sa6hd1097u6rx4bo.mysql.rds.aliyuncs.com:3306/fems";
-    static final String USER = "root";
-    static final String PASS = "Ingram14";
-
-    public Connection getConnection(){
-
+    public Connection getConnection() throws IOException, ClassNotFoundException {
+        ConnectInfo connectInfo = Serialize.connder("conn.ser");
+        String JDBC_DRIVER = connectInfo.getJDBC_DRIVER();
+        String DB_URL = connectInfo.getDB_URL() ;
+        String USER = connectInfo.getUSER();
+        String PASS = connectInfo.getPASS();
         try {
             Class.forName(JDBC_DRIVER);
             // 打开链接
             System.out.println("连接数据库...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
             return conn;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return null;
