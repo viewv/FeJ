@@ -33,19 +33,25 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Pane layoutY="269.0" prefHeight="70.0" prefWidth="896.0" style="-fx-background-color: #F0F0F0;">
+                <Pane layoutY="281.0" prefHeight="58.0" prefWidth="896.0" style="-fx-background-color: #F0F0F0;">
                     <children>
-                  <Group layoutX="613.0" layoutY="27.0">
+                  <Group layoutX="491.0" layoutY="26.0">
                      <children>
-                        <Label alignment="BOTTOM_RIGHT" layoutX="67.0" layoutY="2.0" prefHeight="23.0" prefWidth="34.0" text="件数" textFill="#ff6f00">
+                        <Label alignment="BOTTOM_RIGHT" layoutX="70.0" layoutY="-7.0" prefHeight="23.0" prefWidth="34.0" text="件数" textFill="#ff6f00">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="tfxNumberInput" alignment="BOTTOM_RIGHT" layoutX="3.0" prefHeight="14.0" prefWidth="64.0" text="1" />
+                        <JFXTextField fx:id="tfxNumberInput" alignment="BOTTOM_RIGHT" layoutX="3.0" layoutY="-11.0" prefHeight="14.0" prefWidth="64.0" text="1" />
                      </children>
                   </Group>
-                  <JFXButton fx:id="btnAddToShop" buttonType="RAISED" layoutX="728.0" layoutY="26.0" onMouseClicked="#onClickedbtnAddToShop" prefHeight="29.0" prefWidth="70.0" style="-fx-background-color: #ff6f00#ff6f00;" text="加入订单" textFill="WHITE" />
+                  <JFXButton fx:id="btnAddToShop" buttonType="RAISED" layoutX="727.0" layoutY="15.0" onMouseClicked="#onClickedbtnAddToShop" prefHeight="29.0" prefWidth="70.0" style="-fx-background-color: #ff6f00#ff6f00;" text="加入计划" textFill="WHITE" />
+                  <JFXTextField alignment="BOTTOM_RIGHT" layoutX="604.0" layoutY="16.0" prefHeight="27.0" prefWidth="70.0" text="1" />
+                  <Label alignment="BOTTOM_RIGHT" layoutX="674.0" layoutY="18.0" prefHeight="23.0" prefWidth="34.0" text="车间" textFill="#ff6f00">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
                     </children>
                 </Pane>
                 <Label layoutX="619.0" layoutY="13.0" text="价格" textFill="#ff6f00">
@@ -53,7 +59,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="484.0" layoutY="34.0" prefHeight="44.0" prefWidth="168.0" text="16" textFill="#aeacac">
+                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="305.0" layoutY="34.0" prefHeight="44.0" prefWidth="347.0" text="0" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
@@ -65,7 +71,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labProductRtime" alignment="CENTER_RIGHT" layoutX="699.0" layoutY="33.0" prefHeight="44.0" prefWidth="67.0" text="30" textFill="#aeacac">
+                <Label fx:id="labProductRtime" alignment="CENTER_RIGHT" layoutX="699.0" layoutY="33.0" prefHeight="44.0" prefWidth="67.0" text="0" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>

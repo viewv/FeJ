@@ -55,7 +55,7 @@ public class ProductItemController implements Initializable {
         int product_id = Integer.parseInt(labProductId.getText().trim());
         HashMap<Integer, Integer> order_lists = Serialize.dSer("order.ser");
         if (order_lists.containsKey(product_id)){
-            int amount = order_lists.get(1);
+            int amount = order_lists.get(product_id);
             amount += numbers;
             order_lists.put(product_id,amount);
         }else {

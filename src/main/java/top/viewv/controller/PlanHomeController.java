@@ -6,6 +6,7 @@ package top.viewv.controller;
  */
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -49,6 +50,10 @@ public class PlanHomeController implements Initializable {
     public AnchorPane BasePane;
     public Label labUserName;
     public Label userId;
+    public JFXButton btnCheckAll;
+    public JFXDatePicker jdpStartTime;
+    public JFXDatePicker jdpDueTime;
+    public JFXButton btnClean;
     Connection conn = new Connect().getConnection();
 
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
@@ -59,11 +64,19 @@ public class PlanHomeController implements Initializable {
     public PlanHomeController() throws IOException, ClassNotFoundException {
     }
 
+    public void setCorlVis(boolean cond){
+        btnClean.setVisible(cond);
+        btnCheckAll.setVisible(cond);
+        jdpStartTime.setVisible(cond);
+        jdpDueTime.setVisible(cond);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            setCorlVis(false);
             Serialize.ser(order_lists, "order.ser");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -143,6 +156,7 @@ public class PlanHomeController implements Initializable {
     }
 
     public void onClickedbtnShopList(MouseEvent mouseEvent) throws Exception {
+        setCorlVis(true);
         refeshShopList();
     }
 
@@ -191,39 +205,9 @@ public class PlanHomeController implements Initializable {
         refreshNodes();
     }
 
-    public void onClinckbtnOrderInfo(MouseEvent mouseEvent) throws Exception {
+    public void onClickedbtnCheckAll(MouseEvent mouseEvent) {
+    }
 
-        Order order = new Order();
-        int[] allOrderId = order.Orders(conn, userId.getText());
-        int length = allOrderId.length;
-        Node[] nodes = new Node[length];
-        Node node;
-
-        pnl_scroll.getChildren().clear();
-
-        for (int i = 0; i < length; i++) {
-            int orderid = allOrderId[i];
-            System.out.println("Order ID" + orderid);
-            order.InitOrderById(conn, orderid);
-            try {
-                FXMLLoader loader = new
-                        FXMLLoader(Objects.requireNonNull(
-                        Thread.currentThread().
-                                getContextClassLoader().
-                                getResource("data/ui/OrderItem.fxml")));
-                node = loader.load();
-                OrderItemController orderItemController = loader.getController();
-                //调用生成table
-                orderItemController.setLabOrderStatus(order.situation);
-                orderItemController.setLabPrice(order.deposit + order.retainage);
-                orderItemController.setLabOrdertId(orderid);
-                orderItemController.setOrderStime(order.order_time);
-                orderItemController.setOrderPtime(order.due_time);
-                nodes[i] = node;
-                pnl_scroll.getChildren().add(nodes[i]);
-            } catch (IOException ex) {
-                Logger.getLogger(PlanHomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+    public void onClickedbtnClean(MouseEvent mouseEvent) {
     }
 }

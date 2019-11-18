@@ -1,6 +1,7 @@
 package top.viewv.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
 import javafx.fxml.Initializable;
@@ -52,15 +53,15 @@ public class PlanProItemController implements Initializable {
     public void onClickedbtnAddToShop() throws Exception {
         int numbers = Integer.parseInt(tfxNumberInput.getText().trim());
         int product_id = Integer.parseInt(labProductId.getText().trim());
-        HashMap<Integer, Integer> order_lists = Serialize.dSer("order.ser");
-        if (order_lists.containsKey(product_id)){
-            int amount = order_lists.get(1);
+        HashMap<Integer, Integer> plan_list = Serialize.dSer("plan.ser");
+        if (plan_list.containsKey(product_id)){
+            int amount = plan_list.get(1);
             amount += numbers;
-            order_lists.put(product_id,amount);
+            plan_list.put(product_id,amount);
         }else {
-            order_lists.put(product_id,numbers);
+            plan_list.put(product_id,numbers);
         }
-        Serialize.ser(order_lists, "order.ser");
+        Serialize.ser(plan_list, "order.ser");
         System.out.println("Ser Ok!");
     }
 }
