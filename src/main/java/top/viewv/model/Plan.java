@@ -12,10 +12,10 @@ public class Plan {
     public java.sql.Date start_time;
     public java.sql.Date end_time;
     public String planner_id;
-    public HashMap<Integer,Integer>[] Pro;
+    public int[][] Pro;
 
 
-    public void SetPlan(HashMap[] mess, java.sql.Date start_time, java.sql.Date end_time, int Aid, Connection conn){
+    public void SetPlan(int[][] mess, java.sql.Date start_time, java.sql.Date end_time, int Aid, Connection conn){
         try{
             this.Pro = mess;
             this.start_time = start_time;
@@ -45,15 +45,13 @@ public class Plan {
 
 
             for (int i = 0; i < mess.length; ++i){
-                Iterator iter = mess[i].entrySet().iterator();
-                while(iter.hasNext()){
-                    Map.Entry entry = (Map.Entry)iter.next();
-                    int x = Integer.parseInt(entry.getKey().toString());
-                    int y = Integer.parseInt(entry.getValue().toString());
+                    int x = mess[i][0]; //product_id
+                    int y = mess[i][1]; //amount
+                    int z = mess[i][2]; //workshop_id
+
                     sql = "insert into plan_content(plan_id,workshop_id,product_id,amount)" +
-                            " values(" + plan_id + "," + i + "," + x + "," + y + ")";
+                            " values(" + plan_id + "," + z + "," + x + "," + y + ")";
                     st.execute(sql);
-                }
             }
         }
         catch(Exception e){
