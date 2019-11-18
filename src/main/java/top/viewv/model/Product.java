@@ -21,7 +21,7 @@ public class Product {
 
     public void GetProduct(Connection conn,int id){
         try{
-            String sql = "select * from product where product_id =" +
+            String sql = "select * from product where product_id = " +
                     id;
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();

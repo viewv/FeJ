@@ -17,19 +17,6 @@ public class Order {
     public int situation;
     public HashMap<Integer,Integer> Ingres;
 
-    public void GetId(Connection conn){
-        try{
-            String sql = "select count(order_id) from `order`";
-            PreparedStatement st = conn.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            rs.next();
-            this.order_id = rs.getInt(1);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
 
     //用户下达订单
     public void PlaceOrder(Connection conn, HashMap mess,int days,String account_id){
