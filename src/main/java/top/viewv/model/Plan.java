@@ -113,7 +113,7 @@ public class Plan {
 
             Plan_content[] Plist = new Plan_content[row];
             sql = "select plan_id,workshop_id,product_id,amount from plan_content";
-            rs = st.executeQuery();
+            rs = st.executeQuery(sql);
             int cnt = 0;
             while(rs.next()){
                 Plist[cnt] = new Plan_content(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4));

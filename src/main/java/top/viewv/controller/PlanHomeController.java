@@ -56,6 +56,7 @@ public class PlanHomeController implements Initializable {
     public JFXDatePicker jdpStartTime;
     public JFXDatePicker jdpDueTime;
     public JFXButton btnClean;
+    public JFXButton btnAllPlan;
     Connection conn = new Connect().getConnection();
 
     private ArrayList<PlanInfo> planInfos = new ArrayList<PlanInfo>();
@@ -234,5 +235,38 @@ public class PlanHomeController implements Initializable {
         planInfos.clear();
         Serialize.ser(planInfos,"plan.ser");
         refeshShopList();
+    }
+
+    public void onClickedbtnAllPlan(MouseEvent mouseEvent) throws IOException, ClassNotFoundException {
+        pnl_scroll.getChildren().clear();
+        planInfos = Serialize.planInfodser("plan.ser");
+        setCorlVis(false);
+        int length = planInfos.size();
+
+        PlanInfo planInfo;
+
+        Node[] nodes = new Node[length];
+        Node node;
+        int i ;
+        for (i = 0;i < length;i++){
+            planInfo = planInfos.get(i);
+            try {
+                FXMLLoader loader = new
+                        FXMLLoader(Objects.requireNonNull(
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/ui/PlanItem.fxml")));
+                node = loader.load();
+                PlanItemController itemController = loader.getController();
+//                itemController.setLabAmount(planInfo.getAmount());
+//                itemController.setLabProductId(planInfo.getProduct_id());
+//                itemController.setLabProductName(planInfo.getProduct_name());
+//                itemController.setLabLine(planInfo.getLine_id());
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
