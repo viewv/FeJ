@@ -3,6 +3,7 @@ package top.viewv.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -150,6 +151,22 @@ public class Plan {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void CancelPlan(Connection conn,int id){
+        try{
+            String sql = "delete from plan where plan_id = " + id;
+            Statement st = conn.prepareStatement(sql);
+            st.execute(sql);
+
+            sql = "delete from plan_content where plan_id = " + id;
+            st = conn.prepareStatement(sql);
+            st.execute(sql);
+            System.out.println("delete succeeds!");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
 
