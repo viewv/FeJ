@@ -226,7 +226,7 @@ public class Order {
             rs = st.executeQuery();
             int cnt = 0;
             while(rs.next()){
-                OP[cnt] = new Order_Product(rs.getInt(1),rs.getString(2), rs.getInt(3),rs.getInt(4));
+                OP[cnt] = new Order_Product(rs.getInt(1),rs.getString(2), rs.getInt(3),rs.getFloat(4));
                 cnt++;
             }
             return OP;

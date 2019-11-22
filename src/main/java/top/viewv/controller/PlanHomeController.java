@@ -60,6 +60,7 @@ public class PlanHomeController implements Initializable {
     Connection conn = new Connect().getConnection();
 
     private ArrayList<PlanInfo> planInfos = new ArrayList<PlanInfo>();
+    private HashMap<Integer,Integer> planLoc = new HashMap<Integer, Integer>();
     @FXML
     private VBox pnl_scroll;
 
@@ -237,31 +238,43 @@ public class PlanHomeController implements Initializable {
         refeshShopList();
     }
 
-    public void onClickedbtnAllPlan(MouseEvent mouseEvent) throws IOException, ClassNotFoundException {
-        pnl_scroll.getChildren().clear();
-        planInfos = Serialize.planInfodser("plan.ser");
-        setCorlVis(false);
-        int length = planInfos.size();
+    public void clearOneItem(int id){
+        Plan plan = new Plan();
+        try {
+            plan.CancelPlan(conn,id);
+            pnl_scroll.getChildren().remove(planLoc.get(id));
+            onClickedbtnAllPlan();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-        PlanInfo planInfo;
+    public void onClickedbtnAllPlan() throws IOException, ClassNotFoundException {
+        pnl_scroll.getChildren().clear();
+        Plan plan = new Plan();
+        int[] allPlanId = plan.getids(conn);
+        setCorlVis(false);
+        int length = allPlanId.length;
 
         Node[] nodes = new Node[length];
         Node node;
-        int i ;
-        for (i = 0;i < length;i++){
-            planInfo = planInfos.get(i);
+
+        for (int i = 0;i < length;i++){
             try {
                 FXMLLoader loader = new
                         FXMLLoader(Objects.requireNonNull(
                         Thread.currentThread().
                                 getContextClassLoader().
                                 getResource("data/ui/PlanItem.fxml")));
+
                 node = loader.load();
                 PlanItemController itemController = loader.getController();
-//                itemController.setLabAmount(planInfo.getAmount());
-//                itemController.setLabProductId(planInfo.getProduct_id());
-//                itemController.setLabProductName(planInfo.getProduct_name());
-//                itemController.setLabLine(planInfo.getLine_id());
+                plan.InitPlanById(allPlanId[i],conn);
+                planLoc.put(allPlanId[i],i);
+                itemController.setLabPlanId(allPlanId[i]);
+                itemController.setLabPlanStime(plan.start_time);
+                itemController.setLabPlanPtime(plan.end_time);
+                itemController.setHomeController(this);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (Exception e) {

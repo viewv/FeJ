@@ -26,6 +26,7 @@ import top.viewv.api.Serialize;
 import top.viewv.database.Connect;
 import top.viewv.model.Order;
 import top.viewv.model.Order_Info;
+import top.viewv.model.Order_Product;
 import top.viewv.model.Product;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.model.Tables.RecipeTable;
@@ -257,14 +258,14 @@ public class NewHomeController implements Initializable {
         Node[] nodes = new Node[length];
         Node node;
 
+
+
         pnl_scroll.getChildren().clear();
 
         for (int i = 0; i < length; i++) {
             int orderid = allOrderId[i];
             System.out.println("Order ID" + orderid);
             order.InitOrderById(conn, orderid);
-
-
             try {
                 FXMLLoader loader = new
                         FXMLLoader(Objects.requireNonNull(
@@ -279,6 +280,8 @@ public class NewHomeController implements Initializable {
                 orderItemController.setLabOrdertId(orderid);
                 orderItemController.setOrderStime(order.order_time);
                 orderItemController.setOrderPtime(order.due_time);
+                Order_Product[] order_products = order.InitProductById(conn,orderid);
+                orderItemController.setTableOrderShopList(order_products);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (IOException ex) {
