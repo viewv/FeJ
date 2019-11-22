@@ -29,7 +29,7 @@ public class Plan {
             rs = st.executeQuery();
             rs.next();
             this.planner_id = rs.getString(1);
-            sql = "select count(plan_id) from plan";
+            sql = "select plan_id from plan order by plan_id desc limit 1";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             rs.next();
@@ -122,6 +122,31 @@ public class Plan {
             return Plist;
         }
         catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int[] getids(Connection conn) {
+        try{
+            String sql = "select count(plan_id) from plan";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            int row = rs.getInt(1);
+
+            sql = "select plan_id from plan";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            int[] id = new int[row];
+            int cnt = 0;
+            while(rs.next()){
+                id[cnt] = rs.getInt(1);
+                cnt++;
+            }
+            return id;
+        }
+        catch(Exception e){
             e.printStackTrace();
         }
         return null;
