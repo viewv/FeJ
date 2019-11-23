@@ -140,7 +140,7 @@
         </ScrollPane>
         <HBox layoutX="251.0" layoutY="145.0" prefHeight="30.0" prefWidth="810.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="1.0">
             <children>
-                <Label fx:id="lbl_currentprojects" prefHeight="30.0" prefWidth="207.0" text="日期" textFill="#171717">
+                <Label fx:id="lbl_currentprojects" prefHeight="30.0" prefWidth="75.0" textFill="#171717">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
@@ -148,7 +148,7 @@
                         <Insets left="40.0" />
                     </padding>
                 </Label>
-                <Label fx:id="lbl_pending" prefHeight="30.0" prefWidth="207.0" text="时间" textFill="#171717">
+                <Label fx:id="labToday" prefHeight="30.0" prefWidth="191.0" textFill="#171717">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -156,7 +156,7 @@
                         <Insets left="40.0" />
                     </padding>
                 </Label>
-                <Label fx:id="lbl_completed" prefHeight="30.0" prefWidth="207.0" text="项目" textFill="#171717">
+                <Label fx:id="lbl_completed" prefHeight="30.0" prefWidth="73.0" textFill="#171717">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -164,6 +164,14 @@
                         <Insets left="40.0" />
                     </padding>
                 </Label>
+            <Label fx:id="labDept" layoutX="85.0" layoutY="10.0" prefHeight="30.0" prefWidth="191.0" textFill="#171717">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
             </children>
         </HBox>
       <AnchorPane layoutX="-2.0" layoutY="699.0" prefHeight="44.0" prefWidth="1187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
