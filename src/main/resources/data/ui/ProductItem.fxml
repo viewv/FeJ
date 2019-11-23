@@ -2,10 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -92,7 +93,13 @@
                </font>
             </Label>
             <Separator layoutX="423.0" layoutY="103.0" orientation="VERTICAL" prefHeight="161.0" prefWidth="6.0" />
-            <JFXTreeTableView fx:id="recipeTable" layoutX="441.0" layoutY="125.0" prefHeight="136.0" prefWidth="361.0" />
+            <TableView fx:id="tableRec" layoutX="440.0" layoutY="126.0" prefHeight="136.0" prefWidth="368.0">
+              <columns>
+                <TableColumn fx:id="colId" prefWidth="105.0" text="ID" />
+                <TableColumn fx:id="colName" prefWidth="133.0" text="名称" />
+                  <TableColumn fx:id="colAmount" prefWidth="129.0" text="用量" />
+              </columns>
+            </TableView>
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

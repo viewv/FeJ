@@ -124,6 +124,7 @@ public class PlanHomeController implements Initializable {
                 //配方介绍部分
                 rt.GetAll(pt.Ptable[i].product_id, conn);
                 planProItemController.setLabDescrption(pt.Ptable[i].description);
+                planProItemController.setTableRec(rt.Itable);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
@@ -270,11 +271,13 @@ public class PlanHomeController implements Initializable {
                 node = loader.load();
                 PlanItemController itemController = loader.getController();
                 plan.InitPlanById(allPlanId[i],conn);
+                int[][] products = plan.InitProductById(allPlanId[i],conn);
                 planLoc.put(allPlanId[i],i);
                 itemController.setLabPlanId(allPlanId[i]);
                 itemController.setLabPlanStime(plan.start_time);
                 itemController.setLabPlanPtime(plan.end_time);
                 itemController.setHomeController(this);
+                itemController.setTablePro(products);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (Exception e) {

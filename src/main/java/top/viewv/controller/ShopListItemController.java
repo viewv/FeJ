@@ -29,10 +29,11 @@ public class ShopListItemController {
         labProductName.setText(name);
     }
 
-    public void setLabAllPrice(){
+    public double setLabAllPrice(){
         float price = Float.parseFloat(labSinglePrice.getText());
         int amount = Integer.parseInt(labAmount.getText());
         DecimalFormat df = new DecimalFormat("0.00");
         labAllPrice.setText(df.format(price * amount));
+        return price * amount;
     }
 }

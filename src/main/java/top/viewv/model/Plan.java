@@ -91,10 +91,11 @@ public class Plan {
             rs = st.executeQuery();
             int cnt = 0;
             while(rs.next()){
-                for(int i = 0; i < 2; ++i){
+                for(int i = 0; i < 3; ++i){
                     Content[cnt][i] = rs.getInt(i + 1);
                     //0->产品编号 1->产品数量 2->车间号
                 }
+                cnt ++;
             }
             return Content;
         }

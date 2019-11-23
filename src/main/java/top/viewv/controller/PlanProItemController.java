@@ -3,10 +3,18 @@ package top.viewv.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import top.viewv.api.Serialize;
 import top.viewv.model.PlanInfo;
+import top.viewv.model.SpecificRecipe;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,11 +31,40 @@ public class PlanProItemController implements Initializable {
     public JFXButton btnAddToShop;
     public JFXTextField tfxNumberInput;
     public JFXTextField tfxLineNum;
+    public TableColumn colId;
+    public TableColumn colName;
+    public TableColumn colAmount;
+    public TableView tableRec;
 
+    private ObservableList<Receipe> data = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        colId.setCellValueFactory(
+                new PropertyValueFactory<>("id")
+        );
+        colName.setCellValueFactory(
+                new PropertyValueFactory<>("name")
+        );
+        colAmount.setCellValueFactory(
+                new PropertyValueFactory<>("amount")
+        );
+
+        tableRec.setItems(data);
+
         System.out.println("Items Open");
+    }
+
+    public void setTableRec(SpecificRecipe[] recipes){
+        int length = recipes.length;
+        for (int i = 0;i<length;i++){
+            SpecificRecipe recipe = recipes[i];
+            Integer id = recipe.IngredientId;
+            String name = recipe.IngredientName;
+            Integer amount = recipe.Amount;
+            data.add(new Receipe(id,name,amount));
+        }
+        tableRec.setItems(data);
     }
 
     public void setLabPrice(float message) {
@@ -62,4 +99,42 @@ public class PlanProItemController implements Initializable {
         Serialize.ser(planInfos, "plan.ser");
         System.out.println("Ser Plan Ok!");
     }
+
+    public static class Receipe {
+
+        private final SimpleIntegerProperty id;
+        private final SimpleStringProperty name;
+        private final SimpleIntegerProperty amount;
+
+        private Receipe(Integer id, String name,Integer amount) {
+            this.id = new SimpleIntegerProperty(id);
+            this.name = new SimpleStringProperty(name);
+            this.amount = new SimpleIntegerProperty(amount);
+        }
+
+        public void setId(int id) {
+            this.id.set(id);
+        }
+
+        public void setName(String name) {
+            this.name.set(name);
+        }
+
+        public void setAmount(int amount) {
+            this.amount.set(amount);
+        }
+
+        public int getId() {
+            return id.get();
+        }
+
+        public String getName() {
+            return name.get();
+        }
+
+        public int getAmount() {
+            return amount.get();
+        }
+    }
+
 }

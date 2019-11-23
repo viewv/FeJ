@@ -35,6 +35,7 @@ import top.viewv.view.StageManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -62,6 +63,9 @@ public class NewHomeController implements Initializable {
     public Label userId;
     public JFXButton btnCleanShopList;
     public JFXTextField areAmount;
+    public Label labAllM;
+    public Label labAllMoney;
+    public Label labD;
     Connection conn = new Connect().getConnection();
 
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
@@ -77,6 +81,10 @@ public class NewHomeController implements Initializable {
         areAmount.setVisible(cond);
         btnCheckAll.setVisible(cond);
         btnCleanShopList.setVisible(cond);
+        labAllM.setVisible(cond);
+        labAllMoney.setVisible(cond);
+        areAmount.setVisible(cond);
+        labD.setVisible(cond);
     }
 
     @Override
@@ -118,8 +126,6 @@ public class NewHomeController implements Initializable {
         Node[] nodes = new Node[length];
         Node node;
 
-
-
         for (int i = 0; i < length; i++) {
             try {
                 FXMLLoader loader = new
@@ -136,6 +142,7 @@ public class NewHomeController implements Initializable {
                 //配方介绍部分
                 rt.GetAll(pt.Ptable[i].product_id, conn);
                 productItemController.setLabDescrption(pt.Ptable[i].description);
+                productItemController.setTableRec(rt.Itable);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
@@ -184,7 +191,7 @@ public class NewHomeController implements Initializable {
         pnl_scroll.getChildren().clear();
         order_lists = Serialize.dSer("order.ser");
         int length = order_lists.size();
-
+        double allP = 0;
         Node[] nodes = new Node[length];
         Node node;
         int i = 0;
@@ -207,7 +214,8 @@ public class NewHomeController implements Initializable {
                 //shopListItemController.setLabProductName(productdict.get(key));
                 shopListItemController.setLabProductName(product.product_name);
                 shopListItemController.setLabSinglePrice(product.product_price);
-                shopListItemController.setLabAllPrice();
+                double listAllPrice =  shopListItemController.setLabAllPrice();
+                allP += listAllPrice;
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
@@ -217,6 +225,8 @@ public class NewHomeController implements Initializable {
                 Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        DecimalFormat df = new DecimalFormat("0.00");
+        labAllMoney.setText(df.format(allP));
     }
 
     public void onClickedbtnCheckAll(MouseEvent mouseEvent) throws Exception {

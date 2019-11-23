@@ -101,69 +101,6 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="车间" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <graphic>
-                        <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/icons8_Workflow_64px.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="员工" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <graphic>
-                        <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/icons8_US_Dollar_64px.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="用户" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/agencies.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="管理" textFill="#5b5858">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/icons8_Share_64px.png" />
-                            </image>
-                            <viewport>
-                                <Rectangle2D />
-                            </viewport>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </JFXButton>
             <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="388.0" onMouseClicked="#onClickedbtnExit" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="退出" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
@@ -235,18 +172,18 @@
             <Label fx:id="testLab" layoutX="293.0" layoutY="14.0" onMouseClicked="#onclickedTestArray" text="Label" />
             <JFXProgressBar fx:id="pbarBusy" layoutX="353.0" layoutY="14.0" prefHeight="17.0" />
             <JFXButton fx:id="btnCleanShopList" buttonType="RAISED" layoutX="1068.0" layoutY="9.0" onMouseClicked="#onClickedbtnCleanShopList" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #cc0000;" text="清空" textFill="WHITE" />
-            <JFXTextField fx:id="areAmount" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="982.0" layoutY="9.0" prefHeight="27.0" prefWidth="61.0" promptText="天数" text="0" />
-            <Label layoutX="695.0" layoutY="13.0" text="总金额" textFill="#3a1c9d">
+            <JFXTextField fx:id="areAmount" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="962.0" layoutY="9.0" prefHeight="27.0" prefWidth="61.0" promptText="天数" text="0" />
+            <Label fx:id="labAllM" layoutX="904.0" layoutY="14.0" text="总金额" textFill="#3a1c9d">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="737.0" layoutY="14.0" prefHeight="18.0" prefWidth="189.0" text="0">
+            <Label fx:id="labAllMoney" alignment="CENTER_RIGHT" layoutX="704.0" layoutY="14.0" prefHeight="18.0" prefWidth="189.0" text="0">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="954.0" layoutY="14.0" text="天数" textFill="#3a1c9d">
+            <Label fx:id="labD" layoutX="1029.0" layoutY="14.0" text="天数" textFill="#3a1c9d">
                <font>
                   <Font size="14.0" />
                </font>
