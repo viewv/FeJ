@@ -27,7 +27,6 @@ public class PlanProItemController implements Initializable {
     public Label labProductId;
     public Label labProductRtime;
     public Label labDescrption;
-    public JFXTreeTableView recipeTable;
     public JFXButton btnAddToShop;
     public JFXTextField tfxNumberInput;
     public JFXTextField tfxLineNum;
@@ -55,14 +54,14 @@ public class PlanProItemController implements Initializable {
         System.out.println("Items Open");
     }
 
-    public void setTableRec(SpecificRecipe[] recipes){
+    public void setTableRec(SpecificRecipe[] recipes) {
         int length = recipes.length;
-        for (int i = 0;i<length;i++){
+        for (int i = 0; i < length; i++) {
             SpecificRecipe recipe = recipes[i];
             Integer id = recipe.IngredientId;
             String name = recipe.IngredientName;
             Integer amount = recipe.Amount;
-            data.add(new Receipe(id,name,amount));
+            data.add(new Receipe(id, name, amount));
         }
         tableRec.setItems(data);
     }
@@ -94,7 +93,7 @@ public class PlanProItemController implements Initializable {
         int product_id = Integer.parseInt(labProductId.getText().trim());
         int line_num = Integer.parseInt(tfxLineNum.getText());
         ArrayList<PlanInfo> planInfos = Serialize.planInfodser("plan.ser");
-        PlanInfo planInfo = new PlanInfo(product_id,numbers,line_num, labProductName.getText());
+        PlanInfo planInfo = new PlanInfo(product_id, numbers, line_num, labProductName.getText());
         planInfos.add(planInfo);
         Serialize.ser(planInfos, "plan.ser");
         System.out.println("Ser Plan Ok!");
@@ -106,34 +105,34 @@ public class PlanProItemController implements Initializable {
         private final SimpleStringProperty name;
         private final SimpleIntegerProperty amount;
 
-        private Receipe(Integer id, String name,Integer amount) {
+        private Receipe(Integer id, String name, Integer amount) {
             this.id = new SimpleIntegerProperty(id);
             this.name = new SimpleStringProperty(name);
             this.amount = new SimpleIntegerProperty(amount);
-        }
-
-        public void setId(int id) {
-            this.id.set(id);
-        }
-
-        public void setName(String name) {
-            this.name.set(name);
-        }
-
-        public void setAmount(int amount) {
-            this.amount.set(amount);
         }
 
         public int getId() {
             return id.get();
         }
 
+        public void setId(int id) {
+            this.id.set(id);
+        }
+
         public String getName() {
             return name.get();
         }
 
+        public void setName(String name) {
+            this.name.set(name);
+        }
+
         public int getAmount() {
             return amount.get();
+        }
+
+        public void setAmount(int amount) {
+            this.amount.set(amount);
         }
     }
 

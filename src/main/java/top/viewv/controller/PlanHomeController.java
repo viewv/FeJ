@@ -25,7 +25,6 @@ import top.viewv.api.Serialize;
 import top.viewv.database.Connect;
 import top.viewv.model.Plan;
 import top.viewv.model.PlanInfo;
-import top.viewv.model.Product;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.model.Tables.RecipeTable;
 import top.viewv.view.StageManager;
@@ -35,8 +34,10 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -60,14 +61,14 @@ public class PlanHomeController implements Initializable {
     Connection conn = new Connect().getConnection();
 
     private ArrayList<PlanInfo> planInfos = new ArrayList<PlanInfo>();
-    private HashMap<Integer,Integer> planLoc = new HashMap<Integer, Integer>();
+    private HashMap<Integer, Integer> planLoc = new HashMap<Integer, Integer>();
     @FXML
     private VBox pnl_scroll;
 
     public PlanHomeController() throws IOException, ClassNotFoundException {
     }
 
-    public void setCorlVis(boolean cond){
+    public void setCorlVis(boolean cond) {
         btnClean.setVisible(cond);
         btnCheckAll.setVisible(cond);
         jdpStartTime.setVisible(cond);
@@ -173,8 +174,8 @@ public class PlanHomeController implements Initializable {
 
         Node[] nodes = new Node[length];
         Node node;
-        int i ;
-        for (i = 0;i < length;i++){
+        int i;
+        for (i = 0; i < length; i++) {
             planInfo = planInfos.get(i);
             try {
                 FXMLLoader loader = new
@@ -201,14 +202,14 @@ public class PlanHomeController implements Initializable {
         refreshNodes();
     }
 
-    public void onClickedbtnCheckAll(MouseEvent mouseEvent)  {
+    public void onClickedbtnCheckAll(MouseEvent mouseEvent) {
         try {
             Plan plan = new Plan();
             planInfos = Serialize.planInfodser("plan.ser");
             PlanInfo planInfo;
             int length = planInfos.size();
             int[][] mess = new int[length][3];
-            for(int i = 0;i<length;i++){
+            for (int i = 0; i < length; i++) {
                 planInfo = planInfos.get(i);
                 mess[i][0] = planInfo.getProduct_id();
                 mess[i][1] = planInfo.getAmount();
@@ -218,12 +219,12 @@ public class PlanHomeController implements Initializable {
             LocalDate due = jdpDueTime.getValue();
             Date startdate = Date.valueOf(start);
             Date duedate = Date.valueOf(due);
-            plan.SetPlan(mess,startdate,duedate,userId.getText(),conn);
+            plan.SetPlan(mess, startdate, duedate, userId.getText(), conn);
 
             JFXSnackbar snackbar = new JFXSnackbar(BasePane);
             snackbar.show("Send Order Successfully", 1000);
             planInfos.clear();
-            Serialize.ser(planInfos,"plan.ser");
+            Serialize.ser(planInfos, "plan.ser");
             refeshShopList();
         } catch (Exception e) {
             e.printStackTrace();
@@ -235,14 +236,14 @@ public class PlanHomeController implements Initializable {
     public void onClickedbtnClean(MouseEvent mouseEvent) throws Exception {
         planInfos = Serialize.planInfodser("plan.ser");
         planInfos.clear();
-        Serialize.ser(planInfos,"plan.ser");
+        Serialize.ser(planInfos, "plan.ser");
         refeshShopList();
     }
 
-    public void clearOneItem(int id){
+    public void clearOneItem(int id) {
         Plan plan = new Plan();
         try {
-            plan.CancelPlan(conn,id);
+            plan.CancelPlan(conn, id);
             pnl_scroll.getChildren().remove(planLoc.get(id));
             onClickedbtnAllPlan();
         } catch (Exception e) {
@@ -260,7 +261,7 @@ public class PlanHomeController implements Initializable {
         Node[] nodes = new Node[length];
         Node node;
 
-        for (int i = 0;i < length;i++){
+        for (int i = 0; i < length; i++) {
             try {
                 FXMLLoader loader = new
                         FXMLLoader(Objects.requireNonNull(
@@ -270,9 +271,9 @@ public class PlanHomeController implements Initializable {
 
                 node = loader.load();
                 PlanItemController itemController = loader.getController();
-                plan.InitPlanById(allPlanId[i],conn);
-                int[][] products = plan.InitProductById(allPlanId[i],conn);
-                planLoc.put(allPlanId[i],i);
+                plan.InitPlanById(allPlanId[i], conn);
+                int[][] products = plan.InitProductById(allPlanId[i], conn);
+                planLoc.put(allPlanId[i], i);
                 itemController.setLabPlanId(allPlanId[i]);
                 itemController.setLabPlanStime(plan.start_time);
                 itemController.setLabPlanPtime(plan.end_time);
