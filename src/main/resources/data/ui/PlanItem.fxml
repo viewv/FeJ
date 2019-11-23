@@ -67,8 +67,8 @@
             <TableView fx:id="tablePro" layoutX="44.0" layoutY="104.0" prefHeight="181.0" prefWidth="763.0">
               <columns>
                 <TableColumn fx:id="colId" prefWidth="255.0" text="ID" />
-                <TableColumn fx:id="colName" prefWidth="213.0" text="数量" />
-                  <TableColumn fx:id="colAmount" prefWidth="294.0" text="车间" />
+                <TableColumn fx:id="colName" prefWidth="234.0" text="数量" />
+                  <TableColumn fx:id="colAmount" prefWidth="273.0" text="车间" />
               </columns>
             </TableView>
             </children>

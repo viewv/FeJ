@@ -114,6 +114,9 @@ public class OrderItemController implements Initializable {
     public void onClickedbtnReturn(MouseEvent mouseEvent) {
     }
 
+    public void onClickedbtnAccept(MouseEvent mouseEvent) {
+    }
+
     public static class Product {
 
         private final SimpleIntegerProperty id;
