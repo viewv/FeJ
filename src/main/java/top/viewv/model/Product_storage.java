@@ -13,7 +13,7 @@ public class Product_storage {
     public int plan_id;
     public java.sql.Date product_time;
 
-    public void EnStorage(Connection conn,int product_id,int amount,String staff_id,int workshop_id,int plan_id){
+    public int EnStorage1(Connection conn,int product_id,int amount,String staff_id,int workshop_id,int plan_id){
         try{
             this.product_id = product_id;
             this.amount = amount;
@@ -25,27 +25,36 @@ public class Product_storage {
 
             String sql;
             PreparedStatement st;
-            sql = "insert into product_storage" +
-                    "(order_id,product_id,amount,staff_id,workshop_id,plan_id,product_time) values(" +
-                    0 + "," + product_id + "," + amount + "," + staff_id + "," +
-                    workshop_id + "," + plan_id + ",'" +
-                    this.product_time + " 00:00:00')";
+            sql = "select (EnProductStorage1(?,?,?,?,?))";
             st = conn.prepareStatement(sql);
-            st.execute(sql);
+            st.setInt(1,product_id);
+            st.setInt(2,amount);
+            st.setString(3,staff_id);
+            st.setInt(4,workshop_id);
+            st.setInt(5,plan_id);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            return rs.getInt(1);
         }
 
         catch(Exception e){
             e.printStackTrace();
         }
+        return 0;
     }
 
     //To Do
     public void OutStorage(Connection conn,int OrderId,int ProductId,int amount){
         try{
-
+            String sql = "call OutProductStorage(?,?,?)";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1,OrderId);
+            st.setInt(2,ProductId);
+            st.setInt(3,amount);
+            st.execute(sql);
         }
         catch(Exception e){
-
+            e.printStackTrace();
         }
     }
 }
