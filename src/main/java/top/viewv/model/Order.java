@@ -131,16 +131,6 @@ public class Order {
         }
     }
 
-    public void DeliverOrder(Connection conn,int OrderId){
-        try{
-            String sql = "";
-            PreparedStatement st = conn.prepareStatement(sql);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
     public void AskReturn(Connection conn,int OrderId){
         try{
             String sql = "update `order` set situation = 4 "
@@ -169,21 +159,11 @@ public class Order {
 
     public void DenyReturn(Connection conn,int OrderId){
         try{
-            String sql = "update `order` set situation = 3 "
+            String sql = "update `order` set situation = 3"
                     +"where order_id = "
                     +OrderId;
             PreparedStatement st = conn.prepareStatement(sql);
             st.execute(sql);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public void ProcessReturn(Connection conn,int OrderId){
-        try{
-            String sql = "";
-            PreparedStatement st = conn.prepareStatement(sql);
         }
         catch(Exception e){
             e.printStackTrace();
