@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="BasePane" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="712.0" prefWidth="1257.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.FinanceHomeController">
+<AnchorPane id="AnchorPane" fx:id="BasePane" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="712.0" prefWidth="1264.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.StorageHomeController">
     <children>
-        <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@../style/financestyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@../style/storagestyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label fx:id="labUserName" layoutX="224.0" layoutY="47.0" text="User Name" textFill="WHITE">
                     <font>
@@ -28,7 +28,7 @@
                         <Font size="13.0" />
                     </font>
                 </Label>
-                <JFXButton layoutX="1044.0" layoutY="94.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #0097a7#0097a7;" text="个人信息" textFill="WHITE">
+                <JFXButton layoutX="1044.0" layoutY="94.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #546e7a#546e7a;" text="个人信息" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -58,7 +58,7 @@
                     <graphic>
                         <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../newIcon/fsum.png" />
+                                <Image url="@../newIcon/ssum.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -66,22 +66,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-            <JFXButton fx:id="btnOrderInfo" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="143.0" onMouseClicked="#onClinckbtnOrderInfo" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="入账订单" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../newIcon/forder.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-                <JFXButton fx:id="btnShopList" alignment="BASELINE_LEFT" graphicTextGap="10.0" onMouseClicked="#onClickedbtnShopList" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="出账订单" textFill="#5b5858">
+                <JFXButton fx:id="btnShopList" alignment="BASELINE_LEFT" graphicTextGap="10.0" onMouseClicked="#onClickedbtnShopList" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="计划列表" textFill="#5b5858">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -91,7 +76,7 @@
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../newIcon/fcart.png" />
+                                <Image url="@../newIcon/sorder.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -99,6 +84,21 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
+            <JFXButton fx:id="btnAllPlan" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="143.0" onMouseClicked="#onClickedbtnAllPlan" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="所有计划" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../newIcon/scheng.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
             <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="388.0" onMouseClicked="#onClickedbtnExit" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="退出" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
@@ -106,7 +106,7 @@
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../newIcon/fexit.png" />
+                        <Image url="@../newIcon/sexit.png" />
                      </image>
                      <viewport>
                         <Rectangle2D />
@@ -133,12 +133,12 @@
         </Pane>
         <ScrollPane layoutX="251.0" layoutY="182.0" prefHeight="443.0" prefWidth="914.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="182.0">
             <content>
-                <VBox fx:id="pnl_scroll" prefHeight="473.0" prefWidth="976.0" spacing="20.0" style="-fx-background-color: #fff;" />
+                <VBox fx:id="pnl_scroll" prefHeight="476.0" prefWidth="980.0" spacing="20.0" style="-fx-background-color: #fff;" />
             </content>
         </ScrollPane>
         <HBox layoutX="251.0" layoutY="145.0" prefHeight="30.0" prefWidth="810.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="1.0">
             <children>
-                <Label fx:id="lbl_currentprojects" prefHeight="30.0" prefWidth="76.0" textFill="#171717">
+                <Label fx:id="lbl_currentprojects" prefHeight="30.0" prefWidth="207.0" textFill="#171717">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
@@ -146,7 +146,7 @@
                         <Insets left="40.0" />
                     </padding>
                 </Label>
-                <Label fx:id="labToday" prefHeight="30.0" prefWidth="207.0" textFill="#171717">
+                <Label fx:id="lbl_pending" prefHeight="30.0" prefWidth="207.0" textFill="#171717">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -154,7 +154,7 @@
                         <Insets left="40.0" />
                     </padding>
                 </Label>
-                <Label fx:id="lbl_completed" prefHeight="30.0" prefWidth="80.0" textFill="#171717">
+                <Label fx:id="lbl_completed" prefHeight="30.0" prefWidth="207.0" textFill="#171717">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -162,16 +162,12 @@
                         <Insets left="40.0" />
                     </padding>
                 </Label>
-            <Label fx:id="labDept" layoutX="86.0" layoutY="10.0" prefHeight="30.0" prefWidth="207.0" textFill="#171717">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-            </Label>
             </children>
         </HBox>
-      <AnchorPane layoutX="-2.0" layoutY="699.0" prefHeight="44.0" prefWidth="1187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane layoutX="-2.0" layoutY="699.0" prefHeight="44.0" prefWidth="1187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton fx:id="btnCheckAll" buttonType="RAISED" layoutX="1115.0" layoutY="8.0" onMouseClicked="#onClickedbtnCheckAll" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #546e7a#546e7a;" text="下达计划" textFill="WHITE" />
+            <JFXButton fx:id="btnClean" buttonType="RAISED" layoutX="1013.0" layoutY="8.0" onMouseClicked="#onClickedbtnClean" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #cc0000#cc0000;" text="清空计划" textFill="WHITE" />
+         </children></AnchorPane>
     </children>
 </AnchorPane>

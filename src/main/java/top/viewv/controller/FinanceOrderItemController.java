@@ -20,7 +20,7 @@ import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
-public class OrderItemController implements Initializable {
+public class FinanceOrderItemController implements Initializable {
     public JFXProgressBar pbarOrder;
     public Label labOrdertId;
     public Label labPrice;
@@ -35,6 +35,7 @@ public class OrderItemController implements Initializable {
     public Label labOrderStime;
 
     private ObservableList<Product> data = FXCollections.observableArrayList();
+    private FinanceHomeController homeController;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -54,6 +55,10 @@ public class OrderItemController implements Initializable {
                 new PropertyValueFactory<>("price")
         );
         tableOrderShopList.setItems(data);
+    }
+
+    public void setHomeController(FinanceHomeController homeController){
+        this.homeController = homeController;
     }
 
     public void setOrderStime(Date date){
@@ -114,7 +119,8 @@ public class OrderItemController implements Initializable {
         }
     }
 
-    public void onClickedbtnReturn(MouseEvent mouseEvent) {
+    public void onClickedbtnReturn(MouseEvent mouseEvent) throws Exception {
+        homeController.inCome(Integer.parseInt(labOrdertId.getText()));
     }
 
     public void onClickedbtnAccept(MouseEvent mouseEvent) {

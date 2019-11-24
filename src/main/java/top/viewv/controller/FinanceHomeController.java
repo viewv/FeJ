@@ -24,10 +24,7 @@ import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.api.Serialize;
 import top.viewv.database.Connect;
-import top.viewv.model.Order;
-import top.viewv.model.Order_Info;
-import top.viewv.model.Order_Product;
-import top.viewv.model.Product;
+import top.viewv.model.*;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.model.Tables.RecipeTable;
 import top.viewv.view.StageManager;
@@ -53,19 +50,12 @@ public class FinanceHomeController implements Initializable {
     public ImageView userIcon;
     public JFXButton btnExit;
     public JFXButton btnShopList;
-    public JFXButton btnCheckAll;
-    public Label testLab;
     public JFXButton btnShowAllproduct;
     public AnchorPane BasePane;
     public Label labUserName;
     public JFXButton btnOrderInfo;
-    public JFXProgressBar pbarBusy;
     public Label userId;
-    public JFXButton btnCleanShopList;
-    public JFXTextField areAmount;
-    public Label labAllM;
-    public Label labAllMoney;
-    public Label labD;
+
     Connection conn = new Connect().getConnection();
 
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
@@ -77,21 +67,8 @@ public class FinanceHomeController implements Initializable {
     public FinanceHomeController() throws IOException, ClassNotFoundException {
     }
 
-    public void setShopListCorl(boolean cond){
-        areAmount.setVisible(cond);
-        btnCheckAll.setVisible(cond);
-        btnCleanShopList.setVisible(cond);
-        labAllM.setVisible(cond);
-        labAllMoney.setVisible(cond);
-        areAmount.setVisible(cond);
-        labD.setVisible(cond);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        pbarBusy.setVisible(false);
-        testLab.setVisible(false);
-        setShopListCorl(false);
         try {
             Serialize.ser(order_lists, "order.ser");
         } catch (Exception e) {
@@ -108,9 +85,7 @@ public class FinanceHomeController implements Initializable {
     }
 
     public void refreshNodes() throws Exception {
-        setShopListCorl(false);
         System.out.println("Start Refresh Node");
-        pbarBusy.setVisible(true);
         pnl_scroll.getChildren().clear();
 
         ProductTable pt = new ProductTable();
@@ -154,7 +129,6 @@ public class FinanceHomeController implements Initializable {
                 Logger.getLogger(FinanceHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        pbarBusy.setVisible(false);
         Serialize.ser(productdict, "product.ser");
     }
 
@@ -183,84 +157,10 @@ public class FinanceHomeController implements Initializable {
     }
 
     public void onClickedbtnShopList(MouseEvent mouseEvent) throws Exception {
-        setShopListCorl(true);
         refeshShopList();
     }
 
     public void refeshShopList() throws Exception {
-        pnl_scroll.getChildren().clear();
-        order_lists = Serialize.dSer("order.ser");
-        int length = order_lists.size();
-        double allP = 0;
-        Node[] nodes = new Node[length];
-        Node node;
-        int i = 0;
-        for (Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
-            Integer key = entry.getKey();
-            Integer value = entry.getValue();
-            System.out.println(key);
-            System.out.println(value);
-            System.out.println("-----");
-            try {
-                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(
-                        Thread.currentThread().
-                                getContextClassLoader().
-                                getResource("data/ui/ShopListItem.fxml")));
-                node = loader.load();
-                ShopListItemController shopListItemController = loader.getController();
-                shopListItemController.setLabProductId(key);
-                shopListItemController.setLabAmount(value);
-                product.GetProduct(conn, key);
-                //shopListItemController.setLabProductName(productdict.get(key));
-                shopListItemController.setLabProductName(product.product_name);
-                shopListItemController.setLabSinglePrice(product.product_price);
-                double listAllPrice =  shopListItemController.setLabAllPrice();
-                allP += listAllPrice;
-                nodes[i] = node;
-                pnl_scroll.getChildren().add(nodes[i]);
-                //删除所有节点，有点残忍，还是隐藏比较好
-                //pnl_scroll.getChildren().removeAll();
-                i++;
-            } catch (IOException ex) {
-                Logger.getLogger(FinanceHomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        DecimalFormat df = new DecimalFormat("0.00");
-        labAllMoney.setText(df.format(allP));
-    }
-
-    public void onClickedbtnCheckAll(MouseEvent mouseEvent) throws Exception {
-        System.out.println("Sending Order");
-        Order order = new Order();
-        order_lists = Serialize.dSer("order.ser");
-
-        order.PlaceOrder(conn, order_lists, Integer.parseInt(areAmount.getText()), userId.getText());
-        Order_Info order_info = new Order_Info();
-        order_info.setClient_id(order.client_id);
-        order_info.setOrder_id(order.order_id);
-        order_info.setSituation(order.situation);
-        order_info.setOrder_time(order.order_time);
-        order_info.setDue_time(order.due_time);
-        order_info.setDeposit(order.deposit);
-        order_info.setRetainage(order.retainage);
-
-        all_Orders.put(order.order_id, order_info);
-        Serialize.ser(all_Orders, "all_order.ser");
-
-        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
-        snackbar.show("Send Order Successfully", 1000);
-        order_lists.clear();
-        Serialize.ser(order_lists, "order.ser");
-
-    }
-
-    public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) throws Exception {
-        refreshNodes();
-    }
-
-    public void onClinckbtnOrderInfo(MouseEvent mouseEvent) throws Exception {
-        setShopListCorl(false);
-        areAmount.clear();
 
         Order order = new Order();
         int[] allOrderId = order.Orders(conn, userId.getText());
@@ -268,28 +168,31 @@ public class FinanceHomeController implements Initializable {
         Node[] nodes = new Node[length];
         Node node;
 
-
-
         pnl_scroll.getChildren().clear();
 
         for (int i = 0; i < length; i++) {
             int orderid = allOrderId[i];
             System.out.println("Order ID" + orderid);
             order.InitOrderById(conn, orderid);
+
+            if (order.situation != 5){
+                continue;
+            }
             try {
                 FXMLLoader loader = new
                         FXMLLoader(Objects.requireNonNull(
                         Thread.currentThread().
                                 getContextClassLoader().
-                                getResource("data/ui/OrderItem.fxml")));
+                                getResource("data/ui/FinanceSPOrderItem.fxml")));
                 node = loader.load();
-                OrderItemController orderItemController = loader.getController();
+                FinanceSPOrderItemController orderItemController = loader.getController();
                 //调用生成table
                 orderItemController.setLabOrderStatus(order.situation);
                 orderItemController.setLabPrice(order.deposit + order.retainage);
                 orderItemController.setLabOrdertId(orderid);
                 orderItemController.setOrderStime(order.order_time);
                 orderItemController.setOrderPtime(order.due_time);
+                orderItemController.setHomeController(this);
                 Order_Product[] order_products = order.InitProductById(conn,orderid);
                 orderItemController.setTableOrderShopList(order_products);
                 nodes[i] = node;
@@ -300,24 +203,63 @@ public class FinanceHomeController implements Initializable {
         }
     }
 
-    public void onclickedTestArray(MouseEvent mouseEvent) throws Exception {
-        System.out.println("Test ArrList Lenfth");
-        order_lists = Serialize.dSer("order.ser");
-        testLab.setText(String.valueOf(order_lists.size()));
-
-        for (Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
-            Integer key = entry.getKey();
-            Integer value = entry.getValue();
-            System.out.println(key);
-            System.out.println(value);
-            System.out.println("-----");
-        }
+    public void inCome(int id) throws Exception {
+        String staffId = Staff.GetStaffID(userId.getText(),conn);
+        Finance finance = new Finance();
+        finance.InCome(conn,id,staffId);
+        onClinckbtnOrderInfo();
     }
 
-    public void onClickedbtnCleanShopList(MouseEvent mouseEvent) throws Exception {
-        order_lists = Serialize.dSer("order.ser");
-        order_lists.clear();
-        Serialize.ser(order_lists, "order.ser");
+    public void outCom(int id) throws Exception {
+        String staffId = Staff.GetStaffID(userId.getText(),conn);
+        Finance finance = new Finance();
+        finance.OutCome(conn,id,staffId);
         refeshShopList();
+    }
+
+    public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) throws Exception {
+        refreshNodes();
+    }
+
+
+    public void onClinckbtnOrderInfo() throws Exception {
+        Order order = new Order();
+        int[] allOrderId = order.Orders(conn, userId.getText());
+        int length = allOrderId.length;
+        Node[] nodes = new Node[length];
+        Node node;
+
+        pnl_scroll.getChildren().clear();
+
+        for (int i = 0; i < length; i++) {
+            int orderid = allOrderId[i];
+            System.out.println("Order ID" + orderid);
+            order.InitOrderById(conn, orderid);
+            if (order.situation != 2){
+                continue;
+            }
+            try {
+                FXMLLoader loader = new
+                        FXMLLoader(Objects.requireNonNull(
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/ui/FinanceOrderItem.fxml")));
+                node = loader.load();
+                FinanceOrderItemController orderItemController = loader.getController();
+                //调用生成table
+                orderItemController.setLabOrderStatus(order.situation);
+                orderItemController.setLabPrice(order.deposit + order.retainage);
+                orderItemController.setLabOrdertId(orderid);
+                orderItemController.setOrderStime(order.order_time);
+                orderItemController.setOrderPtime(order.due_time);
+                Order_Product[] order_products = order.InitProductById(conn,orderid);
+                orderItemController.setTableOrderShopList(order_products);
+                orderItemController.setHomeController(this);
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+            } catch (IOException ex) {
+                Logger.getLogger(FinanceHomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

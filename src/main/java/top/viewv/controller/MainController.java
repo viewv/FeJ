@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import top.viewv.api.UserAuth;
 import top.viewv.database.Connect;
 import top.viewv.database.Login;
 import top.viewv.database.Signup;
@@ -81,14 +82,11 @@ public class MainController implements Initializable  {
 
         //TODO Rember to remove it when finish!
         String superuser = "123";
-        String salesuper = "125";
         //TODO Rember to remove it when finish!
+        String[] userIdent = UserAuth.getUserAuth(user_id);
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            SaleSwitch();
-        }else if (user_id.equals(salesuper)){
-            System.out.println("Hello Sale");
-            PlanSwitch();
+            FinanceSwitch();
         }
         else {
             String result = login.LoginFun(user_id, password, conn);
@@ -307,6 +305,38 @@ public class MainController implements Initializable  {
         Stage index = (Stage) loginPane.getScene().getWindow();
         index.close();
     }
+
+    public void StorageSwitch() throws Exception {
+
+        Stage stage = new Stage();
+        System.out.println("Start Login");
+
+        labLoadiInd.setText("Loading...");
+        pbarLoad.setVisible(true);
+
+        FXMLLoader loader = new
+                FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                .getResource("data/ui/StorageHome.fxml"));
+
+        Parent root = loader.load();
+        stage.setTitle("Person Home Page");
+        stage.setScene(new Scene(root));
+        stage.show();
+        StorageHomeController homeControl = loader.getController();
+        homeControl.setLabUserName("ViewvLab");
+        homeControl.setUserIcon("zxnnet@gmail.com");
+        homeControl.setlabUserId(user_id);
+        homeControl.refreshNodes();
+        //将第二个窗口保存到map中
+        StageManager.STAGE.put("second", stage);
+        //将本窗口保存到map中
+        StageManager.CONTROLLER.put("index", this);
+        //关闭本窗口
+        Stage index = (Stage) loginPane.getScene().getWindow();
+        index.close();
+    }
+
+
 
     public void setTranDataToIndex(String tranDataToIndex) {
     }
