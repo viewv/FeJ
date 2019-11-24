@@ -15,10 +15,9 @@ public class Finance {
 
     public int InCome(Connection conn, int OrderID, String staff_id) {
         try {
-            String sql = "select Income(?,?)";
+            String sql = "select Income(" +
+                    OrderID + ",\"" + staff_id +"\")";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1,OrderID);
-            st.setString(2,staff_id);
             ResultSet rs = st.executeQuery(sql);
             rs.next();
             return rs.getInt(1);
@@ -31,10 +30,9 @@ public class Finance {
 
     public int OutCome(Connection conn, int OrderID,String staff_id){
         try{
-            String sql = "select Outcome(?,?)";
+            String sql = "select Outcome(" +
+                    OrderID + ",\"" + staff_id +"\")";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1,OrderID);
-            st.setString(2,staff_id);
             ResultSet rs = st.executeQuery(sql);
             rs.next();
             return rs.getInt(1);
