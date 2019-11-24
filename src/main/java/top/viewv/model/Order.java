@@ -265,4 +265,100 @@ public class Order {
         }
         return null;
     }
+
+    public int[] AllOrder(Connection conn){
+        try{
+            String sql = "select count(order_id) from `order`";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            int length = rs.getInt(1);
+            int[] O = new int[length];
+
+            sql = "select order_id from `order`";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            int cnt = 0;
+            while(rs.next()){
+                O[cnt] = rs.getInt(1);
+                cnt ++;
+            }
+            return O;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int[] SalesOrder(Connection conn){
+        try{
+            String sql = "select count(order_id) from `order` where situation = 0";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            int length = rs.getInt(1);
+            int[] O = new int[length];
+
+            sql = "select order_id from `order` where situation = 0";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            int cnt = 0;
+            while(rs.next()){
+                O[cnt] = rs.getInt(1);
+                cnt ++;
+            }
+            return O;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int[] FinanceOrder(Connection conn){
+        try{
+            String sql = "select count(order_id) from `order` where situation = 2";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            int length = rs.getInt(1);
+            int[] O = new int[length];
+
+            sql = "select order_id from `order` where situation = 2";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            int cnt = 0;
+            while(rs.next()){
+                O[cnt] = rs.getInt(1);
+                cnt ++;
+            }
+            return O;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int[] ReturnOrder(Connection conn){
+        try{
+            String sql = "select count(order_id) from `order` where situation = 5";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            int length = rs.getInt(1);
+            int[] O = new int[length];
+
+            sql = "select order_id from `order` where situation = 5";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            int cnt = 0;
+            while(rs.next()){
+                O[cnt] = rs.getInt(1);
+                cnt ++;
+            }
+            return O;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
