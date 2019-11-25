@@ -22,7 +22,7 @@ import top.viewv.api.UserAuth;
 import top.viewv.database.Connect;
 import top.viewv.database.Login;
 import top.viewv.database.Signup;
-import top.viewv.model.Plan;
+import top.viewv.model.Staff;
 import top.viewv.view.StageManager;
 
 import java.io.IOException;
@@ -81,12 +81,11 @@ public class MainController implements Initializable  {
         Login login = new Login();
 
         //TODO Rember to remove it when finish!
-        String superuser = "123";
+        String superuser = "0";
         //TODO Rember to remove it when finish!
-        String[] userIdent = UserAuth.getUserAuth(user_id);
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            FinanceSwitch();
+            SaleSwitch();
         }
         else {
             String result = login.LoginFun(user_id, password, conn);
@@ -100,7 +99,21 @@ public class MainController implements Initializable  {
                 } else {
                     icon = result;
                     System.out.println(icon);
-                    Switch();
+                    String staffid = Staff.GetStaffID(user_id,conn);
+                    if (staffid == null){
+                        Switch();
+                    }else {
+                        String[] type = UserAuth.getUserAuth(staffid);
+                        if (type[0] == "SA"){
+                            SaleSwitch();
+                        }else if(type[0] == "FM"){
+                            FinanceSwitch();
+                        }else if(type[0]== "WS" || type[0] == "MS" ){
+                            StorageSwitch();
+                        }else if(type[0]=="PM"){
+                            PlanSwitch();
+                        }
+                    }
                 }
             } else {
                 result = "Wrong! Check Your SQL Connection!";

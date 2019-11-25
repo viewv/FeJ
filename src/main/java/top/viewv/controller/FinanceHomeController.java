@@ -105,7 +105,7 @@ public class FinanceHomeController implements Initializable {
             try {
                 FXMLLoader loader = new
                         FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
-                        .getResource("data/ui/ProductItem.fxml"));
+                        .getResource("data/ui/FinanceProductItem.fxml"));
                 node = loader.load();
                 //调用下面的函数可以得到控制器
                 //商品部分
@@ -163,7 +163,8 @@ public class FinanceHomeController implements Initializable {
     public void refeshShopList() throws Exception {
 
         Order order = new Order();
-        int[] allOrderId = order.Orders(conn, userId.getText());
+        int[] allOrderId = order.ReturnOrder(conn);
+
         int length = allOrderId.length;
         Node[] nodes = new Node[length];
         Node node;
@@ -212,6 +213,7 @@ public class FinanceHomeController implements Initializable {
 
     public void outCom(int id) throws Exception {
         String staffId = Staff.GetStaffID(userId.getText(),conn);
+        System.out.println(staffId);
         Finance finance = new Finance();
         finance.OutCome(conn,id,staffId);
         refeshShopList();
@@ -224,7 +226,7 @@ public class FinanceHomeController implements Initializable {
 
     public void onClinckbtnOrderInfo() throws Exception {
         Order order = new Order();
-        int[] allOrderId = order.Orders(conn, userId.getText());
+        int[] allOrderId = order.FinanceOrder(conn);
         int length = allOrderId.length;
         Node[] nodes = new Node[length];
         Node node;

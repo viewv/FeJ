@@ -20,7 +20,7 @@ import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
-public class OrderItemController implements Initializable {
+public class SaleOrderItemController implements Initializable {
     public JFXProgressBar pbarOrder;
     public Label labOrdertId;
     public Label labPrice;
@@ -35,7 +35,8 @@ public class OrderItemController implements Initializable {
     public Label labOrderStime;
 
     private ObservableList<Product> data = FXCollections.observableArrayList();
-    private NewHomeController controller ;
+    private SaleHomeController controller ;
+    private int status;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -57,7 +58,7 @@ public class OrderItemController implements Initializable {
         tableOrderShopList.setItems(data);
     }
 
-    public void setController(NewHomeController controller){
+    public void setController(SaleHomeController controller){
         this.controller = controller;
     }
 
@@ -94,6 +95,7 @@ public class OrderItemController implements Initializable {
 
     public void setLabOrderStatus(int status){
         pbarOrder.setVisible(true);
+        this.status = status;
         if (status == 0){
             labOrderStatus.setText("已下单，等待处理");
             pbarOrder.setProgress(0.6);
@@ -120,10 +122,21 @@ public class OrderItemController implements Initializable {
     }
 
     public void onClickedbtnReturn(MouseEvent mouseEvent) throws Exception {
-        controller.returnOrder(Integer.parseInt(labOrdertId.getText()));
+        System.out.println(status);
+        if (status == 0){
+            controller.returnOrder(Integer.parseInt(labOrdertId.getText()));
+        }else if (status == 4){
+            controller.denyRetrun(Integer.parseInt(labOrdertId.getText()));
+        }
     }
 
-    public void onClickedbtnAccept(MouseEvent mouseEvent) {
+    public void onClickedbtnAccept(MouseEvent mouseEvent) throws Exception {
+        System.out.println(status);
+        if (status == 0){
+            controller.acceptOrder(Integer.parseInt(labOrdertId.getText()));
+        }else if(status == 4){
+            controller.acceptReturn(Integer.parseInt(labOrdertId.getText()));
+        }
     }
 
     public static class Product {

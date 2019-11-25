@@ -50,8 +50,6 @@ public class SaleHomeController implements Initializable {
     public ImageView userIcon;
     public JFXButton btnExit;
     public JFXButton btnShopList;
-    public JFXButton btnCheckAll;
-    public Label testLab;
     public JFXButton btnShowAllproduct;
     public AnchorPane BasePane;
     public Label labUserName;
@@ -230,12 +228,12 @@ public class SaleHomeController implements Initializable {
         refreshNodes();
     }
 
-    public void onClinckbtnOrderInfo(MouseEvent mouseEvent) throws Exception {
+    public void onClinckbtnOrderInfo() throws Exception {
         setShopListCorl(false);
         System.out.println("All Order");
 
         Order order = new Order();
-        int[] allOrderId = order.Orders(conn, userId.getText());
+        int[] allOrderId = order.SalesOrder(conn);
         int length = allOrderId.length;
         Node[] nodes = new Node[length];
         Node node;
@@ -253,13 +251,14 @@ public class SaleHomeController implements Initializable {
                                 getContextClassLoader().
                                 getResource("data/ui/SaleOrderItem.fxml")));
                 node = loader.load();
-                OrderItemController orderItemController = loader.getController();
+                SaleOrderItemController orderItemController = loader.getController();
                 //调用生成table
                 orderItemController.setLabOrderStatus(order.situation);
                 orderItemController.setLabPrice(order.deposit + order.retainage);
                 orderItemController.setLabOrdertId(orderid);
                 orderItemController.setOrderStime(order.order_time);
                 orderItemController.setOrderPtime(order.due_time);
+                orderItemController.setController(this);
                 Order_Product[] order_products = order.InitProductById(conn,orderid);
                 orderItemController.setTableOrderShopList(order_products);
                 nodes[i] = node;
@@ -276,5 +275,29 @@ public class SaleHomeController implements Initializable {
         Client client = new Client("",0,"",0);
         System.out.println(client.CreateClient(conn,id,balance));
         refeshUser();
+    }
+
+    public void returnOrder(int id) throws Exception {
+        Order order = new Order();
+        order.DenyOrder(conn,id);
+        onClinckbtnOrderInfo();
+    }
+
+    public void acceptOrder(int id) throws Exception {
+        Order order = new Order();
+        order.AcceptOrder(conn,Staff.GetStaffID(userId.getText(),conn),id);
+        onClinckbtnOrderInfo();
+    }
+
+    public void acceptReturn(int id) throws Exception {
+        Order order = new Order();
+        order.AcceptReturn(conn,id);
+        onClinckbtnOrderInfo();
+    }
+
+    public void denyRetrun(int id) throws Exception {
+        Order order = new Order();
+        order.DenyReturn(conn,id);
+        onClinckbtnOrderInfo();
     }
 }

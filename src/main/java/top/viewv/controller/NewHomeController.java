@@ -258,7 +258,13 @@ public class NewHomeController implements Initializable {
         refreshNodes();
     }
 
-    public void onClinckbtnOrderInfo(MouseEvent mouseEvent) throws Exception {
+    public void returnOrder(int id) throws Exception {
+        Order order = new Order();
+        order.AskReturn(conn,id);
+        onClinckbtnOrderInfo();
+    }
+
+    public void onClinckbtnOrderInfo() throws Exception {
         setShopListCorl(false);
         areAmount.clear();
 
@@ -267,8 +273,6 @@ public class NewHomeController implements Initializable {
         int length = allOrderId.length;
         Node[] nodes = new Node[length];
         Node node;
-
-
 
         pnl_scroll.getChildren().clear();
 
@@ -292,6 +296,7 @@ public class NewHomeController implements Initializable {
                 orderItemController.setOrderPtime(order.due_time);
                 Order_Product[] order_products = order.InitProductById(conn,orderid);
                 orderItemController.setTableOrderShopList(order_products);
+                orderItemController.setController(this);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (IOException ex) {
