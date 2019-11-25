@@ -115,10 +115,12 @@ public class Staff {
                 S[cnt].account = rs.getString(5);
                 cnt++;
             }
+            return S;
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        return null;
     }
 }
 //0.null,1.staff doesn't exist,2.not a manager,3.success
