@@ -100,14 +100,13 @@ public class Order {
             this.situation = 2;
             this.staff_id = staff_id;
             String sql = "update `order` set staff_id = "
-                    +staff_id
+                    +'"' +staff_id+'"'
                     +"where order_id = "
                     +OrderId;
             PreparedStatement st = conn.prepareStatement(sql);
             st.execute(sql);
             sql = "update `order` set situation = 2"
-                    +staff_id
-                    +"where order_id = "
+                    + " where order_id = "
                     +OrderId;
             st = conn.prepareStatement(sql);
             st.execute(sql);

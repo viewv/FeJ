@@ -233,7 +233,7 @@ public class SaleHomeController implements Initializable {
         System.out.println("All Order");
 
         Order order = new Order();
-        int[] allOrderId = order.SalesOrder(conn);
+        int[] allOrderId = order.AllOrder(conn);
         int length = allOrderId.length;
         Node[] nodes = new Node[length];
         Node node;

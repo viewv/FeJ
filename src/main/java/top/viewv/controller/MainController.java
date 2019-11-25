@@ -67,7 +67,6 @@ public class MainController implements Initializable  {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("FeJ Open");
-
         GroupLogin.setVisible(true);
         GroupSignup.setVisible(false);
         pbarLoad.setVisible(false);
