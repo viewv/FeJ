@@ -90,5 +90,35 @@ public class Staff {
         }
         return 0;
     }
+
+    public Staff[] GetDepartmentStaff(Connection conn,String staff_id){
+        try{
+            String department = staff_id.substring(0,1);
+            String sql = "select count(staff_id) from staff where staff_id like" +
+                    "\"" + department + "%\"";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int row = rs.getInt(1);
+
+            sql = "select * from staff where staff_id like" +
+                    "\"" + department + "%\"";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery(sql);
+            int cnt = 0;
+            Staff S[] = new Staff[row];
+            while (rs.next()){
+                S[cnt].staff_id = rs.getString(1);
+                S[cnt].name = rs.getString(2);
+                S[cnt].age = rs.getInt(3);
+                S[cnt].entry_date = rs.getDate(4);
+                S[cnt].account = rs.getString(5);
+                cnt++;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
 //0.null,1.staff doesn't exist,2.not a manager,3.success
