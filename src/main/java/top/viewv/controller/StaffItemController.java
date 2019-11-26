@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class StaffItemController implements Initializable {
@@ -28,12 +29,24 @@ public class StaffItemController implements Initializable {
         labUserId.setText(id);
     }
 
-    public void setLabBalance(float balance){
-        labBalance.setText(String.valueOf(balance));
+    public void setAreName(String name){
+        areName.setText(name);
     }
 
-    public void setLabCredit(int credit){
-        AreaCredit.setText(String.valueOf(credit));
+    public void setAreIntime(Date date){
+        areIntime.setText(date.toString());
+    }
+
+    public void setAreAge(int age){
+        areAge.setText(String.valueOf(age));
+    }
+
+    public void setAreAccountId(String id){
+        areAge.setText(id);
+    }
+
+    public void setBtnUpdateUser(String status) {
+        btnUpdateUser.setText(status);
     }
 
     public void setHomeController(PersonHomeController homeController) {
@@ -45,6 +58,12 @@ public class StaffItemController implements Initializable {
         homeController.delUser(id);
     }
 
+
     public void onClickedUpdateUser(MouseEvent mouseEvent) throws Exception {
+        if (btnUpdateUser.getText().equals("设为管理")){
+            homeController.PromoteUser(labUserId.getText());
+        }else {
+            homeController.DismissUser(labUserId.getText());
+        }
     }
 }

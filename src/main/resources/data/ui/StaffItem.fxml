@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="264.0" prefWidth="950.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.StaffItemController">
     <children>
-        <Pane fx:id="labCredit" layoutX="28.0" layoutY="20.0" prefHeight="340.0" prefWidth="895.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="20.0" AnchorPane.topAnchor="20.0">
+        <Pane layoutX="28.0" layoutY="20.0" prefHeight="340.0" prefWidth="895.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="20.0" AnchorPane.topAnchor="20.0">
             <children>
                 <ImageView fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -36,7 +36,7 @@
                     <children>
                   <Group layoutX="613.0" layoutY="27.0" />
                   <JFXButton fx:id="btnDelUser" buttonType="RAISED" layoutX="731.0" layoutY="13.0" onMouseClicked="#onClickedDelUser" style="-fx-background-color: #cc0000;" text="删除用户" textFill="WHITE" />
-                  <JFXButton fx:id="btnUpdateUser" buttonType="RAISED" layoutX="647.0" layoutY="14.0" onMouseClicked="#onClickedUpdateUser" style="-fx-background-color: #558b2f#558b2f;" text="更新信息" textFill="WHITE" />
+                  <JFXButton fx:id="btnUpdateUser" buttonType="RAISED" layoutX="647.0" layoutY="14.0" onMouseClicked="#onClickedUpdateUser" style="-fx-background-color: #558b2f#558b2f;" text="设为管理" textFill="WHITE" />
                     </children>
                 </Pane>
                 <Label fx:id="labUserId" layoutX="123.0" layoutY="51.0" text="ID: 20178" textFill="#b2b0b0">
@@ -81,7 +81,7 @@
                   <Font size="20.0" />
                </font>
             </JFXTextField>
-            <Label fx:id="labProductName13" alignment="CENTER" layoutX="432.0" layoutY="103.0" text="账户编号" textFill="#558b2f">
+            <Label fx:id="labProductName13" alignment="CENTER" layoutX="432.0" layoutY="103.0" text="员工编号" textFill="#558b2f">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

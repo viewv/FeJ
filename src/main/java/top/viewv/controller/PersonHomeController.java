@@ -21,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.api.Serialize;
+import top.viewv.api.UserAuth;
 import top.viewv.database.Connect;
 import top.viewv.model.Staff;
 import top.viewv.view.StageManager;
@@ -52,6 +53,9 @@ public class PersonHomeController implements Initializable {
     public Label labAllM;
     public Label labAllMoney;
     public Label labD;
+    public JFXTextField areAge;
+    public JFXTextField areId;
+    public JFXTextField areName;
     Connection conn = new Connect().getConnection();
 
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
@@ -65,18 +69,9 @@ public class PersonHomeController implements Initializable {
         refeshUser();
     }
 
-    public void setShopListCorl(boolean cond) {
-        areAmount.setVisible(cond);
-        btnAddUser.setVisible(cond);
-        labAllM.setVisible(cond);
-        labAllMoney.setVisible(cond);
-        areAmount.setVisible(cond);
-        labD.setVisible(cond);
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        setShopListCorl(false);
         try {
             Serialize.ser(order_lists, "order.ser");
         } catch (Exception e) {
@@ -102,10 +97,18 @@ public class PersonHomeController implements Initializable {
                                 getResource("data/ui/StaffItem.fxml")));
                 node = loader.load();
                 StaffItemController itemController = loader.getController();
+                String[] type = UserAuth.getUserAuth(staff.staff_id);
+                if (type[2].equals("0")) {
+                    itemController.setBtnUpdateUser("设为管理");
+                }else {
+                    itemController.setBtnUpdateUser("取消管理");
+                }
                 itemController.setHomeController(this);
-                itemController.setLabBalance(staff.age);
-                itemController.setLabCredit(8);
+                itemController.setAreAccountId(staff.staff_id);
                 itemController.setLabUserId(staff.staff_id);
+                itemController.setAreAge(staff.age);
+                itemController.setAreIntime(staff.entry_date);
+                itemController.setAreName(staff.name);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (IOException ex) {
@@ -125,6 +128,7 @@ public class PersonHomeController implements Initializable {
     public void setUserIcon(String email) {
         userIcon.setImage(Gravatar.imageFromMail(email));
     }
+
 
     public void onClickedbtnExit() throws IOException {
         MainController secondControl = (MainController) StageManager.CONTROLLER.get("index");
@@ -161,6 +165,13 @@ public class PersonHomeController implements Initializable {
     public void DismissUser(String id) throws Exception {
         Staff staff = new Staff();
         staff.DismissManager(conn,id);
+        refeshUser();
+    }
+
+
+    public void onClickedAddUser(MouseEvent mouseEvent) throws Exception {
+        Staff staff = new Staff();
+        staff.AddStaff(conn,areId.getText(),areName.getText(), Integer.parseInt(areAge.getText()));
         refeshUser();
     }
 }

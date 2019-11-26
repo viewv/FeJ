@@ -142,14 +142,9 @@
         </HBox>
       <AnchorPane layoutX="-2.0" layoutY="699.0" prefHeight="44.0" prefWidth="1187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXButton fx:id="btnAddUser" buttonType="RAISED" layoutX="1127.0" layoutY="9.0" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #558b2f#558b2f;" text="增加用户" textFill="WHITE" />
-            <JFXTextField fx:id="areAmount" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="1040.0" layoutY="9.0" prefHeight="27.0" prefWidth="42.0" promptText="天数" text="0" />
-            <Label fx:id="labAllM" layoutX="904.0" layoutY="14.0" text="总金额" textFill="#558b2f">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="labAllMoney" alignment="CENTER_RIGHT" layoutX="704.0" layoutY="14.0" prefHeight="18.0" prefWidth="189.0" text="0">
+            <JFXButton fx:id="btnAddUser" buttonType="RAISED" layoutX="1127.0" layoutY="9.0" onMouseClicked="#onClickedAddUser" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #558b2f#558b2f;" text="增加用户" textFill="WHITE" />
+            <JFXTextField fx:id="areAge" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="1040.0" layoutY="9.0" prefHeight="27.0" prefWidth="42.0" promptText="天数" text="0" />
+            <Label fx:id="labAllM" layoutX="984.0" layoutY="13.0" text="员工编号" textFill="#558b2f">
                <font>
                   <Font size="14.0" />
                </font>
@@ -159,6 +154,13 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <JFXTextField fx:id="areId" alignment="CENTER_RIGHT" layoutX="831.0" layoutY="9.0" />
+            <Label fx:id="labAllM1" layoutX="793.0" layoutY="13.0" text="姓名" textFill="#558b2f">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="areName" alignment="CENTER_RIGHT" layoutX="703.0" layoutY="9.0" prefHeight="27.0" prefWidth="83.0" />
          </children>
       </AnchorPane>
     </children>
