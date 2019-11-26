@@ -80,11 +80,11 @@ public class MainController implements Initializable  {
         Login login = new Login();
 
         //TODO Rember to remove it when finish!
-        String superuser = "0";
+        String superuser = "444";
         //TODO Rember to remove it when finish!
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            SaleSwitch();
+            PersonSwitch();
         }
         else {
             String result = login.LoginFun(user_id, password, conn);
@@ -308,7 +308,7 @@ public class MainController implements Initializable  {
         homeControl.setLabUserName("ViewvLab");
         homeControl.setUserIcon("zxnnet@gmail.com");
         homeControl.setlabUserId(user_id);
-        homeControl.refreshNodes();
+        homeControl.refeshUser();
         //将第二个窗口保存到map中
         StageManager.STAGE.put("second", stage);
         //将本窗口保存到map中

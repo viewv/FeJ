@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="BasePane" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="712.0" prefWidth="1264.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.">
+<AnchorPane id="AnchorPane" fx:id="BasePane" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="712.0" prefWidth="1264.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.SaleHomeController.">
     <children>
         <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@../style/storagestyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -66,40 +66,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-                <JFXButton fx:id="btnShopList" alignment="BASELINE_LEFT" graphicTextGap="10.0" onMouseClicked="#onClickedbtnShopList" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="计划列表" textFill="#5b5858">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../newIcon/sorder.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </JFXButton>
-            <JFXButton fx:id="btnAllPlan" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="143.0" onMouseClicked="#onClickedbtnAllPlan" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="所有计划" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../newIcon/scheng.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="388.0" onMouseClicked="#onClickedbtnExit" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="退出" textFill="#5b5858">
+            <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="388.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="退出" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -166,8 +133,8 @@
         </HBox>
       <AnchorPane layoutX="-2.0" layoutY="699.0" prefHeight="44.0" prefWidth="1187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXButton fx:id="btnCheckAll" buttonType="RAISED" layoutX="1115.0" layoutY="8.0" onMouseClicked="#onClickedbtnCheckAll" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #546e7a#546e7a;" text="下达计划" textFill="WHITE" />
-            <JFXButton fx:id="btnClean" buttonType="RAISED" layoutX="1013.0" layoutY="8.0" onMouseClicked="#onClickedbtnClean" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #cc0000#cc0000;" text="清空计划" textFill="WHITE" />
+            <JFXButton fx:id="btnCheckAll" buttonType="RAISED" layoutX="1115.0" layoutY="8.0" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #546e7a#546e7a;" text="下达计划" textFill="WHITE" />
+            <JFXButton fx:id="btnClean" buttonType="RAISED" layoutX="1013.0" layoutY="8.0" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #cc0000#cc0000;" text="清空计划" textFill="WHITE" />
          </children></AnchorPane>
     </children>
 </AnchorPane>

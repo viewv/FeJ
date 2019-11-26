@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
@@ -50,7 +49,7 @@
                         <Insets top="60.0" />
                     </VBox.margin>
                 </Label>
-                <JFXButton fx:id="btnShowAllproduct" alignment="BASELINE_LEFT" graphicTextGap="10.0" onMouseClicked="#onClickedbtnShowAllProduct" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="商品一览" textFill="#5b5858">
+                <JFXButton fx:id="btnShowAllUser" alignment="BASELINE_LEFT" graphicTextGap="10.0" onMouseClicked="#onClickedbtnShowAllUsers" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="所有员工" textFill="#5b5858">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -68,39 +67,6 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-                <JFXButton fx:id="btnShopList" alignment="BASELINE_LEFT" graphicTextGap="10.0" onMouseClicked="#onClickedbtnShopList" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="购物车" textFill="#5b5858">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../newIcon/pcart.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </JFXButton>
-            <JFXButton fx:id="btnOrderInfo" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="143.0" onMouseClicked="#onClinckbtnOrderInfo" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="订单信息" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../newIcon/porder.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
             <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="388.0" onMouseClicked="#onClickedbtnExit" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="退出" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
@@ -176,11 +142,8 @@
         </HBox>
       <AnchorPane layoutX="-2.0" layoutY="699.0" prefHeight="44.0" prefWidth="1187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXButton fx:id="btnCheckAll" buttonType="RAISED" layoutX="1139.0" layoutY="9.0" onMouseClicked="#onClickedbtnCheckAll" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #558b2f#558b2f;" text="结算" textFill="WHITE" />
-            <Label fx:id="testLab" layoutX="293.0" layoutY="14.0" onMouseClicked="#onclickedTestArray" text="Label" />
-            <JFXProgressBar fx:id="pbarBusy" layoutX="353.0" layoutY="14.0" prefHeight="17.0" />
-            <JFXButton fx:id="btnCleanShopList" buttonType="RAISED" layoutX="1068.0" layoutY="9.0" onMouseClicked="#onClickedbtnCleanShopList" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #cc0000;" text="清空" textFill="WHITE" />
-            <JFXTextField fx:id="areAmount" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="962.0" layoutY="9.0" prefHeight="27.0" prefWidth="61.0" promptText="天数" text="0" />
+            <JFXButton fx:id="btnAddUser" buttonType="RAISED" layoutX="1127.0" layoutY="9.0" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #558b2f#558b2f;" text="增加用户" textFill="WHITE" />
+            <JFXTextField fx:id="areAmount" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="1040.0" layoutY="9.0" prefHeight="27.0" prefWidth="42.0" promptText="天数" text="0" />
             <Label fx:id="labAllM" layoutX="904.0" layoutY="14.0" text="总金额" textFill="#558b2f">
                <font>
                   <Font size="14.0" />
@@ -191,7 +154,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="labD" layoutX="1029.0" layoutY="14.0" text="天数" textFill="#558b2f">
+            <Label fx:id="labD" layoutX="1089.0" layoutY="13.0" text="年龄" textFill="#558b2f">
                <font>
                   <Font size="14.0" />
                </font>
