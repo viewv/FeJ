@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="264.0" prefWidth="950.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.StaffItemController">
+    <children>
+        <Pane layoutX="28.0" layoutY="20.0" prefHeight="340.0" prefWidth="895.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <children>
+                <ImageView fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/finance.png" />
+                    </image>
+                </ImageView>
+                <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
+                <Label fx:id="labProductName" layoutX="123.0" layoutY="18.0" text="员工编号" textFill="#558b2f">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="279.0" layoutY="113.0" textFill="#aeacac">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Pane layoutY="174.0" prefHeight="52.0" prefWidth="896.0" style="-fx-background-color: #F0F0F0;">
+                    <children>
+                  <Group layoutX="613.0" layoutY="27.0" />
+                  <JFXButton fx:id="btnDelUser" buttonType="RAISED" layoutX="731.0" layoutY="13.0" onMouseClicked="#onClickedDelUser" style="-fx-background-color: #cc0000;" text="删除用户" textFill="WHITE" />
+                  <JFXButton fx:id="btnUpdateUser" buttonType="RAISED" layoutX="647.0" layoutY="14.0" onMouseClicked="#onClickedUpdateUser" style="-fx-background-color: #558b2f#558b2f;" text="更新信息" textFill="WHITE" />
+                    </children>
+                </Pane>
+                <Label fx:id="labUserId" layoutX="123.0" layoutY="51.0" text="ID: 20178" textFill="#b2b0b0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            <Label fx:id="labProductName1" alignment="CENTER" layoutX="566.0" layoutY="103.0" text="年龄" textFill="#558b2f">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labProductName11" layoutX="776.0" layoutY="21.0" text="姓名" textFill="#558b2f">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="areName" alignment="BOTTOM_RIGHT" layoutX="639.0" layoutY="38.0" prefHeight="44.0" prefWidth="165.0" text="0">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="areAge" alignment="BOTTOM_RIGHT" layoutX="524.0" layoutY="122.0" prefHeight="35.0" prefWidth="70.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXTextField>
+            <Separator layoutX="488.0" layoutY="99.0" orientation="VERTICAL" prefHeight="70.0" prefWidth="17.0" />
+            <Label fx:id="labProductName12" alignment="CENTER" layoutX="748.0" layoutY="104.0" text="入职时间" textFill="#558b2f">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="areIntime" alignment="BOTTOM_RIGHT" layoutX="639.0" layoutY="122.0" prefHeight="40.0" prefWidth="165.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXTextField>
+            <Separator layoutX="605.0" layoutY="99.0" orientation="VERTICAL" prefHeight="70.0" prefWidth="17.0" />
+            <JFXTextField fx:id="areAccountId" alignment="BOTTOM_RIGHT" layoutX="318.0" layoutY="122.0" prefHeight="40.0" prefWidth="165.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXTextField>
+            <Label fx:id="labProductName13" alignment="CENTER" layoutX="432.0" layoutY="103.0" text="员工编号" textFill="#558b2f">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            </children>
+            <effect>
+                <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
+            </effect>
+        </Pane>
+    </children>
+</AnchorPane>

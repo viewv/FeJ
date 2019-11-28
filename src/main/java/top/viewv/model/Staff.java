@@ -1,6 +1,7 @@
 package top.viewv.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -8,8 +9,19 @@ public class Staff {
     public String staff_id;
     public String name;
     public int age;
-    public java.sql.Date entry_date;
+    public Date entry_date;
     public String account;
+
+    public Staff(){
+
+    }
+    public Staff(String id,String name,int age,Date date,String account){
+        this.staff_id = id;
+        this.name = name;
+        this.age = age;
+        this.entry_date = date;
+        this.account = account;
+    }
 
 
     public static String GetStaffID(String AID, Connection conn){
@@ -94,25 +106,28 @@ public class Staff {
     public Staff[] GetDepartmentStaff(Connection conn,String staff_id){
         try{
             String department = staff_id.substring(0,1);
-            String sql = "select count(staff_id) from staff where staff_id like" +
+            String sql = "select count(staff_id) from staff where staff_id like " +
                     "\"" + department + "%\"";
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery(sql);
             rs.next();
             int row = rs.getInt(1);
+            System.out.println("Row:"+row);
 
-            sql = "select * from staff where staff_id like" +
+            sql = "select * from staff where staff_id like " +
                     "\"" + department + "%\"";
+            System.out.println("Staff Sql:"+sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery(sql);
             int cnt = 0;
-            Staff S[] = new Staff[row];
+            Staff[] S = new Staff[row];
             while (rs.next()){
-                S[cnt].staff_id = rs.getString(1);
-                S[cnt].name = rs.getString(2);
-                S[cnt].age = rs.getInt(3);
-                S[cnt].entry_date = rs.getDate(4);
-                S[cnt].account = rs.getString(5);
+                S[cnt] = new Staff(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getDate(4),
+                        rs.getString(5));
                 cnt++;
             }
             return S;
