@@ -154,13 +154,13 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="areId" layoutX="831.0" layoutY="9.0" />
+            <JFXTextField fx:id="areId" alignment="CENTER_RIGHT" layoutX="831.0" layoutY="9.0" />
             <Label fx:id="labAllM1" layoutX="793.0" layoutY="13.0" text="姓名" textFill="#558b2f">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="areName" layoutX="703.0" layoutY="9.0" prefHeight="27.0" prefWidth="83.0" />
+            <JFXTextField fx:id="areName" alignment="CENTER_RIGHT" layoutX="703.0" layoutY="9.0" prefHeight="27.0" prefWidth="83.0" />
          </children>
       </AnchorPane>
     </children>

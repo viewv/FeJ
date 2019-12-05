@@ -13,6 +13,45 @@ public class Product_storage {
     public int plan_id;
     public java.sql.Date product_time;
 
+    public Product_storage(){}
+
+    public Product_storage(int a,int b,int c,String d,int e,int f,java.sql.Date g){
+        this.order_id = a;
+        this.product_id = b;
+        this.amount = c;
+        this.staff_id = d;
+        this.workshop_id = e;
+        this.plan_id = f;
+        this.product_time = g;
+    }
+
+    public Product_storage[] GetAll(Connection conn){
+        try{
+            int cnt;
+            String sql = "select count(*) from product_storage";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            cnt = rs.getInt(1);
+            Product_storage[] X = new Product_storage[cnt];
+            sql = "select * from product_storage";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery(sql);
+            cnt = 0;
+            while(rs.next()){
+                X[cnt] = new Product_storage(rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getDate(8));
+                cnt++;
+            }
+            return X;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
 
     public int EnStorage1(Connection conn,int product_id,int amount,String staff_id,int workshop_id,int plan_id){
         try{

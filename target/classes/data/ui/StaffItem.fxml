@@ -36,7 +36,7 @@
                     <children>
                   <Group layoutX="613.0" layoutY="27.0" />
                   <JFXButton fx:id="btnDelUser" buttonType="RAISED" layoutX="731.0" layoutY="13.0" onMouseClicked="#onClickedDelUser" style="-fx-background-color: #cc0000;" text="删除用户" textFill="WHITE" />
-                  <JFXButton fx:id="btnUpdateUser" buttonType="RAISED" layoutX="647.0" layoutY="14.0" onMouseClicked="#onClickedUpdateUser" style="-fx-background-color: #558b2f#558b2f;" text="更新信息" textFill="WHITE" />
+                  <JFXButton fx:id="btnUpdateUser" buttonType="RAISED" layoutX="647.0" layoutY="14.0" onMouseClicked="#onClickedUpdateUser" style="-fx-background-color: #558b2f#558b2f;" text="设为管理" textFill="WHITE" />
                     </children>
                 </Pane>
                 <Label fx:id="labUserId" layoutX="123.0" layoutY="51.0" text="ID: 20178" textFill="#b2b0b0">

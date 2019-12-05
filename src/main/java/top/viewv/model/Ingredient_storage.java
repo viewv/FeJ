@@ -1,15 +1,50 @@
 package top.viewv.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class Ingredient_storage {
     public int id;
-    public String date;
+    public Date date;
     public int ingredient_id;
     public int amount;
     public String staff_id;
+
+
+    public Ingredient_storage(int a,Date b,int c,int d,String e){
+        this.id = a;
+        this.date = b;
+        this.ingredient_id = c;
+        this.amount = d;
+        this.staff_id = e;
+    }
+
+    public Ingredient_storage[] GetAll(Connection conn){
+        try{
+            int cnt;
+            String sql = "select count(*) from ingredient_storage";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            cnt = rs.getInt(1);
+            Ingredient_storage[] X = new Ingredient_storage[cnt];
+            sql = "select * from ingredient_storage";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery(sql);
+            cnt = 0;
+            while(rs.next()){
+                X[cnt] = new Ingredient_storage(rs.getInt(2),rs.getDate(3),rs.getInt(4),rs.getInt(5),rs.getString(6));
+                cnt++;
+            }
+            return X;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public int EnStorage(Connection conn,int ingredient_id,int amount,String staff_id){
         try{
