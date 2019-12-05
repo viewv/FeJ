@@ -51,8 +51,6 @@ public class Product_storage {
     }
 
 
-
-
     public int EnStorage1(Connection conn,int product_id,int amount,String staff_id,int workshop_id,int plan_id){
         try{
             this.product_id = product_id;

@@ -84,7 +84,7 @@ public class MainController implements Initializable  {
         //TODO Rember to remove it when finish!
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            PersonSwitch();
+            SaleSwitch();
         }
         else {
             String result = login.LoginFun(user_id, password, conn);

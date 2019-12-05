@@ -17,11 +17,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import top.viewv.database.Connect;
-import top.viewv.model.Product_storage;
+import top.viewv.model.Ingredient_storage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.util.*;
+import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,7 +32,7 @@ import java.util.logging.Logger;
  */
 // !Thank you very much! oXCToo!
 
-public class StorageHomeController implements Initializable {
+public class IStorageHomeController implements Initializable {
 
     public ImageView userIcon;
     public JFXButton btnExit;
@@ -38,7 +40,6 @@ public class StorageHomeController implements Initializable {
     public Label labUserName;
     public Label userId;
     public JFXButton btnCheckAll;
-    public JFXButton btnClean;
     public JFXTextField arep;
     public JFXTextField area;
     public JFXTextField areo;
@@ -49,9 +50,9 @@ public class StorageHomeController implements Initializable {
 
     @FXML
     private VBox pnl_scroll;
-    Product_storage[] product_storages;
+    Ingredient_storage[] product_storages;
 
-    public StorageHomeController() throws IOException, ClassNotFoundException {
+    public IStorageHomeController() throws IOException, ClassNotFoundException {
     }
 
 
@@ -66,7 +67,7 @@ public class StorageHomeController implements Initializable {
 
     void refrash(){
         pnl_scroll.getChildren().clear();
-        Product_storage product_storage = new Product_storage();
+        Ingredient_storage product_storage= new Ingredient_storage();
         product_storages = product_storage.GetAll(conn);
         int length = product_storages.length;
         Node[] nodes = new Node[length];
@@ -76,19 +77,13 @@ public class StorageHomeController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(
                         Thread.currentThread().
                                 getContextClassLoader().
-                                getResource("data/ui/StorageItem.fxml")));
+                                getResource("data/ui/IStorageItem.fxml")));
                 node = loader.load();
                 product_storage = product_storages[i];
-                StorageItemController shopListItemController = loader.getController();
-                shopListItemController.setLabUserId(product_storage.product_id);
+                IStorageItemController shopListItemController = loader.getController();
+                shopListItemController.setLabUserId(product_storage.id);
                 shopListItemController.setHomeController(this);
-                shopListItemController.setExtra(product_storage.order_id,
-                                                product_storage.product_id,
-                                                product_storage.amount,
-                                                product_storage.staff_id,
-                                                product_storage.workshop_id,
-                                                product_storage.plan_id,
-                                                product_storage.product_time);
+                shopListItemController.setExtra(product_storage.id,product_storage.date,product_storage.ingredient_id,product_storage.amount,product_storage.staff_id);
                 shopListItemController.setAreaAmount(product_storage.amount);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
@@ -101,30 +96,19 @@ public class StorageHomeController implements Initializable {
         }
     }
 
-    public void out(int orderId,int productId,int amount){
-        Product_storage product_storage = new Product_storage();
-        product_storage.OutStorage(conn,orderId,productId,amount);
+    public void out(int ingredient_id,int amount){
+        Ingredient_storage product_storage = new Ingredient_storage();
+        product_storage.OutStorage(conn,ingredient_id,amount,userId.getText());
     }
 
     public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) {
         refrash();
     }
 
-    public void onclickedOin(MouseEvent mouseEvent) {
-        Product_storage product_storage = new Product_storage();
-        product_storage.EnStorage2(conn, Integer.parseInt(areorder.getText()));
-        refrash();
-    }
-
 
     public void onClickedPin(MouseEvent mouseEvent) {
-        Product_storage product_storage = new Product_storage();
-        product_storage.EnStorage1(conn,Integer.parseInt(arep.getText()),
-                Integer.parseInt(area.getText()),
-                userId.getText(),
-                Integer.parseInt(arel.getText()),
-                Integer.parseInt(areo.getText())
-        );
+        Ingredient_storage product_storage = new Ingredient_storage();
+        product_storage.EnStorage(conn,Integer.parseInt(arel.getText()),Integer.parseInt(area.getText()),userId.getText());
         refrash();
     }
 }

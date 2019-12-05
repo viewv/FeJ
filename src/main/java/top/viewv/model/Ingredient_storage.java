@@ -21,6 +21,10 @@ public class Ingredient_storage {
         this.staff_id = e;
     }
 
+    public Ingredient_storage(){
+
+    }
+
     public Ingredient_storage[] GetAll(Connection conn){
         try{
             int cnt;
