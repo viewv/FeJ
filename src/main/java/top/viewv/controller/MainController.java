@@ -84,7 +84,7 @@ public class MainController implements Initializable  {
         //TODO Rember to remove it when finish!
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            SaleSwitch();
+            StorageSwitch();
         }
         else {
             String result = login.LoginFun(user_id, password, conn);
@@ -331,14 +331,44 @@ public class MainController implements Initializable  {
                 .getResource("data/ui/StorageHome.fxml"));
 
         Parent root = loader.load();
-        stage.setTitle("Person Home Page");
+        stage.setTitle("Product Storage Home Page");
         stage.setScene(new Scene(root));
         stage.show();
         StorageHomeController homeControl = loader.getController();
         homeControl.setLabUserName("ViewvLab");
         homeControl.setUserIcon("zxnnet@gmail.com");
         homeControl.setlabUserId(user_id);
-        homeControl.refreshNodes();
+        homeControl.refrash();
+        //将第二个窗口保存到map中
+        StageManager.STAGE.put("second", stage);
+        //将本窗口保存到map中
+        StageManager.CONTROLLER.put("index", this);
+        //关闭本窗口
+        Stage index = (Stage) loginPane.getScene().getWindow();
+        index.close();
+    }
+
+    public void IStorageSwitch() throws Exception {
+
+        Stage stage = new Stage();
+        System.out.println("Start Login");
+
+        labLoadiInd.setText("Loading...");
+        pbarLoad.setVisible(true);
+
+        FXMLLoader loader = new
+                FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                .getResource("data/ui/IStorageHome.fxml"));
+
+        Parent root = loader.load();
+        stage.setTitle("Product Storage Home Page");
+        stage.setScene(new Scene(root));
+        stage.show();
+        IStorageHomeController homeControl = loader.getController();
+        homeControl.setLabUserName("ViewvLab");
+        homeControl.setUserIcon("zxnnet@gmail.com");
+        homeControl.setlabUserId(user_id);
+        homeControl.refrash();
         //将第二个窗口保存到map中
         StageManager.STAGE.put("second", stage);
         //将本窗口保存到map中

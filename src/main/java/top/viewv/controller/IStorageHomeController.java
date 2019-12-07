@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import top.viewv.api.Gravatar;
 import top.viewv.database.Connect;
 import top.viewv.model.Ingredient_storage;
 
@@ -55,6 +56,15 @@ public class IStorageHomeController implements Initializable {
     public IStorageHomeController() throws IOException, ClassNotFoundException {
     }
 
+    public void setlabUserId(String userid) {
+        userId.setText(userid);
+    }
+    public void setUserIcon(String email) {
+        userIcon.setImage(Gravatar.imageFromMail(email));
+    }
+    public void setLabUserName(String userName) {
+        labUserName.setText(userName);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
