@@ -107,10 +107,12 @@ public class MainController implements Initializable  {
                             SaleSwitch();
                         }else if(type[0] == "FM"){
                             FinanceSwitch();
-                        }else if(type[0]== "WS" || type[0] == "MS" ){
+                        }else if(type[0]== "WS"  ){
                             StorageSwitch();
                         }else if(type[0]=="PM"){
                             PlanSwitch();
+                        }else if(type[0] == "MS"){
+                            IStorageSwitch();
                         }
                     }
                 }
@@ -208,7 +210,6 @@ public class MainController implements Initializable  {
         FXMLLoader loader = new
                 FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
                 .getResource("data/ui/PlanHome.fxml"));
-
 
         Parent root = loader.load();
         stage.setTitle("Plan Home Page");

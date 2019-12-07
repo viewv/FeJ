@@ -62,15 +62,15 @@ public class Product_storage {
             this.product_time = new java.sql.Date(System.currentTimeMillis());
 
             String sql;
-            PreparedStatement st;
-            sql = "select (EnProductStorage1(?,?,?,?,?))";
-            st = conn.prepareStatement(sql);
-            st.setInt(1,product_id);
-            st.setInt(2,amount);
-            st.setString(3,staff_id);
-            st.setInt(4,workshop_id);
-            st.setInt(5,plan_id);
-            ResultSet rs = st.executeQuery(sql);
+            sql = "select EnProductStorage1(?,?,?,?,?)";
+            PreparedStatement prepareStatement = conn.prepareStatement(sql);
+            prepareStatement.setString(1, String.valueOf(product_id));
+            prepareStatement.setString(2, String.valueOf(amount));
+            prepareStatement.setString(3,staff_id);
+            prepareStatement.setString(4, String.valueOf(workshop_id));
+            prepareStatement.setString(5, String.valueOf(plan_id));
+            System.out.println(sql);
+            ResultSet rs = prepareStatement.executeQuery(sql);
             rs.next();
             return rs.getInt(1);
         }
