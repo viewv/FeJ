@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import top.viewv.api.Gravatar;
 import top.viewv.database.Connect;
 import top.viewv.model.Ingredient_storage;
+import top.viewv.model.Staff;
 
 import java.io.IOException;
 import java.net.URL;
@@ -99,7 +100,6 @@ public class IStorageHomeController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
                 //pnl_scroll.getChildren().removeAll();
-                i++;
             } catch (IOException ex) {
                 Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -108,7 +108,9 @@ public class IStorageHomeController implements Initializable {
 
     public void out(int ingredient_id,int amount){
         Ingredient_storage product_storage = new Ingredient_storage();
-        product_storage.OutStorage(conn,ingredient_id,amount,userId.getText());
+        String id = Staff.GetStaffID(userId.getText(),conn);
+        product_storage.OutStorage(conn,ingredient_id,amount,id);
+        refrash();
     }
 
     public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) {
@@ -118,7 +120,8 @@ public class IStorageHomeController implements Initializable {
 
     public void onClickedPin(MouseEvent mouseEvent) {
         Ingredient_storage product_storage = new Ingredient_storage();
-        product_storage.EnStorage(conn,Integer.parseInt(arel.getText()),Integer.parseInt(area.getText()),userId.getText());
+        String id = Staff.GetStaffID(userId.getText(),conn);
+        product_storage.EnStorage(conn,Integer.parseInt(arel.getText()),Integer.parseInt(area.getText()),id);
         refrash();
     }
 }

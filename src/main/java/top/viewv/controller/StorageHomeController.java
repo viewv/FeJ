@@ -102,7 +102,6 @@ public class StorageHomeController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
                 //pnl_scroll.getChildren().removeAll();
-                i++;
             } catch (IOException ex) {
                 Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -111,7 +110,9 @@ public class StorageHomeController implements Initializable {
 
     public void out(int orderId,int productId,int amount){
         Product_storage product_storage = new Product_storage();
-        product_storage.OutStorage(conn,orderId,productId,amount);
+        //product_storage.OutStorage(conn,orderId,productId,amount);
+        product_storage.OutStorage(conn,1,productId,amount);
+        refrash();
     }
 
     public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) {

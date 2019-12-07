@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import top.viewv.api.Gravatar;
 
 import java.net.URL;
 import java.sql.Date;
@@ -29,8 +28,6 @@ public class IStorageItemController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
-
-
     public void setLabUserId(int id){
         labUserId.setText(String.valueOf(id));
     }
@@ -53,7 +50,7 @@ public class IStorageItemController implements Initializable {
 
 
     public void onClinckOut(MouseEvent mouseEvent) {
-        int amount = Integer.parseInt(AreaAmount.getText());
+        int amount = Integer.parseInt(AreaOut.getText());
         homeController.out(ingredient_id,amount);
     }
 }

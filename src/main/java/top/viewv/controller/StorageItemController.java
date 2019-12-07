@@ -54,7 +54,7 @@ public class StorageItemController implements Initializable {
 
 
     public void onClinckOut(MouseEvent mouseEvent) {
-        int amount = Integer.parseInt(AreaAmount.getText());
+        int amount = Integer.parseInt(AreaOut.getText());
         homeController.out(order_id,product_id,amount);
     }
 }

@@ -95,11 +95,9 @@ public class Product_storage {
     //To Do
     public void OutStorage(Connection conn,int OrderId,int ProductId,int amount){
         try{
-            String sql = "call OutProductStorage(?,?,?)";
+            String sql = "call OutProductStorage("+OrderId+","+ProductId+","+amount+")";
+            System.out.println(sql);
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1,OrderId);
-            st.setInt(2,ProductId);
-            st.setInt(3,amount);
             st.execute(sql);
         }
         catch(Exception e){

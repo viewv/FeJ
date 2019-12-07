@@ -39,7 +39,7 @@ public class Ingredient_storage {
             rs = st.executeQuery(sql);
             cnt = 0;
             while(rs.next()){
-                X[cnt] = new Ingredient_storage(rs.getInt(2),rs.getDate(3),rs.getInt(4),rs.getInt(5),rs.getString(6));
+                X[cnt] = new Ingredient_storage(rs.getInt(1),rs.getDate(2),rs.getInt(3),rs.getInt(4),rs.getString(5));
                 cnt++;
             }
             return X;
@@ -52,11 +52,12 @@ public class Ingredient_storage {
 
     public int EnStorage(Connection conn,int ingredient_id,int amount,String staff_id){
         try{
-            String sql = "select EnIngredientStorage(?,?,?)";
+            String sql = "select EnIngredientStorage("+ingredient_id+","+amount+","+"\""+staff_id+"\""+")";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1,ingredient_id);
-            st.setInt(2,amount);
-            st.setString(3,"\""+staff_id+"\"");
+//            st.setInt(1,ingredient_id);
+//            st.setInt(2,amount);
+//            st.setString(3,"\""+staff_id+"\"");
+            System.out.println(sql);
             ResultSet rs = st.executeQuery(sql);
             rs.next();
             return rs.getInt(1);
@@ -70,11 +71,12 @@ public class Ingredient_storage {
 
     public int OutStorage(Connection conn,int ingredient_id,int amount,String staff_id){
         try{
-            String sql = "select OutIngredientStorage(?,?,?)";
+            String sql = "select OutIngredientStorage("+"\""+staff_id+ "\""+"," +ingredient_id+","+amount+ ")";
+            System.out.println(sql);
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(2,ingredient_id);
-            st.setInt(3,amount);
-            st.setString(1,"\""+staff_id+"\"");
+//            st.setInt(2,ingredient_id);
+//            st.setInt(3,amount);
+//            st.setString(1,"\""+staff_id+"\"");
             ResultSet rs = st.executeQuery(sql);
             rs.next();
             return rs.getInt(1);
