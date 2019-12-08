@@ -63,14 +63,14 @@ public class Product_storage {
 
             String sql;
             sql = "select EnProductStorage1(?,?,?,?,?)";
-            PreparedStatement prepareStatement = conn.prepareStatement(sql);
-            prepareStatement.setString(1, String.valueOf(product_id));
-            prepareStatement.setString(2, String.valueOf(amount));
-            prepareStatement.setString(3,staff_id);
-            prepareStatement.setString(4, String.valueOf(workshop_id));
-            prepareStatement.setString(5, String.valueOf(plan_id));
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, String.valueOf(product_id));
+            preparedStatement.setString(2, String.valueOf(amount));
+            preparedStatement.setString(3,staff_id);
+            preparedStatement.setString(4, String.valueOf(workshop_id));
+            preparedStatement.setString(5, String.valueOf(plan_id));
             System.out.println(sql);
-            ResultSet rs = prepareStatement.executeQuery(sql);
+            ResultSet rs = preparedStatement.executeQuery(sql);
             rs.next();
             return rs.getInt(1);
         }

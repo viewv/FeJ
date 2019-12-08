@@ -36,4 +36,20 @@ public class Product {
             e.printStackTrace();
         }
     }
+
+    public int UpdatePrice(Connection conn,int id,float newprice){
+        try{
+            String sql = "select UpdatePrice(" +
+                    id + "," + newprice + ")";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0; //异常
+    }
+    //1.illegal price 2.商品不存在 3.成功
+
 }
