@@ -69,6 +69,7 @@ public class SaleHomeController implements Initializable {
 
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
     private HashMap<Integer, Order_Info> all_Orders = new HashMap<Integer, Order_Info>();
+    private HashMap<Integer, Integer> planLoc = new HashMap<Integer, Integer>();
     private Product product = new Product(0, "0", 0, (float) 0.1, "0");
 
     public SaleHomeController() throws IOException, ClassNotFoundException {
@@ -299,5 +300,40 @@ public class SaleHomeController implements Initializable {
         Order order = new Order();
         order.DenyReturn(conn,id);
         onClinckbtnOrderInfo();
+    }
+
+    public void onClickAllPlan(MouseEvent mouseEvent) {
+        pnl_scroll.getChildren().clear();
+        Plan plan = new Plan();
+        int[] allPlanId = plan.getids(conn);
+        int length = allPlanId.length;
+
+        Node[] nodes = new Node[length];
+        Node node;
+
+        for (int i = 0; i < length; i++) {
+            try {
+                FXMLLoader loader = new
+                        FXMLLoader(Objects.requireNonNull(
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/ui/SPlanItem.fxml")));
+
+                node = loader.load();
+                PlanItemController itemController = loader.getController();
+                plan.InitPlanById(allPlanId[i], conn);
+                int[][] products = plan.InitProductById(allPlanId[i], conn);
+                itemController.setLabPlanId(allPlanId[i]);
+                itemController.setLabPlanStime(plan.start_time);
+                itemController.setLabPlanPtime(plan.end_time);
+                //itemController.setHomeController(this);
+                itemController.setTablePro(products);
+                planLoc.put(allPlanId[i], i);
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

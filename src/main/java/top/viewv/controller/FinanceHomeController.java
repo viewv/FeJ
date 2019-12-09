@@ -55,12 +55,12 @@ public class FinanceHomeController implements Initializable {
     public Label labUserName;
     public JFXButton btnOrderInfo;
     public Label userId;
+    public JFXButton btnAllInout;
 
     Connection conn = new Connect().getConnection();
 
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
-    private HashMap<Integer, Order_Info> all_Orders = new HashMap<Integer, Order_Info>();
-    private Product product = new Product(0, "0", 0, (float) 0.1, "0");
+
     @FXML
     private VBox pnl_scroll;
 
@@ -257,6 +257,37 @@ public class FinanceHomeController implements Initializable {
                 Order_Product[] order_products = order.InitProductById(conn,orderid);
                 orderItemController.setTableOrderShopList(order_products);
                 orderItemController.setHomeController(this);
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+            } catch (IOException ex) {
+                Logger.getLogger(FinanceHomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public void onClickedAllInOut(MouseEvent mouseEvent) {
+        Finance finance = new Finance();
+        Finance[] finances = finance.GetAll(conn);
+        int length = finances.length;
+        Node[] nodes = new Node[length];
+        Node node;
+        pnl_scroll.getChildren().clear();
+        for (int i = 0;i<length;i++){
+            finance = finances[i];
+            //type = (1.订单收入 2.退款支出)
+            try {
+                FXMLLoader loader = new
+                        FXMLLoader(Objects.requireNonNull(
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/ui/FinanceAllInfo.fxml")));
+                node = loader.load();
+                FinanceAllInfoController orderItemController = loader.getController();
+                orderItemController.setLabOrder(finance.id);
+                orderItemController.setLableMoney(finance.money);
+                orderItemController.setLabStaffl(finance.staff_id);
+                orderItemController.setLabType(finance.type);
+                //调用生成table
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (IOException ex) {

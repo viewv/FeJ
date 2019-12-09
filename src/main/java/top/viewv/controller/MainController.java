@@ -22,6 +22,8 @@ import top.viewv.api.UserAuth;
 import top.viewv.database.Connect;
 import top.viewv.database.Login;
 import top.viewv.database.Signup;
+import top.viewv.model.Finance;
+import top.viewv.model.Plan;
 import top.viewv.model.Staff;
 import top.viewv.view.StageManager;
 
@@ -84,7 +86,7 @@ public class MainController implements Initializable  {
         //TODO Rember to remove it when finish!
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            IStorageSwitch();
+            SaleSwitch();
         }
         else {
             String result = login.LoginFun(user_id, password, conn);
@@ -178,7 +180,6 @@ public class MainController implements Initializable  {
         FXMLLoader loader = new
                 FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
                 .getResource("data/ui/NewHome.fxml"));
-
 
         Parent root = loader.load();
         stage.setTitle("Home Page");

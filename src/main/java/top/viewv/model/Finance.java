@@ -19,6 +19,9 @@ public class Finance {
         this.staff_id = e;
     }
 
+    public Finance(){
+
+    }
 //type = (1.订单收入 2.退款支出)
 
     public int InCome(Connection conn, int OrderID, String staff_id) {
