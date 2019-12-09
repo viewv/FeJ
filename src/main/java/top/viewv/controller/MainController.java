@@ -106,15 +106,35 @@ public class MainController implements Initializable  {
                     }else {
                         String[] type = UserAuth.getUserAuth(staffid);
                         if (type[0] == "SA"){
-                            SaleSwitch();
+                            if (type[2] == "1"){
+                                ManageSwitch("SA");
+                            }else {
+                                SaleSwitch();
+                            }
                         }else if(type[0] == "FM"){
-                            FinanceSwitch();
+                            if (type[2] == "1"){
+                                ManageSwitch("FM");
+                            }else {
+                                FinanceSwitch();
+                            }
                         }else if(type[0]== "WS"  ){
-                            StorageSwitch();
+                            if (type[2] == "1"){
+                                ManageSwitch("WS");
+                            }else {
+                                StorageSwitch();
+                            }
                         }else if(type[0]=="PM"){
-                            PlanSwitch();
+                            if (type[2] == "1"){
+                                ManageSwitch("PM");
+                            }else {
+                                PlanSwitch();
+                            }
                         }else if(type[0] == "MS"){
-                            IStorageSwitch();
+                            if (type[2] == "1"){
+                                ManageSwitch("MS");
+                            }else {
+                                IStorageSwitch();
+                            }
                         }
                     }
                 }
@@ -125,6 +145,36 @@ public class MainController implements Initializable  {
             JFXSnackbar snackbar = new JFXSnackbar(BottomPane);
             snackbar.show(result, 1000);
         }
+    }
+
+    public void ManageSwitch(String role) throws IOException {
+        Stage stage = new Stage();
+        System.out.println("Start Login");
+
+        labLoadiInd.setText("Loading...");
+        pbarLoad.setVisible(true);
+
+        FXMLLoader loader = new
+                FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                .getResource("data/ui/RoleChooser.fxml"));
+
+        Parent root = loader.load();
+        stage.setTitle("Home Page");
+        stage.setScene(new Scene(root));
+        stage.show();
+        RoleController homeControl = loader.getController();
+        homeControl.setLabUserName("ViewvLab");
+        homeControl.setUserIcon("qianrui1999@qq.com");
+        homeControl.setlabUserId(user_id);
+        homeControl.setDept(role);
+        //将第二个窗口保存到map中
+        StageManager.STAGE.put("second", stage);
+        //将本窗口保存到map中
+        StageManager.CONTROLLER.put("index", this);
+
+        //关闭本窗口
+        Stage index = (Stage) loginPane.getScene().getWindow();
+        index.close();
     }
 
     public void RegInput() {
@@ -281,36 +331,6 @@ public class MainController implements Initializable  {
         homeControl.setUserIcon("zxnnet@gmail.com");
         homeControl.setlabUserId(user_id);
         homeControl.refreshNodes();
-        //将第二个窗口保存到map中
-        StageManager.STAGE.put("second", stage);
-        //将本窗口保存到map中
-        StageManager.CONTROLLER.put("index", this);
-        //关闭本窗口
-        Stage index = (Stage) loginPane.getScene().getWindow();
-        index.close();
-    }
-
-    public void PersonSwitch() throws Exception {
-
-        Stage stage = new Stage();
-        System.out.println("Start Login");
-
-        labLoadiInd.setText("Loading...");
-        pbarLoad.setVisible(true);
-
-        FXMLLoader loader = new
-                FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
-                .getResource("data/ui/PersonHome.fxml"));
-
-        Parent root = loader.load();
-        stage.setTitle("Person Home Page");
-        stage.setScene(new Scene(root));
-        stage.show();
-        PersonHomeController homeControl = loader.getController();
-        homeControl.setLabUserName("ViewvLab");
-        homeControl.setUserIcon("zxnnet@gmail.com");
-        homeControl.setlabUserId(user_id);
-        homeControl.refeshUser();
         //将第二个窗口保存到map中
         StageManager.STAGE.put("second", stage);
         //将本窗口保存到map中

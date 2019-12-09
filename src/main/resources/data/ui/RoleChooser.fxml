@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.RoleController">
+   <children>
+      <JFXButton fx:id="btnPerson" buttonType="RAISED" ellipsisString="" layoutX="108.0" layoutY="137.0" onMouseClicked="#onClickedbtnPerson" prefHeight="127.0" prefWidth="115.0">
+         <graphic>
+            <ImageView fitHeight="140.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../newIcon/user.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnManage" buttonType="RAISED" ellipsisString="" layoutX="357.0" layoutY="137.0" onMouseClicked="#onClickedbtnManage" prefHeight="127.0" prefWidth="115.0">
+         <graphic>
+            <ImageView fitHeight="140.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../newIcon/order.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <AnchorPane prefHeight="65.0" prefWidth="600.0" style="-fx-background-color: #5a7cd8#5a7cd8;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="22.0" layoutY="16.0" prefHeight="34.0" prefWidth="144.0" text="您是管理员！" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="23.0" layoutY="76.0" prefHeight="34.0" prefWidth="236.0" text="您要前往那个页面？" textFill="#a49a9a">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="135.0" layoutY="264.0" prefHeight="28.0" prefWidth="85.0" text="员工管理">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="264.0" prefHeight="28.0" prefWidth="85.0" text="业务管理">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Pane layoutY="346.0" prefHeight="54.0" prefWidth="600.0" style="-fx-background-color: #F0F0F0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton fx:id="btnexit" buttonType="RAISED" layoutX="490.0" layoutY="8.0" onMouseClicked="#onClickedExit" prefHeight="29.0" prefWidth="85.0" style="-fx-background-color: #df3535#df3535;" text="返回登陆" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
