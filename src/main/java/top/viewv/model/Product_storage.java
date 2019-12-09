@@ -147,4 +147,56 @@ public class Product_storage {
             e.printStackTrace();
         }
     }
+
+    public Product_storage[] GetStorage(Connection conn){
+        try{
+            int cnt;
+            String sql = "select count(*) from product_storage where order_id = 0";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            cnt = rs.getInt(1);
+            Product_storage[] X = new Product_storage[cnt];
+            sql = "select * from product_storage where order_id = 0";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery(sql);
+            cnt = 0;
+            while(rs.next()){
+                X[cnt] = new Product_storage(rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getDate(8));
+                cnt++;
+            }
+            return X;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    //选取当前仍在仓库中的订单
+
+    public Product_storage[] TraceOrderProduct(Connection conn){
+        try{
+            int cnt;
+            String sql = "select count(*) from product_storage where order_id <> 0";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            cnt = rs.getInt(1);
+            Product_storage[] X = new Product_storage[cnt];
+            sql = "select * from product_storage where order_id <> 0 order by order_id";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery(sql);
+            cnt = 0;
+            while(rs.next()){
+                X[cnt] = new Product_storage(rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getDate(8));
+                cnt++;
+            }
+            return X;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    //追踪订单信息
 }
