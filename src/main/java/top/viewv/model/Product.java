@@ -1,5 +1,7 @@
 package top.viewv.model;
 
+import top.viewv.model.Tables.RecipeTable;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -90,5 +92,63 @@ public class Product {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public int AddProduct(RecipeTable x,Product y,Connection conn){
+        try{
+            String sql = "select count(product_id) from product";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int id = rs.getInt(1);
+            if (id == 0){
+                id = 1;
+            }
+            else{
+                sql = "select product_id from product order by product_id desc limit 1";
+                st = conn.prepareStatement(sql);
+                rs = st.executeQuery(sql);
+                rs.next();
+                id = rs.getInt(1);
+            }
+            sql = "insert into product values(" + id + ",\"" +
+            y.product_name + "\"," + y.product_period + ","
+            + y.product_price + ",\"" + y.description + "\")";
+            st = conn.prepareStatement(sql);
+            st.execute(sql);
+
+            y.product_id = id;
+            x.ProductId = id;
+
+            sql = "select count(id) from recipe";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery(sql);
+            rs.next();
+            id = rs.getInt(1);
+            if (id == 0){
+                id = 1;
+            }
+            else{
+                sql = "select id from recipe order by id desc limit 1";
+                st = conn.prepareStatement(sql);
+                rs = st.executeQuery(sql);
+                rs.next();
+                id = rs.getInt(1);
+            }
+
+            for (int i = 0; i < x.Rlength; ++i){
+                String a = x.Itable[i].IngredientName;
+                int b = x.Itable[i].IngredientId;
+                int c = x.Itable[i].Amount;
+                sql = "insert into recipe values(" + id +
+                        "," + y.product_id + "," + b + "," + c + ")";
+                st = conn.prepareStatement(sql);
+                st.execute(sql);
+                id++;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 }
