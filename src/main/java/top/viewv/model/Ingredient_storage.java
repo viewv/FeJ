@@ -128,5 +128,24 @@ public class Ingredient_storage {
             e.printStackTrace();
         }
     }
+
+    public static String[] GetName(Connection conn,int cnt){
+        try{
+            String[] X = new String[cnt];
+            String sql = "select ingredient_name from `full ingredient_storage`";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+
+            int a = 0;
+            while(rs.next()){
+                X[a] = rs.getString(1);
+                a++;
+            }
+            return X;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
