@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
@@ -15,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="BasePane" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="712.0" prefWidth="1264.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.PlanHomeController">
+<AnchorPane id="AnchorPane" fx:id="BasePane" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="712.0" prefWidth="1257.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.DeveHomeController">
     <children>
-        <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@../style/planstyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@../style/devstyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label fx:id="labUserName" layoutX="224.0" layoutY="47.0" text="User Name" textFill="WHITE">
                     <font>
@@ -29,7 +30,7 @@
                         <Font size="13.0" />
                     </font>
                 </Label>
-                <JFXButton layoutX="1044.0" layoutY="94.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #ff6f00;" text="个人信息" textFill="WHITE">
+                <JFXButton layoutX="1044.0" layoutY="94.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #F902FF#F902FF;" text="个人信息" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -49,7 +50,7 @@
                         <Insets top="60.0" />
                     </VBox.margin>
                 </Label>
-                <JFXButton fx:id="btnShowAllproduct" alignment="BASELINE_LEFT" graphicTextGap="10.0" onMouseClicked="#onClickedbtnShowAllProduct" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="商品一览" textFill="#5b5858">
+                <JFXButton fx:id="btnShowAllproduct" alignment="BASELINE_LEFT" graphicTextGap="10.0" onMouseClicked="#onClickedbtnShowAllProduct" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="配料一览" textFill="#5b5858">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -59,7 +60,7 @@
                     <graphic>
                         <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../planIcon/overview.png" />
+                                <Image url="@../newIcon/sum.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -67,7 +68,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-                <JFXButton fx:id="btnShopList" alignment="BASELINE_LEFT" graphicTextGap="10.0" onMouseClicked="#onClickedbtnShopList" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="计划列表" textFill="#5b5858">
+                <JFXButton fx:id="btnShopList" alignment="BASELINE_LEFT" graphicTextGap="10.0" onMouseClicked="#onClickedbtnShopList" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="配料表缓存" textFill="#5b5858">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -77,7 +78,7 @@
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../planIcon/paln.png" />
+                                <Image url="@../newIcon/order.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -85,44 +86,14 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-            <JFXButton fx:id="btnAllPlan" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="143.0" onMouseClicked="#onClickedbtnAllPlan" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="所有计划" textFill="#5b5858">
+            <JFXButton fx:id="btnOrderInfo" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="143.0" onMouseClicked="#onClinckbtnOrderInfo" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="所有产品" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../planIcon/order.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton fx:id="btnStorage" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="186.0" onMouseClicked="#onClickStorage" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="成品库存" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../newIcon/power.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton fx:id="btnIstorage" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="229.0" onMouseClicked="#onClickIStorage" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="原料库存" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../newIcon/test.png" />
+                        <Image url="@../newIcon/order.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -137,7 +108,7 @@
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../planIcon/exit.png" />
+                        <Image url="@../newIcon/exit.png" />
                      </image>
                      <viewport>
                         <Rectangle2D />
@@ -164,28 +135,12 @@
         </Pane>
         <ScrollPane layoutX="251.0" layoutY="182.0" prefHeight="443.0" prefWidth="914.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="182.0">
             <content>
-                <VBox fx:id="pnl_scroll" prefHeight="476.0" prefWidth="980.0" spacing="20.0" style="-fx-background-color: #fff;" />
+                <VBox fx:id="pnl_scroll" prefHeight="473.0" prefWidth="976.0" spacing="20.0" style="-fx-background-color: #fff;" />
             </content>
         </ScrollPane>
         <HBox layoutX="251.0" layoutY="145.0" prefHeight="30.0" prefWidth="810.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="1.0">
             <children>
-                <Label fx:id="lbl_currentprojects" prefHeight="30.0" prefWidth="207.0" text="状态" textFill="#171717">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                    <padding>
-                        <Insets left="40.0" />
-                    </padding>
-                </Label>
-                <Label fx:id="lbl_pending" prefHeight="30.0" prefWidth="207.0" text="时间" textFill="#171717">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                    <padding>
-                        <Insets left="40.0" />
-                    </padding>
-                </Label>
-                <Label fx:id="lbl_completed" prefHeight="30.0" prefWidth="207.0" text="项目" textFill="#171717">
+                <Label fx:id="labToday" prefHeight="30.0" prefWidth="207.0" textFill="#171717">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -197,10 +152,27 @@
         </HBox>
       <AnchorPane layoutX="-2.0" layoutY="699.0" prefHeight="44.0" prefWidth="1187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXDatePicker fx:id="jdpStartTime" defaultColor="#ffa040" layoutX="621.0" layoutY="8.0" promptText="开始时间" />
-            <JFXDatePicker fx:id="jdpDueTime" defaultColor="#ffa040" layoutX="812.0" layoutY="8.0" promptText="结束时间" />
-            <JFXButton fx:id="btnCheckAll" buttonType="RAISED" layoutX="1115.0" layoutY="8.0" onMouseClicked="#onClickedbtnCheckAll" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #ff6f00 #ff6f00;" text="下达计划" textFill="WHITE" />
-            <JFXButton fx:id="btnClean" buttonType="RAISED" layoutX="1013.0" layoutY="8.0" onMouseClicked="#onClickedbtnClean" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #cc0000#cc0000;" text="清空计划" textFill="WHITE" />
-         </children></AnchorPane>
+            <JFXButton fx:id="btnCheckAll" buttonType="RAISED" layoutX="1139.0" layoutY="9.0" onMouseClicked="#onClickedbtnCheckAll" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #473E98  #473E98;" text="结算" textFill="WHITE" />
+            <Label fx:id="testLab" layoutX="293.0" layoutY="14.0" onMouseClicked="#onclickedTestArray" text="Label" />
+            <JFXProgressBar fx:id="pbarBusy" layoutX="353.0" layoutY="14.0" prefHeight="17.0" />
+            <JFXButton fx:id="btnCleanShopList" buttonType="RAISED" layoutX="1068.0" layoutY="9.0" onMouseClicked="#onClickedbtnCleanShopList" prefHeight="27.0" prefWidth="61.0" style="-fx-background-color: #cc0000;" text="清空" textFill="WHITE" />
+            <JFXTextField fx:id="areAmount" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="962.0" layoutY="9.0" prefHeight="27.0" prefWidth="61.0" promptText="天数" text="0" />
+            <Label fx:id="labAllM" layoutX="904.0" layoutY="14.0" text="总金额" textFill="#3a1c9d">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labAllMoney" alignment="CENTER_RIGHT" layoutX="704.0" layoutY="14.0" prefHeight="18.0" prefWidth="189.0" text="0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labD" layoutX="1029.0" layoutY="14.0" text="天数" textFill="#3a1c9d">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

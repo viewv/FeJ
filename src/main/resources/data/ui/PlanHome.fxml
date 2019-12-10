@@ -100,6 +100,36 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
+            <JFXButton fx:id="btnStorage" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="186.0" onMouseClicked="#onClickStorage" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="成品库存" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../newIcon/power.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="btnIstorage" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="229.0" onMouseClicked="#onClickIStorage" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="原料库存" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../newIcon/test.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
             <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="388.0" onMouseClicked="#onClickedbtnExit" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="退出" textFill="#5b5858">
                <font>
                   <Font size="13.0" />

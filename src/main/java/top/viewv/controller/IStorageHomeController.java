@@ -11,15 +11,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.database.Connect;
 import top.viewv.model.Ingredient_storage;
 import top.viewv.model.Staff;
+import top.viewv.view.StageManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,12 +45,8 @@ public class IStorageHomeController implements Initializable {
     public AnchorPane BasePane;
     public Label labUserName;
     public Label userId;
-    public JFXButton btnCheckAll;
-    public JFXTextField arep;
     public JFXTextField area;
-    public JFXTextField areo;
     public JFXTextField arel;
-    public JFXTextField areorder;
 
     Connection conn = new Connect().getConnection();
 
@@ -123,5 +123,25 @@ public class IStorageHomeController implements Initializable {
         String id = Staff.GetStaffID(userId.getText(),conn);
         product_storage.EnStorage(conn,Integer.parseInt(arel.getText()),Integer.parseInt(area.getText()),id);
         refrash();
+    }
+
+    public void onClickExit(MouseEvent mouseEvent) throws IOException {
+        MainController secondControl = (MainController) StageManager.CONTROLLER.get("index");
+        secondControl.setTranDataToIndex("第三个窗口的数据");
+        //如果本窗口还使用该控制器先不remove这个控制器;
+        //StageManager.CONTROLLER.remove("secondControl");
+
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("data/ui/Main.fxml")));
+        stage.setTitle("Index");
+        stage.setScene(new Scene(root));
+        stage.show();
+        //将第二个窗口保存到map中
+        StageManager.STAGE.put("second", stage);
+        //将本窗口保存到map中
+        StageManager.CONTROLLER.put("index", this);
+        //关闭本窗口
+        Stage index = (Stage) btnExit.getScene().getWindow();
+        index.close();
     }
 }

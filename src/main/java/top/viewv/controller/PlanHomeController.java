@@ -23,8 +23,10 @@ import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.api.Serialize;
 import top.viewv.database.Connect;
+import top.viewv.model.Ingredient_storage;
 import top.viewv.model.Plan;
 import top.viewv.model.PlanInfo;
+import top.viewv.model.Product_storage;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.model.Tables.RecipeTable;
 import top.viewv.view.StageManager;
@@ -283,6 +285,85 @@ public class PlanHomeController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+    public void onClickStorage(MouseEvent mouseEvent) {
+        refrashOrder();
+    }
+
+    void refrashOrder() {
+        pnl_scroll.getChildren().clear();
+        Product_storage[] product_storages;
+        Product_storage product_storage = new Product_storage();
+        product_storages = product_storage.TraceOrderProduct(conn);
+        int length = product_storages.length;
+        Node[] nodes = new Node[length];
+        Node node;
+        for (int i = 0; i < length; i++) {
+            try {
+                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/ui/StorageItem.fxml")));
+                node = loader.load();
+                product_storage = product_storages[i];
+                StorageItemController shopListItemController = loader.getController();
+                shopListItemController.setLabUserId(product_storage.product_id);
+                //shopListItemController.setHomeController(this);
+                shopListItemController.setExtra(product_storage.order_id,
+                        product_storage.product_id,
+                        product_storage.amount,
+                        product_storage.staff_id,
+                        product_storage.workshop_id,
+                        product_storage.plan_id,
+                        product_storage.product_time);
+                shopListItemController.setAreaAmount(product_storage.amount);
+                shopListItemController.setvis(false);
+                shopListItemController.setvisout(false);
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+                //删除所有节点，有点残忍，还是隐藏比较好
+                //pnl_scroll.getChildren().removeAll();
+            } catch (IOException ex) {
+                Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public void onClickIStorage(MouseEvent mouseEvent) {
+        refrashIstroge();
+    }
+
+    void refrashIstroge(){
+        pnl_scroll.getChildren().clear();
+        Ingredient_storage[] product_storages;
+        Ingredient_storage product_storage= new Ingredient_storage();
+        product_storages = product_storage.GetAll(conn);
+        int length = product_storages.length;
+        Node[] nodes = new Node[length];
+        Node node;
+        for (int i = 0;i<length;i++) {
+            try {
+                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/ui/IStorageItem.fxml")));
+                node = loader.load();
+                product_storage = product_storages[i];
+                IStorageItemController shopListItemController = loader.getController();
+                shopListItemController.setLabUserId(product_storage.id);
+                shopListItemController.setvis(false);
+                //shopListItemController.setHomeController(this);
+                shopListItemController.setExtra(product_storage.id,product_storage.date,product_storage.ingredient_id,product_storage.amount,product_storage.staff_id);
+                shopListItemController.setAreaAmount(product_storage.amount);
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+                //删除所有节点，有点残忍，还是隐藏比较好
+                //pnl_scroll.getChildren().removeAll();
+            } catch (IOException ex) {
+                Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

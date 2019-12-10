@@ -86,7 +86,7 @@ public class MainController implements Initializable  {
         //TODO Rember to remove it when finish!
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            SaleSwitch();
+            DevSwitch();
         }
         else {
             String result = login.LoginFun(user_id, password, conn);
@@ -134,6 +134,12 @@ public class MainController implements Initializable  {
                                 ManageSwitch("MS");
                             }else {
                                 IStorageSwitch();
+                            }
+                        }else if(type[0]=="DE"){
+                            if (type[2]=="1"){
+                               ManageSwitch("DE");
+                            }else {
+                                DevSwitch();
                             }
                         }
                     }
@@ -217,6 +223,37 @@ public class MainController implements Initializable  {
     public void SignupTab() {
         GroupLogin.setVisible(false);
         GroupSignup.setVisible(true);
+    }
+
+    public void DevSwitch() throws Exception {
+
+        Stage stage = new Stage();
+        System.out.println("Start Login");
+
+        labLoadiInd.setText("Loading...");
+        pbarLoad.setVisible(true);
+
+        FXMLLoader loader = new
+                FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                .getResource("data/ui/DeveHome.fxml"));
+
+        Parent root = loader.load();
+        stage.setTitle("Develop Home Page");
+        stage.setScene(new Scene(root));
+        stage.show();
+        DeveHomeController homeControl = loader.getController();
+        homeControl.setLabUserName("ViewvLab");
+        homeControl.refreshNodes();
+        homeControl.setUserIcon("qianrui1999@qq.com");
+        homeControl.setlabUserId(user_id);
+        //将第二个窗口保存到map中
+        StageManager.STAGE.put("second", stage);
+        //将本窗口保存到map中
+        StageManager.CONTROLLER.put("index", this);
+
+        //关闭本窗口
+        Stage index = (Stage) loginPane.getScene().getWindow();
+        index.close();
     }
 
     public void Switch() throws Exception {
@@ -383,7 +420,7 @@ public class MainController implements Initializable  {
                 .getResource("data/ui/IStorageHome.fxml"));
 
         Parent root = loader.load();
-        stage.setTitle("Product Storage Home Page");
+        stage.setTitle("Ingredient Storage Home Page");
         stage.setScene(new Scene(root));
         stage.show();
         IStorageHomeController homeControl = loader.getController();

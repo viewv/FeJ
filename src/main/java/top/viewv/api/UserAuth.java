@@ -1,5 +1,9 @@
 package top.viewv.api;
 
+import sun.nio.ch.SelectorImpl;
+
+import javax.swing.*;
+
 public class UserAuth {
     public static String[] getUserAuth(String userId){
         /*
@@ -113,6 +117,20 @@ public class UserAuth {
                 type[2] = "0";
             }
             return type;
+        }else if(user[0]=='7'){
+            type[0] = "DE";
+            if (user[1] == '1'){
+                type[1]= "WK";
+            }else if (user[1] == '2'){
+                type[1]= "MG";
+            }else if(user[1]== '3'){
+                type[1]="SP";
+            }
+            if (user[2] == '1'){
+                type[2] = "1";
+            }else {
+                type[2] = "0";
+            }
         }
         return type;
     }

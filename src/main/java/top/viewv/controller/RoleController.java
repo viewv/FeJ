@@ -36,6 +36,8 @@ public class RoleController {
             IStorageSwitch();
         }else if (dept == "PL"){
             PlanSwitch();
+        }else if (dept == "DE"){
+            DevSwitch();
         }
     }
 
@@ -101,6 +103,34 @@ public class RoleController {
 
     public void setDept(String dept){
         this.dept = dept;
+    }
+
+    public void DevSwitch() throws Exception {
+
+        Stage stage = new Stage();
+        System.out.println("Start Login");
+
+        FXMLLoader loader = new
+                FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                .getResource("data/ui/DeveHome.fxml"));
+
+        Parent root = loader.load();
+        stage.setTitle("Develop Home Page");
+        stage.setScene(new Scene(root));
+        stage.show();
+        DeveHomeController homeControl = loader.getController();
+        homeControl.setLabUserName(labUserName);
+        homeControl.refreshNodes();
+        homeControl.setUserIcon(userIcon);
+        homeControl.setlabUserId(userId);
+        //将第二个窗口保存到map中
+        StageManager.STAGE.put("second", stage);
+        //将本窗口保存到map中
+        StageManager.CONTROLLER.put("chooser", this);
+
+        //关闭本窗口
+        Stage index = (Stage) pane.getScene().getWindow();
+        index.close();
     }
 
     public void PlanSwitch() throws Exception {
@@ -221,7 +251,7 @@ public class RoleController {
                 .getResource("data/ui/IStorageHome.fxml"));
 
         Parent root = loader.load();
-        stage.setTitle("Product Storage Home Page");
+        stage.setTitle("Ingredient Storage Home Page");
         stage.setScene(new Scene(root));
         stage.show();
         IStorageHomeController homeControl = loader.getController();

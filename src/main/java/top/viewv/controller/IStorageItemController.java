@@ -21,6 +21,7 @@ public class IStorageItemController implements Initializable {
     public int ingredient_id;
     public int amount;
     public String staff_id;
+    public Label labnotinfo;
 
     private IStorageHomeController homeController;
 
@@ -44,6 +45,11 @@ public class IStorageItemController implements Initializable {
         this.staff_id = staff_id;
     }
 
+    public void setvis(boolean cond){
+        AreaOut.setVisible(cond);
+        labnotinfo.setVisible(cond);
+        btnDelUser.setVisible(cond);
+    }
     public void setHomeController(IStorageHomeController homeController) {
         this.homeController = homeController;
     }
