@@ -12,7 +12,6 @@ public class Ingredient_storage {
     public int amount;
     public String staff_id;
 
-
     public Ingredient_storage(int a,Date b,int c,int d,String e){
         this.id = a;
         this.date = b;

@@ -5,8 +5,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-import java.sql.Date;
-
 public class IsItemController {
 
     public Label labProductName;

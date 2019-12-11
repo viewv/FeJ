@@ -133,17 +133,20 @@ public class Product {
                 id = 1;
             }
             else{
-                sql = "select id from recipe order by id desc limit 1";
+                sql = "select id+1 from recipe order by id desc limit 1";
                 st = conn.prepareStatement(sql);
                 rs = st.executeQuery(sql);
                 rs.next();
                 id = rs.getInt(1);
             }
 
+            System.out.println(x.Rlength);
             for (int i = 0; i < x.Rlength; ++i){
+
                 String a = x.Itable[i].IngredientName;
                 int b = x.Itable[i].IngredientId;
                 int c = x.Itable[i].Amount;
+                System.out.println(a+'-'+b+'-'+c);
                 sql = "insert into recipe values(" + id +
                         "," + y.product_id + "," + b + "," + c + ")";
                 st = conn.prepareStatement(sql);

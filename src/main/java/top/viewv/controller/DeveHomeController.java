@@ -231,6 +231,7 @@ public class DeveHomeController implements Initializable {
             Receipe_Info value = entry.getValue();
             specificRecipe.setAll(value.IngredientId,value.IngredientName,value.Amount);
             specificRecipes[i]=specificRecipe;
+            i++;
         }
 
         RecipeTable recipeTable = new RecipeTable(specificRecipes,0,length);
