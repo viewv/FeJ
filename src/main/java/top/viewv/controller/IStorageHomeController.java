@@ -83,6 +83,9 @@ public class IStorageHomeController implements Initializable {
         int length = product_storages.length;
         Node[] nodes = new Node[length];
         Node node;
+
+
+
         for (int i = 0;i<length;i++) {
             try {
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(
@@ -96,6 +99,7 @@ public class IStorageHomeController implements Initializable {
                 shopListItemController.setHomeController(this);
                 shopListItemController.setExtra(product_storage.id,product_storage.date,product_storage.ingredient_id,product_storage.amount,product_storage.staff_id);
                 shopListItemController.setAreaAmount(product_storage.amount);
+
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好

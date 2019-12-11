@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="223.0" prefWidth="913.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.IsItemController">
+    <children>
+        <Pane layoutX="29.0" layoutY="22.0" prefHeight="340.0" prefWidth="895.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <children>
+                <ImageView fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/sale.png" />
+                    </image>
+                </ImageView>
+                <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
+                <Label fx:id="labProductName" layoutX="123.0" layoutY="18.0" text="Ing Name" textFill="#3a1c9d">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="279.0" layoutY="113.0" textFill="#aeacac">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="123.0" layoutY="104.0" text="数量" textFill="#3a1c9d">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labAmount" layoutX="123.0" layoutY="122.0" prefHeight="44.0" prefWidth="313.0" text="30" textFill="#aeacac">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labProductId" layoutX="123.0" layoutY="51.0" prefHeight="18.0" prefWidth="98.0" text="ID: 20178" textFill="#b2b0b0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            </children>
+            <effect>
+                <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
+            </effect>
+        </Pane>
+    </children>
+</AnchorPane>

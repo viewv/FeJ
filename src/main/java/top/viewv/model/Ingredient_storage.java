@@ -74,9 +74,6 @@ public class Ingredient_storage {
             String sql = "select OutIngredientStorage("+"\""+staff_id+ "\""+"," +ingredient_id+","+amount+ ")";
             System.out.println(sql);
             PreparedStatement st = conn.prepareStatement(sql);
-//            st.setInt(2,ingredient_id);
-//            st.setInt(3,amount);
-//            st.setString(1,"\""+staff_id+"\"");
             ResultSet rs = st.executeQuery(sql);
             rs.next();
             return rs.getInt(1);
@@ -88,7 +85,7 @@ public class Ingredient_storage {
     }
     //0.null 1.ingredient doesn't exist 2.amount error 3.staff doesn't exist 4.success
 
-    public int[] CheckDestroy(Connection conn){
+    public static int[] CheckDestroy(Connection conn){
         try{
             String sql = "select count(ingredient_storage.id) from ingredient_storage,ingredient where " +
                     "ingredient_storage.ingredient_id = ingredient.ingredient_id and" +

@@ -24,10 +24,7 @@ import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.api.Serialize;
 import top.viewv.database.Connect;
-import top.viewv.model.Order;
-import top.viewv.model.Order_Info;
-import top.viewv.model.Order_Product;
-import top.viewv.model.Product;
+import top.viewv.model.*;
 import top.viewv.model.Tables.ProductTable;
 import top.viewv.model.Tables.RecipeTable;
 import top.viewv.view.StageManager;
@@ -54,43 +51,36 @@ public class DeveHomeController implements Initializable {
     public JFXButton btnExit;
     public JFXButton btnShopList;
     public JFXButton btnCheckAll;
-    public Label testLab;
     public JFXButton btnShowAllproduct;
     public AnchorPane BasePane;
     public Label labUserName;
-    public JFXButton btnOrderInfo;
     public JFXProgressBar pbarBusy;
     public Label userId;
     public JFXButton btnCleanShopList;
-    public JFXTextField areAmount;
-    public Label labAllM;
-    public Label labAllMoney;
-    public Label labD;
+    @FXML
+    private VBox pnl_scroll;
+    public JFXTextField arename;
+    public JFXTextField areprice;
+    public JFXTextField arepre;
+    public JFXTextField aredes;
+
     Connection conn = new Connect().getConnection();
 
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
-    private HashMap<Integer, Order_Info> all_Orders = new HashMap<Integer, Order_Info>();
-    private Product product = new Product(0, "0", 0, (float) 0.1, "0");
-    @FXML
-    private VBox pnl_scroll;
+    private HashMap<Integer, Receipe_Info> all_Receipe = new HashMap<Integer, Receipe_Info>();
+
 
     public DeveHomeController() throws IOException, ClassNotFoundException {
     }
 
     public void setShopListCorl(boolean cond){
-        areAmount.setVisible(cond);
         btnCheckAll.setVisible(cond);
         btnCleanShopList.setVisible(cond);
-        labAllM.setVisible(cond);
-        labAllMoney.setVisible(cond);
-        areAmount.setVisible(cond);
-        labD.setVisible(cond);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pbarBusy.setVisible(false);
-        testLab.setVisible(false);
         setShopListCorl(false);
         try {
             Serialize.ser(order_lists, "order.ser");
@@ -130,7 +120,7 @@ public class DeveHomeController implements Initializable {
             try {
                 FXMLLoader loader = new
                         FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
-                        .getResource("data/ui/ProductItem.fxml"));
+                        .getResource("data/ui/DevProductItem.fxml"));
                 node = loader.load();
                 //调用下面的函数可以得到控制器
                 //商品部分
@@ -182,121 +172,115 @@ public class DeveHomeController implements Initializable {
         index.close();
     }
 
-    public void onClickedbtnShopList(MouseEvent mouseEvent) throws Exception {
+    public void onClickedbtnShopList() throws Exception {
         setShopListCorl(true);
         refeshShopList();
     }
 
     public void refeshShopList() throws Exception {
+
         pnl_scroll.getChildren().clear();
-        order_lists = Serialize.dSer("order.ser");
-        int length = order_lists.size();
-        double allP = 0;
+
+        int length = all_Receipe.size();
         Node[] nodes = new Node[length];
         Node node;
         int i = 0;
-        for (Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
+        for (Map.Entry<Integer, Receipe_Info> entry : all_Receipe.entrySet()) {
             Integer key = entry.getKey();
-            Integer value = entry.getValue();
-            System.out.println(key);
-            System.out.println(value);
-            System.out.println("-----");
+            Receipe_Info value = entry.getValue();
             try {
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(
                         Thread.currentThread().
                                 getContextClassLoader().
-                                getResource("data/ui/ShopListItem.fxml")));
+                                getResource("data/ui/DevIsItem.fxml")));
+
                 node = loader.load();
-                ShopListItemController shopListItemController = loader.getController();
+
+                IsItemController shopListItemController = loader.getController();
                 shopListItemController.setLabProductId(key);
-                shopListItemController.setLabAmount(value);
-                product.GetProduct(conn, key);
-                //shopListItemController.setLabProductName(productdict.get(key));
-                shopListItemController.setLabProductName(product.product_name);
-                shopListItemController.setLabSinglePrice(product.product_price);
-                double listAllPrice =  shopListItemController.setLabAllPrice();
-                allP += listAllPrice;
+                shopListItemController.setLabAmount(value.Amount);
+                shopListItemController.setLabProductName(value.IngredientName);
+
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
-                //删除所有节点，有点残忍，还是隐藏比较好
-                //pnl_scroll.getChildren().removeAll();
                 i++;
             } catch (IOException ex) {
                 Logger.getLogger(DeveHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        DecimalFormat df = new DecimalFormat("0.00");
-        labAllMoney.setText(df.format(allP));
     }
 
-    public void onClickedbtnCheckAll(MouseEvent mouseEvent) throws Exception {
-        System.out.println("Sending Order");
-        Order order = new Order();
-        order_lists = Serialize.dSer("order.ser");
+    public void onClickedbtnCheckAll() throws Exception {
 
-        order.PlaceOrder(conn, order_lists, Integer.parseInt(areAmount.getText()), userId.getText());
-        Order_Info order_info = new Order_Info();
-        order_info.setClient_id(order.client_id);
-        order_info.setOrder_id(order.order_id);
-        order_info.setSituation(order.situation);
-        order_info.setOrder_time(order.order_time);
-        order_info.setDue_time(order.due_time);
-        order_info.setDeposit(order.deposit);
-        order_info.setRetainage(order.retainage);
+        int length = all_Receipe.size();
 
-        all_Orders.put(order.order_id, order_info);
-        Serialize.ser(all_Orders, "all_order.ser");
+        SpecificRecipe[] specificRecipes = new  SpecificRecipe[length];
+
+        SpecificRecipe specificRecipe = new SpecificRecipe();
+
+        int i = 0;
+        for (Map.Entry<Integer, Receipe_Info> entry : all_Receipe.entrySet()) {
+            Integer key = entry.getKey();
+            Receipe_Info value = entry.getValue();
+            specificRecipe.setAll(value.IngredientId,value.IngredientName,value.Amount);
+            specificRecipes[i]=specificRecipe;
+        }
+
+        RecipeTable recipeTable = new RecipeTable(specificRecipes,0,length);
+
+        float price = Float.parseFloat(areprice.getText());
+        String name = arename.getText();
+        String des = aredes.getText();
+        int pre = Integer.parseInt(arepre.getText());
+        Product product = new Product(0,name,pre,price,des);
+
+        int message = product.AddProduct(recipeTable,product,conn);
 
         JFXSnackbar snackbar = new JFXSnackbar(BasePane);
-        snackbar.show("Send Order Successfully", 1000);
-        order_lists.clear();
-        Serialize.ser(order_lists, "order.ser");
-
+        snackbar.show("Send Order Successfully"+message, 1000);
+        all_Receipe.clear();
+        onClickedbtnShopList();
     }
 
-    public void onClickedbtnShowAllProduct(MouseEvent mouseEvent) throws Exception {
+    public void onClickedbtnShowAllProduct() throws Exception {
         refreshNodes();
     }
 
-    public void returnOrder(int id) throws Exception {
-        Order order = new Order();
-        order.AskReturn(conn,id);
-        onClinckbtnOrderInfo();
+    public void onClickedbtnCleanShopList() throws Exception {
+        all_Receipe.clear();
+        refeshShopList();
     }
 
-    public void onClinckbtnOrderInfo() throws Exception {
+    public void onClickedbtnShowAllIs() {
         setShopListCorl(false);
-        areAmount.clear();
 
-        Order order = new Order();
-        int[] allOrderId = order.Orders(conn, userId.getText());
-        int length = allOrderId.length;
+        Ingredient_storage ingredient = new Ingredient_storage();
+        Ingredient_storage[] ingredients = ingredient.GetAll(conn);
+        pnl_scroll.getChildren().clear();
+        int length = ingredients.length;
+
+        String[] names = Ingredient_storage.GetName(conn,length);
+
         Node[] nodes = new Node[length];
         Node node;
 
-        pnl_scroll.getChildren().clear();
-
-        for (int i = 0; i < length; i++) {
-            int orderid = allOrderId[i];
-            System.out.println("Order ID" + orderid);
-            order.InitOrderById(conn, orderid);
+        for (int i=0;i<length;i++){
+            ingredient = ingredients[i];
             try {
                 FXMLLoader loader = new
-                        FXMLLoader(Objects.requireNonNull(
-                        Thread.currentThread().
-                                getContextClassLoader().
-                                getResource("data/ui/OrderItem.fxml")));
+                        FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                        .getResource("data/ui/IsItem.fxml"));
                 node = loader.load();
-                OrderItemController orderItemController = loader.getController();
-                //调用生成table
-                orderItemController.setLabOrderStatus(order.situation);
-                orderItemController.setLabPrice(order.deposit + order.retainage);
-                orderItemController.setLabOrdertId(orderid);
-                orderItemController.setOrderStime(order.order_time);
-                orderItemController.setOrderPtime(order.due_time);
-                Order_Product[] order_products = order.InitProductById(conn,orderid);
-                orderItemController.setTableOrderShopList(order_products);
-                //orderItemController.setController(this);
+                //调用下面的函数可以得到控制器
+                //商品部分
+                IsItemController productItemController = loader.getController();
+                productItemController.setLabAmount(ingredient.amount);
+                assert names != null;
+                productItemController.setLabProductName(names[i]);
+                productItemController.setLabProductId(ingredient.ingredient_id);
+                productItemController.setLabStaff(ingredient.staff_id);
+                productItemController.setHomeController(this);
+                productItemController.setLabTime(ingredient.date);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (IOException ex) {
@@ -305,24 +289,18 @@ public class DeveHomeController implements Initializable {
         }
     }
 
-    public void onclickedTestArray(MouseEvent mouseEvent) throws Exception {
-        System.out.println("Test ArrList Lenfth");
-        order_lists = Serialize.dSer("order.ser");
-        testLab.setText(String.valueOf(order_lists.size()));
-
-        for (Map.Entry<Integer, Integer> entry : order_lists.entrySet()) {
-            Integer key = entry.getKey();
-            Integer value = entry.getValue();
-            System.out.println(key);
-            System.out.println(value);
-            System.out.println("-----");
+    public void addtoReceipe(IsItemController item){
+        Integer ingrId = Integer.valueOf(item.labProductId.getText());
+        String ingrName = item.labProductName.getText();
+        Integer amount = Integer.valueOf(item.tfxNumberInput.getText());
+        Receipe_Info receipe_info = new Receipe_Info(ingrId,ingrName,amount);
+        if (!all_Receipe.containsKey(ingrId)){
+            all_Receipe.put(ingrId,receipe_info);
+        }else {
+            amount += all_Receipe.get(ingrId).Amount;
+            receipe_info.setAmount(amount);
+            all_Receipe.put(ingrId,receipe_info);
+            System.out.println(receipe_info.getAmount());
         }
-    }
-
-    public void onClickedbtnCleanShopList(MouseEvent mouseEvent) throws Exception {
-        order_lists = Serialize.dSer("order.ser");
-        order_lists.clear();
-        Serialize.ser(order_lists, "order.ser");
-        refeshShopList();
     }
 }

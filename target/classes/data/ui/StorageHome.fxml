@@ -150,35 +150,35 @@
         </HBox>
       <AnchorPane layoutY="663.0" prefHeight="44.0" prefWidth="1187.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label fx:id="labAllM" layoutX="882.0" layoutY="13.0" text="订单编号">
+            <Label fx:id="labAllM" layoutX="928.0" layoutY="13.0" text="订单编号">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnCheckAll" buttonType="RAISED" layoutX="1115.0" layoutY="8.0" onMouseClicked="#onclickedOin" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #546e7a#546e7a;" text="入库" textFill="WHITE" />
-            <Separator layoutX="854.0" layoutY="4.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="21.0" />
-            <JFXTextField fx:id="areorder" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="959.0" layoutY="9.0" prefHeight="27.0" prefWidth="141.0" text="0" />
-            <JFXButton fx:id="btnPin" buttonType="RAISED" layoutX="753.0" layoutY="9.0" onMouseClicked="#onClickedPin" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #546e7a#546e7a;" text="入库" textFill="WHITE" />
-            <Label fx:id="labAllM1" layoutX="599.0" layoutY="13.0" text="生产线">
+            <JFXButton fx:id="btnCheckAll" buttonType="RAISED" layoutX="1115.0" layoutY="8.0" onMouseClicked="#onclickedOin" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #546e7a#546e7a;" text="退货入库" textFill="WHITE" />
+            <Separator layoutX="907.0" layoutY="3.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="21.0" />
+            <JFXTextField fx:id="areorder" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="992.0" layoutY="9.0" prefHeight="27.0" prefWidth="108.0" text="0" />
+            <JFXButton fx:id="btnPin" buttonType="RAISED" layoutX="819.0" layoutY="8.0" onMouseClicked="#onClickedPin" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #546e7a#546e7a;" text="生产入库" textFill="WHITE" />
+            <Label fx:id="labAllM1" layoutX="711.0" layoutY="13.0" text="生产线">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="arel" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="653.0" layoutY="8.0" prefHeight="27.0" prefWidth="88.0" text="0" />
-            <JFXTextField fx:id="areo" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="495.0" layoutY="9.0" prefHeight="27.0" prefWidth="88.0" text="0" />
-            <Label fx:id="labAllM11" layoutX="433.0" layoutY="13.0" text="计划编号">
+            <JFXTextField fx:id="arel" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="753.0" layoutY="8.0" prefHeight="27.0" prefWidth="56.0" text="0" />
+            <JFXTextField fx:id="areo" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="616.0" layoutY="8.0" prefHeight="27.0" prefWidth="88.0" text="0" />
+            <Label fx:id="labAllM11" layoutX="560.0" layoutY="13.0" text="计划编号">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="area" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="338.0" layoutY="10.0" prefHeight="27.0" prefWidth="88.0" text="0" />
-            <Label fx:id="labAllM111" layoutX="310.0" layoutY="13.0" text="数量">
+            <JFXTextField fx:id="area" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="465.0" layoutY="8.0" prefHeight="27.0" prefWidth="88.0" text="0" />
+            <Label fx:id="labAllM111" layoutX="437.0" layoutY="13.0" text="数量">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="arep" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="214.0" layoutY="9.0" prefHeight="27.0" prefWidth="88.0" text="0" />
-            <Label fx:id="labAllM1111" layoutX="158.0" layoutY="13.0" text="产品编号">
+            <JFXTextField fx:id="arep" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="354.0" layoutY="8.0" prefHeight="27.0" prefWidth="75.0" text="0" />
+            <Label fx:id="labAllM1111" layoutX="298.0" layoutY="13.0" text="产品编号">
                <font>
                   <Font size="14.0" />
                </font>

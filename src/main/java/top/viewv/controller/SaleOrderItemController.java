@@ -33,6 +33,7 @@ public class SaleOrderItemController implements Initializable {
     public TableColumn colProductPrice;
     public Label labOrderPtime;
     public Label labOrderStime;
+    public Label labclientid;
 
     private ObservableList<Product> data = FXCollections.observableArrayList();
     private SaleHomeController controller ;
@@ -86,6 +87,10 @@ public class SaleOrderItemController implements Initializable {
 
     public void setLabOrdertId(int id){
         labOrdertId.setText(String.valueOf(id));
+    }
+
+    public void setLabclientid(String id){
+        labclientid.setText(id);
     }
 
     public void setLabPrice(float price){

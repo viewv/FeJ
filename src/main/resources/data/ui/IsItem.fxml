@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="913.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="top.viewv.controller.IsItemController">
+    <children>
+        <Pane layoutX="29.0" layoutY="22.0" prefHeight="340.0" prefWidth="895.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <children>
+                <ImageView fitHeight="70.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/sale.png" />
+                    </image>
+                </ImageView>
+                <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
+                <Label fx:id="labProductName" layoutX="123.0" layoutY="18.0" text="Ing Name" textFill="#3a1c9d">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="279.0" layoutY="113.0" textFill="#aeacac">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Pane layoutY="193.0" prefHeight="70.0" prefWidth="873.0" style="-fx-background-color: #F0F0F0;">
+                    <children>
+                  <Group fx:id="editgroup" layoutX="613.0" layoutY="27.0">
+                     <children>
+                        <Label alignment="BOTTOM_RIGHT" layoutX="36.0" layoutY="-2.0" prefHeight="23.0" prefWidth="34.0" text="件数" textFill="#3a1c9d">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="tfxNumberInput" alignment="BOTTOM_RIGHT" layoutX="-34.0" layoutY="-2.0" prefHeight="14.0" prefWidth="64.0" text="1" />
+                     </children>
+                  </Group>
+                  <JFXButton fx:id="btnAddToShop" buttonType="RAISED" layoutX="703.0" layoutY="25.0" onMouseClicked="#onClickedbtnAddToProduct" prefHeight="29.0" prefWidth="70.0" style="-fx-background-color: #3a1c9d#3a1c9d;" text="加入配方" textFill="WHITE" />
+                    </children>
+                </Pane>
+                <Label layoutX="732.0" layoutY="116.0" text="时间" textFill="#3a1c9d">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labTime" alignment="TOP_RIGHT" layoutX="488.0" layoutY="140.0" prefHeight="44.0" prefWidth="278.0" text="16" textFill="#aeacac">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <Label layoutX="732.0" layoutY="9.0" text="数量" textFill="#3a1c9d">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labAmount" alignment="CENTER_RIGHT" layoutX="628.0" layoutY="33.0" prefHeight="44.0" prefWidth="138.0" text="30" textFill="#aeacac">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labProductId" layoutX="123.0" layoutY="51.0" prefHeight="18.0" prefWidth="98.0" text="ID: 20178" textFill="#b2b0b0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            <Label fx:id="labDescrption" alignment="TOP_LEFT" layoutX="41.0" layoutY="125.0" prefHeight="136.0" prefWidth="376.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="123.0" layoutY="116.0" text="负责人" textFill="#3a1c9d">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="labStaff" layoutX="123.0" layoutY="153.0" prefHeight="18.0" prefWidth="106.0" text="ID: 20178" textFill="#b2b0b0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            </children>
+            <effect>
+                <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
+            </effect>
+        </Pane>
+    </children>
+</AnchorPane>

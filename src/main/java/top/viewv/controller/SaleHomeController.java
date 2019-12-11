@@ -260,6 +260,7 @@ public class SaleHomeController implements Initializable {
                 orderItemController.setOrderStime(order.order_time);
                 orderItemController.setOrderPtime(order.due_time);
                 orderItemController.setController(this);
+                orderItemController.setLabclientid(order.client_id);
                 Order_Product[] order_products = order.InitProductById(conn,orderid);
                 orderItemController.setTableOrderShopList(order_products);
                 nodes[i] = node;

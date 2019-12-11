@@ -18,6 +18,10 @@ public class Ingredient {
         this.ingredient_cost = cost;
     }
 
+    public Ingredient(){
+
+    }
+
     public Ingredient[] GetAll(Connection conn){
         try{
             String sql = "select count(*) from ingredient";

@@ -15,6 +15,7 @@ public class IStorageItemController implements Initializable {
     public JFXButton btnDelUser;
     public JFXTextField AreaAmount;
     public JFXTextField AreaOut;
+    public JFXButton btnClean;
 
     public int id;
     public Date date;
@@ -50,6 +51,11 @@ public class IStorageItemController implements Initializable {
         labnotinfo.setVisible(cond);
         btnDelUser.setVisible(cond);
     }
+
+    public void setDesAble(boolean cond){
+        btnClean.setVisible(cond);
+    }
+
     public void setHomeController(IStorageHomeController homeController) {
         this.homeController = homeController;
     }

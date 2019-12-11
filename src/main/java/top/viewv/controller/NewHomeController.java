@@ -66,6 +66,7 @@ public class NewHomeController implements Initializable {
     public Label labAllM;
     public Label labAllMoney;
     public Label labD;
+
     Connection conn = new Connect().getConnection();
 
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();

@@ -21,6 +21,10 @@ public class Product {
         this.description = description;
     }
 
+    public Product(){
+
+    }
+
     public void GetProduct(Connection conn,int id){
         try{
             String sql = "select * from product where product_id = " +

@@ -102,7 +102,7 @@ public class MainController implements Initializable  {
                     System.out.println(icon);
                     String staffid = Staff.GetStaffID(user_id,conn);
                     if (staffid == null){
-                        Switch();
+                        DevSwitch();
                     }else {
                         String[] type = UserAuth.getUserAuth(staffid);
                         if (type[0] == "SA"){

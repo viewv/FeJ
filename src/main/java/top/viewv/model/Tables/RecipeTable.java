@@ -10,6 +10,16 @@ public class RecipeTable {
     public int ProductId;
     public int Rlength;
 
+    public RecipeTable(SpecificRecipe[] itable, int productId, int rlength) {
+        Itable = itable;
+        ProductId = productId;
+        Rlength = rlength;
+    }
+
+    public RecipeTable(){
+
+    }
+
     public void GetAll(int ProductId,Connection conn){
         try{
             this.ProductId = ProductId;
