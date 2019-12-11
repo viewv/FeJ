@@ -83,22 +83,25 @@ public class StorageHomeController implements Initializable {
         Product_storage product_storage = new Product_storage();
         product_storages = product_storage.GetStorage(conn);
 
-        Set<Integer> hSet = new HashSet<Integer>();
+        HashMap<Integer,Integer> hMap = new HashMap<Integer,Integer>();
 
         int flag = 1;
         int[] shounldDistory = Product_storage.CheckDestroy(conn);
-        if (shounldDistory == null){
+
+        int[] indexs = Product_storage.CheckIndex(conn,shounldDistory);
+        int l = indexs.length;
+        if (indexs== null || shounldDistory == null ){
             flag = 0;
         }else {
-            for (int x : shounldDistory)
-                hSet.add(x);
+            for(int i=0;i<l;i++){
+                hMap.put(indexs[i],shounldDistory[i]);
+            }
         }
-
-        System.out.println(hSet);
 
         int length = product_storages.length;
         Node[] nodes = new Node[length];
         Node node;
+
         for (int i = 0;i<length;i++) {
             try {
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(
@@ -120,8 +123,9 @@ public class StorageHomeController implements Initializable {
                 shopListItemController.setAreaAmount(product_storage.amount);
                 shopListItemController.setvis(true);
                 if (flag != 0){
-                    if (hSet.contains(product_storage.product_id)){
+                    if (hMap.containsKey(i-1)){
                         shopListItemController.setBtnCleanVis(true);
+                        shopListItemController.setReal_id(hMap.get(i-1));
                     }
                 }
                 nodes[i] = node;
@@ -185,6 +189,7 @@ public class StorageHomeController implements Initializable {
                 StorageItemController shopListItemController = loader.getController();
                 shopListItemController.setLabUserId(product_storage.product_id);
                 shopListItemController.setHomeController(this);
+
                 shopListItemController.setExtra(product_storage.order_id,
                         product_storage.product_id,
                         product_storage.amount,
@@ -226,5 +231,6 @@ public class StorageHomeController implements Initializable {
 
     public void clean(int product_id) {
         Product_storage.DestroyItem(conn,product_id);
+        refrash();
     }
 }

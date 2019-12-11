@@ -25,7 +25,7 @@ public class Plan {
             String sql;
             PreparedStatement st;
             ResultSet rs;
-            sql = "select staff_id from staff where account_id = " +  Aid;
+            sql = "select staff_id from staff where account_id = " + "\"" + Aid +"\"";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             rs.next();

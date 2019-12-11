@@ -23,6 +23,7 @@ public class StorageItemController implements Initializable {
     public String staff_id;
     public int workshop_id;
     public int plan_id;
+    public int real_id;
     public Date product_time;
     public Label labline;
     public Label labplan;
@@ -50,6 +51,10 @@ public class StorageItemController implements Initializable {
 
     public void setBtnCleanVis(boolean cond){
         btnClean.setVisible(cond);
+    }
+
+    public void setReal_id(int real_id){
+        this.real_id = real_id;
     }
 
     public void setExtra(int order_id,int product_id,int amount,String staff_id,int workshop_id,int plan_id,Date date){
@@ -87,6 +92,6 @@ public class StorageItemController implements Initializable {
     }
 
     public void onClinckClean(MouseEvent mouseEvent) {
-        homeController.clean(product_id);
+        homeController.clean(real_id);
     }
 }

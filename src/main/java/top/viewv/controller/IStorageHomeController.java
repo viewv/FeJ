@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.database.Connect;
 import top.viewv.model.Ingredient_storage;
+import top.viewv.model.Product_storage;
 import top.viewv.model.Staff;
 import top.viewv.view.StageManager;
 
@@ -113,7 +114,7 @@ public class IStorageHomeController implements Initializable {
                 shopListItemController.setExtra(product_storage.id,product_storage.date,product_storage.ingredient_id,product_storage.amount,product_storage.staff_id);
                 shopListItemController.setAreaAmount(product_storage.amount);
                 if (flag != 0){
-                    if (hSet.contains(product_storage.id)){
+                    if (hSet.contains(product_storage.ingredient_id)){
                         shopListItemController.setBtnCleanVis(true);
                     }
                 }
@@ -168,5 +169,6 @@ public class IStorageHomeController implements Initializable {
 
     public void distory(int id) {
         Ingredient_storage.DestroyItem(conn,id);
+        refrash();
     }
 }

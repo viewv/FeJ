@@ -71,7 +71,6 @@ public class DeveHomeController implements Initializable {
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
     private HashMap<Integer, Receipe_Info> all_Receipe = new HashMap<Integer, Receipe_Info>();
 
-
     public DeveHomeController() throws IOException, ClassNotFoundException {
     }
 

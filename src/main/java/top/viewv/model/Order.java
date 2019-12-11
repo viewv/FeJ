@@ -47,8 +47,8 @@ public class Order {
             this.order_id = rs.getInt(1) + 1;
 
             sql = "insert into `order`(order_id,client_id,order_time,due_time,situation) values(" +
-            this.order_id + "," +
-            this.client_id + ",'" +
+            this.order_id + ",\"" +
+            this.client_id + "\",'" +
             this.order_time + " 00:00:00','" +
             this.due_time + " 00:00:00'," +
             this.situation + ")";
@@ -73,7 +73,7 @@ public class Order {
             }
 
             int credit;
-            sql = "select credit from client where client_id = " + this.client_id;
+            sql = "select credit from client where client_id = " +"\""+ this.client_id+"\"";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             rs.next();
