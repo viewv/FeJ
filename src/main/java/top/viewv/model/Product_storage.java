@@ -137,6 +137,27 @@ public class Product_storage {
         return null;
     }
 
+    public static int[] CheckIndex(Connection conn, int[] a){
+        try{
+            int cnt = a.length;
+            int[] X = new int[cnt];
+            cnt = 0;
+            String sql = "select  (@i:=@i+1)  i,product_storage.id from  product_storage,product ,(select   @i:=0)   " +
+                    "as it where product_storage.product_id = product.product_id and order_id = 0 " +
+                    "and (product_period-TIMESTAMPDIFF(DAY,product_time,CURRENT_DATE)) < 0";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                X[cnt] = rs.getInt(1);
+                cnt++;
+            }
+            return X;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void DestroyItem(Connection conn,int id){
         try{
             String sql = "delete from product_storage where id = " + id;
