@@ -31,11 +31,13 @@ public class StorageItemController implements Initializable {
     public Label laborderid;
     public Label labdate;
     public Group groupoutinput;
+    public JFXButton btnClean;
 
     private StorageHomeController homeController;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        btnClean.setVisible(false);
     }
 
     public void setLabUserId(int id){
@@ -44,6 +46,10 @@ public class StorageItemController implements Initializable {
 
     public void setAreaAmount(int amount){
         AreaAmount.setText(String.valueOf(amount));
+    }
+
+    public void setBtnCleanVis(boolean cond){
+        btnClean.setVisible(cond);
     }
 
     public void setExtra(int order_id,int product_id,int amount,String staff_id,int workshop_id,int plan_id,Date date){
@@ -78,5 +84,9 @@ public class StorageItemController implements Initializable {
     public void onClinckOut(MouseEvent mouseEvent) {
         int amount = Integer.parseInt(AreaOut.getText());
         homeController.out(order_id,product_id,amount);
+    }
+
+    public void onClinckClean(MouseEvent mouseEvent) {
+        homeController.clean(product_id);
     }
 }

@@ -28,8 +28,10 @@ import top.viewv.view.StageManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,6 +49,7 @@ public class IStorageHomeController implements Initializable {
     public Label userId;
     public JFXTextField area;
     public JFXTextField arel;
+
 
     Connection conn = new Connect().getConnection();
 
@@ -83,8 +86,18 @@ public class IStorageHomeController implements Initializable {
         int length = product_storages.length;
         Node[] nodes = new Node[length];
         Node node;
+        Set<Integer> hSet = new HashSet<Integer>();
 
+        int flag = 1;
+        int[] shounldDistory = Ingredient_storage.CheckDestroy(conn);
+        if (shounldDistory == null){
+            flag = 0;
+        }else {
+            for (int x : shounldDistory)
+                hSet.add(x);
+        }
 
+        System.out.println(hSet);
 
         for (int i = 0;i<length;i++) {
             try {
@@ -99,7 +112,11 @@ public class IStorageHomeController implements Initializable {
                 shopListItemController.setHomeController(this);
                 shopListItemController.setExtra(product_storage.id,product_storage.date,product_storage.ingredient_id,product_storage.amount,product_storage.staff_id);
                 shopListItemController.setAreaAmount(product_storage.amount);
-
+                if (flag != 0){
+                    if (hSet.contains(product_storage.id)){
+                        shopListItemController.setBtnCleanVis(true);
+                    }
+                }
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
@@ -147,5 +164,9 @@ public class IStorageHomeController implements Initializable {
         //关闭本窗口
         Stage index = (Stage) btnExit.getScene().getWindow();
         index.close();
+    }
+
+    public void distory(int id) {
+        Ingredient_storage.DestroyItem(conn,id);
     }
 }

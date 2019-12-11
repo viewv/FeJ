@@ -36,6 +36,7 @@
                     <children>
                   <Group layoutX="613.0" layoutY="27.0" />
                   <JFXButton fx:id="btnDelUser" buttonType="RAISED" layoutX="757.0" layoutY="13.0" onMouseClicked="#onClinckOut" style="-fx-background-color: #cc0000;" text="出库" textFill="WHITE" />
+                  <JFXButton fx:id="btnClean" buttonType="RAISED" layoutX="700.0" layoutY="14.0" onMouseClicked="#onClinckClean" style="-fx-background-color: #5b5858#5b5858;" text="销毁" textFill="WHITE" />
                     </children>
                 </Pane>
                 <Label fx:id="labUserId" layoutX="123.0" layoutY="51.0" text="ID: 20178" textFill="#b2b0b0">

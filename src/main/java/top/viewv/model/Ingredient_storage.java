@@ -101,7 +101,7 @@ public class Ingredient_storage {
                     "ingredient_storage.ingredient_id = ingredient.ingredient_id and" +
                     " (ingredient_period-TIMESTAMPDIFF(DAY,date,CURRENT_DATE)) < 0";
             st = conn.prepareStatement(sql);
-            st.executeQuery(sql);
+            rs = st.executeQuery(sql);
             while(rs.next()){
                 temp[cnt] = rs.getInt(1);
                 cnt++;
@@ -114,7 +114,7 @@ public class Ingredient_storage {
         return null;
     }
 
-    public void DestroyItem(Connection conn,int id){
+    public static void DestroyItem(Connection conn,int id){
         try{
             String sql = "delete from ingredient_storage where id = " + id;
             PreparedStatement st = conn.prepareStatement(sql);

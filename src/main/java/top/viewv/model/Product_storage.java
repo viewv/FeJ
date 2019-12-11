@@ -105,14 +105,14 @@ public class Product_storage {
         }
     }
 
-    public int[] CheckDestroy(Connection conn){
+    public static int[] CheckDestroy(Connection conn){
         try{
             String sql = "select count(product_storage.id) from product_storage,product where " +
-                    "product_storage.product_id = product.product_id and" +
+                    "product_storage.product_id = product.product_id and " +
                     " (product_period-TIMESTAMPDIFF(DAY,product_time,CURRENT_DATE)) < 0" +
-                    "and order_id = 0";
+                    " and order_id = 0";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.executeQuery(sql);
+            //st.executeQuery(sql);
             ResultSet rs = st.executeQuery(sql);
             rs.next();
             int row = rs.getInt(1);
@@ -120,11 +120,11 @@ public class Product_storage {
             int cnt = 0;
 
             sql = "select product_storage.id from product_storage,product where " +
-                    "product_storage.product_id = product.product_id and" +
+                    "product_storage.product_id = product.product_id and " +
                     " (product_period-TIMESTAMPDIFF(DAY,product_time,CURRENT_DATE)) < 0" +
-                    "and order_id = 0";
+                    " and order_id = 0";
             st = conn.prepareStatement(sql);
-            st.executeQuery(sql);
+            rs = st.executeQuery(sql);
             while(rs.next()){
                 temp[cnt] = rs.getInt(1);
                 cnt++;
@@ -137,7 +137,7 @@ public class Product_storage {
         return null;
     }
 
-    public void DestroyItem(Connection conn,int id){
+    public static void DestroyItem(Connection conn,int id){
         try{
             String sql = "delete from product_storage where id = " + id;
             PreparedStatement st = conn.prepareStatement(sql);

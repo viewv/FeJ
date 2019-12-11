@@ -21,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
 import top.viewv.database.Connect;
+import top.viewv.model.Ingredient_storage;
 import top.viewv.model.Product_storage;
 import top.viewv.view.StageManager;
 
@@ -81,6 +82,20 @@ public class StorageHomeController implements Initializable {
         pnl_scroll.getChildren().clear();
         Product_storage product_storage = new Product_storage();
         product_storages = product_storage.GetStorage(conn);
+
+        Set<Integer> hSet = new HashSet<Integer>();
+
+        int flag = 1;
+        int[] shounldDistory = Product_storage.CheckDestroy(conn);
+        if (shounldDistory == null){
+            flag = 0;
+        }else {
+            for (int x : shounldDistory)
+                hSet.add(x);
+        }
+
+        System.out.println(hSet);
+
         int length = product_storages.length;
         Node[] nodes = new Node[length];
         Node node;
@@ -104,6 +119,11 @@ public class StorageHomeController implements Initializable {
                                                 product_storage.product_time);
                 shopListItemController.setAreaAmount(product_storage.amount);
                 shopListItemController.setvis(true);
+                if (flag != 0){
+                    if (hSet.contains(product_storage.product_id)){
+                        shopListItemController.setBtnCleanVis(true);
+                    }
+                }
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
@@ -202,5 +222,9 @@ public class StorageHomeController implements Initializable {
         //关闭本窗口
         Stage index = (Stage) btnExit.getScene().getWindow();
         index.close();
+    }
+
+    public void clean(int product_id) {
+        Product_storage.DestroyItem(conn,product_id);
     }
 }

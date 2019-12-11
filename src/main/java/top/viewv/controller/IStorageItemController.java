@@ -28,6 +28,7 @@ public class IStorageItemController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        btnClean.setVisible(false);
     }
 
     public void setLabUserId(int id){
@@ -52,6 +53,10 @@ public class IStorageItemController implements Initializable {
         btnDelUser.setVisible(cond);
     }
 
+    public void setBtnCleanVis(boolean cond){
+        btnClean.setVisible(cond);
+    }
+
     public void setDesAble(boolean cond){
         btnClean.setVisible(cond);
     }
@@ -64,5 +69,9 @@ public class IStorageItemController implements Initializable {
     public void onClinckOut(MouseEvent mouseEvent) {
         int amount = Integer.parseInt(AreaOut.getText());
         homeController.out(ingredient_id,amount);
+    }
+
+    public void onClinckClean(MouseEvent mouseEvent) {
+        homeController.distory(ingredient_id);
     }
 }
