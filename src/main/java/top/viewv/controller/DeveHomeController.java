@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -63,6 +64,7 @@ public class DeveHomeController implements Initializable {
     public JFXTextField areprice;
     public JFXTextField arepre;
     public JFXTextField aredes;
+    public Group groupInfo;
 
     Connection conn = new Connect().getConnection();
 
@@ -76,6 +78,11 @@ public class DeveHomeController implements Initializable {
     public void setShopListCorl(boolean cond){
         btnCheckAll.setVisible(cond);
         btnCleanShopList.setVisible(cond);
+        arename.setVisible(cond);
+        arepre.setVisible(cond);
+        aredes.setVisible(cond);
+        areprice.setVisible(cond);
+        groupInfo.setVisible(cond);
     }
 
     @Override
@@ -177,7 +184,7 @@ public class DeveHomeController implements Initializable {
         refeshShopList();
     }
 
-    public void refeshShopList() throws Exception {
+    public void refeshShopList() {
 
         pnl_scroll.getChildren().clear();
 
@@ -254,12 +261,12 @@ public class DeveHomeController implements Initializable {
     public void onClickedbtnShowAllIs() {
         setShopListCorl(false);
 
-        Ingredient_storage ingredient = new Ingredient_storage();
-        Ingredient_storage[] ingredients = ingredient.GetAll(conn);
+        Ingredient ingredient = new Ingredient();
+        Ingredient[] ingredients = ingredient.GetAll(conn);
         pnl_scroll.getChildren().clear();
         int length = ingredients.length;
 
-        String[] names = Ingredient_storage.GetName(conn,length);
+        //String[] names = Ingredient.GetName(conn,length);
 
         Node[] nodes = new Node[length];
         Node node;
@@ -274,13 +281,13 @@ public class DeveHomeController implements Initializable {
                 //调用下面的函数可以得到控制器
                 //商品部分
                 IsItemController productItemController = loader.getController();
-                productItemController.setLabAmount(ingredient.amount);
-                assert names != null;
-                productItemController.setLabProductName(names[i]);
+                //roductItemController.setLabAmount(ingredient.amount);
+                //assert names != null;
+                productItemController.setLabProductName(ingredient.ingredient_name);
                 productItemController.setLabProductId(ingredient.ingredient_id);
-                productItemController.setLabStaff(ingredient.staff_id);
+                productItemController.setLabStaff(String.valueOf(ingredient.ingredient_cost));
                 productItemController.setHomeController(this);
-                productItemController.setLabTime(ingredient.date);
+                productItemController.setLabTime(ingredient.ingredient_period);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (IOException ex) {

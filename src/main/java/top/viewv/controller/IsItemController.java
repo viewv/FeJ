@@ -28,8 +28,8 @@ public class IsItemController {
         this.labProductName.setText(Name);
     }
 
-    public void setLabTime(Date date) {
-        labTime.setText(date.toString());
+    public void setLabTime(int date) {
+        labTime.setText(String.valueOf(date));
     }
 
     public void setLabAmount(int amount){

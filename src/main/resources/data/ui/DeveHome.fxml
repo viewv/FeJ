@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
@@ -156,28 +157,32 @@
             <JFXProgressBar fx:id="pbarBusy" layoutX="24.0" layoutY="15.0" prefHeight="17.0" prefWidth="118.0" />
             <JFXButton fx:id="btnCleanShopList" buttonType="RAISED" layoutX="1080.0" layoutY="9.0" onMouseClicked="#onClickedbtnCleanShopList" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #cc0000;" text="清空" textFill="WHITE" />
             <JFXTextField fx:id="areprice" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="838.0" layoutY="9.0" prefHeight="27.0" prefWidth="95.0" text="0" />
-            <Label fx:id="labAllM" layoutX="944.0" layoutY="16.0" text="价格">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
+            <Group fx:id="groupInfo" layoutX="660.0" layoutY="15.0">
+               <children>
+                  <Label fx:id="labAllM" layoutX="284.0" layoutY="1.0" text="价格">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labAllM1" layoutX="122.0" layoutY="1.0" text="产品名称">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labAllM11" layoutY="1.0" text="产品介绍">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labAllM2" layoutX="368.0" text="保质期">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
             <JFXTextField fx:id="arename" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="716.0" layoutY="12.0" prefHeight="27.0" prefWidth="56.0" text="0" />
-            <Label fx:id="labAllM1" layoutX="782.0" layoutY="16.0" text="产品名称">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="labAllM11" layoutX="660.0" layoutY="16.0" text="产品介绍">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
             <JFXTextField fx:id="aredes" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="154.0" layoutY="10.0" prefHeight="27.0" prefWidth="498.0" text="0" />
-            <Label fx:id="labAllM2" layoutX="1038.0" layoutY="15.0" text="保质期">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
             <JFXTextField fx:id="arepre" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="972.0" layoutY="9.0" prefHeight="27.0" prefWidth="56.0" text="0" />
          </children>
       </AnchorPane>
