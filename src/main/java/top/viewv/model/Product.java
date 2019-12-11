@@ -109,7 +109,7 @@ public class Product {
                 id = 1;
             }
             else{
-                sql = "select product_id from product order by product_id desc limit 1";
+                sql = "select product_id+1 from product order by product_id desc limit 1";
                 st = conn.prepareStatement(sql);
                 rs = st.executeQuery(sql);
                 rs.next();
