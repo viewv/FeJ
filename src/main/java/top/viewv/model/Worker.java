@@ -70,4 +70,90 @@ public class Worker {
         return 0;
     }
     //1.无此人 2.错误车间 3.成功
+
+    //该车间对应的当前生产计划的内容（产品编号，产品名，数量）
+    public record[] CheckPlanContent(Connection conn,int workshop){
+        try{
+            String sql = "select plan_id from plan where CURRENT_DATE > " +
+                    "plan.start_date and CURRENT_DATE <= plan.end_date";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int planid = rs.getInt(1);
+
+            sql = "select count(*) from `full plan_content` " +
+                    "where workshop_id = " + workshop + " and plan_id = " +
+                    planid;
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery(sql);
+            rs.next();
+            int cnt = rs.getInt(1);
+            record[] X = new record[cnt];
+            cnt = 0;
+
+            sql = "select product_id,product_name,amount from `full plan_content` " +
+                    "where workshop_id = " + workshop + " and plan_id = " +
+                    planid;
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                X[cnt] = new record(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3)
+                );
+                cnt++;
+            }
+            return X;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //已经生产的部分（产品编号，产品名，数量）
+    public record[] CheckProductContent(Connection conn,int workshop){
+        try{
+            String sql = "select count(product_id) from (select product.product_id,product.product_name,sum(amount) tot " +
+                    "from product_storage,product where workshop_id = " + workshop +
+                    " and plan_id = (select plan_id from plan where CURRENT_DATE > plan.start_date " +
+                    "and CURRENT_DATE <= plan.end_date) " +
+                    "and product_storage.product_id = product.product_id " +
+                    "group by product.product_id)x";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int cnt = rs.getInt(1);
+            if (cnt == 0){
+                return null;
+            }
+            else{
+                record[] X = new record[cnt];
+                cnt = 0;
+
+                sql = "select product.product_id,product.product_name,sum(amount) tot " +
+                        "from product_storage,product where workshop_id = " + workshop +
+                        " and plan_id = (select plan_id from plan " +
+                        "where CURRENT_DATE >= plan.start_date " +
+                        "and CURRENT_DATE <= plan.end_date) " +
+                        "and product_storage.product_id = product.product_id " +
+                        "group by product.product_id";
+                st = conn.prepareStatement(sql);
+                rs = st.executeQuery(sql);
+                while(rs.next()){
+                    X[cnt] = new record(
+                            rs.getInt(1),
+                            rs.getString(2),
+                            rs.getInt(3)
+                    );
+                    cnt++;
+                }
+                return X;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
