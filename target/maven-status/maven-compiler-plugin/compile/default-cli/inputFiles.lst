@@ -16,6 +16,7 @@
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/StorageHomeController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/api/Gravatar.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Tables/ProductTable.java
+/Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/RecordItemController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/test/TestConnection.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/test/TestProductTable.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/api/UserAuth.java
@@ -30,6 +31,7 @@
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/SpecificRecipe.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/StaffItemController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/PlanItemController.java
+/Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/WorkerItemController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Order_Product.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Ingredient_storage.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/FinanceAllInfoController.java
@@ -53,7 +55,9 @@
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/test/TestJavaGravatar.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/IsItemController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/UserItemController.java
+/Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/api/Name.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Order.java
+/Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Worker.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/HomeController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/RoleController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Account.java
@@ -61,7 +65,9 @@
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/database/ConnectInfo.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Order_Info.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/PlanInfo.java
+/Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Record.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/NewHomeController.java
+/Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/WorkHomeController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Datebase.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/ItemController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Finance.java

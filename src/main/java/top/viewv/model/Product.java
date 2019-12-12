@@ -59,7 +59,7 @@ public class Product {
     //1.illegal price 2.商品不存在 3.成功
 
 
-    public Product[] SearchByName(String name,Connection conn){
+    public static Product[] SearchByName(String name,Connection conn){
         try{
             String sql = "select count(*) from product where product_name like \"%"
                     + name +"%\"";

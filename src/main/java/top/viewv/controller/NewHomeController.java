@@ -5,10 +5,7 @@ package top.viewv.controller;
  * and open the template in the editor.
  */
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXProgressBar;
-import com.jfoenix.controls.JFXSnackbar;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -66,6 +63,7 @@ public class NewHomeController implements Initializable {
     public Label labAllM;
     public Label labAllMoney;
     public Label labD;
+    public JFXTextArea labSearch;
 
     Connection conn = new Connect().getConnection();
 
@@ -325,5 +323,59 @@ public class NewHomeController implements Initializable {
         order_lists.clear();
         Serialize.ser(order_lists, "order.ser");
         refeshShopList();
+    }
+
+    public void onClinckbtnSearch(MouseEvent mouseEvent) throws Exception {
+        String info = labSearch.getText();
+        setShopListCorl(false);
+        System.out.println("Start Refresh Node");
+        pbarBusy.setVisible(true);
+        pnl_scroll.getChildren().clear();
+
+        ProductTable pt = new ProductTable();
+        pt.GetLength(conn);
+        pt.GetContent(conn);
+
+        Product[] products = Product.SearchByName(info,conn);
+
+        HashMap<Integer, String> productdict = Serialize.dSer("product.ser");
+
+        RecipeTable rt = new RecipeTable();
+
+        int length = products.length;
+
+        Node[] nodes = new Node[length];
+        Node node;
+
+        for (int i = 0; i < length; i++) {
+            try {
+                FXMLLoader loader = new
+                        FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                        .getResource("data/ui/ProductItem.fxml"));
+                node = loader.load();
+                //调用下面的函数可以得到控制器
+                //商品部分
+                ProductItemController productItemController = loader.getController();
+                productItemController.setLabPrice(products[i].product_price);
+                productItemController.setLabProductName(products[i].product_name);
+                productItemController.setLabProductId(products[i].product_id);
+                productItemController.setLabProductRtime(products[i].product_period);
+                //配方介绍部分
+                rt.GetAll(products[i].product_id, conn);
+                productItemController.setLabDescrption(products[i].description);
+                productItemController.setTableRec(rt.Itable);
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+                //删除所有节点，有点残忍，还是隐藏比较好
+                //pnl_scroll.getChildren().removeAll();
+                if (!productdict.containsKey(products[i].product_id)) {
+                    productdict.put(products[i].product_id, products[i].product_name);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        pbarBusy.setVisible(false);
+        Serialize.ser(productdict, "product.ser");
     }
 }

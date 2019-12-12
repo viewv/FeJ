@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
@@ -113,6 +114,26 @@
                      <viewport>
                         <Rectangle2D />
                      </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXTextArea fx:id="labSearch" prefHeight="22.0" prefWidth="152.0">
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </VBox.margin>
+            </JFXTextArea>
+            <JFXButton fx:id="btnOrderInfo1" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="186.0" onMouseClicked="#onClinckbtnSearch" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="搜索" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../newIcon/search.png" />
+                     </image>
                   </ImageView>
                </graphic>
                <padding>
