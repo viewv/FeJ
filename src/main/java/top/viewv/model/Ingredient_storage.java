@@ -143,5 +143,30 @@ public class Ingredient_storage {
         }
         return null;
     }
+
+    public Ingredient_storage[] GetOut(Connection conn){
+        try{
+            int cnt;
+            String sql = "select count(*) from out_ingredient";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            cnt = rs.getInt(1);
+            Ingredient_storage[] X = new Ingredient_storage[cnt];
+            sql = "select * from out_ingredient";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery(sql);
+            cnt = 0;
+            while(rs.next()){
+                X[cnt] = new Ingredient_storage(rs.getInt(1),rs.getDate(2),rs.getInt(3),rs.getInt(4),rs.getString(5));
+                cnt++;
+            }
+            return X;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
