@@ -101,6 +101,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
+            <AnchorPane prefHeight="299.0" prefWidth="252.0" />
             </children>
         </VBox>
         <Pane layoutX="87.0" layoutY="44.0" prefHeight="114.0" prefWidth="118.0" style="-fx-background-color: #fff;">
@@ -179,6 +180,15 @@
             </Label>
             <JFXTextField fx:id="arep" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="354.0" layoutY="8.0" prefHeight="27.0" prefWidth="75.0" text="0" />
             <Label fx:id="labAllM1111" layoutX="298.0" layoutY="13.0" text="产品编号">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnCheckAll1" buttonType="RAISED" layoutX="176.0" layoutY="12.0" onMouseClicked="#onclickedConfirm" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #546e7a#546e7a;" text="确认出库" textFill="WHITE" />
+            <Separator layoutX="917.0" layoutY="13.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="21.0" />
+            <Separator layoutX="264.0" layoutY="7.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="21.0" />
+            <JFXTextField fx:id="areConfirm" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="78.0" layoutY="12.0" prefHeight="27.0" prefWidth="88.0" text="0" />
+            <Label fx:id="labAllM11111" layoutX="14.0" layoutY="17.0" text="订单编号">
                <font>
                   <Font size="14.0" />
                </font>

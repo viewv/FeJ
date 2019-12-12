@@ -46,16 +46,26 @@
                 </Label>
             <Group fx:id="groupoutinput" layoutX="578.0" layoutY="104.0">
                <children>
-                  <Label fx:id="labProductName1" alignment="CENTER" layoutX="142.0" text="输入出库数量" textFill="#5b5858">
+                  <Label fx:id="labProductName1" alignment="CENTER" layoutX="132.0" text="输入出库数量" textFill="#5b5858">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="AreaOut" alignment="CENTER_RIGHT" layoutX="120.0" layoutY="18.0" prefHeight="40.0" prefWidth="106.0" text="0">
+                  <JFXTextField fx:id="AreaOut" alignment="CENTER_RIGHT" layoutX="-28.0" layoutY="18.0" prefHeight="40.0" prefWidth="131.0" text="0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </JFXTextField>
+                  <JFXTextField fx:id="AreaOrder" alignment="CENTER_RIGHT" layoutX="114.0" layoutY="18.0" prefHeight="40.0" prefWidth="102.0" text="0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label fx:id="labProduc" alignment="CENTER" layoutX="34.0" text="输入订单ID" textFill="#5b5858">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </Group>
             <Label fx:id="labProductName11" layoutX="769.0" layoutY="21.0" text="数量" textFill="#5b5858">
@@ -120,21 +130,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="labdate" alignment="BOTTOM_RIGHT" layoutX="308.0" layoutY="44.0" prefHeight="33.0" prefWidth="240.0" text="20170812">
+            <Label fx:id="labdate" alignment="CENTER_RIGHT" layoutX="308.0" layoutY="44.0" prefHeight="33.0" prefWidth="240.0" text="20170812">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="labProduc" alignment="CENTER" layoutX="589.0" layoutY="103.0" text="输入订单ID" textFill="#5b5858">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <JFXTextField fx:id="AreaOrder" alignment="CENTER_RIGHT" layoutX="567.0" layoutY="122.0" prefHeight="40.0" prefWidth="106.0" text="0">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </JFXTextField>
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

@@ -52,6 +52,7 @@ public class StorageHomeController implements Initializable {
     public JFXTextField areo;
     public JFXTextField arel;
     public JFXTextField areorder;
+    public JFXTextField areConfirm;
 
     Connection conn = new Connect().getConnection();
 
@@ -142,7 +143,7 @@ public class StorageHomeController implements Initializable {
     public void out(int orderId,int productId,int amount){
         Product_storage product_storage = new Product_storage();
         //product_storage.OutStorage(conn,orderId,productId,amount);
-        product_storage.OutStorage(conn,1,productId,amount);
+        product_storage.OutStorage(conn,orderId,productId,amount);
         refrash();
     }
 
@@ -193,7 +194,8 @@ public class StorageHomeController implements Initializable {
                 shopListItemController.setLabUserId(product_storage.product_id);
                 shopListItemController.setHomeController(this);
 
-                shopListItemController.setExtra(product_storage.order_id,
+                shopListItemController.setExtra(
+                        product_storage.order_id,
                         product_storage.product_id,
                         product_storage.amount,
                         product_storage.staff_id,
@@ -202,6 +204,7 @@ public class StorageHomeController implements Initializable {
                         product_storage.product_time);
                 shopListItemController.setAreaAmount(product_storage.amount);
                 shopListItemController.setvis(false);
+                shopListItemController.setvisout(false);
                 nodes[i] = node;
                 pnl_scroll.getChildren().add(nodes[i]);
                 //删除所有节点，有点残忍，还是隐藏比较好
@@ -234,6 +237,13 @@ public class StorageHomeController implements Initializable {
 
     public void clean(int product_id) {
         Product_storage.DestroyItem(conn,product_id);
+        refrash();
+    }
+
+    public void onclickedConfirm(MouseEvent mouseEvent) {
+        int orderId = Integer.parseInt(areConfirm.getText());
+        int res =  Product_storage.cornfirm(conn, orderId);
+        System.out.println("Confirm"+res);
         refrash();
     }
 }

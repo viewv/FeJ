@@ -84,7 +84,7 @@ public class MainController implements Initializable  {
         String superuser = "444";
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            DevSwitch();
+            WorkerSwitch();
         }
         else {
             String result = login.LoginFun(user_id, password, conn);
@@ -139,6 +139,8 @@ public class MainController implements Initializable  {
                             }else {
                                 DevSwitch();
                             }
+                        }else if(type[0] == "PL"){
+                            WorkerSwitch();
                         }
                     }
                 }
@@ -244,6 +246,37 @@ public class MainController implements Initializable  {
         homeControl.refreshNodes();
         homeControl.setUserIcon("qianrui1999@qq.com");
         homeControl.setlabUserId(user_id);
+        //将第二个窗口保存到map中
+        StageManager.STAGE.put("second", stage);
+        //将本窗口保存到map中
+        StageManager.CONTROLLER.put("index", this);
+
+        //关闭本窗口
+        Stage index = (Stage) loginPane.getScene().getWindow();
+        index.close();
+    }
+
+    public void WorkerSwitch() throws Exception {
+
+        Stage stage = new Stage();
+        System.out.println("Start Login");
+
+        labLoadiInd.setText("Loading...");
+        pbarLoad.setVisible(true);
+
+        FXMLLoader loader = new
+                FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                .getResource("data/ui/WorkerHome.fxml"));
+
+        Parent root = loader.load();
+        stage.setTitle("Worker Home Page");
+        stage.setScene(new Scene(root));
+        stage.show();
+        WorkHomeController homeControl = loader.getController();
+        homeControl.setLabUserName("ViewvLab");
+        homeControl.setUserIcon("zxn@zxnnet.top");
+        homeControl.setlabUserId(user_id);
+        homeControl.refeshUser();
         //将第二个窗口保存到map中
         StageManager.STAGE.put("second", stage);
         //将本窗口保存到map中

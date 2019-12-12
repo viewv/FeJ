@@ -89,7 +89,7 @@ public class Product_storage {
             String sql = "update product_storage set order_id = 0 where order_id = " +
                     OrderID;
             PreparedStatement st = conn.prepareStatement(sql);
-            st.executeQuery(sql);
+            st.execute(sql);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -223,4 +223,30 @@ public class Product_storage {
         return null;
     }
     //追踪订单信息
+    public static int cornfirm(Connection conn,int order_id){
+        System.out.println(order_id);
+        try{
+            String sql = "select count(*) from `order` where order_id = " + order_id +
+                    " and situation <> 3";
+            PreparedStatement st = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int cnt = rs.getInt(1);
+            if (cnt == 0){
+                return 1;
+            }
+            else{
+                sql = "update `order` set situation = 3 where order_id = " + order_id;
+                st = conn.prepareStatement(sql);
+                st.execute(sql);
+                return 2;
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    //确认当前订单全部出库操作已经完成的接口 1.订单非法 2.完成
+    //确认当前订单全部出库操作已经完成的接口 1.订单非法 2.完成
 }

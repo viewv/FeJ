@@ -188,11 +188,6 @@
                               <Font size="10.0" />
                            </font>
                         </Text>
-                        <Text layoutY="18.5" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="Build: 1.0.6">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Text>
                      </children>
                   </Group>
                   <Text fx:id="labLoadiInd" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="zxnnet@gmail.com">

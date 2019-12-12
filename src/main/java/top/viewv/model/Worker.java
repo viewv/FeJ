@@ -10,16 +10,16 @@ public class Worker {
     public Staff me;
 
     public Worker(String id, String name, int age, Date date, String account){
-        this.me.staff_id = id;
-        this.me.name = name;
-        this.me.age = age;
-        this.me.entry_date = date;
-        this.me.account = account;
+        this.me = new Staff(id,name,age,date,account);
         this.workshop = Integer.parseInt(me.staff_id.substring(3,4));
     }
 
+    public Worker(){
+
+    }
+
     //本车间的所有员工
-    public Worker[] GetWorker(Connection conn,String staff_id){
+    public static Worker[] GetWorker(Connection conn,String staff_id){
         try{
             String department = staff_id.substring(0,1);
             String workshop = staff_id.substring(3,4);
@@ -56,7 +56,7 @@ public class Worker {
     }
 
     //分配车间
-    public int AllocateWorkshop(Connection conn,String id,int newwork){
+    public static int AllocateWorkshop(Connection conn,String id,int newwork){
         try{
             String sql = "select AllocateWorkshop(\"" + id +
                     "\","+ newwork + ")";
@@ -72,7 +72,7 @@ public class Worker {
     //1.无此人 2.错误车间 3.成功
 
     //该车间对应的当前生产计划的内容（产品编号，产品名，数量）
-    public record[] CheckPlanContent(Connection conn,int workshop){
+    public static Record[] CheckPlanContent(Connection conn, int workshop){
         try{
             String sql = "select plan_id from plan where CURRENT_DATE > " +
                     "plan.start_date and CURRENT_DATE <= plan.end_date";
@@ -88,7 +88,7 @@ public class Worker {
             rs = st.executeQuery(sql);
             rs.next();
             int cnt = rs.getInt(1);
-            record[] X = new record[cnt];
+            Record[] X = new Record[cnt];
             cnt = 0;
 
             sql = "select product_id,product_name,amount from `full plan_content` " +
@@ -97,7 +97,7 @@ public class Worker {
             st = conn.prepareStatement(sql);
             rs = st.executeQuery(sql);
             while(rs.next()){
-                X[cnt] = new record(
+                X[cnt] = new Record(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getInt(3)
@@ -112,7 +112,7 @@ public class Worker {
     }
 
     //已经生产的部分（产品编号，产品名，数量）
-    public record[] CheckProductContent(Connection conn,int workshop){
+    public static Record[] CheckProductContent(Connection conn, int workshop){
         try{
             String sql = "select count(product_id) from (select product.product_id,product.product_name,sum(amount) tot " +
                     "from product_storage,product where workshop_id = " + workshop +
@@ -128,7 +128,7 @@ public class Worker {
                 return null;
             }
             else{
-                record[] X = new record[cnt];
+                Record[] X = new Record[cnt];
                 cnt = 0;
 
                 sql = "select product.product_id,product.product_name,sum(amount) tot " +
@@ -141,7 +141,7 @@ public class Worker {
                 st = conn.prepareStatement(sql);
                 rs = st.executeQuery(sql);
                 while(rs.next()){
-                    X[cnt] = new record(
+                    X[cnt] = new Record(
                             rs.getInt(1),
                             rs.getString(2),
                             rs.getInt(3)
