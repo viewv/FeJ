@@ -10,7 +10,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
-public class StaffItemController implements Initializable {
+public class WorkerItemController implements Initializable {
     public Label labUserId;
     public JFXButton btnDelUser;
     public JFXButton btnUpdateUser;
@@ -18,8 +18,9 @@ public class StaffItemController implements Initializable {
     public JFXTextField areIntime;
     public JFXTextField areAge;
     public JFXTextField areName;
+    public JFXTextField areWorkdshop;
 
-    private PersonHomeController homeController;
+    private WorkHomeController homeController;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -49,13 +50,17 @@ public class StaffItemController implements Initializable {
         btnUpdateUser.setText(status);
     }
 
-    public void setHomeController(PersonHomeController homeController) {
+    public void setHomeController(WorkHomeController homeController) {
         this.homeController = homeController;
     }
 
     public void onClickedDelUser(MouseEvent mouseEvent) throws Exception {
         String id = labUserId.getText();
         homeController.delUser(id);
+    }
+
+    public void setAreWorkdshop(int id){
+        areWorkdshop.setText(String.valueOf(id));
     }
 
 
@@ -65,5 +70,11 @@ public class StaffItemController implements Initializable {
         }else {
             homeController.DismissUser(labUserId.getText());
         }
+    }
+
+    public void onClickedAsWork(MouseEvent mouseEvent) throws Exception {
+        int workshop = Integer.parseInt(areWorkdshop.getText());
+        String id = labUserId.getText();
+        homeController.allocWork(id,workshop);
     }
 }
