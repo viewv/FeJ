@@ -81,9 +81,7 @@ public class MainController implements Initializable  {
         String password = passwordInput.getText().trim();
         Login login = new Login();
 
-        //TODO Rember to remove it when finish!
         String superuser = "444";
-        //TODO Rember to remove it when finish!
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
             StorageSwitch();

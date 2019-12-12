@@ -71,6 +71,7 @@ public class Product_storage {
             st.setInt(5,plan_id);
             System.out.println(sql);
             //TODO 修改正常和修改原料加只能看出库记录增加出库id加车间人员管理
+
             ResultSet rs = st.executeQuery(sql);
             rs.next();
             return rs.getInt(1);
