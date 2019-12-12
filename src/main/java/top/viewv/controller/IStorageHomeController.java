@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import top.viewv.api.Gravatar;
+import top.viewv.api.Name;
 import top.viewv.database.Connect;
 import top.viewv.model.Ingredient_storage;
 import top.viewv.model.Product_storage;
@@ -50,6 +51,7 @@ public class IStorageHomeController implements Initializable {
     public Label userId;
     public JFXTextField area;
     public JFXTextField arel;
+    public JFXTextField areaID;
 
 
     Connection conn = new Connect().getConnection();
@@ -113,6 +115,9 @@ public class IStorageHomeController implements Initializable {
                 shopListItemController.setHomeController(this);
                 shopListItemController.setExtra(product_storage.id,product_storage.date,product_storage.ingredient_id,product_storage.amount,product_storage.staff_id);
                 shopListItemController.setAreaAmount(product_storage.amount);
+                shopListItemController.setLabStaffid();
+                String name = Name.GetIname(conn,product_storage.ingredient_id);
+                shopListItemController.setLabProductName(name);
                 if (flag != 0){
                     if (hSet.contains(product_storage.ingredient_id)){
                         shopListItemController.setBtnCleanVis(true);
@@ -130,7 +135,7 @@ public class IStorageHomeController implements Initializable {
 
     public void out(int ingredient_id,int amount){
         Ingredient_storage product_storage = new Ingredient_storage();
-        String id = Staff.GetStaffID(userId.getText(),conn);
+        String id = areaID.getText();
         product_storage.OutStorage(conn,ingredient_id,amount,id);
         refrash();
     }
@@ -170,5 +175,42 @@ public class IStorageHomeController implements Initializable {
     public void distory(int id) {
         Ingredient_storage.DestroyItem(conn,id);
         refrash();
+    }
+
+    public void onClickedbtnOutIn(MouseEvent mouseEvent) {
+        pnl_scroll.getChildren().clear();
+        Ingredient_storage product_storage= new Ingredient_storage();
+        product_storages = product_storage.GetOut(conn);
+        int length = product_storages.length;
+        Node[] nodes = new Node[length];
+        Node node;
+
+        for (int i = 0;i<length;i++) {
+            try {
+                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(
+                        Thread.currentThread().
+                                getContextClassLoader().
+                                getResource("data/ui/IStorageItem.fxml")));
+                node = loader.load();
+                product_storage = product_storages[i];
+                IStorageItemController shopListItemController = loader.getController();
+                shopListItemController.setLabUserId(product_storage.id);
+                shopListItemController.setHomeController(this);
+                shopListItemController.setExtra(product_storage.id,product_storage.date,product_storage.ingredient_id,product_storage.amount,product_storage.staff_id);
+                shopListItemController.setAreaAmount(product_storage.amount);
+                shopListItemController.setLabStaffid();
+                String name = Name.GetIname(conn,product_storage.ingredient_id);
+                shopListItemController.setLabProductName(name);
+                shopListItemController.btnDelUser.setVisible(false);
+                shopListItemController.labnotinfo.setVisible(false);
+                shopListItemController.AreaOut.setVisible(false);
+                nodes[i] = node;
+                pnl_scroll.getChildren().add(nodes[i]);
+                //删除所有节点，有点残忍，还是隐藏比较好
+                //pnl_scroll.getChildren().removeAll();
+            } catch (IOException ex) {
+                Logger.getLogger(NewHomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

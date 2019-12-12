@@ -51,7 +51,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="AreaOut" alignment="CENTER_RIGHT" layoutY="18.0" prefHeight="40.0" prefWidth="219.0" text="0">
+                  <JFXTextField fx:id="AreaOut" alignment="CENTER_RIGHT" layoutX="120.0" layoutY="18.0" prefHeight="40.0" prefWidth="106.0" text="0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -125,6 +125,16 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <Label fx:id="labProduc" alignment="CENTER" layoutX="589.0" layoutY="103.0" text="输入订单ID" textFill="#5b5858">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="AreaOrder" alignment="CENTER_RIGHT" layoutX="567.0" layoutY="122.0" prefHeight="40.0" prefWidth="106.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXTextField>
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

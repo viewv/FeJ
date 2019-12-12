@@ -120,6 +120,29 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
+            <AnchorPane fx:id="paneAddI" prefHeight="216.0" prefWidth="239.0">
+               <children>
+                  <JFXButton fx:id="btnAddI" layoutX="57.0" layoutY="181.0" onMouseClicked="#onClickedBtnI" style="-fx-background-color: #473E98  #473E98 #473E98  #473E98;" text="增加原料" textFill="WHITE" />
+                  <JFXTextField fx:id="areIprice" layoutX="54.0" layoutY="117.0" />
+                  <JFXTextField fx:id="areIpre" layoutX="54.0" layoutY="67.0" />
+                  <JFXTextField fx:id="areIname" layoutX="54.0" layoutY="14.0" />
+                  <Label fx:id="labAllM111" layoutX="57.0" layoutY="49.0" text="原料名称">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labAllM1111" layoutX="57.0" layoutY="99.0" text="保质期">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labAllM11111" layoutX="57.0" layoutY="150.0" text="价格">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
             </children>
         </VBox>
         <Pane layoutX="87.0" layoutY="44.0" prefHeight="114.0" prefWidth="118.0" style="-fx-background-color: #fff;">

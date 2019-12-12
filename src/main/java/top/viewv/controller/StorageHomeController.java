@@ -23,6 +23,7 @@ import top.viewv.api.Gravatar;
 import top.viewv.database.Connect;
 import top.viewv.model.Ingredient_storage;
 import top.viewv.model.Product_storage;
+import top.viewv.model.Staff;
 import top.viewv.view.StageManager;
 
 import java.io.IOException;
@@ -158,12 +159,14 @@ public class StorageHomeController implements Initializable {
 
     public void onClickedPin(MouseEvent mouseEvent) {
         Product_storage product_storage = new Product_storage();
-        product_storage.EnStorage1(conn,Integer.parseInt(arep.getText()),
+        String id = Staff.GetStaffID(userId.getText(),conn);
+        int res = product_storage.EnStorage1(conn,Integer.parseInt(arep.getText()),
                 Integer.parseInt(area.getText()),
-                userId.getText(),
+                id,
                 Integer.parseInt(arel.getText()),
                 Integer.parseInt(areo.getText())
         );
+        System.out.println(res);
         refrash();
     }
 

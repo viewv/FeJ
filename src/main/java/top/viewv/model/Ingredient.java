@@ -51,7 +51,7 @@ public class Ingredient {
         return null;
     }
 
-    public int AddIngredient(Connection conn,String name,int period,float price){
+    public static int AddIngredient(Connection conn,String name,int period,float price){
         try {
             String sql = "select AddIngredient(\"" +
                     name + "\"," + period + "," + price + ")";

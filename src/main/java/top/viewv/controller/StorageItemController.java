@@ -33,6 +33,7 @@ public class StorageItemController implements Initializable {
     public Label labdate;
     public Group groupoutinput;
     public JFXButton btnClean;
+    public JFXTextField AreaOrder;
 
     private StorageHomeController homeController;
 
@@ -88,7 +89,8 @@ public class StorageItemController implements Initializable {
 
     public void onClinckOut(MouseEvent mouseEvent) {
         int amount = Integer.parseInt(AreaOut.getText());
-        homeController.out(order_id,product_id,amount);
+        int id = Integer.parseInt(AreaOrder.getText());
+        homeController.out(id,product_id,amount);
     }
 
     public void onClinckClean(MouseEvent mouseEvent) {

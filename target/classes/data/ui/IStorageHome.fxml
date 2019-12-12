@@ -67,7 +67,22 @@
                         <Insets left="50.0" />
                     </padding>
                 </JFXButton>
-            <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="388.0" onMouseExited="#onClickExit" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="退出" textFill="#5b5858">
+            <JFXButton fx:id="btnShowAllproduct1" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="100.0" onMouseClicked="#onClickedbtnOutIn" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="出库信息" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../newIcon/scheng.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="388.0" onMouseClicked="#onClickExit" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="退出" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -152,6 +167,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Label fx:id="labAllM1112" layoutX="626.0" layoutY="13.0" text="负责人ID">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="areaID" alignment="CENTER_RIGHT" focusColor="#473e98" layoutX="681.0" layoutY="9.0" prefHeight="27.0" prefWidth="118.0" text="0" />
          </children></AnchorPane>
     </children>
 </AnchorPane>

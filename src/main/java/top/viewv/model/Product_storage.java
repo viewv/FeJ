@@ -62,15 +62,16 @@ public class Product_storage {
             this.product_time = new java.sql.Date(System.currentTimeMillis());
 
             String sql;
-            sql = "select EnProductStorage1 ( ? , ? , ? , ? , ? )";
-            PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1, product_id);
-            st.setInt(2, amount);
-            st.setString(3,staff_id);
-            st.setInt(4, workshop_id);
-            st.setInt(5,plan_id);
+            sql = "select EnProductStorage1 ("+product_id+","+amount+","+"\""+staff_id+"\"" +","+workshop_id+","+plan_id+")";
             System.out.println(sql);
-            //TODO 修改正常和修改原料加只能看出库记录增加出库id加车间人员管理
+            PreparedStatement st = conn.prepareStatement(sql);
+//            st.setInt(1, product_id);
+//            st.setInt(2, amount);
+//            st.setString(3,staff_id);
+//            st.setInt(4, workshop_id);
+//            st.setInt(5,plan_id);
+            System.out.println(sql);
+            //TODO 修改正常和修改原料加车间人员管理
 
             ResultSet rs = st.executeQuery(sql);
             rs.next();

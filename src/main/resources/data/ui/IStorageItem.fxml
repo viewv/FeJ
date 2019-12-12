@@ -64,6 +64,26 @@
                   <Font size="20.0" />
                </font>
             </JFXTextField>
+            <Label fx:id="labProductName1" layoutX="123.0" layoutY="111.0" text="负责人编号" textFill="#5b5858">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labStaffid" layoutX="123.0" layoutY="142.0" text="ID: 20178" textFill="#b2b0b0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labnotinfo1" alignment="CENTER" layoutX="469.0" layoutY="104.0" text="输入订单编号" textFill="#5b5858">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="AreaOrder" alignment="CENTER_RIGHT" layoutX="338.0" layoutY="122.0" prefHeight="40.0" prefWidth="219.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXTextField>
             </children>
             <effect>
                 <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

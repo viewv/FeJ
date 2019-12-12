@@ -84,7 +84,7 @@ public class MainController implements Initializable  {
         String superuser = "444";
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            StorageSwitch();
+            DevSwitch();
         }
         else {
             String result = login.LoginFun(user_id, password, conn);

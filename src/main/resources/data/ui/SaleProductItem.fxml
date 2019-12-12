@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
@@ -52,7 +53,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="484.0" layoutY="34.0" prefHeight="44.0" prefWidth="168.0" text="16" textFill="#aeacac">
+                <Label fx:id="labPrice" alignment="TOP_RIGHT" layoutX="264.0" layoutY="34.0" prefHeight="44.0" prefWidth="388.0" text="16" textFill="#aeacac">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>

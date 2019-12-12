@@ -23,6 +23,8 @@ public class IStorageItemController implements Initializable {
     public int amount;
     public String staff_id;
     public Label labnotinfo;
+    public Label labStaffid;
+    public Label labProductName;
 
     private IStorageHomeController homeController;
 
@@ -47,6 +49,13 @@ public class IStorageItemController implements Initializable {
         this.staff_id = staff_id;
     }
 
+    public void setLabStaffid(){
+        labStaffid.setText(staff_id);
+    }
+
+    public void setLabProductName(String name){
+        labProductName.setText(name);
+    }
     public void setvis(boolean cond){
         AreaOut.setVisible(cond);
         labnotinfo.setVisible(cond);

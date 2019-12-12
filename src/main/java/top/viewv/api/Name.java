@@ -21,7 +21,7 @@ public class Name {
 
     public static String GetIname(Connection conn,int iid){
         try{
-            String sql = "select ingredient_name from product where ingredient_id = " + iid;
+            String sql = "select ingredient_name from ingredient where ingredient_id = " + iid;
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery(sql);
             rs.next();

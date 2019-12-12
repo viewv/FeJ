@@ -58,6 +58,14 @@ public class DeveHomeController implements Initializable {
     public JFXProgressBar pbarBusy;
     public Label userId;
     public JFXButton btnCleanShopList;
+
+    public AnchorPane paneAddI;
+    public JFXButton btnAddI;
+    public JFXTextField areIprice;
+    public JFXTextField areIpre;
+    public JFXTextField areIname;
+    public Label labAllM111;
+
     @FXML
     private VBox pnl_scroll;
     public JFXTextField arename;
@@ -88,6 +96,7 @@ public class DeveHomeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         pbarBusy.setVisible(false);
         setShopListCorl(false);
+        paneAddI.setVisible(false);
         try {
             Serialize.ser(order_lists, "order.ser");
         } catch (Exception e) {
@@ -121,7 +130,6 @@ public class DeveHomeController implements Initializable {
 
         Node[] nodes = new Node[length];
         Node node;
-
         for (int i = 0; i < length; i++) {
             try {
                 FXMLLoader loader = new
@@ -184,6 +192,7 @@ public class DeveHomeController implements Initializable {
     }
 
     public void refeshShopList() {
+        paneAddI.setVisible(false);
 
         pnl_scroll.getChildren().clear();
 
@@ -217,22 +226,22 @@ public class DeveHomeController implements Initializable {
     }
 
     public void onClickedbtnCheckAll() throws Exception {
+        paneAddI.setVisible(false);
 
         int length = all_Receipe.size();
 
         SpecificRecipe[] specificRecipes = new  SpecificRecipe[length];
 
-        SpecificRecipe specificRecipe = new SpecificRecipe();
-
         int i = 0;
         for (Map.Entry<Integer, Receipe_Info> entry : all_Receipe.entrySet()) {
             Integer key = entry.getKey();
             Receipe_Info value = entry.getValue();
+            System.out.println('!'+value.IngredientName);
+            SpecificRecipe specificRecipe = new SpecificRecipe();
             specificRecipe.setAll(value.IngredientId,value.IngredientName,value.Amount);
             specificRecipes[i]=specificRecipe;
             i++;
         }
-
         RecipeTable recipeTable = new RecipeTable(specificRecipes,0,length);
 
         float price = Float.parseFloat(areprice.getText());
@@ -260,6 +269,7 @@ public class DeveHomeController implements Initializable {
 
     public void onClickedbtnShowAllIs() {
         setShopListCorl(false);
+        paneAddI.setVisible(true);
 
         Ingredient ingredient = new Ingredient();
         Ingredient[] ingredients = ingredient.GetAll(conn);
@@ -309,5 +319,17 @@ public class DeveHomeController implements Initializable {
             all_Receipe.put(ingrId,receipe_info);
             System.out.println(receipe_info.getAmount());
         }
+    }
+
+    public void onClickedBtnI(MouseEvent mouseEvent) {
+        String name = areIname.getText();
+        int pre = Integer.parseInt(areIpre.getText());
+        float price = Float.parseFloat(areIprice.getText());
+        int res =  Ingredient.AddIngredient(conn,name,pre,price);
+        System.out.println(res);
+        onClickedbtnShowAllIs();
+        areIname.clear();
+        areIpre.clear();
+        areIprice.clear();
     }
 }
