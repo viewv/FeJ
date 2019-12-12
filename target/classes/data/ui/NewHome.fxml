@@ -125,7 +125,7 @@
                   <Insets left="50.0" right="50.0" />
                </VBox.margin>
             </JFXTextArea>
-            <JFXButton fx:id="btnOrderInfo1" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="186.0" onMouseClicked="#onClinckbtnSearch" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="订单信息" textFill="#5b5858">
+            <JFXButton fx:id="btnOrderInfo1" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="186.0" onMouseClicked="#onClinckbtnSearch" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="搜索" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
