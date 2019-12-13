@@ -243,7 +243,6 @@ public class Order {
             e.printStackTrace();
         }
     }
-    //TODO Add result
     //从数据库获取订单信息
 
        public Order_Product[] InitProductById(Connection conn, int id){

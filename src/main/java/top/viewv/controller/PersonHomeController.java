@@ -193,7 +193,17 @@ public class PersonHomeController implements Initializable {
     public void DismissUser(String id) throws Exception {
         Staff staff = new Staff();
         int res = staff.DismissManager(conn,id);
-        //TODO Add res
+        //1.staff不存在 2.该用户已不是管理员 3.成功
+        String message = "";
+        if (res == 1){
+            message = "员工不存在";
+        }else if(res == 2){
+            message = "该用户已不是管理员";
+        }else if(res == 3){
+            message = "成功！";
+        }
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
         refeshUser();
     }
 
