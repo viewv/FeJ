@@ -129,6 +129,7 @@ public class Order {
             e.printStackTrace();
         }
     }
+    //TODO Add result
 
     public void AskReturn(Connection conn,int OrderId){
         try{
@@ -142,6 +143,7 @@ public class Order {
             e.printStackTrace();
         }
     }
+    //TODO Add result
 
     public void AcceptReturn(Connection conn,int OrderId){
         try{
@@ -155,6 +157,7 @@ public class Order {
             e.printStackTrace();
         }
     }
+    //TODO Add result
 
     public void DenyReturn(Connection conn,int OrderId){
         try{
@@ -168,6 +171,7 @@ public class Order {
             e.printStackTrace();
         }
     }
+    //TODO Add result
 
     public void InitOrderById(Connection conn,int id) {
         try {
@@ -187,6 +191,7 @@ public class Order {
             e.printStackTrace();
         }
     }
+    //TODO Add result
     //从数据库获取订单信息
 
        public Order_Product[] InitProductById(Connection conn, int id){

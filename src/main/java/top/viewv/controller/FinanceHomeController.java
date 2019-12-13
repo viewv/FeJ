@@ -207,7 +207,11 @@ public class FinanceHomeController implements Initializable {
     public void inCome(int id) throws Exception {
         String staffId = Staff.GetStaffID(userId.getText(),conn);
         Finance finance = new Finance();
-        finance.InCome(conn,id,staffId);
+        int res =  finance.InCome(conn,id,staffId);
+
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("Res"+res, 1000);
+
         onClinckbtnOrderInfo();
     }
 
@@ -215,7 +219,9 @@ public class FinanceHomeController implements Initializable {
         String staffId = Staff.GetStaffID(userId.getText(),conn);
         System.out.println(staffId);
         Finance finance = new Finance();
-        finance.OutCome(conn,id,staffId);
+        int res =  finance.OutCome(conn,id,staffId);
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("Res"+res, 1000);
         refeshShopList();
     }
 

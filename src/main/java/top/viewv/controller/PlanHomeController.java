@@ -224,14 +224,14 @@ public class PlanHomeController implements Initializable {
             plan.SetPlan(mess, startdate, duedate, userId.getText(), conn);
 
             JFXSnackbar snackbar = new JFXSnackbar(BasePane);
-            snackbar.show("Send Order Successfully", 1000);
+            snackbar.show("成功下达计划", 1000);
             planInfos.clear();
             Serialize.ser(planInfos, "plan.ser");
             refeshShopList();
         } catch (Exception e) {
             e.printStackTrace();
             JFXSnackbar snackbar = new JFXSnackbar(BasePane);
-            snackbar.show("Send Order Failed", 1000);
+            snackbar.show("下达计划失败，请检查网络或重启程序！", 1000);
         }
     }
 

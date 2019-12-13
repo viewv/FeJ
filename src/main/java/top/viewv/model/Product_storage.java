@@ -51,6 +51,7 @@ public class Product_storage {
     }
 
 
+    // TODO add result meaning!
     public int EnStorage1(Connection conn,int product_id,int amount,String staff_id,int workshop_id,int plan_id){
         try{
             this.product_id = product_id;
@@ -95,7 +96,7 @@ public class Product_storage {
             e.printStackTrace();
         }
     }
-    //To Do
+    //Todo add out
     public void OutStorage(Connection conn,int OrderId,int ProductId,int amount){
         try{
             String sql = "call OutProductStorage("+OrderId+","+ProductId+","+amount+")";

@@ -38,6 +38,7 @@ public class Finance {
         }
         return 0;
     }
+    //TODO Add result
 
     public int OutCome(Connection conn, int OrderID,String staff_id){
         try{
@@ -53,6 +54,7 @@ public class Finance {
         }
         return 0;
     }
+    //TODO Add result
 
     public Finance[] GetAll(Connection conn){
         try{

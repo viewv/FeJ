@@ -102,6 +102,7 @@ public class Staff {
         }
         return 0;
     }
+    //TODO Add Result
 
     public Staff[] GetDepartmentStaff(Connection conn,String staff_id){
         try{

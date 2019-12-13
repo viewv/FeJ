@@ -260,6 +260,8 @@ public class NewHomeController implements Initializable {
     public void returnOrder(int id) throws Exception {
         Order order = new Order();
         order.AskReturn(conn,id);
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("开始处理您的退货请求", 1000);
         onClinckbtnOrderInfo();
     }
 
@@ -377,5 +379,7 @@ public class NewHomeController implements Initializable {
         }
         pbarBusy.setVisible(false);
         Serialize.ser(productdict, "product.ser");
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("为您找到上述结果", 1000);
     }
 }

@@ -6,6 +6,7 @@ package top.viewv.controller;
  */
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -136,7 +137,24 @@ public class IStorageHomeController implements Initializable {
     public void out(int ingredient_id,int amount){
         Ingredient_storage product_storage = new Ingredient_storage();
         String id = areaID.getText();
-        product_storage.OutStorage(conn,ingredient_id,amount,id);
+
+        int res= product_storage.OutStorage(conn,ingredient_id,amount,id);
+
+        String message = "";
+        if (res == 0){
+            message = "没有这个ID！";
+        }else if(res == 1){
+            message = "原料不存在！";
+        }else if(res == 2){
+            message = "原料数量不合法";
+        }else if(res == 3){
+            message = "不存在此员工ID";
+        }else if(res == 4){
+            message = "成功！";
+        }
+
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
         refrash();
     }
 
@@ -148,7 +166,24 @@ public class IStorageHomeController implements Initializable {
     public void onClickedPin(MouseEvent mouseEvent) {
         Ingredient_storage product_storage = new Ingredient_storage();
         String id = Staff.GetStaffID(userId.getText(),conn);
-        product_storage.EnStorage(conn,Integer.parseInt(arel.getText()),Integer.parseInt(area.getText()),id);
+        int res =  product_storage.EnStorage(conn,Integer.parseInt(arel.getText()),Integer.parseInt(area.getText()),id);
+        //0.null 1.ingredient doesn't exist 2.amount error 3.staff doesn't exist 4.success
+
+        String message = "";
+        if (res == 0){
+            message = "没有这个ID！";
+        }else if(res == 1){
+            message = "原料不存在！";
+        }else if(res == 2){
+            message = "原料数量不合法";
+        }else if(res == 3){
+            message = "不存在此员工ID";
+        }else if(res == 4){
+            message = "成功！";
+        }
+
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
         refrash();
     }
 
@@ -174,6 +209,8 @@ public class IStorageHomeController implements Initializable {
 
     public void distory(int id) {
         Ingredient_storage.DestroyItem(conn,id);
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("销毁成功！", 1000);
         refrash();
     }
 

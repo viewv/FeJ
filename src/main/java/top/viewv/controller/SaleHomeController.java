@@ -58,11 +58,9 @@ public class SaleHomeController implements Initializable {
     public Label userId;
     public Label labAllM;
     public JFXButton btnAddUser;
-    public JFXTextField areCre;
     public JFXTextField areMoney;
     public JFXTextField areId;
     public Label labIDA;
-    public Label labC;
     @FXML
     private VBox pnl_scroll;
     Connection conn = new Connect().getConnection();
@@ -184,7 +182,9 @@ public class SaleHomeController implements Initializable {
 
     public void delOneClient(String clientId) throws Exception {
         Client client = new Client("",0,"",0);
-        client.DeleteClient(conn,clientId);
+        String message =  client.DeleteClient(conn,clientId);
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
         refeshUser();
     }
 
@@ -192,7 +192,9 @@ public class SaleHomeController implements Initializable {
         Client client = new Client("",0,"",0);
         System.out.println("OldID"+oldid);
         System.out.println("Bal"+balance);
-        System.out.println(client.UpdateClient(conn,oldid,newid,balance,credit));
+        String message =  client.UpdateClient(conn,oldid,newid,balance,credit);
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
         refeshUser();
     }
 
@@ -270,36 +272,49 @@ public class SaleHomeController implements Initializable {
             }
         }
     }
-
+    //TODO Fix all below
     public void onClinckedAddUser(MouseEvent mouseEvent) throws Exception {
         float balance = Float.parseFloat(areMoney.getText());
         String id = areId.getText();
         Client client = new Client("",0,"",0);
-        System.out.println(client.CreateClient(conn,id,balance));
+        String message =  client.CreateClient(conn,id,balance);
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
         refeshUser();
     }
 
     public void returnOrder(int id) throws Exception {
         Order order = new Order();
         order.DenyOrder(conn,id);
+
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("成功！", 1000);
+
         onClinckbtnOrderInfo();
     }
 
     public void acceptOrder(int id) throws Exception {
         Order order = new Order();
         order.AcceptOrder(conn,Staff.GetStaffID(userId.getText(),conn),id);
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("成功！", 1000);
         onClinckbtnOrderInfo();
+
     }
 
     public void acceptReturn(int id) throws Exception {
         Order order = new Order();
         order.AcceptReturn(conn,id);
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("成功！", 1000);
         onClinckbtnOrderInfo();
     }
 
     public void denyRetrun(int id) throws Exception {
         Order order = new Order();
         order.DenyReturn(conn,id);
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("成功！", 1000);
         onClinckbtnOrderInfo();
     }
 

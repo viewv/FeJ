@@ -253,7 +253,8 @@ public class DeveHomeController implements Initializable {
         int message = product.AddProduct(recipeTable,product,conn);
 
         JFXSnackbar snackbar = new JFXSnackbar(BasePane);
-        snackbar.show("Send Order Successfully"+message, 1000);
+        snackbar.show("Message: "+message, 1000);
+
         all_Receipe.clear();
         onClickedbtnShopList();
     }
@@ -275,8 +276,6 @@ public class DeveHomeController implements Initializable {
         Ingredient[] ingredients = ingredient.GetAll(conn);
         pnl_scroll.getChildren().clear();
         int length = ingredients.length;
-
-        //String[] names = Ingredient.GetName(conn,length);
 
         Node[] nodes = new Node[length];
         Node node;
@@ -327,6 +326,10 @@ public class DeveHomeController implements Initializable {
         float price = Float.parseFloat(areIprice.getText());
         int res =  Ingredient.AddIngredient(conn,name,pre,price);
         System.out.println(res);
+
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("Res"+res, 1000);
+
         onClickedbtnShowAllIs();
         areIname.clear();
         areIpre.clear();

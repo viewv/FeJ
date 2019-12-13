@@ -72,6 +72,7 @@ public class WorkerItemController implements Initializable {
         }
     }
 
+    //TODO add result maybe
     public void onClickedAsWork(MouseEvent mouseEvent) throws Exception {
         int workshop = Integer.parseInt(areWorkdshop.getText());
         String id = labUserId.getText();

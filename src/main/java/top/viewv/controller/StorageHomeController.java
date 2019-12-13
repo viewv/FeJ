@@ -6,6 +6,7 @@ package top.viewv.controller;
  */
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -140,10 +141,13 @@ public class StorageHomeController implements Initializable {
         }
     }
 
+    //TODO Fix Below
     public void out(int orderId,int productId,int amount){
         Product_storage product_storage = new Product_storage();
         //product_storage.OutStorage(conn,orderId,productId,amount);
         product_storage.OutStorage(conn,orderId,productId,amount);
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("成功！", 1000);
         refrash();
     }
 
@@ -154,9 +158,12 @@ public class StorageHomeController implements Initializable {
     public void onclickedOin(MouseEvent mouseEvent) {
         Product_storage product_storage = new Product_storage();
         product_storage.EnStorage2(conn, Integer.parseInt(areorder.getText()));
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show("成功！", 1000);
         refrash();
     }
 
+    //TODO ADD res Add personal Info
 
     public void onClickedPin(MouseEvent mouseEvent) {
         Product_storage product_storage = new Product_storage();
@@ -243,6 +250,16 @@ public class StorageHomeController implements Initializable {
     public void onclickedConfirm(MouseEvent mouseEvent) {
         int orderId = Integer.parseInt(areConfirm.getText());
         int res =  Product_storage.cornfirm(conn, orderId);
+        //确认当前订单全部出库操作已经完成的接口 1.订单非法 2.完成
+        String message = "";
+        if (res == 1){
+            message = "订单非法！";
+        }else if(res == 2){
+            message = "确认交付完毕！";
+        }
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
+
         System.out.println("Confirm"+res);
         refrash();
     }

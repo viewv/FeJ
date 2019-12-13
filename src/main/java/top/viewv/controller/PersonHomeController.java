@@ -6,6 +6,7 @@ package top.viewv.controller;
  */
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -152,26 +153,65 @@ public class PersonHomeController implements Initializable {
 
     public void delUser(String id) throws Exception {
         Staff staff = new Staff();
-        staff.DeleteStaff(conn,id);
+        int res =  staff.DeleteStaff(conn,id);
+        //1.staff doesn't exist 2.success 0.null
+        String message = "";
+        if (res == 1){
+            message = "员工不存在";
+        }else if(res == 2){
+            message = "成功删除用户！";
+        }else if(res == 0){
+            message = "不存在这个ID";
+        }
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
         refeshUser();
+
     }
 
     public void PromoteUser(String id) throws Exception {
         Staff staff = new Staff();
-        staff.PromoteStaff(conn,id);
+        int res = staff.PromoteStaff(conn,id);
+        refeshUser();
+        //0.null,1.staff doesn't exist,2.already a manager,3.success
+        String message = "";
+        if (res == 1){
+            message = "员工不存在";
+        }else if(res == 2){
+            message = "该员工已经是管理员了！";
+        }else if(res == 0){
+            message = "不存在这个ID";
+        }else if(res == 3){
+            message = "成功！";
+        }
+
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
         refeshUser();
     }
 
     public void DismissUser(String id) throws Exception {
         Staff staff = new Staff();
-        staff.DismissManager(conn,id);
+        int res = staff.DismissManager(conn,id);
+        //TODO Add res
         refeshUser();
     }
 
 
     public void onClickedAddUser(MouseEvent mouseEvent) throws Exception {
         Staff staff = new Staff();
-        staff.AddStaff(conn,areId.getText(),areName.getText(), Integer.parseInt(areAge.getText()));
+        int res = staff.AddStaff(conn,areId.getText(),areName.getText(), Integer.parseInt(areAge.getText()));
+        String message = "";
+        if (res == 1){
+            message = "已经有此员工";
+        }else if(res == 2){
+            message = "成功！";
+        }else if(res == 0){
+            message = "不存在这个ID";
+        }
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
         refeshUser();
     }
+    //1.staff already exists 2.success 0.null
 }
