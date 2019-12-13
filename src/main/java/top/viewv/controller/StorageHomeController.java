@@ -141,13 +141,18 @@ public class StorageHomeController implements Initializable {
         }
     }
 
-    //TODO Fix Below
     public void out(int orderId,int productId,int amount){
         Product_storage product_storage = new Product_storage();
         //product_storage.OutStorage(conn,orderId,productId,amount);
-        product_storage.OutStorage(conn,orderId,productId,amount);
+        int res = product_storage.OutStorage(conn,orderId,productId,amount);
+        String message = "";
+        if (res == 1){
+            message = "订单号错误";
+        }else if(res == 2){
+            message = "错误";
+        }
         JFXSnackbar snackbar = new JFXSnackbar(BasePane);
-        snackbar.show("成功！", 1000);
+        snackbar.show(message, 1000);
         refrash();
     }
 
@@ -157,13 +162,18 @@ public class StorageHomeController implements Initializable {
 
     public void onclickedOin(MouseEvent mouseEvent) {
         Product_storage product_storage = new Product_storage();
-        product_storage.EnStorage2(conn, Integer.parseInt(areorder.getText()));
+        int res = product_storage.EnStorage2(conn, Integer.parseInt(areorder.getText()));
+        //1.订单号错误 2.成功
+        String message = "";
+        if (res == 1){
+            message = "订单号错误";
+        }else if(res == 2){
+            message = "错误";
+        }
         JFXSnackbar snackbar = new JFXSnackbar(BasePane);
-        snackbar.show("成功！", 1000);
+        snackbar.show(message, 1000);
         refrash();
     }
-
-    //TODO ADD res Add personal Info
 
     public void onClickedPin(MouseEvent mouseEvent) {
         Product_storage product_storage = new Product_storage();
@@ -174,6 +184,23 @@ public class StorageHomeController implements Initializable {
                 Integer.parseInt(arel.getText()),
                 Integer.parseInt(areo.getText())
         );
+        //EnStorage1:1.产品不存在 2.数量非法 3.员工不存在 4.车间不存在 5.计划不存在 6。成功
+        String message = "";
+        if (res == 1){
+            message = "产品不存在";
+        }else if(res == 2){
+            message = "数量非法";
+        }else if(res == 3){
+            message = "员工不存在";
+        }else if(res == 4){
+            message = "车间不存在";
+        }else if(res == 5){
+            message = "计划不存在";
+        }else if(res == 6){
+            message = "成功";
+        }
+        JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+        snackbar.show(message, 1000);
         System.out.println(res);
         refrash();
     }

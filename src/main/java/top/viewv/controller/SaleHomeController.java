@@ -272,7 +272,7 @@ public class SaleHomeController implements Initializable {
             }
         }
     }
-    //TODO Fix all below
+
     public void onClinckedAddUser(MouseEvent mouseEvent) throws Exception {
         float balance = Float.parseFloat(areMoney.getText());
         String id = areId.getText();
@@ -285,11 +285,17 @@ public class SaleHomeController implements Initializable {
 
     public void returnOrder(int id) throws Exception {
         Order order = new Order();
-        order.DenyOrder(conn,id);
+        int res = order.DenyOrder(conn,id);
 
+        //1.订单号错误 2.成功
+        String message = "";
+        if (res == 1){
+            message = "员工不存在";
+        }else if(res == 2){
+            message = "成功！";
+        }
         JFXSnackbar snackbar = new JFXSnackbar(BasePane);
-        snackbar.show("成功！", 1000);
-
+        snackbar.show(message, 1000);
         onClinckbtnOrderInfo();
     }
 
