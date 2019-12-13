@@ -38,7 +38,7 @@ public class Finance {
         }
         return 0;
     }
-    //TODO Add result
+    //1.订单错误 2.成功
 
     public int OutCome(Connection conn, int OrderID,String staff_id){
         try{
@@ -54,7 +54,7 @@ public class Finance {
         }
         return 0;
     }
-    //TODO Add result
+    //1.订单号错误 2.完成
 
     public Finance[] GetAll(Connection conn){
         try{

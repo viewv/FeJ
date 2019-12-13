@@ -51,7 +51,7 @@ public class Product_storage {
     }
 
 
-    // TODO add result meaning!
+    //EnStorage1:1.产品不存在 2.数量非法 3.员工不存在 4.车间不存在 5.计划不存在 6。成功
     public int EnStorage1(Connection conn,int product_id,int amount,String staff_id,int workshop_id,int plan_id){
         try{
             this.product_id = product_id;
@@ -85,29 +85,59 @@ public class Product_storage {
         return 0;
     }
 
-    public void EnStorage2(Connection conn,int OrderID){
+
+    public int EnStorage2(Connection conn,int OrderID){
         try{
-            String sql = "update product_storage set order_id = 0 where order_id = " +
-                    OrderID;
+            String sql = "select count(*) from `order` where order_id = " + OrderID;
             PreparedStatement st = conn.prepareStatement(sql);
-            st.execute(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int temp = rs.getInt(1);
+
+            if(temp < 1 ){
+                return 1;
+            }
+            else{
+                sql = "update product_storage set order_id = 0 where order_id = " +
+                        OrderID;
+                st = conn.prepareStatement(sql);
+                st.execute(sql);
+                return 2;
+            }
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        return 0;
     }
-    //Todo add out
-    public void OutStorage(Connection conn,int OrderId,int ProductId,int amount){
+    //1.订单号错误 2.成功
+
+
+    public int OutStorage(Connection conn,int OrderId,int ProductId,int amount){
         try{
-            String sql = "call OutProductStorage("+OrderId+","+ProductId+","+amount+")";
-            System.out.println(sql);
+            String sql = "select count(*) from `order` where order_id = " + OrderId;
             PreparedStatement st = conn.prepareStatement(sql);
-            st.execute(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int temp = rs.getInt(1);
+            if(temp < 1 ){
+                return 1;
+            }
+            else{
+                sql = "call OutProductStorage("+OrderId+","+ProductId+","+amount+")";
+                System.out.println(sql);
+                st = conn.prepareStatement(sql);
+                st.execute(sql);
+                return 2;
+            }
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        return 0;
     }
+    //1.订单号错误 2.成功
+
 
     public static int[] CheckDestroy(Connection conn){
         try{

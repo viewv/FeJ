@@ -102,7 +102,7 @@ public class Staff {
         }
         return 0;
     }
-    //TODO Add Result
+    //1.staff不存在 2.该用户已不是管理员 3.成功
 
     public Staff[] GetDepartmentStaff(Connection conn,String staff_id){
         try{

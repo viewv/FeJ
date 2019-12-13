@@ -117,61 +117,113 @@ public class Order {
         //处理职员接受订单
     }
 
-    public void DenyOrder(Connection conn,int OrderId){
+    public int DenyOrder(Connection conn,int OrderId){
         try{
-            String sql = "update `order` set situation = 1 "
-                    +"where order_id = "
-                    +OrderId;
+            String sql = "select count(*) from `order` where order_id = " +
+                    + OrderId + " and situation = 0";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.execute(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int temp = rs.getInt(1);
+            if (temp < 1){
+                return 1;
+            }
+            else{
+                sql = "update `order` set situation = 1 "
+                        +"where order_id = "
+                        +OrderId;
+                st = conn.prepareStatement(sql);
+                st.execute(sql);
+                return 2;
+            }
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        return 0;
     }
-    //TODO Add result
+    //1.订单号错误 2.成功
 
-    public void AskReturn(Connection conn,int OrderId){
+    public int AskReturn(Connection conn,int OrderId){
         try{
-            String sql = "update `order` set situation = 4 "
-                    +"where order_id = "
-                    +OrderId;
+            String sql = "select count(*) from `order` where order_id = " +
+                    + OrderId + " and situation = 3";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.execute(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int temp = rs.getInt(1);
+            if (temp < 1){
+                return 1;
+            }
+            else{
+                sql = "update `order` set situation = 4 "
+                        +"where order_id = "
+                        +OrderId;
+                st = conn.prepareStatement(sql);
+                st.execute(sql);
+                return 2;
+            }
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        return 0;
     }
-    //TODO Add result
+    //1.订单号错误 2.成功
 
-    public void AcceptReturn(Connection conn,int OrderId){
+    public int AcceptReturn(Connection conn,int OrderId){
         try{
-            String sql = "update `order` set situation = 5 "
-                    +"where order_id = "
-                    +OrderId;
+            String sql = "select count(*) from `order` where order_id = " +
+                    + OrderId + " and situation = 4";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.execute(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int temp = rs.getInt(1);
+            if (temp < 1){
+                return 1;
+            }
+            else{
+                sql = "update `order` set situation = 5 "
+                        +"where order_id = "
+                        +OrderId;
+                st = conn.prepareStatement(sql);
+                st.execute(sql);
+                return 2;
+            }
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        return 0;
     }
-    //TODO Add result
+    //1.订单号错误 2.成功
 
-    public void DenyReturn(Connection conn,int OrderId){
+    public int DenyReturn(Connection conn,int OrderId){
         try{
-            String sql = "update `order` set situation = 3"
-                    +"where order_id = "
-                    +OrderId;
+            String sql = "select count(*) from `order` where order_id = " +
+                    + OrderId + " and situation = 4";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.execute(sql);
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int temp = rs.getInt(1);
+            if (temp < 1){
+                return 1;
+            }
+            else{
+                sql = "update `order` set situation = 3 "
+                        +"where order_id = "
+                        +OrderId;
+                st = conn.prepareStatement(sql);
+                st.execute(sql);
+                return 2;
+            }
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        return 0;
     }
-    //TODO Add result
+    //1.订单号错误 2.成功
 
     public void InitOrderById(Connection conn,int id) {
         try {
