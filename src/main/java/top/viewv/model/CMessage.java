@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class message {
+public class CMessage {
     public int type; //1.客户 2.员工
     public String account_id;
     public String myid; //不可更改
@@ -13,7 +13,7 @@ public class message {
     public Date date;
     public int credit;
 
-    public message(Connection conn,String account_id){
+    public CMessage(Connection conn, String account_id){
         try{
             this.account_id = account_id;
             String sql = "select count(*) from `full staff` where account_id = "
@@ -52,7 +52,7 @@ public class message {
         }
     }
 
-    public static int UpdateAccountID(Connection conn,message me,String nid){
+    public static int UpdateAccountID(Connection conn, CMessage me, String nid){
         try{
             if (me.type == 1){
                 String sql = "select count(*) from `full client` where account_id = \""
@@ -101,7 +101,7 @@ public class message {
     }
     //1.账号存在 2.成功
 
-    public static int UpdatePassword(Connection conn,message me,String np,String rnp){
+    public static int UpdatePassword(Connection conn, CMessage me, String np, String rnp){
         try{
             if(np != rnp){
                 return 1;
@@ -120,7 +120,7 @@ public class message {
     }
     //1.两次密码不匹配 2.成功
 
-    public static void UpdateEmail(Connection conn,message me,String nemail){
+    public static void UpdateEmail(Connection conn, CMessage me, String nemail){
         try{
             String sql = "update account set icon = \"" + nemail + "\""
                     +" where account_id = \"" + me.account_id + "\"";

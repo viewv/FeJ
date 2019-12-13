@@ -11,8 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -42,6 +44,9 @@ public class MainController implements Initializable  {
     public JFXProgressBar pbarLoad;
     public Text labLoadiInd;
     public Group groupBuildInfo;
+    public HBox happy;
+    public ImageView happyimage;
+    public Text happyy;
     @FXML
     Button enterButton;
     @FXML
@@ -61,6 +66,8 @@ public class MainController implements Initializable  {
     @FXML
     Button regButton;
 
+    private int counter = 0;
+
     private Connection conn = null;
     private ThreadType tt = new ThreadType();
 
@@ -72,6 +79,7 @@ public class MainController implements Initializable  {
         GroupLogin.setVisible(true);
         GroupSignup.setVisible(false);
         pbarLoad.setVisible(false);
+        happyimage.setVisible(false);
         tt.start();
     }
 
@@ -84,7 +92,7 @@ public class MainController implements Initializable  {
         String superuser = "444";
         if (user_id.equals(superuser)) {
             System.out.println("Hello Super Man!");
-            WorkerSwitch();
+           Switch();
         }
         else {
             String result = login.LoginFun(user_id, password, conn);
@@ -481,6 +489,23 @@ public class MainController implements Initializable  {
                 RegInput();
             }
         }
+    }
+
+    public void onclickedhappy(MouseEvent mouseEvent) {
+        if (counter == 10){
+            happyy.setText("你已经点击10次了！");
+        }else if (counter == 20){
+            happyy.setText("你已经点击20次了喵！");
+        }else if(counter == 30){
+            happyy.setText("好了，30次了，给你看乖");
+            happyimage.setVisible(true);
+        }else if(counter == 35){
+            happyy.setText("走了喵");
+            happyimage.setVisible(false);
+            counter = 0;
+        }
+        counter ++;
+        System.out.println(counter);
     }
 
     class ThreadType extends Thread {

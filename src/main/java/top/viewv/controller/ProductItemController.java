@@ -64,12 +64,12 @@ public class ProductItemController implements Initializable {
     }
 
     public void setLabPrice(float message) {
-        //Display the message
+        //Display the CMessage
         labPrice.setText(String.valueOf(message));
     }
 
     public void setLabProductName(String message) {
-        //Display the message
+        //Display the CMessage
         labProductName.setText(message);
     }
 

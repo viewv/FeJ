@@ -335,4 +335,33 @@ public class DeveHomeController implements Initializable {
         areIpre.clear();
         areIprice.clear();
     }
+
+    public void onClickedBtnInfo(MouseEvent mouseEvent) throws Exception {
+        Switch();
+    }
+
+    public void Switch() throws Exception {
+
+        Stage stage = new Stage();
+        System.out.println("Start Login");
+
+        FXMLLoader loader = new
+                FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
+                .getResource("data/ui/AccountInfo.fxml"));
+
+        Parent root = loader.load();
+        stage.setTitle("Account Home");
+        stage.setScene(new Scene(root));
+        stage.show();
+        AccountInfoController homeControl = loader.getController();
+        homeControl.setAccId(userId.getText());
+        homeControl.refresh();
+        //将第二个窗口保存到map中
+        StageManager.STAGE.put("info", stage);
+        //将本窗口保存到map中
+        StageManager.CONTROLLER.put("second", this);
+        //关闭本窗口
+        //Stage index = (Stage) loginPane.getScene().getWindow();
+        //index.close();
+    }
 }
