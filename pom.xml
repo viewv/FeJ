@@ -6,7 +6,7 @@
 
     <groupId>top.viewv.java</groupId>
     <artifactId>Food_Enterprise_Manage_System_Java_Project</artifactId>
-    <version>3.1</version>
+    <version>3.2-beta</version>
 
     <build>
         <plugins>
