@@ -43,7 +43,7 @@
       </HBox>
       <StackPane fx:id="InputPane" layoutX="344.0" layoutY="19.0" prefHeight="609.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Group fx:id="GroupSignup" visible="false">
+            <Group fx:id="GroupSignup">
                <children>
                   <AnchorPane>
                      <children>
@@ -52,7 +52,7 @@
                               <HBox alignment="CENTER" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                                  <children>
                                     <FontAwesomeIcon fill="#fbfafa" iconName="USER" size="1.3em" />
-                                    <TextField id="userInput" fx:id="signupUserInput" promptText=" User" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                    <TextField id="userInput" fx:id="signupUserInput" promptText="AccountID" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
@@ -60,6 +60,29 @@
                                  </children>
                                  <VBox.margin>
                                     <Insets top="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="30.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <children>
+                                    <FontAwesomeIcon fill="#fbfafa" iconName="USER" size="1.3em" />
+                                    <TextField id="userInput" fx:id="userId" promptText="UserId" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="30.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
+                                 <children>
+                                    <FontAwesomeIcon fill="#fbfafa" iconName="ENVELOPE" size="1.3em" />
+                                    <TextField id="userInput" fx:id="areemail" promptText="email" style="-fx-background-color: transpart;" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
                                  </VBox.margin>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
@@ -113,7 +136,7 @@
                   </AnchorPane>
                </children>
             </Group>
-            <Group fx:id="GroupLogin" StackPane.alignment="CENTER">
+            <Group fx:id="GroupLogin" visible="false" StackPane.alignment="CENTER">
                <children>
                   <AnchorPane style="-fx-border-radius: 50;">
                      <children>
@@ -184,7 +207,7 @@
                <children>
                   <Group fx:id="groupBuildInfo">
                      <children>
-                        <Text layoutX="12.0" strokeType="OUTSIDE" onMouseClicked="#onclickedhappy" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="FeJ 2019">
+                        <Text layoutX="12.0" onMouseClicked="#onclickedhappy" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 1.2em;" text="FeJ 2019">
                            <font>
                               <Font size="10.0" />
                            </font>
@@ -213,7 +236,7 @@
             <Insets right="10.0" />
          </padding>
       </HBox>
-      <ImageView fx:id="happyimage" onMouseClicked="#onclickedhappy" fitHeight="401.0" fitWidth="291.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="happyimage" fitHeight="401.0" fitWidth="291.0" layoutY="104.0" onMouseClicked="#onclickedhappy" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/doge.jpg" />
          </image></ImageView>

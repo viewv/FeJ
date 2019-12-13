@@ -47,6 +47,8 @@ public class MainController implements Initializable  {
     public HBox happy;
     public ImageView happyimage;
     public Text happyy;
+    public TextField areemail;
+    public TextField userId;
     @FXML
     Button enterButton;
     @FXML
@@ -196,7 +198,7 @@ public class MainController implements Initializable  {
         String password0 = signupPassword0.getText().trim();
         String password1 = signupPassword1.getText().trim();
         Signup signup = new Signup();
-        String result = signup.SignupFun(acc_id, "2313", password0, password1, "zxnnet@gmail.com", conn);
+        String result = signup.SignupFun(acc_id, userId.getText(), password0, password1, areemail.getText(), conn);
         System.out.println(result);
         if (result != null) {
             if (result.equals("Account Exists")) {
