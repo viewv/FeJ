@@ -1,0 +1,12 @@
+.jfx-snackbar-content{
+    -fx-background-color: #000000;
+}
+
+.jfx-snackbar-action{
+    -fx-text-fill: #9686d4;
+}
+
+.jfx-snackbar-content{
+    -fx-background-color: #afafaf80;
+    /*-fx-fill: white;*/
+}
