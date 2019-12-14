@@ -239,15 +239,27 @@ public class WorkHomeController implements Initializable {
 
     private void refeshRecord() {
         Record record = new Record();
+        pnl_scroll.getChildren().clear();
+
+        int length;
+        Record[] records = new Record[0];
 
         String id = Staff.GetStaffID(userId.getText(),conn);
         char [] user = id.toCharArray();
+
         int workshop = user[3]-48;
 
-        Record[] records = Worker.CheckPlanContent(conn,workshop);
+        try {
+            records = Worker.CheckPlanContent(conn,workshop);
+        } catch (Exception e) {
+            e.printStackTrace();
+            length = 0;
+            JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+            snackbar.show("没有记录！", 5000);
+        }
 
-        int length = records.length;
-        pnl_scroll.getChildren().clear();
+        length = records.length;
+
         Node[] nodes = new Node[length];
         Node node;
 
@@ -286,6 +298,8 @@ public class WorkHomeController implements Initializable {
 
         if (record == null){
             length = 0;
+            JFXSnackbar snackbar = new JFXSnackbar(BasePane);
+            snackbar.show("没有记录！", 5000);
         }
 
         length = records.length;
