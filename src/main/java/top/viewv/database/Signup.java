@@ -20,7 +20,6 @@ public class Signup {
             while (resultSet.next()){
                 result = resultSet.getString(1);
             }
-            conn.close();
             /*
             Account Exists
             Wrong Account Length

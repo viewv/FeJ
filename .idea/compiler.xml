@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="FeJ" />
+        <module name="Food_Enterprise_Manage_System_Java_Project" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="FeJ" target="1.8" />
+      <module name="Food_Enterprise_Manage_System_Java_Project" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

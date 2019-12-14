@@ -61,10 +61,12 @@ public class AccountInfoController {
 
         System.out.println("Password"+password.length());
         if (password.length()!=0){
-            CMessage.UpdatePassword(conn,cMessage,password,crePass.getText());
+//            CMessage.UpdatePassword(conn,cMessage,password,crePass.getText());
+            CMessage.UpdatePassword(conn,cMessage,password,password);
         }
         refresh();
     }
+    //TODO 密码形式输入框，确认密码
 
     public void onClickedhome(MouseEvent mouseEvent) {
         Stage index = (Stage) btnconfirm.getScene().getWindow();

@@ -116,10 +116,12 @@ public class Product_storage {
     public int OutStorage(Connection conn,int OrderId,int ProductId,int amount){
         try{
             String sql = "select count(*) from `order` where order_id = " + OrderId;
+            System.out.println(sql);
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery(sql);
             rs.next();
             int temp = rs.getInt(1);
+            System.out.println(temp);
             if(temp < 1 ){
                 return 1;
             }

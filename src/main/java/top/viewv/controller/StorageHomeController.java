@@ -144,12 +144,12 @@ public class StorageHomeController implements Initializable {
     public void out(int orderId,int productId,int amount){
         Product_storage product_storage = new Product_storage();
         //product_storage.OutStorage(conn,orderId,productId,amount);
-        int res = product_storage.OutStorage(conn,orderId,productId,amount);
+        int res = product_storage.OutStorage(conn,productId,orderId,amount);
         String message = "";
         if (res == 1){
             message = "订单号错误";
         }else if(res == 2){
-            message = "错误";
+            message = "成功";
         }
         JFXSnackbar snackbar = new JFXSnackbar(BasePane);
         snackbar.show(message, 1000);
@@ -168,7 +168,7 @@ public class StorageHomeController implements Initializable {
         if (res == 1){
             message = "订单号错误";
         }else if(res == 2){
-            message = "错误";
+            message = "成功";
         }
         JFXSnackbar snackbar = new JFXSnackbar(BasePane);
         snackbar.show(message, 1000);
