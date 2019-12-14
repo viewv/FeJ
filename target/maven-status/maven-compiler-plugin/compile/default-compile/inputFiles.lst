@@ -1,6 +1,7 @@
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Product.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/MainController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Plan_content.java
+/Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/CMessage.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/model/Product_storage.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/api/Serialize.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/StorageItemController.java
@@ -50,6 +51,7 @@
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/PlanListItemController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/FinanceSPOrderItemController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/database/SqlTable.java
+/Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/AccountInfoController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/test/TesttableView.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/controller/SaleOrderItemController.java
 /Users/viewv/IdeaProjects/FeJ/src/main/java/top/viewv/test/TestJavaGravatar.java
