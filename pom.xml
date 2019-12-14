@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>top.viewv.FeJ</groupId>
+    <groupId>top.viewv.fej</groupId>
     <artifactId>Food_Enterprise_Manage_System_Java_Project</artifactId>
     <version>3.2-beta-1</version>
 
@@ -12,7 +12,7 @@
         <repository>
             <id>github</id>
             <name>GitHub viewv Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/viewv/FeJ</url>
+            <url>https://maven.pkg.github.com/viewv/fej</url>
         </repository>
     </distributionManagement>
 

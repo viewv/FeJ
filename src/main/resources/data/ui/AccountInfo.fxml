@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -117,14 +118,34 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Label>
-                  <JFXTextField fx:id="crePass" prefHeight="27.0" prefWidth="241.0" promptText="如果需要修改密码请输入新密码">
+                  <JFXPasswordField fx:id="crePass" prefHeight="27.0" prefWidth="241.0" promptText="如果需要修改密码请输入新密码">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </JFXTextField>
+                  </JFXPasswordField>
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="credHbar11" alignment="CENTER_LEFT" layoutX="10.0" layoutY="146.0" prefHeight="38.0" prefWidth="477.0">
+               <children>
+                  <Label prefHeight="24.0" prefWidth="60.0" text="确认密码">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="70.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXPasswordField fx:id="areRepec" prefHeight="27.0" prefWidth="241.0" promptText="请再输一遍">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </JFXPasswordField>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="48.0" prefHeight="38.0" prefWidth="477.0">

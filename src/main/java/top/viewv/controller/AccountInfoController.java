@@ -1,6 +1,7 @@
 package top.viewv.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -26,6 +27,7 @@ public class AccountInfoController {
     public Label labRealId;
     public JFXTextField crePass;
     public ImageView Icons;
+    public JFXPasswordField areRepec;
 
     private CMessage cMessage;
     private String accId;
@@ -58,15 +60,14 @@ public class AccountInfoController {
         CMessage.UpdateAccountID(conn,cMessage,logid.getText());
         CMessage.UpdateEmail(conn,cMessage,aremail.getText());
         String password = crePass.getText();
+        String repectPassowrd = areRepec.getText();
 
         System.out.println("Password"+password.length());
         if (password.length()!=0){
-//            CMessage.UpdatePassword(conn,cMessage,password,crePass.getText());
-            CMessage.UpdatePassword(conn,cMessage,password,password);
+            CMessage.UpdatePassword(conn,cMessage,password,repectPassowrd);
         }
         refresh();
     }
-    //TODO 密码形式输入框，确认密码
 
     public void onClickedhome(MouseEvent mouseEvent) {
         Stage index = (Stage) btnconfirm.getScene().getWindow();
