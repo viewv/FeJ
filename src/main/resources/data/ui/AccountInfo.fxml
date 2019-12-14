@@ -28,7 +28,7 @@
             <Separator prefWidth="200.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Icons" fitHeight="100.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/agencies.png" />
                      </image>
@@ -37,7 +37,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="68.0" prefHeight="38.0" prefWidth="477.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="24.0" prefWidth="181.0" text="欢迎使用，Viewv">
+                  <Label alignment="CENTER" prefHeight="24.0" prefWidth="181.0" text="欢迎使用FeJ系统">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -117,7 +117,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Label>
-                  <JFXTextField fx:id="crePass" prefHeight="27.0" prefWidth="241.0">
+                  <JFXTextField fx:id="crePass" prefHeight="27.0" prefWidth="241.0" promptText="如果需要修改密码请输入新密码">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>

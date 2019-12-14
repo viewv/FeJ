@@ -14,20 +14,27 @@ import java.net.URL;
 import java.net.MalformedURLException;
 
 public class Gravatar {
-    private static String hash(String input) {
+    private static String hash(String input) throws NoSuchAlgorithmException {
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
         try {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
             md5.update(StandardCharsets.UTF_8.encode(input));
             return String.format("%032x", new BigInteger(1, md5.digest()));
-        } catch (NoSuchAlgorithmException ex) {
-            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return hash("zxnnet@gmail.com");
         }
+
     }
     public static Image imageFromMail(String mail) {
         try {
-            return new Image(String.valueOf(new URL("http://www.gravatar.com/avatar/" + hash(mail))));
-        } catch (MalformedURLException ex) {
-            return null;
+            Image image = new Image(String.valueOf(new URL("http://www.gravatar.com/avatar/" + hash(mail))));
+            if (image == null) {
+                return new Image(String.valueOf(new URL("http://www.gravatar.com/avatar/" + hash("zxnnet@gmail.com"))));
+            }else {
+                return image;
+            }
+        } catch (MalformedURLException | NoSuchAlgorithmException ex) {
+            return new Image("./logo.png", true);
         }
     }
 }

@@ -13,11 +13,13 @@ public class CMessage {
     public Date date;
     public int credit;
 
+
+
     public CMessage(Connection conn, String account_id){
         try{
             this.account_id = account_id;
             String sql = "select count(*) from `full staff` where account_id = "
-                    + account_id;
+                    +"\"" + account_id +"\"";
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery(sql);
             rs.next();
@@ -25,7 +27,7 @@ public class CMessage {
             if(temp > 0){
                 this.type = 2;
                 sql = "select staff_id,icon,entry_date from `full staff` where account_id = "
-                        +account_id;
+                        +"\""+account_id+"\"";
                 st = conn.prepareStatement(sql);
                 rs = st.executeQuery(sql);
                 rs.next();
@@ -37,7 +39,7 @@ public class CMessage {
             else{
                 this.type = 1;
                 sql = "select client_id,icon,`time`,credit from `full client` where account_id = "
-                        +account_id;
+                        +"\""+account_id+"\"";
                 st = conn.prepareStatement(sql);
                 rs = st.executeQuery(sql);
                 rs.next();

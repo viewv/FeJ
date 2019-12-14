@@ -24,6 +24,7 @@ import top.viewv.api.UserAuth;
 import top.viewv.database.Connect;
 import top.viewv.database.Login;
 import top.viewv.database.Signup;
+import top.viewv.model.CMessage;
 import top.viewv.model.Finance;
 import top.viewv.model.Plan;
 import top.viewv.model.Staff;
@@ -178,9 +179,13 @@ public class MainController implements Initializable  {
         stage.setTitle("Home Page");
         stage.setScene(new Scene(root));
         stage.show();
+
         RoleController homeControl = loader.getController();
+        CMessage cMessage = new CMessage(conn,user_id);
+
+        //TODO Name
         homeControl.setLabUserName("ViewvLab");
-        homeControl.setUserIcon("qianrui1999@qq.com");
+        homeControl.setUserIcon(cMessage.email);
         homeControl.setlabUserId(user_id);
         homeControl.setDept(role);
         //将第二个窗口保存到map中
@@ -252,9 +257,11 @@ public class MainController implements Initializable  {
         stage.setScene(new Scene(root));
         stage.show();
         DeveHomeController homeControl = loader.getController();
+
+        CMessage cMessage = new CMessage(conn,user_id);
         homeControl.setLabUserName("ViewvLab");
         homeControl.refreshNodes();
-        homeControl.setUserIcon("qianrui1999@qq.com");
+        homeControl.setUserIcon(cMessage.email);
         homeControl.setlabUserId(user_id);
         //将第二个窗口保存到map中
         StageManager.STAGE.put("second", stage);
@@ -278,13 +285,15 @@ public class MainController implements Initializable  {
                 FXMLLoader(Objects.requireNonNull(getClass()).getClassLoader()
                 .getResource("data/ui/WorkerHome.fxml"));
 
+
         Parent root = loader.load();
         stage.setTitle("Worker Home Page");
         stage.setScene(new Scene(root));
         stage.show();
         WorkHomeController homeControl = loader.getController();
+        CMessage cMessage = new CMessage(conn,user_id);
         homeControl.setLabUserName("ViewvLab");
-        homeControl.setUserIcon("zxn@zxnnet.top");
+        homeControl.setUserIcon(cMessage.email);
         homeControl.setlabUserId(user_id);
         homeControl.refeshUser();
         //将第二个窗口保存到map中
@@ -316,7 +325,8 @@ public class MainController implements Initializable  {
         NewHomeController homeControl = loader.getController();
         homeControl.setLabUserName("ViewvLab");
         homeControl.refreshNodes();
-        homeControl.setUserIcon("qianrui1999@qq.com");
+        CMessage cMessage = new CMessage(conn,user_id);
+        homeControl.setUserIcon(cMessage.email);
         homeControl.setlabUserId(user_id);
         //将第二个窗口保存到map中
         StageManager.STAGE.put("second", stage);
@@ -345,8 +355,9 @@ public class MainController implements Initializable  {
         stage.setScene(new Scene(root));
         stage.show();
         PlanHomeController homeControl = loader.getController();
+        CMessage cMessage = new CMessage(conn,user_id);
         homeControl.setLabUserName("ViewvLab");
-        homeControl.setUserIcon("qianrui1999@qq.com");
+        homeControl.setUserIcon(cMessage.email);
         homeControl.setlabUserId(user_id);
         homeControl.refreshNodes();
         //将第二个窗口保存到map中
@@ -375,8 +386,9 @@ public class MainController implements Initializable  {
         stage.setScene(new Scene(root));
         stage.show();
         SaleHomeController homeControl = loader.getController();
+        CMessage cMessage = new CMessage(conn,user_id);
         homeControl.setLabUserName("ViewvLab");
-        homeControl.setUserIcon("zxn@zxnnet.top");
+        homeControl.setUserIcon(cMessage.email);
         homeControl.setlabUserId(user_id);
         homeControl.refreshNodes();
         //将第二个窗口保存到map中
@@ -405,8 +417,9 @@ public class MainController implements Initializable  {
         stage.setScene(new Scene(root));
         stage.show();
         FinanceHomeController homeControl = loader.getController();
+        CMessage cMessage = new CMessage(conn,user_id);
         homeControl.setLabUserName("ViewvLab");
-        homeControl.setUserIcon("zxnnet@gmail.com");
+        homeControl.setUserIcon(cMessage.email);
         homeControl.setlabUserId(user_id);
         homeControl.refreshNodes();
         //将第二个窗口保存到map中
@@ -435,8 +448,9 @@ public class MainController implements Initializable  {
         stage.setScene(new Scene(root));
         stage.show();
         StorageHomeController homeControl = loader.getController();
+        CMessage cMessage = new CMessage(conn,user_id);
         homeControl.setLabUserName("ViewvLab");
-        homeControl.setUserIcon("zxnnet@gmail.com");
+        homeControl.setUserIcon(cMessage.email);
         homeControl.setlabUserId(user_id);
         homeControl.refrash();
         //将第二个窗口保存到map中
@@ -465,8 +479,9 @@ public class MainController implements Initializable  {
         stage.setScene(new Scene(root));
         stage.show();
         IStorageHomeController homeControl = loader.getController();
+        CMessage cMessage = new CMessage(conn,user_id);
         homeControl.setLabUserName("ViewvLab");
-        homeControl.setUserIcon("zxnnet@gmail.com");
+        homeControl.setUserIcon(cMessage.email);
         homeControl.setlabUserId(user_id);
         homeControl.refrash();
         //将第二个窗口保存到map中
