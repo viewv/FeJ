@@ -43,11 +43,11 @@
       </HBox>
       <StackPane fx:id="InputPane" layoutX="344.0" layoutY="19.0" prefHeight="609.0" prefWidth="938.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Group fx:id="GroupSignup">
+            <Group fx:id="GroupSignup" visible="false">
                <children>
                   <AnchorPane>
                      <children>
-                        <VBox prefHeight="234.0" prefWidth="250.0">
+                        <VBox layoutX="-7.0" layoutY="-1.0" prefHeight="345.0" prefWidth="273.0" style="-fx-background-color: #2f2f2fa3 #2f2f2fa#2f2f2fa3;">
                            <children>
                               <HBox alignment="CENTER" style="-fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;">
                                  <children>
@@ -56,6 +56,9 @@
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
                                     </TextField>
                                  </children>
                                  <VBox.margin>
@@ -69,6 +72,9 @@
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
                                     </TextField>
                                  </children>
                               </HBox>
@@ -79,6 +85,9 @@
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
                                     </TextField>
                                  </children>
                                  <VBox.margin>
@@ -92,6 +101,9 @@
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
                                     </PasswordField>
                                  </children>
                                  <VBox.margin>
@@ -105,6 +117,9 @@
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
                                     </PasswordField>
                                  </children>
                                  <VBox.margin>
@@ -131,12 +146,15 @@
                                  </VBox.margin>
                               </Button>
                            </children>
+                           <padding>
+                              <Insets bottom="10.0" left="20.0" right="20.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </AnchorPane>
                </children>
             </Group>
-            <Group fx:id="GroupLogin" visible="false" StackPane.alignment="CENTER">
+            <Group fx:id="GroupLogin" StackPane.alignment="CENTER">
                <children>
                   <AnchorPane style="-fx-border-radius: 50;">
                      <children>
@@ -149,6 +167,9 @@
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
                                        </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
                                     </TextField>
                                  </children>
                                  <VBox.margin>
@@ -162,6 +183,9 @@
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
                                     </PasswordField>
                                  </children>
                                  <VBox.margin>

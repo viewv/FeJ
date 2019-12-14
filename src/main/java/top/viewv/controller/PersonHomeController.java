@@ -50,13 +50,12 @@ public class PersonHomeController implements Initializable {
     public AnchorPane BasePane;
     public Label labUserName;
     public Label userId;
-    public JFXTextField areAmount;
     public Label labAllM;
-    public Label labAllMoney;
     public Label labD;
     public JFXTextField areAge;
     public JFXTextField areId;
     public JFXTextField areName;
+
     Connection conn = new Connect().getConnection();
 
     private HashMap<Integer, Integer> order_lists = new HashMap<Integer, Integer>();
@@ -84,6 +83,12 @@ public class PersonHomeController implements Initializable {
         Staff staff = new Staff();
         Staff[] staffs = staff.GetDepartmentStaff(conn, Staff.GetStaffID(userId.getText(), conn));
 
+        String currentuser = Staff.GetStaffID(userId.getText(),conn);
+
+        System.out.println("Current");
+        //System.out.println(current);
+        System.out.println("Current");
+
         int length = staffs.length;
         pnl_scroll.getChildren().clear();
         Node[] nodes = new Node[length];
@@ -99,13 +104,22 @@ public class PersonHomeController implements Initializable {
                 node = loader.load();
                 StaffItemController itemController = loader.getController();
                 String[] type = UserAuth.getUserAuth(staff.staff_id);
+                System.out.println(staff.staff_id);
+
+                if (staff.staff_id.equals(currentuser)){
+                    System.out.println("!!!");
+                    continue;
+                }
+
                 if (type[2].equals("0")) {
                     itemController.setBtnUpdateUser("设为管理");
                 }else {
                     itemController.setBtnUpdateUser("取消管理");
                 }
+
                 itemController.setHomeController(this);
                 itemController.setAreAccountId(staff.staff_id);
+                itemController.areAccountId.setText(staff.staff_id);
                 itemController.setLabUserId(staff.staff_id);
                 itemController.setAreAge(staff.age);
                 itemController.setAreIntime(staff.entry_date);

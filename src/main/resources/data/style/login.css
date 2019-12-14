@@ -1,4 +1,8 @@
 .root{
-    -fx-background-image:url('../images/back01.jpg');
+    -fx-background-image:url('../images/back.jpg');
     -fx-background-size:cover;
+}
+
+.text-field{
+    -fx-text-fill: white;
 }
