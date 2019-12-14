@@ -3,6 +3,7 @@ package top.viewv.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -13,9 +14,11 @@ import top.viewv.database.Connect;
 import top.viewv.model.CMessage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
+import java.util.ResourceBundle;
 
-public class AccountInfoController {
+public class AccountInfoController implements Initializable {
 
     public JFXTextField logid;
     public JFXTextField aremail;
@@ -25,14 +28,31 @@ public class AccountInfoController {
     public Label labCerd;
     public Label labIn;
     public Label labRealId;
-    public JFXTextField crePass;
+    public JFXPasswordField crePass;
     public ImageView Icons;
     public JFXPasswordField areRepec;
 
     private CMessage cMessage;
     private String accId;
+    Connection conn = null;
 
-    Connection conn = new Connect().getConnection();
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        setConnect();
+    }
+
+    public void setConnect()  {
+        try {
+            conn = new Connect().getConnection();
+        } catch (IOException e) {
+            e.printStackTrace();
+            setConnect();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            setConnect();
+        }
+    }
+
 
     public AccountInfoController() throws IOException, ClassNotFoundException {
     }

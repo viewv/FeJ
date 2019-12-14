@@ -531,8 +531,10 @@ public class MainController implements Initializable  {
                 conn = new Connect().getConnection();
             } catch (IOException e) {
                 e.printStackTrace();
+                    run();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
+                run();
             }
         }
     }
