@@ -134,11 +134,10 @@ public class IStorageHomeController implements Initializable {
         }
     }
 
-    public void out(int ingredient_id,int amount){
+    public void out(int ingredient_id, int amount, String text){
         Ingredient_storage product_storage = new Ingredient_storage();
-        String id = areaID.getText();
 
-        int res= product_storage.OutStorage(conn,ingredient_id,amount,id);
+        int res= product_storage.OutStorage(conn,ingredient_id,amount,text);
 
         String message = "";
         if (res == 0){

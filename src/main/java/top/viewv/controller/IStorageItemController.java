@@ -25,6 +25,7 @@ public class IStorageItemController implements Initializable {
     public Label labnotinfo;
     public Label labStaffid;
     public Label labProductName;
+    public JFXTextField AreaOrder;
 
     private IStorageHomeController homeController;
 
@@ -74,10 +75,9 @@ public class IStorageItemController implements Initializable {
         this.homeController = homeController;
     }
 
-
     public void onClinckOut(MouseEvent mouseEvent) {
         int amount = Integer.parseInt(AreaOut.getText());
-        homeController.out(ingredient_id,amount);
+        homeController.out(ingredient_id,amount,AreaOut.getText());
     }
 
     public void onClinckClean(MouseEvent mouseEvent) {

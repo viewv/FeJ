@@ -74,7 +74,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="labnotinfo1" alignment="CENTER" layoutX="469.0" layoutY="104.0" text="输入订单编号" textFill="#5b5858">
+            <Label fx:id="labnotinfo1" alignment="CENTER" layoutX="459.0" layoutY="104.0" text="输入领取人编号" textFill="#5b5858">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
