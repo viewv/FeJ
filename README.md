@@ -2,12 +2,14 @@
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fviewv%2FFeJ.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fviewv%2FFeJ?ref=badge_shield)
 
-A JavaFX Project[!](https://github.com/viewv/FeJ/blob/master/something.md) As a homework for Java development course.
+A JavaFX Project. As a homework for Java development course.
 
 Thanks to https://github.com/k33ptoo 
 
 
 ## User Interface
+
+![User Interface](https://cdn.jsdelivr.net/gh/viewv/Pico/img/20191213110923.png)
 
 ## Usage
 
