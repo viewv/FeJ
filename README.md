@@ -9,8 +9,6 @@ Thanks to https://github.com/k33ptoo
 
 ## User Interface
 
-![User Interface Let's give my Java Teacher wangwei a death! I will never forget this thing, I will try to kill him, Fuck You wangwei! FUCK!!!](https://cdn.jsdelivr.net/gh/viewv/Pico/img/20191213110923.png)
-
 ## Usage
 
 Download release from [here](https://github.com/viewv/FeJ/releases), if you just want to run and test FeJ, you can just download version with jar-with-dependencies tag and run it.
